@@ -9,10 +9,9 @@ struct ProjectListView: View {
     @State private var projectToDelete: Project?
     @State private var animateHeart = false
     @State private var buttonScale: CGFloat = 1.0
-    @State private var path: [Project] = []
 
     var body: some View {
-        NavigationStack(path: $path) {
+        NavigationStack {
             Group {
                 if projects.isEmpty {
                     emptyStateView
@@ -21,9 +20,6 @@ struct ProjectListView: View {
                 }
             }
             .navigationTitle("DuoSpend")
-            .navigationDestination(for: Project.self) { project in
-                ProjectDetailView(project: project)
-            }
             .toolbar {
                 if !projects.isEmpty {
                     ToolbarItem(placement: .primaryAction) {
@@ -37,11 +33,7 @@ struct ProjectListView: View {
                 }
             }
             .sheet(isPresented: $showingCreateProject) {
-                CreateProjectView { createdProject in
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.4) {
-                        path.append(createdProject)
-                    }
-                }
+                CreateProjectView()
             }
             .alert(
                 "Supprimer le projet ?",
@@ -124,7 +116,9 @@ struct ProjectListView: View {
     private var projectsList: some View {
         List {
             ForEach(projects) { project in
-                NavigationLink(value: project) {
+                NavigationLink {
+                    ProjectDetailView(project: project)
+                } label: {
                     ProjectCard(project: project)
                 }
                 .buttonStyle(.plain)
