@@ -8,7 +8,6 @@ struct ProjectListView: View {
     @State private var showingCreateProject = false
     @State private var projectToDelete: Project?
     @State private var animateHeart = false
-    @State private var buttonScale: CGFloat = 1.0
 
     var body: some View {
         NavigationStack {
@@ -62,16 +61,10 @@ struct ProjectListView: View {
         VStack(spacing: 16) {
             Spacer()
 
-            ZStack {
-                Circle()
-                    .fill(Color.accentPrimary.opacity(0.08))
-                    .frame(width: 140, height: 140)
-
-                Image(systemName: "heart.circle.fill")
-                    .font(.system(size: 80))
-                    .foregroundStyle(Color.accentPrimary)
-                    .symbolEffect(.bounce, value: animateHeart)
-            }
+            Image(systemName: "heart.circle.fill")
+                .font(.system(size: 64))
+                .foregroundStyle(Color.accentPrimary)
+                .symbolEffect(.bounce, value: animateHeart)
 
             Text("À deux, c'est mieux !")
                 .font(.system(.title2, design: .rounded))
@@ -91,8 +84,6 @@ struct ProjectListView: View {
             .buttonStyle(.borderedProminent)
             .tint(Color.accentPrimary)
             .controlSize(.large)
-            .shadow(color: Color.accentPrimary.opacity(0.3), radius: 8, y: 4)
-            .scaleEffect(buttonScale)
             .padding(.top, 8)
 
             Spacer()
@@ -100,15 +91,7 @@ struct ProjectListView: View {
         .padding(.horizontal, 32)
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .background(Color.warmBackground)
-        .onAppear {
-            animateHeart = true
-            withAnimation(.spring(response: 0.5, dampingFraction: 0.6).delay(0.3)) {
-                buttonScale = 1.05
-            }
-            withAnimation(.spring(response: 0.3, dampingFraction: 0.7).delay(0.6)) {
-                buttonScale = 1.0
-            }
-        }
+        .onAppear { animateHeart = true }
     }
 
     // MARK: - Projects List
@@ -116,12 +99,15 @@ struct ProjectListView: View {
     private var projectsList: some View {
         List {
             ForEach(projects) { project in
-                NavigationLink {
-                    ProjectDetailView(project: project)
-                } label: {
+                ZStack(alignment: .leading) {
+                    NavigationLink {
+                        ProjectDetailView(project: project)
+                    } label: {
+                        EmptyView()
+                    }
+                    .opacity(0)
                     ProjectCard(project: project)
                 }
-                .buttonStyle(.plain)
                 .listRowBackground(Color.clear)
                 .listRowSeparator(.hidden)
                 .listRowInsets(EdgeInsets(top: 6, leading: 16, bottom: 6, trailing: 16))
