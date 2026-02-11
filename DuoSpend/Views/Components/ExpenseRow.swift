@@ -1,6 +1,6 @@
 import SwiftUI
 
-/// Ligne affichant une dépense dans la liste
+/// Ligne affichant une depense dans la liste
 struct ExpenseRow: View {
     let expense: Expense
     let partner1Name: String
@@ -16,6 +16,11 @@ struct ExpenseRow: View {
 
     private var payerInitial: String {
         String(payerName.prefix(1)).uppercased()
+    }
+
+    private var isCustomSplit: Bool {
+        if case .custom = expense.splitRatio { return true }
+        return false
     }
 
     private var splitLabel: String {
@@ -36,21 +41,25 @@ struct ExpenseRow: View {
                 .frame(width: 40, height: 40)
                 .background(payerColor)
                 .clipShape(Circle())
+                .shadow(color: payerColor.opacity(0.3), radius: 3, y: 2)
 
             VStack(alignment: .leading, spacing: 3) {
                 Text(expense.title)
                     .font(.body)
+                    .fontWeight(.medium)
                 HStack(spacing: 6) {
-                    Text("\(payerName) · \(expense.date.formatted(date: .abbreviated, time: .omitted))")
+                    Text("\(payerName) \u{00B7} \(expense.date.formatted(date: .abbreviated, time: .omitted))")
                         .font(.caption)
                         .foregroundStyle(.secondary)
-                    Text(splitLabel)
-                        .font(.system(.caption2, design: .rounded))
-                        .fontWeight(.medium)
-                        .padding(.horizontal, 6)
-                        .padding(.vertical, 2)
-                        .background(Color.accentPrimary.opacity(0.1))
-                        .clipShape(Capsule())
+                    if isCustomSplit {
+                        Text(splitLabel)
+                            .font(.system(.caption2, design: .rounded))
+                            .fontWeight(.medium)
+                            .padding(.horizontal, 6)
+                            .padding(.vertical, 2)
+                            .background(Color.accentPrimary.opacity(0.1))
+                            .clipShape(Capsule())
+                    }
                 }
             }
 

@@ -1,6 +1,6 @@
 import SwiftUI
 
-/// Formulaire de création d'un nouveau projet
+/// Formulaire de creation d'un nouveau projet
 struct CreateProjectView: View {
     @Environment(\.modelContext) private var modelContext
     @Environment(\.dismiss) private var dismiss
@@ -35,23 +35,29 @@ struct CreateProjectView: View {
     var body: some View {
         NavigationStack {
             Form {
-                Section("Projet") {
-                    TextField("Voyage à Rome, Mariage, Bébé…", text: $name)
+                Section {
+                    TextField("Voyage \u{00E0} Rome, Mariage, B\u{00E9}b\u{00E9}\u{2026}", text: $name)
+                } header: {
+                    Text("Projet").foregroundStyle(Color.accentPrimary)
                 }
 
-                Section("Partenaires") {
-                    TextField("Prénom (ex : Marie)", text: $partner1Name)
-                    TextField("Prénom (ex : Thomas)", text: $partner2Name)
+                Section {
+                    TextField("Pr\u{00E9}nom (ex : Marie)", text: $partner1Name)
+                    TextField("Pr\u{00E9}nom (ex : Thomas)", text: $partner2Name)
                     if hasIdenticalNames {
-                        Text("Les noms des partenaires doivent être différents.")
+                        Text("Les noms des partenaires doivent \u{00EA}tre diff\u{00E9}rents.")
                             .font(.caption)
                             .foregroundStyle(.red)
                     }
+                } header: {
+                    Text("Partenaires").foregroundStyle(Color.accentPrimary)
                 }
 
-                Section("Budget du projet") {
+                Section {
                     TextField("Ex : 5 000", text: $budgetText)
                         .keyboardType(.decimalPad)
+                } header: {
+                    Text("Budget du projet").foregroundStyle(Color.accentPrimary)
                 }
             }
             .navigationTitle("Nouveau projet")
@@ -63,8 +69,9 @@ struct CreateProjectView: View {
                     Button("Annuler") { dismiss() }
                 }
                 ToolbarItem(placement: .confirmationAction) {
-                    Button("Créer") { createProject() }
+                    Button("Cr\u{00E9}er") { createProject() }
                         .disabled(!isFormValid)
+                        .tint(Color.accentPrimary)
                 }
             }
         }
@@ -75,7 +82,7 @@ struct CreateProjectView: View {
 
         let project = Project(
             name: name.trimmingCharacters(in: .whitespaces),
-            emoji: "💰",
+            emoji: "\u{1F4B0}",
             budget: budget,
             partner1Name: partner1Name.trimmingCharacters(in: .whitespaces),
             partner2Name: partner2Name.trimmingCharacters(in: .whitespaces)

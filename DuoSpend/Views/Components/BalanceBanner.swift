@@ -1,33 +1,46 @@
 import SwiftUI
 
-/// Encart principal affichant qui doit combien à qui
+/// Encart principal affichant qui doit combien a qui
 struct BalanceBanner: View {
     let balance: BalanceResult
     let partner1Name: String
     let partner2Name: String
 
+    @State private var iconBounce = false
+
     var body: some View {
         VStack(spacing: 8) {
             switch balance.status {
             case .partner2OwesPartner1(let amount):
+                statusIcon(systemName: "arrow.left.arrow.right.circle.fill", color: .white.opacity(0.8))
                 debtContent(from: partner2Name, to: partner1Name, amount: amount)
             case .partner1OwesPartner2(let amount):
+                statusIcon(systemName: "arrow.left.arrow.right.circle.fill", color: .white.opacity(0.8))
                 debtContent(from: partner1Name, to: partner2Name, amount: amount)
             case .balanced:
-                Image(systemName: "checkmark.circle.fill")
-                    .font(.system(size: 32))
-                Text("Vous êtes à l'équilibre")
+                statusIcon(systemName: "checkmark.circle.fill", color: .white)
+                Text("Vous \u{00EA}tes \u{00E0} l'\u{00E9}quilibre")
                     .font(.system(.title2, design: .rounded))
                     .fontWeight(.bold)
             }
         }
         .foregroundStyle(.white)
         .frame(maxWidth: .infinity)
-        .padding(.vertical, 24)
+        .padding(.vertical, 28)
         .padding(.horizontal)
         .background(backgroundGradient)
         .clipShape(RoundedRectangle(cornerRadius: 20))
+        .shadow(color: .black.opacity(0.15), radius: 8, y: 4)
         .padding(.horizontal)
+        .onAppear { iconBounce = true }
+    }
+
+    @ViewBuilder
+    private func statusIcon(systemName: String, color: Color) -> some View {
+        Image(systemName: systemName)
+            .font(.system(size: 28))
+            .foregroundStyle(color)
+            .symbolEffect(.bounce, value: iconBounce)
     }
 
     @ViewBuilder
@@ -45,9 +58,10 @@ struct BalanceBanner: View {
             Text(to)
                 .fontWeight(.semibold)
         }
-        .font(.subheadline)
+        .font(.callout)
+        .fontWeight(.semibold)
         Text(amount.formattedCurrency)
-            .font(.system(size: 42, weight: .bold, design: .rounded))
+            .font(.system(size: 48, weight: .bold, design: .rounded))
             .contentTransition(.numericText())
     }
 

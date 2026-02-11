@@ -1,6 +1,6 @@
 import SwiftUI
 
-/// Sheet d'ajout ou d'édition d'une dépense
+/// Sheet d'ajout ou d'edition d'une depense
 struct AddExpenseView: View {
     let project: Project
     var existingExpense: Expense?
@@ -33,18 +33,18 @@ struct AddExpenseView: View {
     var body: some View {
         NavigationStack {
             Form {
-                Section("Dépense") {
-                    TextField("Restaurant, hôtel, courses…", text: $title)
-                    TextField("0,00 €", text: $amountText)
+                Section("D\u{00E9}pense") {
+                    TextField("Restaurant, h\u{00F4}tel, courses\u{2026}", text: $title)
+                    TextField("0,00 \u{20AC}", text: $amountText)
                         .keyboardType(.decimalPad)
                     if hasInvalidAmount {
-                        Text("Le montant doit être supérieur à 0.")
+                        Text("Le montant doit \u{00EA}tre sup\u{00E9}rieur \u{00E0} 0.")
                             .font(.caption)
                             .foregroundStyle(.red)
                     }
                 }
 
-                Section("Payé par") {
+                Section("Pay\u{00E9} par") {
                     HStack(spacing: 12) {
                         paidByButton(
                             role: .partner1,
@@ -60,8 +60,8 @@ struct AddExpenseView: View {
                     .listRowInsets(EdgeInsets(top: 8, leading: 16, bottom: 8, trailing: 16))
                 }
 
-                Section("Répartition") {
-                    Picker("Répartition", selection: $isCustomSplit) {
+                Section("R\u{00E9}partition") {
+                    Picker("R\u{00E9}partition", selection: $isCustomSplit) {
                         Text("50 / 50").tag(false)
                         Text("Custom").tag(true)
                     }
@@ -71,6 +71,22 @@ struct AddExpenseView: View {
                         VStack(spacing: 8) {
                             Slider(value: $partner1Share, in: 0...100, step: 5)
                                 .tint(Color.accentPrimary)
+                                .background(
+                                    GeometryReader { geo in
+                                        Capsule()
+                                            .fill(
+                                                LinearGradient(
+                                                    colors: [.partner1, .partner2],
+                                                    startPoint: .leading,
+                                                    endPoint: .trailing
+                                                )
+                                            )
+                                            .frame(height: 4)
+                                            .frame(width: geo.size.width)
+                                            .position(x: geo.size.width / 2, y: geo.size.height / 2)
+                                            .opacity(0.3)
+                                    }
+                                )
                             HStack {
                                 Text("\(project.partner1Name) : \(Int(partner1Share))%")
                                     .font(.system(.caption, design: .rounded))
@@ -90,7 +106,7 @@ struct AddExpenseView: View {
                     DatePicker("Date", selection: $date, displayedComponents: .date)
                 }
             }
-            .navigationTitle(isEditing ? "Modifier la dépense" : "Nouvelle dépense")
+            .navigationTitle(isEditing ? "Modifier la d\u{00E9}pense" : "Nouvelle d\u{00E9}pense")
             .navigationBarTitleDisplayMode(.inline)
             .presentationDetents([.large])
             .presentationCornerRadius(20)
@@ -118,13 +134,15 @@ struct AddExpenseView: View {
                 .fontWeight(isSelected ? .semibold : .regular)
                 .frame(maxWidth: .infinity)
                 .padding(.vertical, 10)
-                .background(isSelected ? color.opacity(0.15) : Color(.systemGray6))
+                .background(isSelected ? color.opacity(0.2) : Color(.systemGray6))
                 .foregroundStyle(isSelected ? color : .secondary)
                 .clipShape(RoundedRectangle(cornerRadius: 10))
                 .overlay(
                     RoundedRectangle(cornerRadius: 10)
                         .strokeBorder(isSelected ? color : Color.clear, lineWidth: 1.5)
                 )
+                .scaleEffect(isSelected ? 1.03 : 1.0)
+                .animation(.spring(response: 0.3), value: isSelected)
         }
         .buttonStyle(.plain)
     }

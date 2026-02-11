@@ -79,3 +79,11 @@ Format :
 **Contexte** : Le budget était optionnel à la création du projet.
 **Décision** : Le budget devient **obligatoire**. `Project.budget` passe de `Decimal?` à `Decimal`.
 **Raison** : Le budget par projet est le cœur du concept DuoSpend ("budget projets pour couples"). Sans budget, l'app n'est qu'un tracker de dépenses classique. La barre de progression budget/dépensé est le visuel clé qui différencie l'app.
+
+---
+
+### 2025-02-11 — Monétisation : 1 projet gratuit + achat unique 3,99 €
+
+**Contexte** : Comment monétiser l'app ?
+**Décision** : Freemium avec 1 projet gratuit. Achat unique (non-consommable) à 3,99 € pour débloquer les projets illimités à vie. StoreKit 2, product ID `com.duospend.unlimitedprojects`.
+**Raison** : Pas d'abonnement (trop agressif pour une app utilitaire). Pas de pubs (ruine l'UX). 3,99 € est le sweet spot App Store FR pour ce type d'app. 1 projet gratuit permet de tester vraiment l'app avant de payer. Conversion estimée : 3-5% des users actifs.

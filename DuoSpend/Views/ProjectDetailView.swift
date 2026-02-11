@@ -1,14 +1,14 @@
 import SwiftUI
 import SwiftData
 
-/// Ordre de tri des dépenses
+/// Ordre de tri des depenses
 enum ExpenseSortOrder: String, CaseIterable {
     case date = "Date"
     case amount = "Montant"
     case payer = "Payeur"
 }
 
-/// Détail d'un projet : balance, budget, liste des dépenses
+/// Detail d'un projet : balance, budget, liste des depenses
 struct ProjectDetailView: View {
     let project: Project
     @Environment(\.modelContext) private var modelContext
@@ -48,6 +48,24 @@ struct ProjectDetailView: View {
             / Double(truncating: balance.totalSpent as NSDecimalNumber)
     }
 
+    private var budgetFraction: Double {
+        guard project.budget > 0 else { return 0 }
+        let spent = Double(truncating: balance.totalSpent as NSDecimalNumber)
+        let budget = Double(truncating: project.budget as NSDecimalNumber)
+        return min(spent / budget, 1.0)
+    }
+
+    private var isOverBudget: Bool {
+        balance.totalSpent > project.budget
+    }
+
+    private var budgetPercentage: Int {
+        guard project.budget > 0 else { return 0 }
+        let spent = Double(truncating: balance.totalSpent as NSDecimalNumber)
+        let budget = Double(truncating: project.budget as NSDecimalNumber)
+        return Int(spent / budget * 100)
+    }
+
     @ViewBuilder
     private var summaryContent: some View {
         LabeledContent(project.partner1Name) {
@@ -62,8 +80,8 @@ struct ProjectDetailView: View {
                 .fontWeight(.medium)
                 .foregroundStyle(Color.partner2)
         }
-        LabeledContent("Nombre de dépenses") {
-            Text("\(project.partner1Name) : \(p1ExpenseCount) · \(project.partner2Name) : \(p2ExpenseCount)")
+        LabeledContent("Nombre de d\u{00E9}penses") {
+            Text("\(project.partner1Name) : \(p1ExpenseCount) \u{00B7} \(project.partner2Name) : \(p2ExpenseCount)")
                 .font(.caption)
         }
         VStack(alignment: .leading, spacing: 4) {
@@ -98,12 +116,19 @@ struct ProjectDetailView: View {
             // MARK: - Balance
             if project.expenses.isEmpty {
                 Section {
-                    Text("Ajoutez votre première dépense 🎉")
-                        .font(.system(.title3, design: .rounded))
-                        .fontWeight(.semibold)
-                        .foregroundStyle(Color.accentPrimary)
-                        .frame(maxWidth: .infinity, alignment: .center)
-                        .padding(.vertical, 12)
+                    VStack(spacing: 8) {
+                        Image(systemName: "cart.badge.plus")
+                            .font(.system(size: 44))
+                            .foregroundStyle(Color.accentPrimary.opacity(0.6))
+                            .symbolEffect(.pulse)
+
+                        Text("Ajoutez votre premi\u{00E8}re d\u{00E9}pense")
+                            .font(.system(.title3, design: .rounded))
+                            .fontWeight(.semibold)
+                            .foregroundStyle(Color.accentPrimary)
+                    }
+                    .frame(maxWidth: .infinity, alignment: .center)
+                    .padding(.vertical, 12)
                 }
                 .listRowBackground(Color.clear)
             } else {
@@ -120,21 +145,53 @@ struct ProjectDetailView: View {
 
             // MARK: - Budget progress
             Section("Budget") {
-                VStack(alignment: .leading, spacing: 4) {
-                    Text("\(balance.totalSpent.formattedCurrency) / \(project.budget.formattedCurrency)")
-                        .font(.system(.subheadline, design: .rounded))
-                    ProgressView(
-                        value: Double(truncating: balance.totalSpent as NSDecimalNumber),
-                        total: Double(truncating: project.budget as NSDecimalNumber)
-                    )
-                    .tint(Color.accentPrimary)
+                VStack(alignment: .leading, spacing: 6) {
+                    HStack {
+                        VStack(alignment: .leading, spacing: 2) {
+                            Text("D\u{00E9}pens\u{00E9}")
+                                .font(.system(.caption, design: .rounded))
+                                .foregroundStyle(.secondary)
+                            Text(balance.totalSpent.formattedCurrency)
+                                .font(.system(.subheadline, design: .rounded))
+                                .fontWeight(.semibold)
+                                .foregroundStyle(Color.partner1)
+                        }
+                        Spacer()
+                        VStack(alignment: .trailing, spacing: 2) {
+                            Text("Budget")
+                                .font(.system(.caption, design: .rounded))
+                                .foregroundStyle(.secondary)
+                            Text(project.budget.formattedCurrency)
+                                .font(.system(.subheadline, design: .rounded))
+                                .fontWeight(.semibold)
+                                .foregroundStyle(.secondary)
+                        }
+                    }
+
+                    GeometryReader { geo in
+                        ZStack(alignment: .leading) {
+                            RoundedRectangle(cornerRadius: 6)
+                                .fill(Color.accentPrimary.opacity(0.12))
+                                .frame(height: 10)
+
+                            RoundedRectangle(cornerRadius: 6)
+                                .fill(isOverBudget ? Color.red : Color.accentPrimary)
+                                .frame(width: geo.size.width * budgetFraction, height: 10)
+                                .animation(.spring, value: balance.totalSpent)
+                        }
+                    }
+                    .frame(height: 10)
+
+                    Text("\(budgetPercentage)% utilis\u{00E9}")
+                        .font(.system(.caption, design: .rounded))
+                        .foregroundStyle(.secondary)
                 }
             }
 
             // MARK: - Summary
             if !project.expenses.isEmpty {
                 Section {
-                    DisclosureGroup("Résumé") {
+                    DisclosureGroup("R\u{00E9}sum\u{00E9}") {
                         summaryContent
                     }
                     .tint(Color.accentPrimary)
@@ -142,9 +199,9 @@ struct ProjectDetailView: View {
             }
 
             // MARK: - Expenses
-            Section("Dépenses (\(project.expenses.count))") {
+            Section("D\u{00E9}penses (\(project.expenses.count))") {
                 if project.expenses.isEmpty {
-                    Text("Aucune dépense — tapez + pour commencer")
+                    Text("Aucune d\u{00E9}pense \u{2014} tapez + pour commencer")
                         .foregroundStyle(.secondary)
                 } else {
                     let sorted = sortedExpenses
@@ -221,7 +278,7 @@ struct ProjectDetailView: View {
             }
             Button("Annuler", role: .cancel) { }
         } message: {
-            Text("Supprimer \(project.name) et toutes ses dépenses ?")
+            Text("Supprimer \(project.name) et toutes ses d\u{00E9}penses ?")
         }
     }
 }
