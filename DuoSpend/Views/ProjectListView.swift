@@ -8,6 +8,7 @@ struct ProjectListView: View {
     @State private var showingCreateProject = false
     @State private var projectToDelete: Project?
     @State private var animateHeart = false
+    @State private var navigateToProject: Project?
 
     var body: some View {
         NavigationStack {
@@ -32,7 +33,19 @@ struct ProjectListView: View {
                 }
             }
             .sheet(isPresented: $showingCreateProject) {
-                CreateProjectView()
+                CreateProjectView { createdProject in
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.4) {
+                        navigateToProject = createdProject
+                    }
+                }
+            }
+            .navigationDestination(isPresented: Binding(
+                get: { navigateToProject != nil },
+                set: { if !$0 { navigateToProject = nil } }
+            )) {
+                if let project = navigateToProject {
+                    ProjectDetailView(project: project)
+                }
             }
             .alert(
                 "Supprimer le projet ?",
@@ -99,15 +112,12 @@ struct ProjectListView: View {
     private var projectsList: some View {
         List {
             ForEach(projects) { project in
-                ZStack(alignment: .leading) {
-                    NavigationLink {
-                        ProjectDetailView(project: project)
-                    } label: {
-                        EmptyView()
-                    }
-                    .opacity(0)
+                NavigationLink {
+                    ProjectDetailView(project: project)
+                } label: {
                     ProjectCard(project: project)
                 }
+                .buttonStyle(.plain)
                 .listRowBackground(Color.clear)
                 .listRowSeparator(.hidden)
                 .listRowInsets(EdgeInsets(top: 6, leading: 16, bottom: 6, trailing: 16))

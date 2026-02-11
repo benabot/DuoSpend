@@ -5,6 +5,8 @@ struct CreateProjectView: View {
     @Environment(\.modelContext) private var modelContext
     @Environment(\.dismiss) private var dismiss
 
+    var onCreate: ((Project) -> Void)?
+
     @State private var name = ""
     @State private var partner1Name = ""
     @State private var partner2Name = ""
@@ -81,6 +83,7 @@ struct CreateProjectView: View {
 
         modelContext.insert(project)
         UIImpactFeedbackGenerator(style: .medium).impactOccurred()
+        onCreate?(project)
         dismiss()
     }
 }
