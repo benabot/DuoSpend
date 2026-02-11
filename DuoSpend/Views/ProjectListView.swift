@@ -19,6 +19,9 @@ struct ProjectListView: View {
                 }
             }
             .navigationTitle("DuoSpend")
+            .navigationDestination(for: Project.self) { project in
+                ProjectDetailView(project: project)
+            }
             .toolbar {
                 if !projects.isEmpty {
                     ToolbarItem(placement: .primaryAction) {
@@ -99,15 +102,10 @@ struct ProjectListView: View {
     private var projectsList: some View {
         List {
             ForEach(projects) { project in
-                ZStack(alignment: .leading) {
-                    NavigationLink {
-                        ProjectDetailView(project: project)
-                    } label: {
-                        EmptyView()
-                    }
-                    .opacity(0)
+                NavigationLink(value: project) {
                     ProjectCard(project: project)
                 }
+                .buttonStyle(.plain)
                 .listRowBackground(Color.clear)
                 .listRowSeparator(.hidden)
                 .listRowInsets(EdgeInsets(top: 6, leading: 16, bottom: 6, trailing: 16))

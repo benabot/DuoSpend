@@ -3,7 +3,6 @@ import SwiftData
 
 @main
 struct DuoSpendApp: App {
-    @AppStorage("hasLaunched") private var hasLaunched = false
     @State private var showingSplash = true
 
     init() {
@@ -32,26 +31,21 @@ struct DuoSpendApp: App {
 
     var body: some Scene {
         WindowGroup {
-            ZStack {
-                ProjectListView()
-
-                if showingSplash {
-                    SplashScreenView()
-                        .transition(.opacity)
-                        .zIndex(1)
+            ProjectListView()
+                .overlay {
+                    if showingSplash {
+                        SplashScreenView()
+                            .transition(.opacity)
+                            .allowsHitTesting(true)
+                    }
                 }
-            }
-            .task {
-                if !hasLaunched {
-                    hasLaunched = true
-                    try? await Task.sleep(for: .seconds(1.8))
-                } else {
-                    try? await Task.sleep(for: .seconds(0.3))
+                .animation(.easeOut(duration: 0.4), value: showingSplash)
+                .onAppear {
+                    guard showingSplash else { return }
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
+                        showingSplash = false
+                    }
                 }
-                withAnimation(.easeOut(duration: 0.4)) {
-                    showingSplash = false
-                }
-            }
         }
         .modelContainer(for: [Project.self, Expense.self])
     }

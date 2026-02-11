@@ -10,7 +10,7 @@ enum ExpenseSortOrder: String, CaseIterable {
 
 /// Detail d'un projet : balance, budget, liste des depenses
 struct ProjectDetailView: View {
-    let project: Project
+    @Bindable var project: Project
     @Environment(\.modelContext) private var modelContext
     @Environment(\.dismiss) private var dismiss
     @State private var showingAddExpense = false
