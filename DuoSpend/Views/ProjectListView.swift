@@ -23,6 +23,15 @@ struct ProjectListView: View {
                 ProjectDetailView(project: project)
             }
             .toolbar {
+                ToolbarItem(placement: .principal) {
+                    HStack(spacing: 6) {
+                        DuoLogoView(size: 28)
+                        Text("DuoSpend")
+                            .font(.system(.headline, design: .rounded))
+                            .fontWeight(.bold)
+                            .foregroundStyle(Color.accentPrimary)
+                    }
+                }
                 if !projects.isEmpty {
                     ToolbarItem(placement: .primaryAction) {
                         Button {
@@ -61,22 +70,25 @@ struct ProjectListView: View {
     // MARK: - Empty State
 
     private var emptyStateView: some View {
-        VStack(spacing: 16) {
+        VStack(spacing: 20) {
             Spacer()
 
-            Image(systemName: "heart.circle.fill")
-                .font(.system(size: 64))
-                .foregroundStyle(Color.accentPrimary)
-                .symbolEffect(.bounce, value: animateHeart)
+            DuoLogoView(size: 96, withBackground: true)
+                .shadow(color: Color.accentPrimary.opacity(0.3), radius: 16, y: 6)
+                .scaleEffect(animateHeart ? 1.0 : 0.7)
+                .opacity(animateHeart ? 1.0 : 0)
+                .animation(.spring(response: 0.6, dampingFraction: 0.6), value: animateHeart)
 
-            Text("À deux, c'est mieux !")
-                .font(.system(.title2, design: .rounded))
-                .fontWeight(.bold)
+            VStack(spacing: 8) {
+                Text("À deux, c'est mieux !")
+                    .font(.system(.title2, design: .rounded))
+                    .fontWeight(.bold)
 
-            Text("Mariage, voyage, déménagement…\nsuivez vos dépenses ensemble.")
-                .font(.subheadline)
-                .foregroundStyle(.secondary)
-                .multilineTextAlignment(.center)
+                Text("Mariage, voyage, déménagement…\nsuivez vos dépenses ensemble.")
+                    .font(.subheadline)
+                    .foregroundStyle(.secondary)
+                    .multilineTextAlignment(.center)
+            }
 
             Button {
                 showingCreateProject = true
@@ -87,7 +99,7 @@ struct ProjectListView: View {
             .buttonStyle(.borderedProminent)
             .tint(Color.accentPrimary)
             .controlSize(.large)
-            .padding(.top, 8)
+            .padding(.top, 4)
 
             Spacer()
         }

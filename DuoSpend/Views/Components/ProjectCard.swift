@@ -18,16 +18,24 @@ struct ProjectCard: View {
                     .clipShape(Circle())
                     .overlay(Circle().strokeBorder(Color.accentPrimary.opacity(0.2), lineWidth: 1))
 
-                VStack(alignment: .leading, spacing: 2) {
+                VStack(alignment: .leading, spacing: 4) {
                     Text(project.name)
                         .font(.system(.headline, design: .rounded))
                         .fontWeight(.bold)
-                    Text("\(balance.totalSpent.formattedCurrency) d\u{00E9}pens\u{00E9}s")
-                        .font(.system(.subheadline, design: .rounded))
-                        .foregroundStyle(.secondary)
+                    duoPartnerLabel
                 }
 
                 Spacer()
+
+                VStack(alignment: .trailing, spacing: 2) {
+                    Text(balance.totalSpent.formattedCurrency)
+                        .font(.system(.subheadline, design: .rounded))
+                        .fontWeight(.semibold)
+                        .foregroundStyle(Color.accentPrimary)
+                    Text("dépensés")
+                        .font(.system(.caption2, design: .rounded))
+                        .foregroundStyle(.secondary)
+                }
             }
 
             ProgressView(
@@ -44,6 +52,26 @@ struct ProjectCard: View {
         .background(Color.cardBackground)
         .clipShape(RoundedRectangle(cornerRadius: 20))
         .shadow(color: Color.accentPrimary.opacity(0.08), radius: 12, x: 0, y: 4)
+    }
+
+    /// Prénoms des deux partenaires avec leurs couleurs distinctives
+    private var duoPartnerLabel: some View {
+        HStack(spacing: 4) {
+            Image(systemName: "heart.fill")
+                .font(.system(size: 8))
+                .foregroundStyle(Color.partner1)
+            Text(project.partner1Name)
+                .foregroundStyle(Color.partner1)
+            Text("·")
+                .foregroundStyle(.tertiary)
+            Image(systemName: "heart.fill")
+                .font(.system(size: 8))
+                .foregroundStyle(Color.partner2)
+            Text(project.partner2Name)
+                .foregroundStyle(Color.partner2)
+        }
+        .font(.system(.caption, design: .rounded))
+        .fontWeight(.medium)
     }
 
     @ViewBuilder
