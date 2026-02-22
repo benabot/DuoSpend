@@ -25,8 +25,7 @@ struct SplashScreenView: View {
                         .frame(width: 120, height: 120)
                         .scaleEffect(circleScale)
 
-                    Text("\u{1F495}")
-                        .font(.system(size: 72))
+                    DuoLogoView(size: 88, withBackground: false)
                         .scaleEffect(heartScale)
                         .opacity(heartOpacity)
                 }

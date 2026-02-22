@@ -20,6 +20,7 @@
 		6F3935F6DDE436240C4E388B /* SplitRatio.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19C8B4A03434F5EA7E7F8052 /* SplitRatio.swift */; };
 		7BC829A4AB6B86532D8690ED /* PartnerRole.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C6FACA7A3EF6858B4842AB1 /* PartnerRole.swift */; };
 		7D2C3BC30688171350EEB3C5 /* ProjectCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = E555932D18C4E9C0CB39F551 /* ProjectCard.swift */; };
+		BE92CE5D2AAF48278484C9E6 /* DuoLogoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBD4712A3876450097213E2E /* DuoLogoView.swift */; };
 		88641563DBC6B716A6FEBFFC /* SplashScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A51425789DA23F45C1129889 /* SplashScreenView.swift */; };
 		8C46DF18903B6602AB02BB49 /* ProjectListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F04C844F9A1C3C34ECF318DB /* ProjectListView.swift */; };
 		9175C1FA5FABEAA9AF0961EC /* SampleData.swift in Sources */ = {isa = PBXBuildFile; fileRef = E785001221CBAA003378869A /* SampleData.swift */; };
@@ -61,6 +62,7 @@
 		D68F6F85D9307CCD42E577D9 /* DuoSpendTests.xctest */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.cfbundle; path = DuoSpendTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		DA7B8C3CA2DD879EAE29ED34 /* CreateProjectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateProjectView.swift; sourceTree = "<group>"; };
 		E555932D18C4E9C0CB39F551 /* ProjectCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectCard.swift; sourceTree = "<group>"; };
+		FBD4712A3876450097213E2E /* DuoLogoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DuoLogoView.swift; sourceTree = "<group>"; };
 		E5AE72B67E0F053A60E27F83 /* BalanceCalculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BalanceCalculator.swift; sourceTree = "<group>"; };
 		E785001221CBAA003378869A /* SampleData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleData.swift; sourceTree = "<group>"; };
 		EF143C9D714A3EE91F059A75 /* AddExpenseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddExpenseView.swift; sourceTree = "<group>"; };
@@ -73,6 +75,7 @@
 			isa = PBXGroup;
 			children = (
 				79F2DC92F10F0B2C13837643 /* BalanceBanner.swift */,
+				FBD4712A3876450097213E2E /* DuoLogoView.swift */,
 				58DC5CE2EFF6B9164FEB3BAC /* ExpenseRow.swift */,
 				E555932D18C4E9C0CB39F551 /* ProjectCard.swift */,
 			);
@@ -309,6 +312,7 @@
 				7BC829A4AB6B86532D8690ED /* PartnerRole.swift in Sources */,
 				1BB8C595375936D8B9C6A6B6 /* Project.swift in Sources */,
 				7D2C3BC30688171350EEB3C5 /* ProjectCard.swift in Sources */,
+				BE92CE5D2AAF48278484C9E6 /* DuoLogoView.swift in Sources */,
 				46738B86D4D6948D3E050084 /* ProjectDetailView.swift in Sources */,
 				CA59BF49454B59717682E99E /* ProjectDetailViewModel.swift in Sources */,
 				8C46DF18903B6602AB02BB49 /* ProjectListView.swift in Sources */,

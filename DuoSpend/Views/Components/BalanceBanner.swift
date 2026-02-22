@@ -12,11 +12,15 @@ struct BalanceBanner: View {
         VStack(spacing: 8) {
             switch balance.status {
             case .partner2OwesPartner1(let amount):
-                statusIcon(systemName: "arrow.left.arrow.right.circle.fill", color: .white.opacity(0.8))
-                debtContent(from: partner2Name, to: partner1Name, amount: amount)
+                duoHearts
+                debtContent(from: partner2Name, fromColor: .partner2,
+                            to: partner1Name,   toColor: .partner1,
+                            amount: amount)
             case .partner1OwesPartner2(let amount):
-                statusIcon(systemName: "arrow.left.arrow.right.circle.fill", color: .white.opacity(0.8))
-                debtContent(from: partner1Name, to: partner2Name, amount: amount)
+                duoHearts
+                debtContent(from: partner1Name, fromColor: .partner1,
+                            to: partner2Name,   toColor: .partner2,
+                            amount: amount)
             case .balanced:
                 statusIcon(systemName: "checkmark.circle.fill", color: .white)
                 Text("Vous \u{00EA}tes \u{00E0} l'\u{00E9}quilibre")
@@ -43,9 +47,31 @@ struct BalanceBanner: View {
             .symbolEffect(.bounce, value: iconBounce)
     }
 
+    /// Deux petits cœurs colorés représentant le duo, en version blanche (sur fond coloré)
+    private var duoHearts: some View {
+        HStack(spacing: 4) {
+            Image(systemName: "heart.fill")
+                .font(.system(size: 14))
+                .foregroundStyle(.white.opacity(0.75))
+                .offset(y: -2)
+            Image(systemName: "heart.fill")
+                .font(.system(size: 14))
+                .foregroundStyle(.white.opacity(0.90))
+                .offset(y: 2)
+        }
+        .symbolEffect(.bounce, value: iconBounce)
+    }
+
     @ViewBuilder
-    private func debtContent(from: String, to: String, amount: Decimal) -> some View {
-        HStack(spacing: 8) {
+    private func debtContent(
+        from: String, fromColor: Color,
+        to: String,   toColor: Color,
+        amount: Decimal
+    ) -> some View {
+        HStack(spacing: 6) {
+            Circle()
+                .fill(fromColor.opacity(0.35))
+                .frame(width: 8, height: 8)
             Text(from)
                 .fontWeight(.semibold)
             Image(systemName: "arrow.right")
@@ -55,6 +81,9 @@ struct BalanceBanner: View {
                 } animation: { _ in
                     .easeInOut(duration: 0.8)
                 }
+            Circle()
+                .fill(toColor.opacity(0.35))
+                .frame(width: 8, height: 8)
             Text(to)
                 .fontWeight(.semibold)
         }
