@@ -32,24 +32,107 @@ struct CreateProjectView: View {
 
     var body: some View {
         NavigationStack {
-            Form {
-                Section("Projet") {
-                    TextField("Voyage à Rome, Mariage, Bébé…", text: $name)
-                }
+            ZStack {
+                // Fond dégradé
+                LinearGradient(
+                    colors: [Color.accentPrimary.opacity(0.12), Color(.systemBackground)],
+                    startPoint: .top,
+                    endPoint: .center
+                )
+                .ignoresSafeArea()
 
-                Section("Partenaires") {
-                    TextField("Prénom (ex : Marie)", text: $partner1Name)
-                    TextField("Prénom (ex : Thomas)", text: $partner2Name)
-                    if hasIdenticalNames {
-                        Text("Les noms des partenaires doivent être différents.")
-                            .font(.caption)
-                            .foregroundStyle(.red)
+                ScrollView {
+                    VStack(spacing: 24) {
+
+                        // Logo + titre section
+                        DuoLogoView(size: 64, withBackground: true)
+                            .padding(.top, 8)
+
+                        // Section Projet
+                        FormSection(
+                            icon: "folder.fill",
+                            iconColor: Color.accentPrimary,
+                            title: "Projet"
+                        ) {
+                            TextField("Voyage à Rome, Mariage, Bébé…", text: $name)
+                                .font(.body)
+                        }
+
+                        // Section Partenaires
+                        FormSection(
+                            icon: "heart.fill",
+                            iconColor: Color.partner1,
+                            title: "Partenaires"
+                        ) {
+                            VStack(spacing: 0) {
+                                HStack(spacing: 12) {
+                                    Circle()
+                                        .fill(Color.partner1)
+                                        .frame(width: 8, height: 8)
+                                    TextField("Prénom (ex : Marie)", text: $partner1Name)
+                                        .font(.body)
+                                }
+                                Divider().padding(.vertical, 10)
+                                HStack(spacing: 12) {
+                                    Circle()
+                                        .fill(Color.partner2)
+                                        .frame(width: 8, height: 8)
+                                    TextField("Prénom (ex : Thomas)", text: $partner2Name)
+                                        .font(.body)
+                                }
+                            }
+                            if hasIdenticalNames {
+                                HStack(spacing: 6) {
+                                    Image(systemName: "exclamationmark.triangle.fill")
+                                        .foregroundStyle(.orange)
+                                        .font(.caption)
+                                    Text("Les prénoms doivent être différents.")
+                                        .font(.caption)
+                                        .foregroundStyle(.orange)
+                                }
+                                .padding(.top, 4)
+                            }
+                        }
+
+                        // Section Budget
+                        FormSection(
+                            icon: "eurosign.circle.fill",
+                            iconColor: Color.successGreen,
+                            title: "Budget du projet"
+                        ) {
+                            HStack {
+                                TextField("Ex : 5 000", text: $budgetText)
+                                    .keyboardType(.decimalPad)
+                                    .font(.body)
+                                Text("€")
+                                    .foregroundStyle(.secondary)
+                                    .font(.body.weight(.semibold))
+                            }
+                        }
+
+                        // Bouton Créer
+                        Button(action: createProject) {
+                            HStack(spacing: 10) {
+                                Image(systemName: "plus.circle.fill")
+                                    .font(.title3)
+                                Text("Créer le projet")
+                                    .font(.headline)
+                            }
+                            .frame(maxWidth: .infinity)
+                            .padding(.vertical, 16)
+                            .background(
+                                isFormValid
+                                    ? LinearGradient(colors: [Color.accentPrimary, Color.accentPrimary.opacity(0.8)], startPoint: .leading, endPoint: .trailing)
+                                    : LinearGradient(colors: [Color(.systemGray4), Color(.systemGray4)], startPoint: .leading, endPoint: .trailing)
+                            )
+                            .foregroundStyle(.white)
+                            .clipShape(RoundedRectangle(cornerRadius: 16))
+                        }
+                        .disabled(!isFormValid)
+                        .padding(.top, 4)
+                        .padding(.bottom, 16)
                     }
-                }
-
-                Section("Budget du projet") {
-                    TextField("Ex : 5 000", text: $budgetText)
-                        .keyboardType(.decimalPad)
+                    .padding(.horizontal, 20)
                 }
             }
             .navigationTitle("Nouveau projet")
@@ -59,10 +142,6 @@ struct CreateProjectView: View {
             .toolbar {
                 ToolbarItem(placement: .cancellationAction) {
                     Button("Annuler") { dismiss() }
-                }
-                ToolbarItem(placement: .confirmationAction) {
-                    Button("Créer") { createProject() }
-                        .disabled(!isFormValid)
                 }
             }
         }
@@ -82,6 +161,44 @@ struct CreateProjectView: View {
         modelContext.insert(project)
         UIImpactFeedbackGenerator(style: .medium).impactOccurred()
         dismiss()
+    }
+}
+
+// MARK: - FormSection
+
+/// Carte de section générique avec icône colorée et titre
+private struct FormSection<Content: View>: View {
+    let icon: String
+    let iconColor: Color
+    let title: String
+    @ViewBuilder let content: () -> Content
+
+    var body: some View {
+        VStack(alignment: .leading, spacing: 12) {
+            // En-tête
+            HStack(spacing: 8) {
+                Image(systemName: icon)
+                    .foregroundStyle(iconColor)
+                    .font(.system(size: 15, weight: .semibold))
+                Text(title)
+                    .font(.subheadline.weight(.semibold))
+                    .foregroundStyle(.primary)
+            }
+
+            // Contenu dans une carte blanche
+            VStack(alignment: .leading, spacing: 4) {
+                content()
+            }
+            .padding(.horizontal, 16)
+            .padding(.vertical, 14)
+            .background(Color(.systemBackground))
+            .clipShape(RoundedRectangle(cornerRadius: 14))
+            .shadow(color: iconColor.opacity(0.08), radius: 8, x: 0, y: 2)
+            .overlay(
+                RoundedRectangle(cornerRadius: 14)
+                    .strokeBorder(iconColor.opacity(0.15), lineWidth: 1)
+            )
+        }
     }
 }
 
