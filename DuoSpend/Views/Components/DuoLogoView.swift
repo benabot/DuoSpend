@@ -33,21 +33,18 @@ struct DuoLogoView: View {
         .frame(width: size, height: size)
     }
 
-    private var heartSize: CGFloat { size * 0.40 }
-    private var spacing: CGFloat   { size * 0.04 }
-    private var verticalShift: CGFloat { size * 0.05 }
+    private var heartSize: CGFloat { size * 0.38 }
+    private var spacing: CGFloat   { size * 0.08 }
 
     private var duoHearts: some View {
         HStack(spacing: spacing) {
             Image(systemName: "heart.fill")
                 .font(.system(size: heartSize, weight: .bold))
                 .foregroundStyle(withBackground ? blueHeart : Color.partner1)
-                .offset(y: -verticalShift)
 
             Image(systemName: "heart.fill")
                 .font(.system(size: heartSize, weight: .bold))
                 .foregroundStyle(withBackground ? pinkHeart : Color.partner2)
-                .offset(y: verticalShift)
         }
     }
 }

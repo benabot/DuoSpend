@@ -20,7 +20,6 @@
 		6F3935F6DDE436240C4E388B /* SplitRatio.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19C8B4A03434F5EA7E7F8052 /* SplitRatio.swift */; };
 		7BC829A4AB6B86532D8690ED /* PartnerRole.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C6FACA7A3EF6858B4842AB1 /* PartnerRole.swift */; };
 		7D2C3BC30688171350EEB3C5 /* ProjectCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = E555932D18C4E9C0CB39F551 /* ProjectCard.swift */; };
-		BE92CE5D2AAF48278484C9E6 /* DuoLogoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBD4712A3876450097213E2E /* DuoLogoView.swift */; };
 		88641563DBC6B716A6FEBFFC /* SplashScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A51425789DA23F45C1129889 /* SplashScreenView.swift */; };
 		8C46DF18903B6602AB02BB49 /* ProjectListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F04C844F9A1C3C34ECF318DB /* ProjectListView.swift */; };
 		9175C1FA5FABEAA9AF0961EC /* SampleData.swift in Sources */ = {isa = PBXBuildFile; fileRef = E785001221CBAA003378869A /* SampleData.swift */; };
@@ -30,6 +29,7 @@
 		E4E26A0F71407B1BECD50BD1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 101224910B9E1829A4C7B57C /* Assets.xcassets */; };
 		E900A69F5F80A513D8185B47 /* BalanceCalculatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A20F129BA65242D426C38F3 /* BalanceCalculatorTests.swift */; };
 		F52EB6E0C6F7B6BA38C999AB /* Decimal+Currency.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70944B10F95B9DFF0E6FA873 /* Decimal+Currency.swift */; };
+		F824C477FF3AE8FA11686D86 /* DuoLogoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ACF30E606058799801CFD3B /* DuoLogoView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +51,7 @@
 		2C6FACA7A3EF6858B4842AB1 /* PartnerRole.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PartnerRole.swift; sourceTree = "<group>"; };
 		4DDFA55290FC464C965B2818 /* EditProjectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProjectView.swift; sourceTree = "<group>"; };
 		58DC5CE2EFF6B9164FEB3BAC /* ExpenseRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenseRow.swift; sourceTree = "<group>"; };
+		5ACF30E606058799801CFD3B /* DuoLogoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DuoLogoView.swift; sourceTree = "<group>"; };
 		65B136CEC056F2422859D8F4 /* Expense.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Expense.swift; sourceTree = "<group>"; };
 		70944B10F95B9DFF0E6FA873 /* Decimal+Currency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Decimal+Currency.swift"; sourceTree = "<group>"; };
 		78A19E541167CDD82A20D1F0 /* AppIconExporter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppIconExporter.swift; sourceTree = "<group>"; };
@@ -62,7 +63,6 @@
 		D68F6F85D9307CCD42E577D9 /* DuoSpendTests.xctest */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.cfbundle; path = DuoSpendTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		DA7B8C3CA2DD879EAE29ED34 /* CreateProjectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateProjectView.swift; sourceTree = "<group>"; };
 		E555932D18C4E9C0CB39F551 /* ProjectCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectCard.swift; sourceTree = "<group>"; };
-		FBD4712A3876450097213E2E /* DuoLogoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DuoLogoView.swift; sourceTree = "<group>"; };
 		E5AE72B67E0F053A60E27F83 /* BalanceCalculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BalanceCalculator.swift; sourceTree = "<group>"; };
 		E785001221CBAA003378869A /* SampleData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleData.swift; sourceTree = "<group>"; };
 		EF143C9D714A3EE91F059A75 /* AddExpenseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddExpenseView.swift; sourceTree = "<group>"; };
@@ -75,7 +75,7 @@
 			isa = PBXGroup;
 			children = (
 				79F2DC92F10F0B2C13837643 /* BalanceBanner.swift */,
-				FBD4712A3876450097213E2E /* DuoLogoView.swift */,
+				5ACF30E606058799801CFD3B /* DuoLogoView.swift */,
 				58DC5CE2EFF6B9164FEB3BAC /* ExpenseRow.swift */,
 				E555932D18C4E9C0CB39F551 /* ProjectCard.swift */,
 			);
@@ -247,10 +247,10 @@
 				LastUpgradeCheck = 1430;
 				TargetAttributes = {
 					5126BFE6A1FCCB6804DA6279 = {
-						DevelopmentTeam = "";
+						DevelopmentTeam = 66S2QLG2HD;
 					};
 					6D7F4104DD572ECD51DB0872 = {
-						DevelopmentTeam = "";
+						DevelopmentTeam = 66S2QLG2HD;
 					};
 				};
 			};
@@ -305,6 +305,7 @@
 				482377D1C9D61006BB075816 /* Color+DuoSpend.swift in Sources */,
 				23FA281098229200C16C3EA8 /* CreateProjectView.swift in Sources */,
 				F52EB6E0C6F7B6BA38C999AB /* Decimal+Currency.swift in Sources */,
+				F824C477FF3AE8FA11686D86 /* DuoLogoView.swift in Sources */,
 				6BB986FBA08F36D1051E4BF3 /* DuoSpendApp.swift in Sources */,
 				08758C996E9322EB8E486351 /* EditProjectView.swift in Sources */,
 				B2C5F0AC1B9A56A71B89459A /* Expense.swift in Sources */,
@@ -312,7 +313,6 @@
 				7BC829A4AB6B86532D8690ED /* PartnerRole.swift in Sources */,
 				1BB8C595375936D8B9C6A6B6 /* Project.swift in Sources */,
 				7D2C3BC30688171350EEB3C5 /* ProjectCard.swift in Sources */,
-				BE92CE5D2AAF48278484C9E6 /* DuoLogoView.swift in Sources */,
 				46738B86D4D6948D3E050084 /* ProjectDetailView.swift in Sources */,
 				CA59BF49454B59717682E99E /* ProjectDetailViewModel.swift in Sources */,
 				8C46DF18903B6602AB02BB49 /* ProjectListView.swift in Sources */,
@@ -368,7 +368,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 66S2QLG2HD;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
@@ -432,7 +432,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 66S2QLG2HD;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
