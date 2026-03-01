@@ -1,10 +1,12 @@
 import SwiftUI
 
-/// Ligne affichant une depense dans la liste
+/// Ligne affichant une dépense dans la liste
 struct ExpenseRow: View {
     let expense: Expense
     let partner1Name: String
     let partner2Name: String
+
+    @Environment(\.colorScheme) private var colorScheme
 
     private var payerName: String {
         expense.paidBy == .partner1 ? partner1Name : partner2Name
@@ -18,67 +20,91 @@ struct ExpenseRow: View {
         String(payerName.prefix(1)).uppercased()
     }
 
+    private var splitLabel: String {
+        switch expense.splitRatio {
+        case .equal: return "50/50"
+        case .custom(let p1, let p2):
+            return "\(Int(truncating: p1 as NSDecimalNumber))/\(Int(truncating: p2 as NSDecimalNumber))"
+        }
+    }
+
     private var isCustomSplit: Bool {
         if case .custom = expense.splitRatio { return true }
         return false
     }
 
-    private var splitLabel: String {
-        switch expense.splitRatio {
-        case .equal:
-            "50/50"
-        case .custom(let p1, let p2):
-            "\(Int(truncating: p1 as NSDecimalNumber))/\(Int(truncating: p2 as NSDecimalNumber))"
-        }
-    }
-
     var body: some View {
-        HStack(spacing: 12) {
-            Text(payerInitial)
-                .font(.system(.subheadline, design: .rounded))
-                .fontWeight(.bold)
-                .foregroundStyle(.white)
-                .frame(width: 40, height: 40)
-                .background(payerColor)
-                .clipShape(Circle())
-                .shadow(color: payerColor.opacity(0.3), radius: 3, y: 2)
+        HStack(spacing: 13) {
+            // Avatar payeur
+            ZStack {
+                Circle()
+                    .fill(payerColor.gradient)
+                    .shadow(color: payerColor.opacity(0.3), radius: 4, y: 2)
+                Text(payerInitial)
+                    .font(.system(.subheadline, design: .rounded))
+                    .fontWeight(.bold)
+                    .foregroundStyle(.white)
+            }
+            .frame(width: 42, height: 42)
 
-            VStack(alignment: .leading, spacing: 3) {
+            // Titre + méta
+            VStack(alignment: .leading, spacing: 4) {
                 Text(expense.title)
-                    .font(.body)
+                    .font(.system(.body, design: .rounded))
                     .fontWeight(.medium)
-                HStack(spacing: 6) {
-                    Text("\(payerName) \u{00B7} \(expense.date.formatted(date: .abbreviated, time: .omitted))")
-                        .font(.caption)
+                    .lineLimit(1)
+
+                HStack(spacing: 5) {
+                    Text(payerName)
+                        .foregroundStyle(payerColor)
+                        .fontWeight(.medium)
+
+                    Text("·")
+                        .foregroundStyle(.tertiary)
+
+                    Text(expense.date.formatted(date: .abbreviated, time: .omitted))
                         .foregroundStyle(.secondary)
+
                     if isCustomSplit {
+                        Text("·")
+                            .foregroundStyle(.tertiary)
                         Text(splitLabel)
-                            .font(.system(.caption2, design: .rounded))
-                            .fontWeight(.medium)
-                            .padding(.horizontal, 6)
-                            .padding(.vertical, 2)
+                            .padding(.horizontal, 5)
+                            .padding(.vertical, 1.5)
                             .background(Color.accentPrimary.opacity(0.1))
+                            .foregroundStyle(Color.accentPrimary)
                             .clipShape(Capsule())
                     }
                 }
+                .font(.system(.caption, design: .rounded))
             }
 
             Spacer()
 
+            // Montant
             Text(expense.amount.formattedCurrency)
                 .font(.system(.body, design: .rounded))
-                .fontWeight(.semibold)
+                .fontWeight(.bold)
                 .foregroundStyle(payerColor)
+                .monospacedDigit()
         }
-        .padding(.vertical, 4)
+        .padding(.vertical, 5)
+        .contentShape(Rectangle())
     }
 }
 
 #Preview {
-    ExpenseRow(
-        expense: SampleData.sampleExpense,
-        partner1Name: "Marie",
-        partner2Name: "Thomas"
-    )
+    List {
+        ExpenseRow(
+            expense: SampleData.sampleExpense,
+            partner1Name: "Marie",
+            partner2Name: "Thomas"
+        )
+        ExpenseRow(
+            expense: SampleData.sampleExpense,
+            partner1Name: "Marie",
+            partner2Name: "Thomas"
+        )
+    }
     .modelContainer(SampleData.container)
 }

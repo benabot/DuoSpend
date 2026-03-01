@@ -11,8 +11,10 @@ struct SplashScreenView: View {
 
     var body: some View {
         ZStack {
+            Color(.systemBackground)
+                .ignoresSafeArea()
             LinearGradient(
-                colors: [Color.accentPrimary.opacity(0.08), Color(.systemBackground)],
+                colors: [Color.accentPrimary.opacity(0.10), Color.clear],
                 startPoint: .top,
                 endPoint: .bottom
             )

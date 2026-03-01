@@ -25,7 +25,9 @@
 		9175C1FA5FABEAA9AF0961EC /* SampleData.swift in Sources */ = {isa = PBXBuildFile; fileRef = E785001221CBAA003378869A /* SampleData.swift */; };
 		992ACDAD0A9242457330E797 /* AppIconExporter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78A19E541167CDD82A20D1F0 /* AppIconExporter.swift */; };
 		B2C5F0AC1B9A56A71B89459A /* Expense.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65B136CEC056F2422859D8F4 /* Expense.swift */; };
+		BC339F54D6F81AAB23B37C02 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0593920D95079CD49202E8A8 /* OnboardingView.swift */; };
 		CA59BF49454B59717682E99E /* ProjectDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC36160173A958AF2F7CE4D1 /* ProjectDetailViewModel.swift */; };
+		D40D37934E763F71832D9AF1 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 048E66DC6F24E1DFE4B15DB8 /* PrivacyInfo.xcprivacy */; };
 		E4E26A0F71407B1BECD50BD1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 101224910B9E1829A4C7B57C /* Assets.xcassets */; };
 		E900A69F5F80A513D8185B47 /* BalanceCalculatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A20F129BA65242D426C38F3 /* BalanceCalculatorTests.swift */; };
 		F52EB6E0C6F7B6BA38C999AB /* Decimal+Currency.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70944B10F95B9DFF0E6FA873 /* Decimal+Currency.swift */; };
@@ -43,6 +45,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		048E66DC6F24E1DFE4B15DB8 /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xml; path = PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
+		0593920D95079CD49202E8A8 /* OnboardingView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
 		101224910B9E1829A4C7B57C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		19C8B4A03434F5EA7E7F8052 /* SplitRatio.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplitRatio.swift; sourceTree = "<group>"; };
 		1BB0CD28CE88854BFC49E5C3 /* DuoSpendApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DuoSpendApp.swift; sourceTree = "<group>"; };
@@ -65,6 +69,7 @@
 		E555932D18C4E9C0CB39F551 /* ProjectCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectCard.swift; sourceTree = "<group>"; };
 		E5AE72B67E0F053A60E27F83 /* BalanceCalculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BalanceCalculator.swift; sourceTree = "<group>"; };
 		E785001221CBAA003378869A /* SampleData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleData.swift; sourceTree = "<group>"; };
+		E848F6CD37C48EE0D244CDF9 /* DuoSpend.entitlements */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.entitlements; path = DuoSpend.entitlements; sourceTree = "<group>"; };
 		EF143C9D714A3EE91F059A75 /* AddExpenseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddExpenseView.swift; sourceTree = "<group>"; };
 		F04C844F9A1C3C34ECF318DB /* ProjectListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectListView.swift; sourceTree = "<group>"; };
 		F341BC05D86E13339E47EFC7 /* ProjectDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectDetailView.swift; sourceTree = "<group>"; };
@@ -93,6 +98,7 @@
 				E29CCEFC19A064DFB9EE9A8D /* Services */,
 				8801FB53AA5BA3F28ED22725 /* ViewModels */,
 				A5FD1ECC1EC2FE1CC93C0BA2 /* Views */,
+				E848F6CD37C48EE0D244CDF9 /* DuoSpend.entitlements */,
 			);
 			path = DuoSpend;
 			sourceTree = "<group>";
@@ -141,6 +147,7 @@
 				F04C844F9A1C3C34ECF318DB /* ProjectListView.swift */,
 				A51425789DA23F45C1129889 /* SplashScreenView.swift */,
 				07DB97C6CFA28A6B51CE0955 /* Components */,
+				0593920D95079CD49202E8A8 /* OnboardingView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -149,6 +156,7 @@
 			isa = PBXGroup;
 			children = (
 				101224910B9E1829A4C7B57C /* Assets.xcassets */,
+				048E66DC6F24E1DFE4B15DB8 /* PrivacyInfo.xcprivacy */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -213,8 +221,6 @@
 			dependencies = (
 			);
 			name = DuoSpend;
-			packageProductDependencies = (
-			);
 			productName = DuoSpend;
 			productReference = 1E63BFF18D99CE9E4F399084 /* DuoSpend.app */;
 			productType = "com.apple.product-type.application";
@@ -231,8 +237,6 @@
 				996783C80CB9B7FBE2EEDC83 /* PBXTargetDependency */,
 			);
 			name = DuoSpendTests;
-			packageProductDependencies = (
-			);
 			productName = DuoSpendTests;
 			productReference = D68F6F85D9307CCD42E577D9 /* DuoSpendTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
@@ -265,6 +269,7 @@
 			mainGroup = FA20294A830E9CA99DCAFBD7;
 			minimizedProjectReferenceProxies = 1;
 			preferredProjectObjectVersion = 77;
+			productRefGroup = 8B8582F00E370798D59C1502 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
@@ -280,6 +285,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E4E26A0F71407B1BECD50BD1 /* Assets.xcassets in Resources */,
+				D40D37934E763F71832D9AF1 /* PrivacyInfo.xcprivacy in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -319,6 +325,7 @@
 				9175C1FA5FABEAA9AF0961EC /* SampleData.swift in Sources */,
 				88641563DBC6B716A6FEBFFC /* SplashScreenView.swift in Sources */,
 				6F3935F6DDE436240C4E388B /* SplitRatio.swift in Sources */,
+				BC339F54D6F81AAB23B37C02 /* OnboardingView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -458,15 +465,22 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_ENTITLEMENTS = DuoSpend/DuoSpend.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_ASSET_PATHS = "\"DuoSpend/Preview Content\"";
+				DEVELOPMENT_TEAM = 66S2QLG2HD;
+				ENABLE_BITCODE = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_GENERATION = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "2025 Benoit Abot. Tous droits reserves.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = UIInterfaceOrientationPortrait;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -474,8 +488,12 @@
 				MARKETING_VERSION = 1.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = fr.beabot.DuoSpend;
 				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				SWIFT_STRICT_CONCURRENCY = complete;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				SWIFT_VERSION = 6.0;
+				TARGETED_DEVICE_FAMILY = 1;
+				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
 		};
@@ -483,8 +501,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 66S2QLG2HD;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_GENERATION = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -492,7 +513,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = fr.beabot.DuoSpendTests;
 				SDKROOT = iphoneos;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/DuoSpend.app/DuoSpend";
 			};
 			name = Release;
@@ -501,15 +522,20 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_ENTITLEMENTS = DuoSpend/DuoSpend.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"DuoSpend/Preview Content\"";
+				DEVELOPMENT_TEAM = 66S2QLG2HD;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_GENERATION = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "2025 Benoit Abot. Tous droits reserves.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = UIInterfaceOrientationPortrait;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -518,7 +544,8 @@
 				PRODUCT_BUNDLE_IDENTIFIER = fr.beabot.DuoSpend;
 				SDKROOT = iphoneos;
 				SWIFT_STRICT_CONCURRENCY = complete;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				SWIFT_VERSION = 6.0;
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -526,8 +553,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 66S2QLG2HD;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_GENERATION = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -535,7 +565,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = fr.beabot.DuoSpendTests;
 				SDKROOT = iphoneos;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/DuoSpend.app/DuoSpend";
 			};
 			name = Debug;

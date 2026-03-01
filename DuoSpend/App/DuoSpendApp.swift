@@ -4,6 +4,8 @@ import SwiftData
 @main
 struct DuoSpendApp: App {
     @State private var showingSplash = true
+    @AppStorage("hasSeenOnboarding") private var hasSeenOnboarding = false
+    @State private var showingOnboarding = false
 
     init() {
         let largeFont = UIFont.systemFont(ofSize: 34, weight: .bold)
@@ -31,21 +33,36 @@ struct DuoSpendApp: App {
 
     var body: some Scene {
         WindowGroup {
-            ProjectListView()
-                .overlay {
-                    if showingSplash {
-                        SplashScreenView()
-                            .transition(.opacity)
-                            .allowsHitTesting(true)
+            ZStack {
+                // Fond de base toujours visible — évite l'écran noir au démarrage
+                Color(.systemBackground).ignoresSafeArea()
+
+                ProjectListView()
+
+                // Splash par-dessus — fond opaque garanti par SplashScreenView
+                if showingSplash {
+                    SplashScreenView()
+                        .transition(.opacity)
+                        .allowsHitTesting(true)
+                        .zIndex(1)
+                }
+            }
+            .animation(.easeOut(duration: 0.4), value: showingSplash)
+            .onAppear {
+                guard showingSplash else { return }
+                DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
+                    showingSplash = false
+                    if !hasSeenOnboarding {
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
+                            showingOnboarding = true
+                        }
                     }
                 }
-                .animation(.easeOut(duration: 0.4), value: showingSplash)
-                .onAppear {
-                    guard showingSplash else { return }
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
-                        showingSplash = false
-                    }
-                }
+            }
+            .fullScreenCover(isPresented: $showingOnboarding) {
+                OnboardingView(isPresented: $showingOnboarding)
+                    .onDisappear { hasSeenOnboarding = true }
+            }
         }
         .modelContainer(for: [Project.self, Expense.self])
     }

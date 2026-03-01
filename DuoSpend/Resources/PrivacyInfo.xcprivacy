@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <!-- Aucune donnée collectée, transmise ou vendue -->
+    <key>NSPrivacyTracking</key>
+    <false/>
+
+    <!-- Pas de domaines de tracking -->
+    <key>NSPrivacyTrackingDomains</key>
+    <array/>
+
+    <!-- Données collectées : aucune transmise à Apple ou tiers -->
+    <key>NSPrivacyCollectedDataTypes</key>
+    <array/>
+
+    <!-- APIs système utilisées et raisons légitimes -->
+    <key>NSPrivacyAccessedAPITypes</key>
+    <array>
+        <!-- UserDefaults : stockage préférences onboarding -->
+        <dict>
+            <key>NSPrivacyAccessedAPIType</key>
+            <string>NSPrivacyAccessedAPICategoryUserDefaults</string>
+            <key>NSPrivacyAccessedAPITypeReasons</key>
+            <array>
+                <string>CA92.1</string>
+            </array>
+        </dict>
+    </array>
+</dict>
+</plist>
