@@ -163,7 +163,6 @@ struct AddExpenseView: View {
             UIImpactFeedbackGenerator(style: .light).impactOccurred()
         } label: {
             VStack(spacing: 8) {
-                // Avatar initial
                 ZStack {
                     Circle()
                         .fill(isSelected ? color.gradient : Color.secondary.opacity(0.12).gradient)
@@ -226,7 +225,6 @@ struct AddExpenseView: View {
 
     private var splitSlider: some View {
         VStack(spacing: 10) {
-            // Labels %
             HStack {
                 Text(project.partner1Name)
                     .foregroundStyle(Color.partner1)
@@ -240,7 +238,6 @@ struct AddExpenseView: View {
             .font(.system(.caption, design: .rounded))
             .fontWeight(.medium)
 
-            // Slider avec fond dégradé
             ZStack {
                 Capsule()
                     .fill(
@@ -320,10 +317,11 @@ struct AddExpenseView: View {
                 splitRatio: splitRatio,
                 date: date
             )
-            expense.project = project
-            modelContext.insert(expense)
+            // Ajouter via la relation du projet — SwiftData gère l'insert automatiquement
+            project.expenses.append(expense)
             UIImpactFeedbackGenerator(style: .medium).impactOccurred()
         }
+        try? modelContext.save()
         dismiss()
     }
 }

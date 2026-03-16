@@ -4,12 +4,12 @@ import SwiftData
 /// Dépense individuelle liée à un projet
 @Model
 class Expense {
-    var title: String
-    var amount: Decimal
-    var paidByRawValue: String
+    var title: String = ""
+    var amount: Decimal = 0
+    var paidByRawValue: String = PartnerRole.partner1.rawValue
     var splitRatioData: Data?
     var category: String?
-    var date: Date
+    var date: Date = Date.now
 
     var project: Project?
 

@@ -159,6 +159,7 @@ struct CreateProjectView: View {
         )
 
         modelContext.insert(project)
+        try? modelContext.save()
         UIImpactFeedbackGenerator(style: .medium).impactOccurred()
         dismiss()
     }

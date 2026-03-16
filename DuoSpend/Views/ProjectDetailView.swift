@@ -19,9 +19,15 @@ enum ExpenseSortOrder: String, CaseIterable {
 /// Détail d'un projet : balance, budget, liste des dépenses
 struct ProjectDetailView: View {
     @Bindable var project: Project
+    @Query private var allExpenses: [Expense]
     @Environment(\.modelContext) private var modelContext
     @Environment(\.dismiss) private var dismiss
     @Environment(\.colorScheme) private var colorScheme
+
+    /// Dépenses filtrées pour ce projet — utilise @Query pour garantir des données fraîches
+    private var projectExpenses: [Expense] {
+        allExpenses.filter { $0.project?.persistentModelID == project.persistentModelID }
+    }
 
     @State private var showingAddExpense = false
     @State private var showingEditProject = false
@@ -34,14 +40,14 @@ struct ProjectDetailView: View {
     private let previewCount = 5
 
     private var balance: BalanceResult {
-        BalanceCalculator.calculate(expenses: project.expenses)
+        BalanceCalculator.calculate(expenses: projectExpenses)
     }
 
     private var sortedExpenses: [Expense] {
         switch sortOrder {
-        case .date:   project.expenses.sorted { $0.date > $1.date }
-        case .amount: project.expenses.sorted { $0.amount > $1.amount }
-        case .payer:  project.expenses.sorted { $0.paidByRawValue < $1.paidByRawValue }
+        case .date:   projectExpenses.sorted { $0.date > $1.date }
+        case .amount: projectExpenses.sorted { $0.amount > $1.amount }
+        case .payer:  projectExpenses.sorted { $0.paidByRawValue < $1.paidByRawValue }
         }
     }
 
@@ -68,24 +74,20 @@ struct ProjectDetailView: View {
         ScrollView {
             LazyVStack(spacing: 16) {
 
-                // ── Balance ───────────────────────────────────────────
-                if !project.expenses.isEmpty {
-                    BalanceBanner(
-                        balance: balance,
-                        partner1Name: project.partner1Name,
-                        partner2Name: project.partner2Name
-                    )
+                // ── Résumé projet ─────────────────────────────────────
+                projectSummaryCard
+                    .padding(.horizontal)
                     .padding(.top, 8)
-                }
 
-                // ── Budget ────────────────────────────────────────────
-                if project.budget > 0 {
-                    budgetCard
-                        .padding(.horizontal)
-                }
+                // ── Balance (toujours visible) ────────────────────────
+                BalanceBanner(
+                    balance: balance,
+                    partner1Name: project.partner1Name,
+                    partner2Name: project.partner2Name
+                )
 
-                // ── Stats duo ─────────────────────────────────────────
-                if !project.expenses.isEmpty {
+                // ── Contributions ─────────────────────────────────────
+                if !projectExpenses.isEmpty {
                     duoStatsCard
                         .padding(.horizontal)
                 }
@@ -94,15 +96,15 @@ struct ProjectDetailView: View {
                 expensesSection
 
                 // ── Empty state ───────────────────────────────────────
-                if project.expenses.isEmpty {
+                if projectExpenses.isEmpty {
                     emptyState
                 }
             }
             .padding(.bottom, 40)
         }
         .background(Color.warmBackground.ignoresSafeArea())
-        .navigationTitle("\(project.emoji) \(project.name)")
-        .navigationBarTitleDisplayMode(.large)
+        .navigationTitle(project.name)
+        .navigationBarTitleDisplayMode(.inline)
         .toolbar { toolbarContent }
         .tint(Color.accentPrimary)
         .sheet(isPresented: $showingAddExpense) {
@@ -125,60 +127,87 @@ struct ProjectDetailView: View {
         }
     }
 
-    // MARK: - Budget Card
+    // MARK: - Project Summary Card
 
-    private var budgetCard: some View {
-        VStack(alignment: .leading, spacing: 12) {
-            Label("Budget", systemImage: "target")
-                .font(.system(.subheadline, design: .rounded))
-                .fontWeight(.semibold)
-                .foregroundStyle(isOverBudget ? .red : Color.accentPrimary)
-
-            HStack {
-                VStack(alignment: .leading, spacing: 2) {
-                    Text(balance.totalSpent.formattedCurrency)
-                        .font(.system(.title2, design: .rounded))
+    private var projectSummaryCard: some View {
+        VStack(spacing: 16) {
+            // Header : avatars + infos
+            HStack(spacing: 12) {
+                ZStack {
+                    Circle().fill(Color.partner1.gradient)
+                    Text(String(project.partner1Name.prefix(1)).uppercased())
+                        .font(.system(.headline, design: .rounded))
                         .fontWeight(.bold)
-                        .foregroundStyle(isOverBudget ? .red : .primary)
-                    Text("dépensé")
-                        .font(.system(.caption, design: .rounded))
-                        .foregroundStyle(.secondary)
+                        .foregroundStyle(.white)
                 }
+                .frame(width: 44, height: 44)
+
+                Image(systemName: "heart.fill")
+                    .font(.caption)
+                    .foregroundStyle(Color.accentPrimary.opacity(0.5))
+
+                ZStack {
+                    Circle().fill(Color.partner2.gradient)
+                    Text(String(project.partner2Name.prefix(1)).uppercased())
+                        .font(.system(.headline, design: .rounded))
+                        .fontWeight(.bold)
+                        .foregroundStyle(.white)
+                }
+                .frame(width: 44, height: 44)
+
                 Spacer()
+
                 VStack(alignment: .trailing, spacing: 2) {
-                    Text(project.budget.formattedCurrency)
-                        .font(.system(.title3, design: .rounded))
-                        .fontWeight(.semibold)
-                        .foregroundStyle(.secondary)
-                    Text("budget")
+                    let count = projectExpenses.count
+                    Text(count == 0 ? "Aucune dépense" : "\(count) dépense\(count == 1 ? "" : "s")")
                         .font(.system(.caption, design: .rounded))
-                        .foregroundStyle(.secondary)
+                        .fontWeight(.medium)
+                    Text("Créé le \(project.createdAt.formatted(date: .abbreviated, time: .omitted))")
+                        .font(.system(.caption2, design: .rounded))
                 }
+                .foregroundStyle(.secondary)
             }
 
-            GeometryReader { geo in
-                ZStack(alignment: .leading) {
-                    Capsule()
-                        .fill(Color.secondary.opacity(0.12))
-                    Capsule()
-                        .fill(isOverBudget ? Color.red.gradient : Color.accentPrimary.gradient)
-                        .frame(width: geo.size.width * budgetFraction)
-                        .animation(.spring(duration: 0.7), value: budgetFraction)
+            // Trio de chiffres si budget > 0
+            if project.budget > 0 {
+                HStack(spacing: 0) {
+                    summaryFigure(
+                        value: balance.totalSpent.formattedCurrency,
+                        label: "dépensé",
+                        color: isOverBudget ? .red : .primary
+                    )
+                    summaryFigure(
+                        value: project.budget.formattedCurrency,
+                        label: "budget",
+                        color: .secondary
+                    )
+                    let remaining = project.budget - balance.totalSpent
+                    summaryFigure(
+                        value: remaining.formattedCurrency,
+                        label: remaining >= 0 ? "restant" : "dépassé",
+                        color: remaining >= 0 ? Color.successGreen : .red
+                    )
                 }
-            }
-            .frame(height: 8)
-            .clipShape(Capsule())
 
-            HStack {
-                Text(isOverBudget ? "⚠ Budget dépassé" : "\(Int(budgetFraction * 100))% utilisé")
-                    .font(.system(.caption, design: .rounded))
-                    .foregroundStyle(isOverBudget ? .red : .secondary)
-                Spacer()
-                let remaining = project.budget - balance.totalSpent
-                if !isOverBudget {
-                    Text("Il reste \(remaining.formattedCurrency)")
-                        .font(.system(.caption, design: .rounded))
-                        .foregroundStyle(Color.successGreen)
+                // Barre de progression budget
+                GeometryReader { geo in
+                    ZStack(alignment: .leading) {
+                        Capsule()
+                            .fill(Color.secondary.opacity(0.12))
+                        Capsule()
+                            .fill(isOverBudget ? Color.red.gradient : Color.accentPrimary.gradient)
+                            .frame(width: geo.size.width * budgetFraction)
+                            .animation(.spring(duration: 0.7), value: budgetFraction)
+                    }
+                }
+                .frame(height: 8)
+                .clipShape(Capsule())
+
+                HStack {
+                    Text(isOverBudget ? "⚠ Budget dépassé" : "\(Int(budgetFraction * 100))% utilisé")
+                        .font(.system(.caption2, design: .rounded))
+                        .foregroundStyle(isOverBudget ? .red : .secondary)
+                    Spacer()
                 }
             }
         }
@@ -186,6 +215,20 @@ struct ProjectDetailView: View {
         .background(cardBg)
         .clipShape(RoundedRectangle(cornerRadius: 20))
         .shadow(color: shadowColor, radius: 10, y: 4)
+    }
+
+    private func summaryFigure(value: String, label: String, color: Color) -> some View {
+        VStack(spacing: 4) {
+            Text(value)
+                .font(.system(.headline, design: .rounded))
+                .fontWeight(.bold)
+                .foregroundStyle(color)
+                .minimumScaleFactor(0.7)
+            Text(label)
+                .font(.system(.caption2, design: .rounded))
+                .foregroundStyle(.secondary)
+        }
+        .frame(maxWidth: .infinity)
     }
 
     // MARK: - Stats duo
@@ -201,14 +244,14 @@ struct ProjectDetailView: View {
                 partnerStat(
                     name: project.partner1Name,
                     amount: balance.partner1Spent,
-                    count: project.expenses.filter { $0.paidBy == .partner1 }.count,
+                    count: projectExpenses.filter { $0.paidBy == .partner1 }.count,
                     color: .partner1
                 )
                 Divider().frame(height: 44)
                 partnerStat(
                     name: project.partner2Name,
                     amount: balance.partner2Spent,
-                    count: project.expenses.filter { $0.paidBy == .partner2 }.count,
+                    count: projectExpenses.filter { $0.paidBy == .partner2 }.count,
                     color: .partner2
                 )
             }
@@ -296,7 +339,7 @@ struct ProjectDetailView: View {
             .padding(.horizontal)
             .padding(.bottom, 10)
 
-            if !project.expenses.isEmpty {
+            if !projectExpenses.isEmpty {
                 VStack(spacing: 0) {
                     ForEach(Array(displayedExpenses.enumerated()), id: \.element.id) { index, expense in
                         Button { expenseToEdit = expense } label: {

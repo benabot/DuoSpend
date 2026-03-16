@@ -5,7 +5,6 @@ struct ProjectCard: View {
     let project: Project
 
     @Environment(\.colorScheme) private var colorScheme
-    @State private var pressed = false
 
     private var balance: BalanceResult {
         BalanceCalculator.calculate(expenses: project.expenses)
@@ -20,11 +19,16 @@ struct ProjectCard: View {
 
     private var isOverBudget: Bool { balance.totalSpent > project.budget && project.budget > 0 }
 
+    private var p1Fraction: Double {
+        guard balance.totalSpent > 0 else { return 0.5 }
+        return Double(truncating: balance.partner1Spent as NSDecimalNumber)
+            / Double(truncating: balance.totalSpent as NSDecimalNumber)
+    }
+
     var body: some View {
         VStack(alignment: .leading, spacing: 14) {
             // ── Header ──────────────────────────────────────────────
             HStack(spacing: 12) {
-                // Emoji avec fond dégradé
                 ZStack {
                     RoundedRectangle(cornerRadius: 14)
                         .fill(
@@ -49,15 +53,19 @@ struct ProjectCard: View {
 
                 Spacer()
 
-                // Montant total + badge balance
-                VStack(alignment: .trailing, spacing: 4) {
+                VStack(alignment: .trailing, spacing: 2) {
                     Text(balance.totalSpent.formattedCurrency)
                         .font(.system(.subheadline, design: .rounded))
                         .fontWeight(.bold)
                         .foregroundStyle(Color.accentPrimary)
-                    balanceBadge
+                    Text("dépensé")
+                        .font(.system(.caption2, design: .rounded))
+                        .foregroundStyle(.secondary)
                 }
             }
+
+            // ── Balance (pleine largeur) ────────────────────────────
+            balanceSection
 
             // ── Barre de budget ──────────────────────────────────────
             if project.budget > 0 {
@@ -100,7 +108,6 @@ struct ProjectCard: View {
 
                 Spacer()
 
-                // Mini avatars duo
                 HStack(spacing: -6) {
                     miniAvatar(name: project.partner1Name, color: .partner1)
                     miniAvatar(name: project.partner2Name, color: .partner2)
@@ -118,11 +125,7 @@ struct ProjectCard: View {
             x: 0,
             y: 5
         )
-        .scaleEffect(pressed ? 0.97 : 1.0)
-        .animation(.spring(response: 0.25, dampingFraction: 0.7), value: pressed)
-        .onLongPressGesture(minimumDuration: 0, maximumDistance: 50) { } onPressingChanged: { p in
-            pressed = p
-        }
+        .contentShape(Rectangle())
     }
 
     // MARK: - Subviews
@@ -141,50 +144,95 @@ struct ProjectCard: View {
 
     private var duoPartnerLabel: some View {
         HStack(spacing: 4) {
-            Circle()
-                .fill(Color.partner1)
-                .frame(width: 6, height: 6)
             Text(project.partner1Name)
                 .foregroundStyle(Color.partner1)
-            Text("·")
+                .lineLimit(1)
+            Text("&")
                 .foregroundStyle(.tertiary)
-            Circle()
-                .fill(Color.partner2)
-                .frame(width: 6, height: 6)
             Text(project.partner2Name)
                 .foregroundStyle(Color.partner2)
+                .lineLimit(1)
         }
         .font(.system(.caption, design: .rounded))
         .fontWeight(.medium)
+        .minimumScaleFactor(0.8)
     }
 
-    @ViewBuilder
-    private var balanceBadge: some View {
-        switch balance.status {
-        case .balanced:
-            Label("Équilibre", systemImage: "checkmark.circle.fill")
-                .font(.system(.caption2, design: .rounded))
-                .fontWeight(.semibold)
-                .foregroundStyle(Color.successGreen)
-                .padding(.horizontal, 8)
-                .padding(.vertical, 3)
-                .background(Color.successGreen.opacity(0.12))
-                .clipShape(Capsule())
+    // MARK: - Balance Section
 
-        case .partner1OwesPartner2(let amount), .partner2OwesPartner1(let amount):
-            let isP1 = {
-                if case .partner1OwesPartner2 = balance.status { return true }
-                return false
-            }()
-            Text("\(isP1 ? project.partner1Name : project.partner2Name) doit \(amount.formattedCurrency)")
-                .font(.system(.caption2, design: .rounded))
-                .fontWeight(.semibold)
-                .foregroundStyle(isP1 ? Color.partner2 : Color.partner1)
-                .padding(.horizontal, 8)
-                .padding(.vertical, 3)
-                .background((isP1 ? Color.partner2 : Color.partner1).opacity(0.1))
+    @ViewBuilder
+    private var balanceSection: some View {
+        VStack(alignment: .leading, spacing: 6) {
+            switch balance.status {
+            case .balanced:
+                Label("Équilibre", systemImage: "checkmark.circle.fill")
+                    .font(.system(.caption, design: .rounded))
+                    .fontWeight(.semibold)
+                    .foregroundStyle(Color.successGreen)
+
+            case .partner1OwesPartner2(let amount):
+                balanceText(
+                    debtor: project.partner1Name, debtorColor: .partner1,
+                    creditor: project.partner2Name, creditorColor: .partner2,
+                    amount: amount
+                )
+
+            case .partner2OwesPartner1(let amount):
+                balanceText(
+                    debtor: project.partner2Name, debtorColor: .partner2,
+                    creditor: project.partner1Name, creditorColor: .partner1,
+                    amount: amount
+                )
+            }
+
+            // Mini barre de répartition bicolore
+            if !project.expenses.isEmpty {
+                GeometryReader { geo in
+                    HStack(spacing: 1.5) {
+                        Capsule()
+                            .fill(Color.partner1)
+                            .frame(width: max(geo.size.width * p1Fraction - 1, 4))
+                        Capsule()
+                            .fill(Color.partner2)
+                    }
+                    .animation(.spring(duration: 0.6), value: p1Fraction)
+                }
+                .frame(height: 5)
                 .clipShape(Capsule())
-                .lineLimit(1)
+            }
+        }
+        .frame(maxWidth: .infinity, alignment: .leading)
+        .padding(.horizontal, 12)
+        .padding(.vertical, 8)
+        .background(balanceBgColor.opacity(0.08))
+        .clipShape(RoundedRectangle(cornerRadius: 12))
+    }
+
+    private func balanceText(debtor: String, debtorColor: Color, creditor: String, creditorColor: Color, amount: Decimal) -> some View {
+        HStack(spacing: 4) {
+            Text(debtor)
+                .foregroundStyle(debtorColor)
+                .fontWeight(.semibold)
+            Text("doit")
+                .foregroundStyle(.secondary)
+            Text(amount.formattedCurrency)
+                .fontWeight(.bold)
+            Text("à")
+                .foregroundStyle(.secondary)
+            Text(creditor)
+                .foregroundStyle(creditorColor)
+                .fontWeight(.semibold)
+        }
+        .font(.system(.caption, design: .rounded))
+        .lineLimit(1)
+        .minimumScaleFactor(0.8)
+    }
+
+    private var balanceBgColor: Color {
+        switch balance.status {
+        case .balanced: Color.successGreen
+        case .partner1OwesPartner2: Color.partner2
+        case .partner2OwesPartner1: Color.partner1
         }
     }
 

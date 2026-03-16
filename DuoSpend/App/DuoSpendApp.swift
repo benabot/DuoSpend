@@ -3,11 +3,17 @@ import SwiftData
 
 @main
 struct DuoSpendApp: App {
+    let modelContainer: ModelContainer
+
     @State private var showingSplash = true
     @AppStorage("hasSeenOnboarding") private var hasSeenOnboarding = false
     @State private var showingOnboarding = false
 
     init() {
+        let schema = Schema([Project.self, Expense.self])
+        let config = ModelConfiguration(schema: schema, cloudKitDatabase: .none)
+        self.modelContainer = try! ModelContainer(for: schema, configurations: [config])
+
         let largeFont = UIFont.systemFont(ofSize: 34, weight: .bold)
         let inlineFont = UIFont.systemFont(ofSize: 17, weight: .semibold)
 
@@ -50,7 +56,7 @@ struct DuoSpendApp: App {
             .animation(.easeOut(duration: 0.4), value: showingSplash)
             .onAppear {
                 guard showingSplash else { return }
-                DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
+                DispatchQueue.main.asyncAfter(deadline: .now() + 2.5) {
                     showingSplash = false
                     if !hasSeenOnboarding {
                         DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
@@ -64,6 +70,6 @@ struct DuoSpendApp: App {
                     .onDisappear { hasSeenOnboarding = true }
             }
         }
-        .modelContainer(for: [Project.self, Expense.self])
+        .modelContainer(modelContainer)
     }
 }

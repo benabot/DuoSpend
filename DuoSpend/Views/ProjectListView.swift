@@ -6,6 +6,7 @@ struct ProjectListView: View {
     @Query(sort: \Project.createdAt, order: .reverse) private var projects: [Project]
     @Environment(\.modelContext) private var modelContext
     @State private var showingCreateProject = false
+    @State private var projectForQuickExpense: Project?
     @State private var projectToDelete: Project?
     @State private var animateHeart = false
 
@@ -34,17 +35,15 @@ struct ProjectListView: View {
                 }
                 if !projects.isEmpty {
                     ToolbarItem(placement: .primaryAction) {
-                        Button {
-                            showingCreateProject = true
-                        } label: {
-                            Image(systemName: "plus")
-                        }
-                        .tint(Color.accentPrimary)
+                        plusToolbarItem
                     }
                 }
             }
             .sheet(isPresented: $showingCreateProject) {
                 CreateProjectView()
+            }
+            .sheet(item: $projectForQuickExpense) { project in
+                AddExpenseView(project: project)
             }
             .alert(
                 "Supprimer le projet ?",
@@ -64,6 +63,44 @@ struct ProjectListView: View {
             } message: { project in
                 Text("Supprimer \(project.name) et toutes ses dépenses ?")
             }
+        }
+    }
+
+    // MARK: - Plus Toolbar Item
+
+    @ViewBuilder
+    private var plusToolbarItem: some View {
+        if projects.count == 1 {
+            // 1 seul projet → ouvre directement AddExpenseView
+            Button {
+                projectForQuickExpense = projects.first
+            } label: {
+                Image(systemName: "plus")
+            }
+            .tint(Color.accentPrimary)
+        } else {
+            // 2+ projets → menu contextuel avec sous-menu projet
+            Menu {
+                Menu {
+                    ForEach(projects) { project in
+                        Button {
+                            projectForQuickExpense = project
+                        } label: {
+                            Label("\(project.emoji) \(project.name)", systemImage: "folder")
+                        }
+                    }
+                } label: {
+                    Label("Ajouter une dépense", systemImage: "plus.circle")
+                }
+                Button {
+                    showingCreateProject = true
+                } label: {
+                    Label("Nouveau projet", systemImage: "folder.badge.plus")
+                }
+            } label: {
+                Image(systemName: "plus")
+            }
+            .tint(Color.accentPrimary)
         }
     }
 
@@ -118,11 +155,31 @@ struct ProjectListView: View {
                     ProjectCard(project: project)
                 }
                 .buttonStyle(.plain)
+                .swipeActions(edge: .leading) {
+                    Button {
+                        projectForQuickExpense = project
+                    } label: {
+                        Label("Dépense", systemImage: "plus.circle.fill")
+                    }
+                    .tint(Color.accentPrimary)
+                }
                 .listRowBackground(Color.clear)
                 .listRowSeparator(.hidden)
                 .listRowInsets(EdgeInsets(top: 6, leading: 16, bottom: 6, trailing: 16))
             }
             .onDelete(perform: deleteProjects)
+
+            Button {
+                showingCreateProject = true
+            } label: {
+                Label("Nouveau projet", systemImage: "folder.badge.plus")
+                    .font(.system(.subheadline, design: .rounded))
+                    .foregroundStyle(Color.accentPrimary)
+                    .frame(maxWidth: .infinity)
+                    .padding(.vertical, 14)
+            }
+            .listRowBackground(Color.clear)
+            .listRowSeparator(.hidden)
         }
         .scrollContentBackground(.hidden)
         .background(Color.warmBackground)

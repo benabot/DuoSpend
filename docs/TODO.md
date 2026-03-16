@@ -87,3 +87,27 @@
 - [ ] Onboarding première ouverture
 - [ ] Recherche dans les dépenses
 - [ ] App Clip ou partage projet
+
+
+## Phase 8 : Sync couple — CloudKit Sharing (v2.0)
+
+### v1.1 — iCloud sync même compte Apple
+- [ ] Activer `cloudKitDatabase: .automatic` dans `ModelConfiguration` (remplacer `.none`)
+- [ ] Configurer les entitlements CloudKit dans Xcode (iCloud capability + CloudKit container)
+- [ ] Créer le container CloudKit `iCloud.fr.beabot.DuoSpend` dans le portail Apple Developer
+- [ ] Tester avec 2 devices sur le même Apple ID → les projets se synchronisent
+- [ ] Gérer les conflits de merge (last-write-wins par défaut SwiftData)
+- [ ] Tester la sync offline → online (mode avion, ajout dépense, reconnexion)
+
+### v2.0 — CloudKit Sharing (2 comptes Apple séparés)
+- [ ] Configurer `NSPersistentCloudKitContainer` pour les zones partagées
+- [ ] Créer un `SharingService` : génération de `CKShare` par projet
+- [ ] UI d'invitation : bouton "Inviter mon partenaire" dans `ProjectDetailView`
+- [ ] Intégrer `UICloudSharingController` ou générer un lien custom (`CKShare.URL`)
+- [ ] Gérer l'acceptation du partage côté destinataire (Universal Link / `userDidAcceptCloudKitShareWith`)
+- [ ] Distinguer projets perso / projets partagés dans `ProjectListView`
+- [ ] Afficher un indicateur de sync (icône cloud) sur les projets partagés
+- [ ] Gérer la révocation du partage (supprimer l'accès d'un partenaire)
+- [ ] Tester avec 2 comptes Apple différents sur 2 devices
+- [ ] Tester les edge cases : suppression d'une dépense par l'un pendant que l'autre est offline
+- [ ] Tester les permissions : seul le créateur peut supprimer le projet

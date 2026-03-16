@@ -1,0 +1,29 @@
+{
+  "configurations" : [
+    {
+      "id" : "2E44D2D2-8613-473B-9A10-99A5CDE9479F",
+      "name" : "Test Scheme Action",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+    "performanceAntipatternCheckerEnabled" : true,
+    "targetForVariableExpansion" : {
+      "containerPath" : "container:DuoSpend.xcodeproj",
+      "identifier" : "5126BFE6A1FCCB6804DA6279",
+      "name" : "DuoSpend"
+    }
+  },
+  "testTargets" : [
+    {
+      "target" : {
+        "containerPath" : "container:DuoSpend.xcodeproj",
+        "identifier" : "6D7F4104DD572ECD51DB0872",
+        "name" : "DuoSpendTests"
+      }
+    }
+  ],
+  "version" : 1
+}

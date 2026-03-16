@@ -4,12 +4,12 @@ import SwiftData
 /// Projet de couple regroupant des dépenses partagées
 @Model
 class Project {
-    var name: String
-    var emoji: String
-    var budget: Decimal
-    var partner1Name: String
-    var partner2Name: String
-    var createdAt: Date
+    var name: String = ""
+    var emoji: String = "💰"
+    var budget: Decimal = 0
+    var partner1Name: String = ""
+    var partner2Name: String = ""
+    var createdAt: Date = Date.now
 
     @Relationship(deleteRule: .cascade, inverse: \Expense.project)
     var expenses: [Expense] = []

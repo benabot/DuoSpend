@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 77;
+	objectVersion = 63;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -50,7 +50,7 @@
 		101224910B9E1829A4C7B57C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		19C8B4A03434F5EA7E7F8052 /* SplitRatio.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplitRatio.swift; sourceTree = "<group>"; };
 		1BB0CD28CE88854BFC49E5C3 /* DuoSpendApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DuoSpendApp.swift; sourceTree = "<group>"; };
-		1E63BFF18D99CE9E4F399084 /* DuoSpend.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = DuoSpend.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		1E63BFF18D99CE9E4F399084 /* DuoSpend.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DuoSpend.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2A36328EA3B77D08789B9C02 /* Project.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Project.swift; sourceTree = "<group>"; };
 		2C6FACA7A3EF6858B4842AB1 /* PartnerRole.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PartnerRole.swift; sourceTree = "<group>"; };
 		4DDFA55290FC464C965B2818 /* EditProjectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProjectView.swift; sourceTree = "<group>"; };
@@ -58,6 +58,7 @@
 		5ACF30E606058799801CFD3B /* DuoLogoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DuoLogoView.swift; sourceTree = "<group>"; };
 		65B136CEC056F2422859D8F4 /* Expense.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Expense.swift; sourceTree = "<group>"; };
 		70944B10F95B9DFF0E6FA873 /* Decimal+Currency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Decimal+Currency.swift"; sourceTree = "<group>"; };
+		70D941122F68079800969F9E /* DuoSpend.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = DuoSpend.xctestplan; sourceTree = "<group>"; };
 		78A19E541167CDD82A20D1F0 /* AppIconExporter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppIconExporter.swift; sourceTree = "<group>"; };
 		79F2DC92F10F0B2C13837643 /* BalanceBanner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BalanceBanner.swift; sourceTree = "<group>"; };
 		7CC2415E86065C88824EDCE7 /* Color+DuoSpend.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+DuoSpend.swift"; sourceTree = "<group>"; };
@@ -200,6 +201,7 @@
 		FA20294A830E9CA99DCAFBD7 = {
 			isa = PBXGroup;
 			children = (
+				70D941122F68079800969F9E /* DuoSpend.xctestplan */,
 				0F0491F09A9FB2D8065B4E05 /* DuoSpend */,
 				C9844FBE9222DD2671B75D65 /* DuoSpendTests */,
 				8B8582F00E370798D59C1502 /* Products */,
@@ -268,7 +270,6 @@
 			);
 			mainGroup = FA20294A830E9CA99DCAFBD7;
 			minimizedProjectReferenceProxies = 1;
-			preferredProjectObjectVersion = 77;
 			productRefGroup = 8B8582F00E370798D59C1502 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -475,6 +476,7 @@
 				ENABLE_BITCODE = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_GENERATION = YES;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.finance";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "2025 Benoit Abot. Tous droits reserves.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -530,6 +532,7 @@
 				DEVELOPMENT_TEAM = 66S2QLG2HD;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_GENERATION = YES;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.finance";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "2025 Benoit Abot. Tous droits reserves.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
