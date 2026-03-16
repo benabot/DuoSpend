@@ -11,7 +11,16 @@ struct DuoSpendApp: App {
 
     init() {
         let schema = Schema([Project.self, Expense.self])
-        let config = ModelConfiguration(schema: schema, cloudKitDatabase: .none)
+        let groupURL = FileManager.default.containerURL(
+            forSecurityApplicationGroupIdentifier: "group.fr.beabot.DuoSpend"
+        )
+        let config: ModelConfiguration
+        if let groupURL {
+            let storeURL = groupURL.appendingPathComponent("DuoSpend.store")
+            config = ModelConfiguration(schema: schema, url: storeURL, cloudKitDatabase: .none)
+        } else {
+            config = ModelConfiguration(schema: schema, cloudKitDatabase: .none)
+        }
         self.modelContainer = try! ModelContainer(for: schema, configurations: [config])
 
         let largeFont = UIFont.systemFont(ofSize: 34, weight: .bold)
@@ -65,11 +74,19 @@ struct DuoSpendApp: App {
                     }
                 }
             }
+            .onOpenURL { url in handleDeepLink(url) }
             .fullScreenCover(isPresented: $showingOnboarding) {
                 OnboardingView(isPresented: $showingOnboarding)
                     .onDisappear { hasSeenOnboarding = true }
             }
         }
         .modelContainer(modelContainer)
+    }
+
+    /// Gère les deep links depuis le widget (`duospend://project`)
+    private func handleDeepLink(_ url: URL) {
+        // MVP : le scheme duospend:// ouvre simplement l'app
+        // TODO: navigation vers le projet spécifique si besoin
+        guard url.scheme == "duospend" else { return }
     }
 }
