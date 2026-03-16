@@ -35,6 +35,8 @@ struct ProjectDetailView: View {
     @State private var expenseToEdit: Expense?
     @State private var sortOrder: ExpenseSortOrder = .date
     @State private var showAllExpenses = false
+    @State private var pdfURL: URL?
+    @State private var showingShareSheet = false
 
     // Préview limitée : les 5 plus récentes, toutes si showAllExpenses
     private let previewCount = 5
@@ -115,6 +117,12 @@ struct ProjectDetailView: View {
         }
         .sheet(item: $expenseToEdit) { expense in
             AddExpenseView(project: project, existingExpense: expense)
+        }
+        .sheet(isPresented: $showingShareSheet) {
+            if let url = pdfURL {
+                ActivityView(activityItems: [url])
+                    .presentationDetents([.medium])
+            }
         }
         .alert("Supprimer le projet ?", isPresented: $showingDeleteConfirmation) {
             Button("Supprimer", role: .destructive) {
@@ -452,6 +460,20 @@ struct ProjectDetailView: View {
                 } label: {
                     Label("Modifier le projet", systemImage: "pencil")
                 }
+                Button {
+                    do {
+                        pdfURL = try PDFExportService.generatePDF(
+                            project: project,
+                            expenses: projectExpenses,
+                            balance: balance
+                        )
+                        showingShareSheet = true
+                    } catch {
+                        // Silencieux pour MVP
+                    }
+                } label: {
+                    Label("Exporter en PDF", systemImage: "square.and.arrow.up")
+                }
                 Divider()
                 Button(role: .destructive) {
                     showingDeleteConfirmation = true
@@ -476,6 +498,19 @@ struct ProjectDetailView: View {
     private var shadowColor: Color {
         colorScheme == .dark ? .black.opacity(0.25) : .black.opacity(0.06)
     }
+}
+
+// MARK: - UIActivityViewController wrapper
+
+/// Wrapper SwiftUI pour UIActivityViewController (partage PDF, etc.)
+struct ActivityView: UIViewControllerRepresentable {
+    let activityItems: [Any]
+
+    func makeUIViewController(context: Context) -> UIActivityViewController {
+        UIActivityViewController(activityItems: activityItems, applicationActivities: nil)
+    }
+
+    func updateUIViewController(_ uiViewController: UIActivityViewController, context: Context) {}
 }
 
 #Preview {
