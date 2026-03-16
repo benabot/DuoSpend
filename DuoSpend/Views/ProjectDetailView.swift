@@ -36,7 +36,6 @@ struct ProjectDetailView: View {
     @State private var sortOrder: ExpenseSortOrder = .date
     @State private var showAllExpenses = false
     @State private var pdfURL: URL?
-    @State private var showingShareSheet = false
 
     // Préview limitée : les 5 plus récentes, toutes si showAllExpenses
     private let previewCount = 5
@@ -118,11 +117,15 @@ struct ProjectDetailView: View {
         .sheet(item: $expenseToEdit) { expense in
             AddExpenseView(project: project, existingExpense: expense)
         }
-        .sheet(isPresented: $showingShareSheet) {
-            if let url = pdfURL {
-                ActivityView(activityItems: [url])
-                    .presentationDetents([.medium])
+        .onChange(of: pdfURL) {
+            guard let url = pdfURL else { return }
+            let avc = UIActivityViewController(activityItems: [url], applicationActivities: nil)
+            if let scene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
+               let root = scene.keyWindow?.rootViewController {
+                let presenter = root.presentedViewController ?? root
+                presenter.present(avc, animated: true)
             }
+            pdfURL = nil
         }
         .alert("Supprimer le projet ?", isPresented: $showingDeleteConfirmation) {
             Button("Supprimer", role: .destructive) {
@@ -467,7 +470,6 @@ struct ProjectDetailView: View {
                             expenses: projectExpenses,
                             balance: balance
                         )
-                        showingShareSheet = true
                     } catch {
                         // Silencieux pour MVP
                     }
@@ -498,19 +500,6 @@ struct ProjectDetailView: View {
     private var shadowColor: Color {
         colorScheme == .dark ? .black.opacity(0.25) : .black.opacity(0.06)
     }
-}
-
-// MARK: - UIActivityViewController wrapper
-
-/// Wrapper SwiftUI pour UIActivityViewController (partage PDF, etc.)
-struct ActivityView: UIViewControllerRepresentable {
-    let activityItems: [Any]
-
-    func makeUIViewController(context: Context) -> UIActivityViewController {
-        UIActivityViewController(activityItems: activityItems, applicationActivities: nil)
-    }
-
-    func updateUIViewController(_ uiViewController: UIActivityViewController, context: Context) {}
 }
 
 #Preview {
