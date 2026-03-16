@@ -22,15 +22,25 @@ struct ExpenseRow: View {
 
     private var splitLabel: String {
         switch expense.splitRatio {
-        case .equal: return "50/50"
+        case .equal:
+            return "50/50"
         case .custom(let p1, let p2):
-            return "\(Int(truncating: p1 as NSDecimalNumber))/\(Int(truncating: p2 as NSDecimalNumber))"
+            let p1Int = Int(truncating: p1 as NSDecimalNumber)
+            let p2Int = Int(truncating: p2 as NSDecimalNumber)
+            // Valeurs stockées en pourcentage (ex: 74, 26) → afficher "74%/26%"
+            return "\(p1Int)%/\(p2Int)%"
         }
     }
 
     private var isCustomSplit: Bool {
-        if case .custom = expense.splitRatio { return true }
-        return false
+        switch expense.splitRatio {
+        case .equal: return false
+        case .custom(let p1, let p2):
+            // Masquer le badge si les valeurs sont égales à 50/50 ou 0/100 (données corrompues)
+            let p1Int = Int(truncating: p1 as NSDecimalNumber)
+            let p2Int = Int(truncating: p2 as NSDecimalNumber)
+            return p1Int != p2Int && p1Int > 0 && p2Int > 0
+        }
     }
 
     var body: some View {

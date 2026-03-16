@@ -299,9 +299,14 @@ struct AddExpenseView: View {
 
     private func saveExpense() {
         guard let amount = parsedAmount, amount > 0 else { return }
-        let splitRatio: SplitRatio = isCustomSplit
-            ? .custom(partner1Share: Decimal(Int(partner1Share)), partner2Share: Decimal(Int(100 - partner1Share)))
-            : .equal
+        let p1 = Int(partner1Share)
+        let p2 = 100 - p1
+        let splitRatio: SplitRatio
+        if !isCustomSplit || p1 == 50 || p1 == 0 || p2 == 0 {
+            splitRatio = .equal
+        } else {
+            splitRatio = .custom(partner1Share: Decimal(p1), partner2Share: Decimal(p2))
+        }
 
         if let expense = existingExpense {
             expense.title = title.trimmingCharacters(in: .whitespaces)
