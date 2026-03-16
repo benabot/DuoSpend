@@ -1,10 +1,7 @@
 import SwiftUI
 import Charts
 
-/// Graphique d'évolution cumulative des dépenses dans le temps.
-/// Affiché dans ProjectDetailView uniquement si le projet a ≥ 2 dépenses.
-/// Le bar chart par partenaire est intentionnellement absent : la carte
-/// "Contributions" existante couvre déjà cette information.
+/// Graphiques visuels des dépenses : répartition par partenaire + évolution dans le temps
 struct ExpenseChartsView: View {
     let expenses: [Expense]
     let partner1Name: String
@@ -13,7 +10,7 @@ struct ExpenseChartsView: View {
 
     @Environment(\.colorScheme) private var colorScheme
 
-    /// Points triés chronologiquement avec total cumulé
+    /// Points cumulés pour le graphique d'évolution
     private var cumulativeData: [(date: Date, total: Double)] {
         let sorted = expenses.sorted { $0.date < $1.date }
         var cumulative: Double = 0
@@ -24,6 +21,69 @@ struct ExpenseChartsView: View {
     }
 
     var body: some View {
+        TabView {
+            barChart
+            lineChart
+        }
+        .tabViewStyle(.page(indexDisplayMode: .always))
+        .frame(height: 300)
+    }
+
+    // MARK: - Répartition par partenaire
+
+    private var barChart: some View {
+        VStack(alignment: .leading, spacing: 12) {
+            Label("Qui a payé quoi ?", systemImage: "chart.bar.fill")
+                .font(.system(.subheadline, design: .rounded))
+                .fontWeight(.semibold)
+                .foregroundStyle(Color.accentPrimary)
+
+            Chart {
+                BarMark(
+                    x: .value("Partenaire", partner1Name),
+                    y: .value("Montant", Double(truncating: balance.partner1Spent as NSDecimalNumber))
+                )
+                .foregroundStyle(Color.partner1.gradient)
+                .annotation(position: .top) {
+                    Text(balance.partner1Spent.formattedCurrency)
+                        .font(.system(.caption, design: .rounded))
+                        .fontWeight(.medium)
+                        .foregroundStyle(Color.partner1)
+                }
+
+                BarMark(
+                    x: .value("Partenaire", partner2Name),
+                    y: .value("Montant", Double(truncating: balance.partner2Spent as NSDecimalNumber))
+                )
+                .foregroundStyle(Color.partner2.gradient)
+                .annotation(position: .top) {
+                    Text(balance.partner2Spent.formattedCurrency)
+                        .font(.system(.caption, design: .rounded))
+                        .fontWeight(.medium)
+                        .foregroundStyle(Color.partner2)
+                }
+            }
+            .frame(height: 180)
+            .chartYAxis {
+                AxisMarks(position: .leading) { value in
+                    AxisValueLabel {
+                        if let amount = value.as(Double.self) {
+                            Text(Decimal(amount).formattedCurrency)
+                                .font(.system(.caption2, design: .rounded))
+                        }
+                    }
+                }
+            }
+        }
+        .padding(18)
+        .background(cardBg)
+        .clipShape(RoundedRectangle(cornerRadius: 20))
+        .shadow(color: shadowColor, radius: 10, y: 4)
+    }
+
+    // MARK: - Évolution dans le temps
+
+    private var lineChart: some View {
         VStack(alignment: .leading, spacing: 12) {
             Label("Évolution des dépenses", systemImage: "chart.line.uptrend.xyaxis")
                 .font(.system(.subheadline, design: .rounded))
@@ -35,13 +95,7 @@ struct ExpenseChartsView: View {
                     x: .value("Date", point.date, unit: .day),
                     y: .value("Total", point.total)
                 )
-                .foregroundStyle(
-                    LinearGradient(
-                        colors: [Color.accentPrimary.opacity(0.18), Color.accentPrimary.opacity(0.02)],
-                        startPoint: .top,
-                        endPoint: .bottom
-                    )
-                )
+                .foregroundStyle(Color.accentPrimary.opacity(0.1))
                 .interpolationMethod(.catmullRom)
 
                 LineMark(
@@ -50,42 +104,23 @@ struct ExpenseChartsView: View {
                 )
                 .foregroundStyle(Color.accentPrimary)
                 .interpolationMethod(.catmullRom)
-                .lineStyle(StrokeStyle(lineWidth: 2.5, lineCap: .round))
-
-                PointMark(
-                    x: .value("Date", point.date, unit: .day),
-                    y: .value("Total", point.total)
-                )
-                .foregroundStyle(Color.accentPrimary)
-                .symbolSize(30)
+                .lineStyle(StrokeStyle(lineWidth: 2.5))
             }
-            .frame(height: 160)
+            .frame(height: 180)
             .chartXAxis {
-                AxisMarks(values: .automatic(desiredCount: 4)) { value in
+                AxisMarks(values: .stride(by: .day)) { value in
                     AxisValueLabel(format: .dateTime.day().month(.abbreviated))
-                        .font(.system(.caption2, design: .rounded))
-                    AxisGridLine()
                 }
             }
             .chartYAxis {
-                AxisMarks(position: .leading, values: .automatic(desiredCount: 3)) { value in
+                AxisMarks(position: .leading) { value in
                     AxisValueLabel {
                         if let amount = value.as(Double.self) {
                             Text(Decimal(amount).formattedCurrency)
                                 .font(.system(.caption2, design: .rounded))
                         }
                     }
-                    AxisGridLine()
                 }
-            }
-
-            // Montant final affiché sobrement sous le chart
-            HStack {
-                Spacer()
-                Text("Total : \(balance.totalSpent.formattedCurrency)")
-                    .font(.system(.caption, design: .rounded))
-                    .fontWeight(.medium)
-                    .foregroundStyle(.secondary)
             }
         }
         .padding(18)
