@@ -1,6 +1,5 @@
 import SwiftUI
 import SwiftData
-import Charts
 
 /// Ordre de tri des dépenses
 enum ExpenseSortOrder: String, CaseIterable {
@@ -91,17 +90,6 @@ struct ProjectDetailView: View {
                 if !projectExpenses.isEmpty {
                     duoStatsCard
                         .padding(.horizontal)
-                }
-
-                // ── Graphiques ───────────────────────────────────────
-                if projectExpenses.count >= 2 {
-                    ExpenseChartsView(
-                        expenses: projectExpenses,
-                        partner1Name: project.partner1Name,
-                        partner2Name: project.partner2Name,
-                        balance: balance
-                    )
-                    .padding(.horizontal)
                 }
 
                 // ── Dépenses ──────────────────────────────────────────

@@ -32,7 +32,6 @@
 		E900A69F5F80A513D8185B47 /* BalanceCalculatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A20F129BA65242D426C38F3 /* BalanceCalculatorTests.swift */; };
 		F52EB6E0C6F7B6BA38C999AB /* Decimal+Currency.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70944B10F95B9DFF0E6FA873 /* Decimal+Currency.swift */; };
 		F824C477FF3AE8FA11686D86 /* DuoLogoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ACF30E606058799801CFD3B /* DuoLogoView.swift */; };
-		A1B2C3D4E5F60718293A4B5C /* ExpenseChartsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6E7F8091A2B3C4D5E6F7081 /* ExpenseChartsView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,7 +54,6 @@
 		2A36328EA3B77D08789B9C02 /* Project.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Project.swift; sourceTree = "<group>"; };
 		2C6FACA7A3EF6858B4842AB1 /* PartnerRole.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PartnerRole.swift; sourceTree = "<group>"; };
 		4DDFA55290FC464C965B2818 /* EditProjectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProjectView.swift; sourceTree = "<group>"; };
-		D6E7F8091A2B3C4D5E6F7081 /* ExpenseChartsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenseChartsView.swift; sourceTree = "<group>"; };
 		58DC5CE2EFF6B9164FEB3BAC /* ExpenseRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenseRow.swift; sourceTree = "<group>"; };
 		5ACF30E606058799801CFD3B /* DuoLogoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DuoLogoView.swift; sourceTree = "<group>"; };
 		65B136CEC056F2422859D8F4 /* Expense.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Expense.swift; sourceTree = "<group>"; };
@@ -84,7 +82,6 @@
 			children = (
 				79F2DC92F10F0B2C13837643 /* BalanceBanner.swift */,
 				5ACF30E606058799801CFD3B /* DuoLogoView.swift */,
-				D6E7F8091A2B3C4D5E6F7081 /* ExpenseChartsView.swift */,
 				58DC5CE2EFF6B9164FEB3BAC /* ExpenseRow.swift */,
 				E555932D18C4E9C0CB39F551 /* ProjectCard.swift */,
 			);
@@ -319,7 +316,6 @@
 				6BB986FBA08F36D1051E4BF3 /* DuoSpendApp.swift in Sources */,
 				08758C996E9322EB8E486351 /* EditProjectView.swift in Sources */,
 				B2C5F0AC1B9A56A71B89459A /* Expense.swift in Sources */,
-				A1B2C3D4E5F60718293A4B5C /* ExpenseChartsView.swift in Sources */,
 				4D4DC918CA6E1EFA8D0065B6 /* ExpenseRow.swift in Sources */,
 				7BC829A4AB6B86532D8690ED /* PartnerRole.swift in Sources */,
 				1BB8C595375936D8B9C6A6B6 /* Project.swift in Sources */,
