@@ -1,4 +1,5 @@
 import SwiftUI
+import WidgetKit
 
 /// Formulaire de création d'un nouveau projet
 struct CreateProjectView: View {
@@ -160,6 +161,7 @@ struct CreateProjectView: View {
 
         modelContext.insert(project)
         try? modelContext.save()
+        WidgetCenter.shared.reloadAllTimelines()
         UIImpactFeedbackGenerator(style: .medium).impactOccurred()
         dismiss()
     }

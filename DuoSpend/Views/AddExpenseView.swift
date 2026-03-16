@@ -1,4 +1,5 @@
 import SwiftUI
+import WidgetKit
 
 /// Sheet d'ajout ou d'édition d'une dépense — design card natif
 struct AddExpenseView: View {
@@ -327,6 +328,7 @@ struct AddExpenseView: View {
             UIImpactFeedbackGenerator(style: .medium).impactOccurred()
         }
         try? modelContext.save()
+        WidgetCenter.shared.reloadAllTimelines()
         dismiss()
     }
 }
