@@ -114,3 +114,27 @@ Format :
 - Serveur custom (API REST) → overkill pour 2 users par projet, coût de maintenance
 - Bluetooth/peer-to-peer → portée limitée, UX fragile, pas de sync asynchrone
 - Partage par export/import JSON → pas de sync temps réel, UX laborieuse
+
+---
+
+### 2026-03-18 — MultipeerConnectivity pour la sync locale entre 2 iPhones
+
+**Contexte** : Permettre à un couple (2 Apple ID différents) de synchroniser un projet quand ils sont à proximité, sans attendre CloudKit Sharing (v2.0).
+
+**Décision** : Implémenter une sync peer-to-peer via MultipeerConnectivity (framework Apple natif). Le host envoie un `SyncPayload` JSON contenant le projet + toutes ses dépenses. Le receveur fusionne les données dans son SwiftData local avec dédoublonnage (titre + montant + date à la seconde).
+
+**Détails techniques** :
+- Service type : `duospend-sync` (Bonjour/Bluetooth/WiFi local)
+- Chiffrement : `MCEncryptionPreference.required` (DTLS)
+- Transfert : `MCSession.send()` pour les payloads < 90 KB, `sendResource()` au-delà
+- Résolution de conflits : dédoublonnage sur `title + amount + date`, pas de last-write-wins destructif
+- Sync manuelle uniquement (pas de sync en arrière-plan) — économie batterie + clarté UX
+- Architecture : `PeerSyncService` (MC) → `PeerSyncViewModel` (coordination) → `SyncMergeService` (fusion pure, testable)
+- Swift 6 strict concurrency : delegates MC isolés via `nonisolated(unsafe)` + `Task { @MainActor in }`
+
+**Alternatives rejetées** :
+- Attendre CloudKit Sharing v2.0 → trop long, les utilisateurs veulent syncer dès le lancement
+- WebSocket/serveur custom → dépendance tierce, coût infra, contre le principe zéro dépendance
+- Partage via AirDrop/fichier → pas intégré dans l'app, UX fragmentée
+
+**Complémentarité** : MultipeerConnectivity = sync ponctuelle à proximité. CloudKit Sharing (v2.0) = sync continue à distance. Les deux coexisteront.

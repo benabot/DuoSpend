@@ -74,6 +74,20 @@
 - [x] **Icône d'app** : AppIconExporter.swift dans Preview Content (2 cœurs bleu/rose + € sur fond violet)
 - [x] Couleurs partenaire cohérentes partout (Color.partner1 / Color.partner2 au lieu de .blue / .pink)
 
+## Phase 7 : Sync locale MultipeerConnectivity ✅
+
+- [x] `SyncPayload.swift` + `SyncExpense.swift` — structs de transport Codable/Sendable/Equatable
+- [x] `SyncMergeService.swift` — logique de fusion pure (création projet, dédoublonnage dépenses)
+- [x] `SyncMergeServiceTests.swift` — 5 tests unitaires (création, merge existant, dédup, vide, JSON round-trip)
+- [x] `PeerSyncService.swift` — couche MultipeerConnectivity (advertise, browse, send/receive)
+- [x] `PeerSyncViewModel.swift` — coordination service + merge + haptics
+- [x] `PeerSyncView.swift` — UI modale 3 étapes (choix rôle → connexion → transfert)
+- [x] Bouton "Sync avec partenaire" dans `ProjectDetailView` toolbar
+- [x] `Info.plist` — `NSLocalNetworkUsageDescription` + `NSBonjourServices`
+- [x] Swift 6 strict concurrency — `nonisolated(unsafe)` pour delegates MC
+- [x] Build OK + 10/10 tests passent
+- [ ] Tester sur 2 iPhones physiques (MultipeerConnectivity ne fonctionne pas sur simulateur)
+
 ---
 
 ## Backlog post-MVP

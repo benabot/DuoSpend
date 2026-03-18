@@ -36,6 +36,7 @@ struct ProjectDetailView: View {
     @State private var sortOrder: ExpenseSortOrder = .date
     @State private var showAllExpenses = false
     @State private var pdfURL: URL?
+    @State private var showingPeerSync = false
 
     // Préview limitée : les 5 plus récentes, toutes si showAllExpenses
     private let previewCount = 5
@@ -116,6 +117,9 @@ struct ProjectDetailView: View {
         }
         .sheet(item: $expenseToEdit) { expense in
             AddExpenseView(project: project, existingExpense: expense)
+        }
+        .sheet(isPresented: $showingPeerSync) {
+            PeerSyncView(project: project)
         }
         .onChange(of: pdfURL) {
             guard let url = pdfURL else { return }
@@ -475,6 +479,11 @@ struct ProjectDetailView: View {
                     }
                 } label: {
                     Label("Exporter en PDF", systemImage: "square.and.arrow.up")
+                }
+                Button {
+                    showingPeerSync = true
+                } label: {
+                    Label("Sync avec partenaire", systemImage: "person.2.wave.2")
                 }
                 Divider()
                 Button(role: .destructive) {
