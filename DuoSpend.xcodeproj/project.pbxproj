@@ -117,7 +117,7 @@
 		D0F2E3D4C5B6A7981234AB30 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D2A2B3C4D5E6F7081234ABCD /* PDFExportService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PDFExportService.swift; sourceTree = "<group>"; };
 		D4DC662099B068F6F3EDCA0E /* PeerSyncViewModel.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = PeerSyncViewModel.swift; sourceTree = "<group>"; };
-		D68F6F85D9307CCD42E577D9 /* DuoSpendTests.xctest */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.cfbundle; path = DuoSpendTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		D68F6F85D9307CCD42E577D9 /* DuoSpendTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DuoSpendTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		DA7B8C3CA2DD879EAE29ED34 /* CreateProjectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateProjectView.swift; sourceTree = "<group>"; };
 		E555932D18C4E9C0CB39F551 /* ProjectCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectCard.swift; sourceTree = "<group>"; };
 		E5AE72B67E0F053A60E27F83 /* BalanceCalculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BalanceCalculator.swift; sourceTree = "<group>"; };
@@ -343,14 +343,6 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = YES;
 				LastUpgradeCheck = 1430;
-				TargetAttributes = {
-					6D7F4104DD572ECD51DB0872 = {
-						DevelopmentTeam = 66S2QLG2HD;
-					};
-					C1F2E3D4C5B6A7981234AB21 = {
-						DevelopmentTeam = 66S2QLG2HD;
-					};
-				};
 			};
 			buildConfigurationList = AE5231B212A9BF615F0F8F9F /* Build configuration list for PBXProject "DuoSpend" */;
 			compatibilityVersion = "Xcode 14.0";
@@ -628,7 +620,7 @@
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 66S2QLG2HD;
+				DEVELOPMENT_TEAM = 3Q33594A3N;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_GENERATION = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
@@ -684,7 +676,7 @@
 				CODE_SIGN_ENTITLEMENTS = DuoSpendWidget/DuoSpendWidget.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 66S2QLG2HD;
+				DEVELOPMENT_TEAM = 3Q33594A3N;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = DuoSpendWidget/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "DuoSpend Widget";
@@ -713,7 +705,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEVELOPMENT_TEAM = 66S2QLG2HD;
+				DEVELOPMENT_TEAM = 3Q33594A3N;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = DuoSpendWidget/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "DuoSpend Widget";
@@ -743,7 +735,7 @@
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 66S2QLG2HD;
+				DEVELOPMENT_TEAM = 3Q33594A3N;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_GENERATION = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
