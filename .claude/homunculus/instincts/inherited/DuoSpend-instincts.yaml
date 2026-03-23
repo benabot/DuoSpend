@@ -1,0 +1,255 @@
+# Instincts generated from https://github.com/benabot/DuoSpend
+# Generated: 2026-03-23T10:10:33.601Z
+# Version: 2.0
+# NOTE: This file supplements (does not replace) any existing curated instincts.
+# High-confidence manually curated instincts should be preserved alongside these.
+
+---
+id: DuoSpend-commit-length
+trigger: "when writing a commit message"
+confidence: 0.6
+domain: git
+source: repo-analysis
+source_repo: https://github.com/benabot/DuoSpend
+---
+
+# DuoSpend Commit Length
+
+## Action
+
+Write moderate-length commit messages (~62 characters)
+
+## Evidence
+
+- Average commit message length: 62 chars
+- Based on 25 commits
+
+---
+id: DuoSpend-naming-files
+trigger: "when creating a new file"
+confidence: 0.8
+domain: code-style
+source: repo-analysis
+source_repo: https://github.com/benabot/DuoSpend
+---
+
+# DuoSpend Naming Files
+
+## Action
+
+Use PascalCase naming convention
+
+## Evidence
+
+- Analyzed file naming patterns in repository
+- Dominant pattern: PascalCase
+
+---
+id: DuoSpend-import-relative
+trigger: "when importing modules"
+confidence: 0.75
+domain: code-style
+source: repo-analysis
+source_repo: https://github.com/benabot/DuoSpend
+---
+
+# DuoSpend Import Relative
+
+## Action
+
+Use relative imports for project files
+
+## Evidence
+
+- Import analysis shows relative import pattern
+- Example: import { x } from '../lib/x'
+
+---
+id: DuoSpend-export-style
+trigger: "when exporting from a module"
+confidence: 0.7
+domain: code-style
+source: repo-analysis
+source_repo: https://github.com/benabot/DuoSpend
+---
+
+# DuoSpend Export Style
+
+## Action
+
+Prefer named exports
+
+## Evidence
+
+- Export pattern analysis
+- Dominant style: named
+
+---
+id: DuoSpend-test-separate
+trigger: "when writing tests"
+confidence: 0.8
+domain: testing
+source: repo-analysis
+source_repo: https://github.com/benabot/DuoSpend
+---
+
+# DuoSpend Test Separate
+
+## Action
+
+Place tests in the tests/ or __tests__/ directory, mirroring src structure
+
+## Evidence
+
+- Separate test directory pattern detected
+- Tests live in dedicated test folders
+
+---
+id: DuoSpend-workflow-feature-development
+trigger: "when implementing a new feature"
+confidence: 0.9
+domain: workflow
+source: repo-analysis
+source_repo: https://github.com/benabot/DuoSpend
+---
+
+# DuoSpend Workflow Feature Development
+
+## Action
+
+Follow the feature-development workflow:
+1. Add feature implementation
+2. Add tests for feature
+3. Update documentation
+
+## Evidence
+
+- Workflow detected from commit patterns
+- Frequency: ~13x per month
+- Files: duospend/views/components/*, **/*.test.*
+
+---
+id: DuoSpend-workflow-feature-module-addition
+trigger: "when doing feature module addition"
+confidence: 0.6
+domain: workflow
+source: repo-analysis
+source_repo: https://github.com/benabot/DuoSpend
+---
+
+# DuoSpend Workflow Feature Module Addition
+
+## Action
+
+Follow the feature-module-addition workflow:
+1. Create new Swift files for models/services/viewmodels/views in appropriate folders.
+2. Update DuoSpend.xcodeproj/project.pbxproj to include new files.
+3. Update Info.plist or entitlements if needed (e.g., permissions, app groups).
+4. Integrate new feature into existing views (e.g., ProjectDetailView.swift).
+5. Add or update documentation (e.g., docs/DECISIONS.md, docs/TODO.md).
+6. Write unit tests if applicable.
+
+## Evidence
+
+- Workflow detected from commit patterns
+- Frequency: ~2x per month
+- Files: DuoSpend.xcodeproj/project.pbxproj, DuoSpend/Models/*.swift, DuoSpend/Services/*.swift
+
+---
+id: DuoSpend-workflow-ui-refactor-or-enhancement
+trigger: "when doing ui refactor or enhancement"
+confidence: 0.6
+domain: workflow
+source: repo-analysis
+source_repo: https://github.com/benabot/DuoSpend
+---
+
+# DuoSpend Workflow Ui Refactor Or Enhancement
+
+## Action
+
+Follow the ui-refactor-or-enhancement workflow:
+1. Modify multiple SwiftUI view/component files to update UI elements.
+2. Update or add assets (e.g., icons, colors) in xcassets.
+3. Update DuoSpend.xcodeproj/project.pbxproj if new files/assets are added.
+4. Update entitlements or configuration if needed for new UI features.
+5. Test and tweak navigation or view logic as needed.
+
+## Evidence
+
+- Workflow detected from commit patterns
+- Frequency: ~2x per month
+- Files: DuoSpend/Views/*.swift, DuoSpend/Views/Components/*.swift, DuoSpend/Resources/Assets.xcassets/**/*
+
+---
+id: DuoSpend-workflow-bugfix-or-small-feature-tweak
+trigger: "when doing bugfix or small feature tweak"
+confidence: 0.7
+domain: workflow
+source: repo-analysis
+source_repo: https://github.com/benabot/DuoSpend
+---
+
+# DuoSpend Workflow Bugfix Or Small Feature Tweak
+
+## Action
+
+Follow the bugfix-or-small-feature-tweak workflow:
+1. Identify the affected SwiftUI view/service file(s).
+2. Make the fix or tweak in the relevant file(s).
+3. Test the change in the app.
+4. Commit with a descriptive message.
+
+## Evidence
+
+- Workflow detected from commit patterns
+- Frequency: ~4x per month
+- Files: DuoSpend/Views/*.swift, DuoSpend/Views/Components/*.swift, DuoSpend/Services/*.swift
+
+---
+id: DuoSpend-workflow-documentation-update
+trigger: "when doing documentation update"
+confidence: 0.6
+domain: workflow
+source: repo-analysis
+source_repo: https://github.com/benabot/DuoSpend
+---
+
+# DuoSpend Workflow Documentation Update
+
+## Action
+
+Follow the documentation-update workflow:
+1. Edit or create documentation files in the docs/ folder or root (e.g., README.md, DECISIONS.md, TODO.md, CLAUDE.md).
+2. Commit with a message summarizing the documentation changes.
+
+## Evidence
+
+- Workflow detected from commit patterns
+- Frequency: ~2x per month
+- Files: README.md, docs/*.md, CLAUDE.md
+
+---
+id: DuoSpend-workflow-revert-feature-or-fix
+trigger: "when doing revert feature or fix"
+confidence: 0.55
+domain: workflow
+source: repo-analysis
+source_repo: https://github.com/benabot/DuoSpend
+---
+
+# DuoSpend Workflow Revert Feature Or Fix
+
+## Action
+
+Follow the revert-feature-or-fix workflow:
+1. Identify the commit to revert.
+2. Use git revert or manual rollback to restore previous file versions.
+3. Commit the revert with a message referencing the original commit.
+
+## Evidence
+
+- Workflow detected from commit patterns
+- Frequency: ~1x per month
+- Files: DuoSpend/Views/*.swift, DuoSpend/Views/Components/*.swift, DuoSpend.xcodeproj/project.pbxproj
+
