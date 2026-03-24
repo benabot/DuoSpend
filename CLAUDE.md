@@ -52,6 +52,10 @@ Après :
 - Mettre à jour `docs/TODO.md` si la tâche est terminée
 - Ajouter une entrée dans `docs/DECISIONS.md` si une décision d’architecture est prise
 
+## Monétisation
+
+Voir `docs/COMMERCIAL.md` (section 5 — Roadmap business & pricing).
+
 ## Références à charger seulement si la tâche l’exige
 - `docs/MVP.md` : spécification fonctionnelle
 - `docs/DECISIONS.md` : décisions d’architecture

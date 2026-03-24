@@ -142,44 +142,44 @@
   "hotPaths": [
     {
       "path": "DuoSpend.xcodeproj/project.pbxproj",
-      "accessCount": 37,
-      "lastAccessed": 1774391909156,
+      "accessCount": 38,
+      "lastAccessed": 1774393523902,
       "type": "file"
     },
     {
       "path": "DuoSpend/Resources/Localizable.xcstrings",
-      "accessCount": 15,
-      "lastAccessed": 1774391951702,
+      "accessCount": 17,
+      "lastAccessed": 1774393018875,
       "type": "file"
     },
     {
       "path": "DuoSpend/Views/ProjectDetailView.swift",
-      "accessCount": 12,
-      "lastAccessed": 1774389899432,
+      "accessCount": 16,
+      "lastAccessed": 1774393034058,
       "type": "file"
     },
     {
       "path": "DuoSpendWidget/DuoSpendWidgetView.swift",
-      "accessCount": 7,
-      "lastAccessed": 1774391932588,
+      "accessCount": 8,
+      "lastAccessed": 1774393484381,
       "type": "file"
     },
     {
       "path": "DuoSpend/Views/AddExpenseView.swift",
-      "accessCount": 5,
-      "lastAccessed": 1774390743399,
+      "accessCount": 7,
+      "lastAccessed": 1774393035198,
       "type": "file"
     },
     {
       "path": "DuoSpend/Views/Components/ProjectCard.swift",
-      "accessCount": 4,
-      "lastAccessed": 1774389903516,
+      "accessCount": 6,
+      "lastAccessed": 1774392984593,
       "type": "file"
     },
     {
       "path": "DuoSpend",
-      "accessCount": 3,
-      "lastAccessed": 1774363289674,
+      "accessCount": 5,
+      "lastAccessed": 1774393007490,
       "type": "directory"
     },
     {
@@ -258,6 +258,18 @@
       "path": "DuoSpend/Views/SplashScreenView.swift",
       "accessCount": 1,
       "lastAccessed": 1774371220947,
+      "type": "file"
+    },
+    {
+      "path": "DuoSpend/Views",
+      "accessCount": 1,
+      "lastAccessed": 1774392974844,
+      "type": "directory"
+    },
+    {
+      "path": "DuoSpendWidget/DuoSpendWidgetEntry.swift",
+      "accessCount": 1,
+      "lastAccessed": 1774393484572,
       "type": "file"
     }
   ],

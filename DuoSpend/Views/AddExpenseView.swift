@@ -230,7 +230,7 @@ struct AddExpenseView: View {
                 Text(project.partner1Name)
                     .foregroundStyle(Color.partner1)
                 Spacer()
-                Text("\(Int(partner1Share))% · \(Int(100 - partner1Share))%")
+                Text("\(String(Int(partner1Share)))% · \(String(Int(100 - partner1Share)))%")
                     .foregroundStyle(Color.accentPrimary)
                 Spacer()
                 Text(project.partner2Name)

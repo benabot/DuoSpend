@@ -169,6 +169,30 @@ Format recommandé :
 
 ---
 
+### 2026-03-25 — Pricing : 1 projet gratuit + achat unique 6,99 €
+
+**Contexte** : fixer le prix et le modèle de monétisation avant implémentation StoreKit 2.
+
+**Décision** : freemium avec 1 projet gratuit. Achat unique (non-consommable) à 6,99 € pour débloquer les projets illimités à vie. Product ID : `com.duospend.unlimitedprojects`.
+
+**Évolution prévue** :
+- v1.0 : 6,99 € (prix de lancement optionnel à 4,99 € les 2 premières semaines)
+- v1.1 (iCloud sync) : maintien à 6,99 €
+- v2.0 (CloudKit Sharing entre 2 comptes) : remontée à 9,99 €
+
+**Alternatives rejetées** :
+- 3,99 € → trop bas, perception faible, aucune marge promo
+- 4,99 € → insuffisant par rapport à la valeur livrée (widgets, PDF, offline, privacy)
+- 9,99–19,99 € dès la v1 → prématuré sans sync couple et sans historique d'avis
+- 3 projets gratuits → couvre la majorité des usages réels d'un couple, tue la conversion
+- Payant sans projet gratuit → trop risqué au lancement sans notoriété
+- Abonnement → trop agressif pour une app utilitaire
+- Publicité → détériore l'UX
+
+**Impact** : le paywall se déclenche à la création du 2e projet. Toutes les features restent accessibles dans le projet gratuit.
+
+---
+
 ### 2026-03-24 — LocalizedStringKey obligatoire pour la traduction SwiftUI
 
 **Contexte** : implémentation de la localisation FR + EN sur l'app iOS avec Xcode 15+ String Catalog (xcstrings).

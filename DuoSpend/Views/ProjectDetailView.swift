@@ -222,7 +222,7 @@ struct ProjectDetailView: View {
                         if isOverBudget {
                             Text("⚠ Budget dépassé")
                         } else {
-                            Text("\(Int(budgetFraction * 100))% utilisé")
+                            Text("\(String(Int(budgetFraction * 100)))% utilisé")
                         }
                     }
                     .font(.system(.caption2, design: .rounded))
@@ -291,12 +291,12 @@ struct ProjectDetailView: View {
             .clipShape(Capsule())
 
             HStack {
-                Text("\(Int(p1Fraction * 100))%")
+                Text("\(String(Int(p1Fraction * 100)))%")
                     .font(.system(.caption2, design: .rounded))
                     .fontWeight(.semibold)
                     .foregroundStyle(Color.partner1)
                 Spacer()
-                Text("\(Int((1 - p1Fraction) * 100))%")
+                Text("\(String(Int((1 - p1Fraction) * 100)))%")
                     .font(.system(.caption2, design: .rounded))
                     .fontWeight(.semibold)
                     .foregroundStyle(Color.partner2)

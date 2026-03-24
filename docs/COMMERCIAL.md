@@ -33,23 +33,29 @@ Cible prioritaire : couples qui organisent un projet commun, par exemple :
 - aucune dépendance externe ;
 - pas de pub, pas de tracking.
 
-## 5. Roadmap business
+## 5. Roadmap business & pricing
 
-### MVP v1
-- gratuit ;
-- sans publicité ;
-- sans abonnement ;
-- sans limitation artificielle dans la première version publique si ce choix est maintenu.
+### v1.0 — Lancement
+- **Modèle** : freemium — 1 projet gratuit + achat unique 6,99 € (projets illimités à vie).
+- **Product ID StoreKit 2** : `com.duospend.unlimitedprojects` (Non-Consumable).
+- Sans publicité, sans abonnement.
+- Fonctionnalités gratuites : toutes les features core (widgets, export PDF, balance, budget).
+- Paywall déclenché à la création du 2e projet.
+- **Prix de lancement (optionnel)** : 4,99 € les 2 premières semaines, puis retour à 6,99 €.
 
-### Piste v2 Premium
-Ancienne hypothèse issue du document source :
-- achat unique autour de 6,99 € ;
-- projets illimités si la v1 impose ensuite une limite ;
-- templates projets ;
-- export PDF ;
-- fonctions avancées éventuelles.
+### v1.1 — iCloud sync (même compte Apple)
+- Maintien du prix à 6,99 €.
+- Mention "iCloud sync incluse" dans la fiche App Store.
 
-Décision à prendre explicitement avant implémentation StoreKit 2.
+### v2.0 — CloudKit Sharing (2 comptes Apple séparés)
+- Remontée du prix à **9,99 €** — c'est LA feature qui justifie le premium, car elle transforme l'app d'un outil solo en un vrai outil couple.
+- Ajout possible de templates projets et fonctions avancées.
+
+### Justification du pricing
+- Splitwise Pro = ~60 €/an en abonnement. DuoSpend à 6,99 € one-time = prix d'1,5 mois de Splitwise.
+- Tricount = gratuit (monétisé via bunq). DuoSpend se différencie par le focus couple, la privacy et l'approche Apple-native.
+- 4,99 € sur l'App Store FR = perception "app qui s'excuse". 6,99 € = produit sérieux sans être intimidant.
+- Marge promo : possibilité de lancer à 4,99 € puis remonter. Impossible dans l'autre sens.
 
 ## 6. Backlog commercial / produit non-MVP
 

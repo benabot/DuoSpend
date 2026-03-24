@@ -90,7 +90,7 @@ struct ProjectCard: View {
                             if isOverBudget {
                                 Text("⚠ Budget dépassé")
                             } else {
-                                Text("\(Int(budgetFraction * 100))% du budget")
+                                Text("\(String(Int(budgetFraction * 100)))% du budget")
                             }
                         }
                         .font(.system(.caption2, design: .rounded))

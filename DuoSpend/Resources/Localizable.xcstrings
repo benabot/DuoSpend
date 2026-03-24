@@ -29,6 +29,17 @@
         }
       }
     },
+    "%@ doit" : {
+      "comment" : "Widget balance text — '[debtor name] owes'",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ owes"
+          }
+        }
+      }
+    },
     "%@%%" : {
       "comment" : "Percentage value display (e.g. 42%)",
       "localizations" : {
@@ -148,6 +159,9 @@
         }
       }
     },
+    "Affiche la balance du projet en cours." : {
+
+    },
     "Ajouter" : {
       "comment" : "Confirm button when creating a new expense",
       "extractionState" : "stale",
@@ -204,6 +218,9 @@
           }
         }
       }
+    },
+    "Balance de votre projet en cours." : {
+
     },
     "budget" : {
       "comment" : "Budget figure label in project summary",
@@ -331,17 +348,6 @@
         }
       }
     },
-    "Dernières dépenses" : {
-      "comment" : "Widget large — recent expenses section header",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Recent expenses"
-          }
-        }
-      }
-    },
     "Dépenses" : {
       "comment" : "Section header — expenses list",
       "localizations" : {
@@ -353,6 +359,17 @@
         }
       }
     },
+    "Dernières dépenses" : {
+      "comment" : "Widget large — recent expenses section header",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Recent expenses"
+          }
+        }
+      }
+    },
     "doit" : {
       "comment" : "Verb in balance text: '[debtor] owes [amount] to [creditor]'",
       "localizations" : {
@@ -360,17 +377,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "owes"
-          }
-        }
-      }
-    },
-    "%@ doit" : {
-      "comment" : "Widget balance text — '[debtor name] owes'",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "%@ owes"
           }
         }
       }
@@ -404,7 +410,6 @@
     },
     "Équilibre" : {
       "comment" : "Balance status label in project card",
-      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
