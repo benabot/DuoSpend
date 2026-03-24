@@ -12,7 +12,7 @@ Lis `CLAUDE.md`. L'app fonctionne, la navigation est OK. On ajoute maintenant la
 
 - **1 projet gratuit** : l'utilisateur peut créer et utiliser 1 projet sans payer
 - **Projets illimités** : achat unique (non-consommable) à 3,99 € via StoreKit 2
-- Product ID : `com.duospend.unlimitedprojects`
+- Product ID : `fr.beabot.DuoSpend.unlimitedprojects`
 - Une fois acheté, c'est débloqué **à vie** (pas d'abonnement)
 
 ---
@@ -31,7 +31,7 @@ import SwiftUI
 class StoreManager {
     static let shared = StoreManager()
     
-    private let productID = "com.duospend.unlimitedprojects"
+    private let productID = "fr.beabot.DuoSpend.unlimitedprojects"
     
     var isUnlocked: Bool = false
     var product: Product?
@@ -142,7 +142,7 @@ Créer `DuoSpend/Resources/StoreKitConfig.storekit` — un fichier de configurat
 
 ```json
 {
-  "identifier" : "com.duospend.unlimitedprojects",
+  "identifier" : "fr.beabot.DuoSpend.unlimitedprojects",
   "displayName" : "DuoSpend Pro",
   "description" : "Débloquer les projets illimités",
   "price" : "3.99",

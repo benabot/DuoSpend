@@ -11,7 +11,7 @@ Le fichier `.storekit` doit être créé manuellement dans Xcode (il n'est pas v
 5. Ajouter un produit :
    - Type : **Non-Consumable**
    - Reference Name : `DuoSpend Pro`
-   - Product ID : `com.duospend.unlimitedprojects`
+   - Product ID : `fr.beabot.DuoSpend.unlimitedprojects`
    - Price : `6.99`
    - Display Name (fr) : `DuoSpend Pro`
    - Description (fr) : `Débloquer les projets illimités`
@@ -32,6 +32,6 @@ Le fichier `.storekit` doit être créé manuellement dans Xcode (il n'est pas v
 
 ## Notes
 
-- Product ID utilisé dans le code : `com.duospend.unlimitedprojects`
+- Product ID utilisé dans le code : `fr.beabot.DuoSpend.unlimitedprojects`
 - En production, créer le même produit dans App Store Connect avec le même Product ID.
 - L'entitlement est vérifié via `Transaction.currentEntitlements` au lancement.

@@ -12,7 +12,7 @@ final class StoreManager {
     private(set) var purchaseError: String?
     private(set) var isLoading = false
 
-    private let productID = "com.duospend.unlimitedprojects"
+    private let productID = "fr.beabot.DuoSpend.unlimitedprojects"
     private let logger = Logger(subsystem: "fr.beabot.DuoSpend", category: "StoreManager")
     private var transactionListener: Task<Void, Never>?
 

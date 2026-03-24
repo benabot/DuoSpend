@@ -159,6 +159,12 @@
       "type": "file"
     },
     {
+      "path": "DuoSpend/Views/ProjectListView.swift",
+      "accessCount": 9,
+      "lastAccessed": 1774395355216,
+      "type": "file"
+    },
+    {
       "path": "DuoSpendWidget/DuoSpendWidgetView.swift",
       "accessCount": 8,
       "lastAccessed": 1774393484381,
@@ -184,8 +190,8 @@
     },
     {
       "path": "docs/TODO.md",
-      "accessCount": 3,
-      "lastAccessed": 1774363517558,
+      "accessCount": 5,
+      "lastAccessed": 1774395396131,
       "type": "file"
     },
     {
@@ -231,12 +237,6 @@
       "type": "directory"
     },
     {
-      "path": "DuoSpend/Views/ProjectListView.swift",
-      "accessCount": 1,
-      "lastAccessed": 1774368642678,
-      "type": "file"
-    },
-    {
       "path": "DuoSpend/Views/EditProjectView.swift",
       "accessCount": 1,
       "lastAccessed": 1774368648504,
@@ -270,6 +270,30 @@
       "path": "DuoSpendWidget/DuoSpendWidgetEntry.swift",
       "accessCount": 1,
       "lastAccessed": 1774393484572,
+      "type": "file"
+    },
+    {
+      "path": "DuoSpend/Services/StoreManager.swift",
+      "accessCount": 1,
+      "lastAccessed": 1774395275228,
+      "type": "file"
+    },
+    {
+      "path": "DuoSpend/Views/PaywallView.swift",
+      "accessCount": 1,
+      "lastAccessed": 1774395286802,
+      "type": "file"
+    },
+    {
+      "path": "DuoSpend/Views/Components/PaywallDebugView.swift",
+      "accessCount": 1,
+      "lastAccessed": 1774395291805,
+      "type": "file"
+    },
+    {
+      "path": "docs/SETUP_STOREKIT.md",
+      "accessCount": 1,
+      "lastAccessed": 1774395301326,
       "type": "file"
     }
   ],

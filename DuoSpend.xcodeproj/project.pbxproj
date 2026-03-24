@@ -20,6 +20,7 @@
 		4D4DC918CA6E1EFA8D0065B6 /* ExpenseRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58DC5CE2EFF6B9164FEB3BAC /* ExpenseRow.swift */; };
 		6BB986FBA08F36D1051E4BF3 /* DuoSpendApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BB0CD28CE88854BFC49E5C3 /* DuoSpendApp.swift */; };
 		6F3935F6DDE436240C4E388B /* SplitRatio.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19C8B4A03434F5EA7E7F8052 /* SplitRatio.swift */; };
+		704F2B4B2F73599A004F8F19 /* DuoSpendStore.storekit in Resources */ = {isa = PBXBuildFile; fileRef = 704F2B4A2F73599A004F8F19 /* DuoSpendStore.storekit */; };
 		7BC829A4AB6B86532D8690ED /* PartnerRole.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C6FACA7A3EF6858B4842AB1 /* PartnerRole.swift */; };
 		7D2C3BC30688171350EEB3C5 /* ProjectCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = E555932D18C4E9C0CB39F551 /* ProjectCard.swift */; };
 		88641563DBC6B716A6FEBFFC /* SplashScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A51425789DA23F45C1129889 /* SplashScreenView.swift */; };
@@ -95,6 +96,7 @@
 		58DC5CE2EFF6B9164FEB3BAC /* ExpenseRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenseRow.swift; sourceTree = "<group>"; };
 		5ACF30E606058799801CFD3B /* DuoLogoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DuoLogoView.swift; sourceTree = "<group>"; };
 		65B136CEC056F2422859D8F4 /* Expense.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Expense.swift; sourceTree = "<group>"; };
+		704F2B4A2F73599A004F8F19 /* DuoSpendStore.storekit */ = {isa = PBXFileReference; lastKnownFileType = text; path = DuoSpendStore.storekit; sourceTree = "<group>"; };
 		70944B10F95B9DFF0E6FA873 /* Decimal+Currency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Decimal+Currency.swift"; sourceTree = "<group>"; };
 		70D941122F68079800969F9E /* DuoSpend.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = DuoSpend.xctestplan; sourceTree = "<group>"; };
 		78A19E541167CDD82A20D1F0 /* AppIconExporter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppIconExporter.swift; sourceTree = "<group>"; };
@@ -123,7 +125,7 @@
 		F04C844F9A1C3C34ECF318DB /* ProjectListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectListView.swift; sourceTree = "<group>"; };
 		F33F2D51444D9C58837829FF /* PaywallDebugView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = PaywallDebugView.swift; sourceTree = "<group>"; };
 		F341BC05D86E13339E47EFC7 /* ProjectDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectDetailView.swift; sourceTree = "<group>"; };
-		F3F2E3D4C5B6A7981234ABCE /* Localizable.xcstrings */ = {isa = PBXFileReference; path = Localizable.xcstrings; sourceTree = "<group>"; };
+		F3F2E3D4C5B6A7981234ABCE /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXGroup section */
@@ -212,6 +214,7 @@
 				101224910B9E1829A4C7B57C /* Assets.xcassets */,
 				F3F2E3D4C5B6A7981234ABCE /* Localizable.xcstrings */,
 				048E66DC6F24E1DFE4B15DB8 /* PrivacyInfo.xcprivacy */,
+				704F2B4A2F73599A004F8F19 /* DuoSpendStore.storekit */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -367,6 +370,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				704F2B4B2F73599A004F8F19 /* DuoSpendStore.storekit in Resources */,
 				E4E26A0F71407B1BECD50BD1 /* Assets.xcassets in Resources */,
 				F4F2E3D4C5B6A7981234ABCF /* Localizable.xcstrings in Resources */,
 				D40D37934E763F71832D9AF1 /* PrivacyInfo.xcprivacy in Resources */,

@@ -37,7 +37,7 @@ Cible prioritaire : couples qui organisent un projet commun, par exemple :
 
 ### v1.0 — Lancement
 - **Modèle** : freemium — 1 projet gratuit + achat unique 6,99 € (projets illimités à vie).
-- **Product ID StoreKit 2** : `com.duospend.unlimitedprojects` (Non-Consumable).
+- **Product ID StoreKit 2** : `fr.beabot.DuoSpend.unlimitedprojects` (Non-Consumable).
 - Sans publicité, sans abonnement.
 - Fonctionnalités gratuites : toutes les features core (widgets, export PDF, balance, budget).
 - Paywall déclenché à la création du 2e projet.

@@ -173,7 +173,7 @@ Format recommandé :
 
 **Contexte** : fixer le prix et le modèle de monétisation avant implémentation StoreKit 2.
 
-**Décision** : freemium avec 1 projet gratuit. Achat unique (non-consommable) à 6,99 € pour débloquer les projets illimités à vie. Product ID : `com.duospend.unlimitedprojects`.
+**Décision** : freemium avec 1 projet gratuit. Achat unique (non-consommable) à 6,99 € pour débloquer les projets illimités à vie. Product ID : `fr.beabot.DuoSpend.unlimitedprojects`.
 
 **Évolution prévue** :
 - v1.0 : 6,99 € (prix de lancement optionnel à 4,99 € les 2 premières semaines)

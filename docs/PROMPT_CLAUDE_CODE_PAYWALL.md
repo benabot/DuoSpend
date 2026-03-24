@@ -12,7 +12,7 @@ Le repo est dans `/Users/benoitabot/Sites/DuoSpend`.
 Implémenter le paywall StoreKit 2 :
 - **1 projet gratuit** — toutes les features accessibles.
 - **Achat unique 6,99 €** — débloque les projets illimités à vie.
-- Product ID : `com.duospend.unlimitedprojects` (Non-Consumable).
+- Product ID : `fr.beabot.DuoSpend.unlimitedprojects` (Non-Consumable).
 - Le paywall se déclenche à la création du **2e projet**.
 
 ## Fichiers à créer
@@ -34,7 +34,7 @@ final class StoreManager {
     private(set) var purchaseError: String?
     private(set) var isLoading = false
     
-    private let productID = "com.duospend.unlimitedprojects"
+    private let productID = "fr.beabot.DuoSpend.unlimitedprojects"
     private let logger = Logger(subsystem: "fr.beabot.DuoSpend", category: "StoreManager")
     private var transactionListener: Task<Void, Never>?
     
@@ -134,7 +134,7 @@ Créer un fichier `SETUP_STOREKIT.md` dans `docs/` qui documente la procédure s
 5. Ajouter un produit :
    - Type : Non-Consumable
    - Reference Name : DuoSpend Pro
-   - Product ID : com.duospend.unlimitedprojects
+   - Product ID : fr.beabot.DuoSpend.unlimitedprojects
    - Price : 6.99
    - Display Name (fr) : DuoSpend Pro
    - Description (fr) : Débloquer les projets illimités
