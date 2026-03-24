@@ -4,8 +4,8 @@ import SwiftUI
 
 private struct OnboardingPage {
     let emoji: String
-    let title: String
-    let description: String
+    let title: LocalizedStringKey
+    let description: LocalizedStringKey
     let accentColor: Color
     let iconName: String
 }
@@ -87,7 +87,7 @@ struct OnboardingView: View {
                     // Bouton principal
                     Button(action: advance) {
                         HStack(spacing: 8) {
-                            Text(currentPage < pages.count - 1 ? "Continuer" : "C'est parti !")
+                            Text(currentPage < pages.count - 1 ? LocalizedStringKey("Continuer") : LocalizedStringKey("C'est parti !"))
                                 .fontWeight(.semibold)
                             Image(systemName: currentPage < pages.count - 1 ? "arrow.right" : "checkmark")
                                 .font(.subheadline.weight(.semibold))

@@ -1,6 +1,6 @@
 {
   "version": "1.0.0",
-  "lastScanned": 1773914953649,
+  "lastScanned": 1774361777894,
   "projectRoot": "/Users/benoitabot/Sites/DuoSpend",
   "techStack": {
     "languages": [],
@@ -27,7 +27,10 @@
     "mainDirectories": [
       "docs"
     ],
-    "gitBranches": null
+    "gitBranches": {
+      "defaultBranch": "main",
+      "branchingStrategy": null
+    }
   },
   "customNotes": [],
   "directoryMap": {
@@ -35,7 +38,7 @@
       "path": "DuoSpend",
       "purpose": null,
       "fileCount": 2,
-      "lastAccessed": 1773914953627,
+      "lastAccessed": 1774361777847,
       "keyFiles": [
         "DuoSpend.entitlements",
         "Info.plist"
@@ -45,7 +48,7 @@
       "path": "DuoSpend.xcodeproj",
       "purpose": null,
       "fileCount": 1,
-      "lastAccessed": 1773914953627,
+      "lastAccessed": 1774361777863,
       "keyFiles": [
         "project.pbxproj"
       ]
@@ -54,7 +57,7 @@
       "path": "DuoSpendTests",
       "purpose": null,
       "fileCount": 2,
-      "lastAccessed": 1773914953627,
+      "lastAccessed": 1774361777864,
       "keyFiles": [
         "BalanceCalculatorTests.swift",
         "SyncMergeServiceTests.swift"
@@ -64,7 +67,7 @@
       "path": "DuoSpendWidget",
       "purpose": null,
       "fileCount": 6,
-      "lastAccessed": 1773914953628,
+      "lastAccessed": 1774361777865,
       "keyFiles": [
         "DuoSpendWidget.entitlements",
         "DuoSpendWidget.swift",
@@ -77,14 +80,14 @@
       "path": "build",
       "purpose": "Build output",
       "fileCount": 0,
-      "lastAccessed": 1773914953629,
+      "lastAccessed": 1774361777865,
       "keyFiles": []
     },
     "docs": {
       "path": "docs",
       "purpose": "Documentation",
       "fileCount": 10,
-      "lastAccessed": 1773914953629,
+      "lastAccessed": 1774361777866,
       "keyFiles": [
         "ARCHITECTURE.md",
         "DECISIONS.md",
@@ -97,7 +100,7 @@
       "path": "DuoSpend/App",
       "purpose": "Application code",
       "fileCount": 1,
-      "lastAccessed": 1773914953633,
+      "lastAccessed": 1774361777871,
       "keyFiles": [
         "DuoSpendApp.swift"
       ]
@@ -106,7 +109,7 @@
       "path": "DuoSpend/Models",
       "purpose": "Data models",
       "fileCount": 5,
-      "lastAccessed": 1773914953634,
+      "lastAccessed": 1774361777885,
       "keyFiles": [
         "Expense.swift",
         "PartnerRole.swift",
@@ -117,7 +120,7 @@
       "path": "DuoSpend/Services",
       "purpose": "Business logic services",
       "fileCount": 4,
-      "lastAccessed": 1773914953634,
+      "lastAccessed": 1774361777886,
       "keyFiles": [
         "BalanceCalculator.swift",
         "PDFExportService.swift",
@@ -128,7 +131,7 @@
       "path": "DuoSpend/Views",
       "purpose": "View templates",
       "fileCount": 8,
-      "lastAccessed": 1773914953634,
+      "lastAccessed": 1774361777889,
       "keyFiles": [
         "AddExpenseView.swift",
         "CreateProjectView.swift",
@@ -136,6 +139,121 @@
       ]
     }
   },
-  "hotPaths": [],
+  "hotPaths": [
+    {
+      "path": "DuoSpend.xcodeproj/project.pbxproj",
+      "accessCount": 33,
+      "lastAccessed": 1774370741145,
+      "type": "file"
+    },
+    {
+      "path": "DuoSpend/Views/ProjectDetailView.swift",
+      "accessCount": 9,
+      "lastAccessed": 1774369455340,
+      "type": "file"
+    },
+    {
+      "path": "DuoSpend",
+      "accessCount": 3,
+      "lastAccessed": 1774363289674,
+      "type": "directory"
+    },
+    {
+      "path": "docs/TODO.md",
+      "accessCount": 3,
+      "lastAccessed": 1774363517558,
+      "type": "file"
+    },
+    {
+      "path": "DuoSpend/Info.plist",
+      "accessCount": 3,
+      "lastAccessed": 1774368742496,
+      "type": "file"
+    },
+    {
+      "path": "DuoSpend/Views/AddExpenseView.swift",
+      "accessCount": 3,
+      "lastAccessed": 1774369461225,
+      "type": "file"
+    },
+    {
+      "path": "DuoSpend/Views/OnboardingView.swift",
+      "accessCount": 3,
+      "lastAccessed": 1774369462643,
+      "type": "file"
+    },
+    {
+      "path": "DuoSpend/Views/Components/ProjectCard.swift",
+      "accessCount": 2,
+      "lastAccessed": 1774369439375,
+      "type": "file"
+    },
+    {
+      "path": "docs/MVP.md",
+      "accessCount": 1,
+      "lastAccessed": 1774362131030,
+      "type": "file"
+    },
+    {
+      "path": "docs/DECISIONS.md",
+      "accessCount": 1,
+      "lastAccessed": 1774362131360,
+      "type": "file"
+    },
+    {
+      "path": "",
+      "accessCount": 1,
+      "lastAccessed": 1774363159023,
+      "type": "directory"
+    },
+    {
+      "path": "DuoSpend.xcodeproj",
+      "accessCount": 1,
+      "lastAccessed": 1774363159630,
+      "type": "directory"
+    },
+    {
+      "path": "DuoSpend/Views/ProjectListView.swift",
+      "accessCount": 1,
+      "lastAccessed": 1774368642678,
+      "type": "file"
+    },
+    {
+      "path": "DuoSpend/Views/CreateProjectView.swift",
+      "accessCount": 1,
+      "lastAccessed": 1774368648134,
+      "type": "file"
+    },
+    {
+      "path": "DuoSpend/Views/EditProjectView.swift",
+      "accessCount": 1,
+      "lastAccessed": 1774368648504,
+      "type": "file"
+    },
+    {
+      "path": "DuoSpend/Views/Components/BalanceBanner.swift",
+      "accessCount": 1,
+      "lastAccessed": 1774368652946,
+      "type": "file"
+    },
+    {
+      "path": "DuoSpend/Views/Components/ExpenseRow.swift",
+      "accessCount": 1,
+      "lastAccessed": 1774368653336,
+      "type": "file"
+    },
+    {
+      "path": "DuoSpend/Resources/Localizable.xcstrings",
+      "accessCount": 1,
+      "lastAccessed": 1774369366769,
+      "type": "file"
+    },
+    {
+      "path": "DuoSpend/Views/SplashScreenView.swift",
+      "accessCount": 1,
+      "lastAccessed": 1774371220947,
+      "type": "file"
+    }
+  ],
   "userDirectives": []
 }

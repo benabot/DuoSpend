@@ -44,6 +44,7 @@
 		E900A69F5F80A513D8185B47 /* BalanceCalculatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A20F129BA65242D426C38F3 /* BalanceCalculatorTests.swift */; };
 		F52EB6E0C6F7B6BA38C999AB /* Decimal+Currency.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70944B10F95B9DFF0E6FA873 /* Decimal+Currency.swift */; };
 		F824C477FF3AE8FA11686D86 /* DuoLogoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ACF30E606058799801CFD3B /* DuoLogoView.swift */; };
+		F4F2E3D4C5B6A7981234ABCF /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = F3F2E3D4C5B6A7981234ABCE /* Localizable.xcstrings */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -115,6 +116,7 @@
 		EF143C9D714A3EE91F059A75 /* AddExpenseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddExpenseView.swift; sourceTree = "<group>"; };
 		F04C844F9A1C3C34ECF318DB /* ProjectListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectListView.swift; sourceTree = "<group>"; };
 		F341BC05D86E13339E47EFC7 /* ProjectDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectDetailView.swift; sourceTree = "<group>"; };
+		F3F2E3D4C5B6A7981234ABCE /* Localizable.xcstrings */ = {isa = PBXFileReference; path = Localizable.xcstrings; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXGroup section */
@@ -199,6 +201,7 @@
 			isa = PBXGroup;
 			children = (
 				101224910B9E1829A4C7B57C /* Assets.xcassets */,
+				F3F2E3D4C5B6A7981234ABCE /* Localizable.xcstrings */,
 				048E66DC6F24E1DFE4B15DB8 /* PrivacyInfo.xcprivacy */,
 			);
 			path = Resources;
@@ -328,11 +331,12 @@
 			};
 			buildConfigurationList = AE5231B212A9BF615F0F8F9F /* Build configuration list for PBXProject "DuoSpend" */;
 			compatibilityVersion = "Xcode 14.0";
-			developmentRegion = en;
+			developmentRegion = fr;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				Base,
 				en,
+				fr,
 			);
 			mainGroup = FA20294A830E9CA99DCAFBD7;
 			minimizedProjectReferenceProxies = 1;
@@ -353,6 +357,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E4E26A0F71407B1BECD50BD1 /* Assets.xcassets in Resources */,
+				F4F2E3D4C5B6A7981234ABCF /* Localizable.xcstrings in Resources */,
 				D40D37934E763F71832D9AF1 /* PrivacyInfo.xcprivacy in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

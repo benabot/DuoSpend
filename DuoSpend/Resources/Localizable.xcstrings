@@ -1,0 +1,841 @@
+{
+  "sourceLanguage" : "fr",
+  "strings" : {
+    "·" : {
+
+    },
+    "&" : {
+
+    },
+    "%@ dépense" : {
+
+    },
+    "%@ dépensés au total" : {
+      "comment" : "Total spent amount in balance banner",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ spent in total"
+          }
+        }
+      }
+    },
+    "%@%%" : {
+
+    },
+    "%@%% · %@%%" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%1$@%% · %2$@%%"
+          }
+        }
+      }
+    },
+    "%lld dépense" : {
+      "comment" : "Expense count — plural with zero variant",
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "variations" : {
+            "plural" : {
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld expense"
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld expenses"
+                }
+              },
+              "zero" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "No expenses"
+                }
+              }
+            }
+          }
+        },
+        "fr" : {
+          "variations" : {
+            "plural" : {
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld dépense"
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld dépenses"
+                }
+              },
+              "zero" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Aucune dépense"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "%lld% du budget" : {
+      "comment" : "Budget usage percentage in project card",
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld% of budget"
+          }
+        }
+      }
+    },
+    "%lld% utilisé" : {
+      "comment" : "Budget percentage used in project detail",
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld% used"
+          }
+        }
+      }
+    },
+    "⚠ Budget dépassé" : {
+      "comment" : "Over-budget warning label",
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "⚠ Over budget"
+          }
+        }
+      }
+    },
+    "€" : {
+
+    },
+    "à" : {
+      "comment" : "Preposition in balance text: '[debtor] owes [amount] to [creditor]'",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "to"
+          }
+        }
+      }
+    },
+    "À deux, c'est\nmieux géré" : {
+      "comment" : "Onboarding page 1 title",
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Better managed\ntogether"
+          }
+        }
+      }
+    },
+    "À deux, c'est mieux !" : {
+      "comment" : "Empty state headline in project list",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Better together!"
+          }
+        }
+      }
+    },
+    "à rembourser" : {
+      "comment" : "Balance banner subtitle — amount to reimburse",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "to reimburse"
+          }
+        }
+      }
+    },
+    "Ajouter" : {
+      "comment" : "Confirm button when creating a new expense",
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Add"
+          }
+        }
+      }
+    },
+    "Ajouter une dépense" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Add an expense"
+          }
+        }
+      }
+    },
+    "Annuler" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cancel"
+          }
+        }
+      }
+    },
+    "Aucune dépense" : {
+      "comment" : "Empty state label — no expenses yet",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No expenses"
+          }
+        }
+      }
+    },
+    "Aucune inscription. Aucun cloud imposé. Vos données restent sur votre iPhone. iCloud sync disponible si vous le souhaitez." : {
+      "comment" : "Onboarding page 3 description",
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No sign-up. No forced cloud. Your data stays on your iPhone. iCloud sync available if you want it."
+          }
+        }
+      }
+    },
+    "budget" : {
+      "comment" : "Budget figure label in project summary",
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "budget"
+          }
+        }
+      }
+    },
+    "Budget du projet" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Project budget"
+          }
+        }
+      }
+    },
+    "C'est parti !" : {
+      "comment" : "CTA button — empty state and last onboarding page",
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Let's go!"
+          }
+        }
+      }
+    },
+    "Continuer" : {
+      "comment" : "Onboarding next-page button",
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Continue"
+          }
+        }
+      }
+    },
+    "Contributions" : {
+      "comment" : "Section title — partner spending breakdown",
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Contributions"
+          }
+        }
+      }
+    },
+    "Créé le %@" : {
+      "comment" : "Project creation date label — %@ is a formatted date string",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Created on %@"
+          }
+        }
+      }
+    },
+    "Créer le projet" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Create project"
+          }
+        }
+      }
+    },
+    "Date" : {
+      "comment" : "Sort order option",
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Date"
+          }
+        }
+      }
+    },
+    "dépassé" : {
+      "comment" : "Over-budget figure label (amount exceeded)",
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "over"
+          }
+        }
+      }
+    },
+    "Dépense" : {
+      "comment" : "Swipe action label — add expense to project",
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Expense"
+          }
+        }
+      }
+    },
+    "dépensé" : {
+      "comment" : "Spent figure label in project card and summary",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "spent"
+          }
+        }
+      }
+    },
+    "Dépenses" : {
+      "comment" : "Section header — expenses list",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Expenses"
+          }
+        }
+      }
+    },
+    "doit" : {
+      "comment" : "Verb in balance text: '[debtor] owes [amount] to [creditor]'",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "owes"
+          }
+        }
+      }
+    },
+    "DuoSpend" : {
+
+    },
+    "DuoSpend suit vos dépenses communes et répond à une seule question : qui doit combien à qui ?" : {
+      "comment" : "Onboarding page 1 description",
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "DuoSpend tracks your shared expenses and answers one question: who owes what to whom?"
+          }
+        }
+      }
+    },
+    "Enregistrer" : {
+      "comment" : "Confirm button when editing",
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Save"
+          }
+        }
+      }
+    },
+    "Équilibre" : {
+      "comment" : "Balance status label in project card",
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Balanced"
+          }
+        }
+      }
+    },
+    "Ex : 5 000" : {
+      "comment" : "Budget field placeholder",
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "E.g. 5,000"
+          }
+        }
+      }
+    },
+    "Exporter en PDF" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Export as PDF"
+          }
+        }
+      }
+    },
+    "Gérez vos dépenses à deux 💕" : {
+
+    },
+    "Les noms des partenaires doivent être différents." : {
+      "comment" : "Validation error in edit project form",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Partner names must be different."
+          }
+        }
+      }
+    },
+    "Les prénoms doivent être différents." : {
+      "comment" : "Validation error in create project form",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Names must be different."
+          }
+        }
+      }
+    },
+    "Libellé" : {
+      "comment" : "Expense title field section header",
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Title"
+          }
+        }
+      }
+    },
+    "Mariage, voyage, déménagement…\nsuivez vos dépenses ensemble." : {
+      "comment" : "Empty state subtitle in project list",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wedding, trip, moving…\ntrack your expenses together."
+          }
+        }
+      }
+    },
+    "Modifier" : {
+      "comment" : "Edit button / navigation title when editing an expense",
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Edit"
+          }
+        }
+      }
+    },
+    "Modifier le projet" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Edit project"
+          }
+        }
+      }
+    },
+    "Montant" : {
+      "comment" : "Amount field label and sort order option",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Amount"
+          }
+        }
+      }
+    },
+    "Montant invalide" : {
+      "comment" : "Validation error for amount field",
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Invalid amount"
+          }
+        }
+      }
+    },
+    "Nouveau projet" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "New project"
+          }
+        }
+      }
+    },
+    "Nouvelle dépense" : {
+      "comment" : "Navigation title when adding a new expense",
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "New expense"
+          }
+        }
+      }
+    },
+    "Organisez par\nprojet" : {
+      "comment" : "Onboarding page 2 title",
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Organize by\nproject"
+          }
+        }
+      }
+    },
+    "Partenaires" : {
+      "comment" : "Partners section header in project forms",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Partners"
+          }
+        }
+      }
+    },
+    "Passer" : {
+      "comment" : "Skip button in onboarding",
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Skip"
+          }
+        }
+      }
+    },
+    "Payé par" : {
+      "comment" : "Paid-by section header in add expense form",
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Paid by"
+          }
+        }
+      }
+    },
+    "Payeur" : {
+      "comment" : "Sort order option",
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Payer"
+          }
+        }
+      }
+    },
+    "Personnalisé" : {
+      "comment" : "Custom split tab label",
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Custom"
+          }
+        }
+      }
+    },
+    "Prénom (ex : Marie)" : {
+      "comment" : "Partner 1 name field placeholder",
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "First name (e.g. Marie)"
+          }
+        }
+      }
+    },
+    "Prénom (ex : Thomas)" : {
+      "comment" : "Partner 2 name field placeholder",
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "First name (e.g. Thomas)"
+          }
+        }
+      }
+    },
+    "Privé et\nhors-ligne" : {
+      "comment" : "Onboarding page 3 title",
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Private &\noffline"
+          }
+        }
+      }
+    },
+    "Projet" : {
+      "comment" : "Project section header in forms",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Project"
+          }
+        }
+      }
+    },
+    "Répartition" : {
+      "comment" : "Split section header in add expense form",
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Split"
+          }
+        }
+      }
+    },
+    "restant" : {
+      "comment" : "Remaining budget figure label",
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "remaining"
+          }
+        }
+      }
+    },
+    "Restaurant, hôtel, courses…" : {
+      "comment" : "Expense title field placeholder",
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Restaurant, hotel, groceries…"
+          }
+        }
+      }
+    },
+    "Supprimer" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Delete"
+          }
+        }
+      }
+    },
+    "Supprimer « %@ » et toutes ses dépenses ?" : {
+      "comment" : "Alert message — delete project confirmation in detail. %@ is the project name.",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Delete \"%@\" and all its expenses?"
+          }
+        }
+      }
+    },
+    "Supprimer %@ et toutes ses dépenses ?" : {
+      "comment" : "Alert message — delete project confirmation in list. %@ is the project name.",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Delete %@ and all its expenses?"
+          }
+        }
+      }
+    },
+    "Supprimer le projet" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Delete project"
+          }
+        }
+      }
+    },
+    "Supprimer le projet ?" : {
+      "comment" : "Alert title — delete project",
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Delete project?"
+          }
+        }
+      }
+    },
+    "Tapez + pour ajouter\nla première dépense" : {
+      "comment" : "Empty state subtitle in project detail",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tap + to add\nthe first expense"
+          }
+        }
+      }
+    },
+    "Trier par" : {
+      "comment" : "Sort picker label",
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sort by"
+          }
+        }
+      }
+    },
+    "Voir les %lld autres" : {
+      "comment" : "Show all expenses button — %lld is the remaining count",
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "See %lld more"
+          }
+        }
+      }
+    },
+    "Vous êtes à l'équilibre" : {
+      "comment" : "Balance banner — balanced state",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "You're even"
+          }
+        }
+      }
+    },
+    "Voyage à Rome, Mariage, Bébé…" : {
+      "comment" : "Project name field placeholder",
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Trip to Rome, Wedding, Baby…"
+          }
+        }
+      }
+    },
+    "Voyage, mariage, colocation, travaux… Créez un projet pour chaque aventure commune et gardez un œil sur le budget." : {
+      "comment" : "Onboarding page 2 description",
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Trip, wedding, flatshare, renovations… Create a project for each shared adventure and keep an eye on the budget."
+          }
+        }
+      }
+    }
+  },
+  "version" : "1.0"
+}

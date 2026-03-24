@@ -84,7 +84,7 @@ struct AddExpenseView: View {
                 .padding(.bottom, 32)
             }
             .background(Color.warmBackground.ignoresSafeArea())
-            .navigationTitle(isEditing ? "Modifier" : "Nouvelle dépense")
+            .navigationTitle(isEditing ? LocalizedStringKey("Modifier") : LocalizedStringKey("Nouvelle dépense"))
             .navigationBarTitleDisplayMode(.inline)
             .presentationDetents([.large])
             .presentationCornerRadius(24)
@@ -95,7 +95,7 @@ struct AddExpenseView: View {
                         .font(.system(.body, design: .rounded))
                 }
                 ToolbarItem(placement: .confirmationAction) {
-                    Button(isEditing ? "Enregistrer" : "Ajouter") { saveExpense() }
+                    Button(isEditing ? LocalizedStringKey("Enregistrer") : LocalizedStringKey("Ajouter")) { saveExpense() }
                         .font(.system(.body, design: .rounded))
                         .fontWeight(.semibold)
                         .disabled(!isFormValid)

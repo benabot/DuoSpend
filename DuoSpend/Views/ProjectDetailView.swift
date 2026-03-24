@@ -14,6 +14,9 @@ enum ExpenseSortOrder: String, CaseIterable {
         case .payer: return "person.fill"
         }
     }
+
+    /// Localizable label (rawValue is the French key in Localizable.xcstrings)
+    var label: LocalizedStringKey { LocalizedStringKey(rawValue) }
 }
 
 /// Détail d'un projet : balance, budget, liste des dépenses
@@ -170,7 +173,7 @@ struct ProjectDetailView: View {
 
                 VStack(alignment: .trailing, spacing: 2) {
                     let count = projectExpenses.count
-                    Text(count == 0 ? "Aucune dépense" : "\(count) dépense\(count == 1 ? "" : "s")")
+                    Text("\(count) dépense")
                         .font(.system(.caption, design: .rounded))
                         .fontWeight(.medium)
                     Text("Créé le \(project.createdAt.formatted(date: .abbreviated, time: .omitted))")
@@ -312,7 +315,7 @@ struct ProjectDetailView: View {
                 .font(.system(.headline, design: .rounded))
                 .fontWeight(.bold)
                 .foregroundStyle(color)
-            Text("\(count) dépense\(count == 1 ? "" : "s")")
+            Text("\(count) dépense")
                 .font(.system(.caption2, design: .rounded))
                 .foregroundStyle(.secondary)
         }
@@ -333,11 +336,11 @@ struct ProjectDetailView: View {
                 Menu {
                     Picker("Trier par", selection: $sortOrder) {
                         ForEach(ExpenseSortOrder.allCases, id: \.self) { order in
-                            Label(order.rawValue, systemImage: order.icon).tag(order)
+                            Label(order.label, systemImage: order.icon).tag(order)
                         }
                     }
                 } label: {
-                    Label(sortOrder.rawValue, systemImage: "arrow.up.arrow.down")
+                    Label(sortOrder.label, systemImage: "arrow.up.arrow.down")
                         .font(.system(.caption, design: .rounded))
                         .fontWeight(.medium)
                         .foregroundStyle(Color.accentPrimary)

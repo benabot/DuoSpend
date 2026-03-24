@@ -99,10 +99,7 @@ struct ProjectCard: View {
 
             // ── Footer : nb dépenses ─────────────────────────────────
             HStack {
-                Label(
-                    "\(project.expenses.count) dépense\(project.expenses.count == 1 ? "" : "s")",
-                    systemImage: "list.bullet"
-                )
+                Label("\(project.expenses.count) dépense", systemImage: "list.bullet")
                 .font(.system(.caption, design: .rounded))
                 .foregroundStyle(.secondary)
 
