@@ -76,7 +76,7 @@
 
 ## Phase 7 : Préparation App Store (en cours)
 
-- [ ] Localisation FR + EN (String Catalog .xcstrings)
+- [x] Localisation FR + EN (String Catalog .xcstrings) ✅ 2026-03-24
 - [ ] StoreKit 2 — paywall 1 projet gratuit + achat unique 4,99€
 - [ ] Privacy Policy sur beabot.fr/duospend/privacy
 - [ ] Support URL sur beabot.fr/duospend/support

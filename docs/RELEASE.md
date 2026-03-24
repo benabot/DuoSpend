@@ -57,18 +57,21 @@ Positionnement du MVP :
 - Fonctionnement sans réseau.
 
 ### Qualité UX
-- Aucune chaîne cassée.
-- Aucun texte tronqué sur petits écrans pris en charge.
-- Mode sombre vérifié.
-- États vides cohérents.
-- Formulaires validés.
-- Pas de crash sur navigation standard.
+- Aucune chaîne cassée (FR et EN).
+- Aucun texte tronqué sur petits écrans pris en charge (FR et EN).
+- Mode sombre vérifié (FR et EN).
+- États vides cohérents (FR et EN).
+- Formulaires validés (FR et EN).
+- Pas de crash sur navigation standard (FR et EN).
+- Localisation : tous les écrans, widgets et formulaires traduits en français et anglais via String Catalog xcstrings.
 
 ### Technique
 - Pas de `print()` résiduel.
 - Pas de force unwrap hors previews.
 - Pas de logique métier dans les vues.
 - Pas de régression SwiftData sur les relations.
+- Vérifier que `LocalizedStringKey` est utilisé correctement (jamais de ternaires pour du texte localisé).
+- Widgets bundlés correctement avec xcstrings pour traduction complète.
 
 ## 4. TestFlight
 
