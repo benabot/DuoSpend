@@ -218,9 +218,15 @@ struct ProjectDetailView: View {
                 .clipShape(Capsule())
 
                 HStack {
-                    Text(isOverBudget ? "⚠ Budget dépassé" : "\(Int(budgetFraction * 100))% utilisé")
-                        .font(.system(.caption2, design: .rounded))
-                        .foregroundStyle(isOverBudget ? .red : .secondary)
+                    Group {
+                        if isOverBudget {
+                            Text("⚠ Budget dépassé")
+                        } else {
+                            Text("\(Int(budgetFraction * 100))% utilisé")
+                        }
+                    }
+                    .font(.system(.caption2, design: .rounded))
+                    .foregroundStyle(isOverBudget ? .red : .secondary)
                     Spacer()
                 }
             }
@@ -231,7 +237,7 @@ struct ProjectDetailView: View {
         .shadow(color: shadowColor, radius: 10, y: 4)
     }
 
-    private func summaryFigure(value: String, label: String, color: Color) -> some View {
+    private func summaryFigure(value: String, label: LocalizedStringKey, color: Color) -> some View {
         VStack(spacing: 4) {
             Text(value)
                 .font(.system(.headline, design: .rounded))

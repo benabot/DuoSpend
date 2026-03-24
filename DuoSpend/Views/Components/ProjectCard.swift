@@ -86,9 +86,15 @@ struct ProjectCard: View {
                     .clipShape(Capsule())
 
                     HStack {
-                        Text(isOverBudget ? "⚠ Budget dépassé" : "\(Int(budgetFraction * 100))% du budget")
-                            .font(.system(.caption2, design: .rounded))
-                            .foregroundStyle(isOverBudget ? Color.red : Color.secondary)
+                        Group {
+                            if isOverBudget {
+                                Text("⚠ Budget dépassé")
+                            } else {
+                                Text("\(Int(budgetFraction * 100))% du budget")
+                            }
+                        }
+                        .font(.system(.caption2, design: .rounded))
+                        .foregroundStyle(isOverBudget ? Color.red : Color.secondary)
                         Spacer()
                         Text(project.budget.formattedCurrency)
                             .font(.system(.caption2, design: .rounded))

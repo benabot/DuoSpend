@@ -36,7 +36,7 @@ struct DuoSpendWidgetView: View {
 
             Spacer()
 
-            Text("\(entry.totalSpent) dep.")
+            Text(entry.totalSpent)
                 .font(.system(.caption2, design: .rounded))
                 .foregroundStyle(.secondary)
         }
@@ -91,7 +91,7 @@ struct DuoSpendWidgetView: View {
             if !entry.recentExpenses.isEmpty {
                 Divider()
 
-                Text("Dernieres depenses")
+                Text("Dernières dépenses")
                     .font(.system(.caption2, design: .rounded))
                     .fontWeight(.medium)
                     .foregroundStyle(.secondary)
@@ -128,7 +128,7 @@ struct DuoSpendWidgetView: View {
         Group {
             switch entry.balanceStatus {
             case .balanced:
-                Text("Equilibre")
+                Text("Équilibre")
                     .font(.system(.title3, design: .rounded))
                     .fontWeight(.bold)
                     .foregroundStyle(.green)
@@ -142,7 +142,7 @@ struct DuoSpendWidgetView: View {
                         .font(.system(.title3, design: .rounded))
                         .fontWeight(.bold)
                         .foregroundStyle(accentColor)
-                    Text("a \(creditor)")
+                    Text("à \(creditor)")
                         .font(.system(.caption, design: .rounded))
                         .foregroundStyle(.secondary)
                 }

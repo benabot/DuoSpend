@@ -142,14 +142,38 @@
   "hotPaths": [
     {
       "path": "DuoSpend.xcodeproj/project.pbxproj",
-      "accessCount": 33,
-      "lastAccessed": 1774370741145,
+      "accessCount": 37,
+      "lastAccessed": 1774391909156,
+      "type": "file"
+    },
+    {
+      "path": "DuoSpend/Resources/Localizable.xcstrings",
+      "accessCount": 15,
+      "lastAccessed": 1774391951702,
       "type": "file"
     },
     {
       "path": "DuoSpend/Views/ProjectDetailView.swift",
-      "accessCount": 9,
-      "lastAccessed": 1774369455340,
+      "accessCount": 12,
+      "lastAccessed": 1774389899432,
+      "type": "file"
+    },
+    {
+      "path": "DuoSpendWidget/DuoSpendWidgetView.swift",
+      "accessCount": 7,
+      "lastAccessed": 1774391932588,
+      "type": "file"
+    },
+    {
+      "path": "DuoSpend/Views/AddExpenseView.swift",
+      "accessCount": 5,
+      "lastAccessed": 1774390743399,
+      "type": "file"
+    },
+    {
+      "path": "DuoSpend/Views/Components/ProjectCard.swift",
+      "accessCount": 4,
+      "lastAccessed": 1774389903516,
       "type": "file"
     },
     {
@@ -171,21 +195,15 @@
       "type": "file"
     },
     {
-      "path": "DuoSpend/Views/AddExpenseView.swift",
-      "accessCount": 3,
-      "lastAccessed": 1774369461225,
-      "type": "file"
-    },
-    {
       "path": "DuoSpend/Views/OnboardingView.swift",
       "accessCount": 3,
       "lastAccessed": 1774369462643,
       "type": "file"
     },
     {
-      "path": "DuoSpend/Views/Components/ProjectCard.swift",
+      "path": "DuoSpend/Views/CreateProjectView.swift",
       "accessCount": 2,
-      "lastAccessed": 1774369439375,
+      "lastAccessed": 1774391798536,
       "type": "file"
     },
     {
@@ -219,12 +237,6 @@
       "type": "file"
     },
     {
-      "path": "DuoSpend/Views/CreateProjectView.swift",
-      "accessCount": 1,
-      "lastAccessed": 1774368648134,
-      "type": "file"
-    },
-    {
       "path": "DuoSpend/Views/EditProjectView.swift",
       "accessCount": 1,
       "lastAccessed": 1774368648504,
@@ -240,12 +252,6 @@
       "path": "DuoSpend/Views/Components/ExpenseRow.swift",
       "accessCount": 1,
       "lastAccessed": 1774368653336,
-      "type": "file"
-    },
-    {
-      "path": "DuoSpend/Resources/Localizable.xcstrings",
-      "accessCount": 1,
-      "lastAccessed": 1774369366769,
       "type": "file"
     },
     {

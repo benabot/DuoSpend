@@ -173,7 +173,7 @@ struct CreateProjectView: View {
 private struct FormSection<Content: View>: View {
     let icon: String
     let iconColor: Color
-    let title: String
+    let title: LocalizedStringKey
     @ViewBuilder let content: () -> Content
 
     var body: some View {

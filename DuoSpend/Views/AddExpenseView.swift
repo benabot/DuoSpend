@@ -208,7 +208,7 @@ struct AddExpenseView: View {
         .clipShape(RoundedRectangle(cornerRadius: 12))
     }
 
-    private func splitTab(label: String, isSelected: Bool, action: @escaping () -> Void) -> some View {
+    private func splitTab(label: LocalizedStringKey, isSelected: Bool, action: @escaping () -> Void) -> some View {
         Button(action: action) {
             Text(label)
                 .font(.system(.subheadline, design: .rounded))
@@ -259,7 +259,7 @@ struct AddExpenseView: View {
     // MARK: - Helpers
 
     @ViewBuilder
-    private func sectionCard<Content: View>(_ title: String, @ViewBuilder content: @escaping () -> Content) -> some View {
+    private func sectionCard<Content: View>(_ title: LocalizedStringKey, @ViewBuilder content: @escaping () -> Content) -> some View {
         VStack(alignment: .leading, spacing: 10) {
             Text(title)
                 .font(.system(.caption, design: .rounded))

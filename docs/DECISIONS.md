@@ -1,140 +1,168 @@
 # DuoSpend — Decisions Log
 
-Format :
-```
+Format recommandé :
+
+```text
 ### [DATE] — [TITRE]
 **Contexte** : pourquoi la question se posait
 **Décision** : ce qui a été choisi
 **Alternatives rejetées** : options écartées et pourquoi
+**Impact** : conséquence pratique dans le code ou le produit
 ```
 
 ---
 
-### 2025-02-10 — SwiftData comme couche de persistance
+### 2025-02-10 — SwiftUI comme couche UI principale
 
-**Contexte** : Choix de la solution de stockage local avec sync iCloud possible.
-**Décision** : SwiftData. Intégration native SwiftUI, sync iCloud automatique via CloudKit, moins de boilerplate que Core Data, modern Swift API.
+**Contexte** : choix de la technologie d’interface pour le MVP.
+
+**Décision** : utiliser SwiftUI comme couche UI principale de l’app.
+
 **Alternatives rejetées** :
-- Core Data → verbeux, intégration SwiftUI moins naturelle
-- Realm → dépendance tierce (contraire au principe zéro dépendance)
-- SQLite/GRDB → trop bas niveau, pas de sync iCloud gratuite
+- UIKit majoritaire → plus verbeux, moins cohérent avec Observation et SwiftData
+- architecture hybride UIKit/SwiftUI → complexité inutile pour un produit de cette taille
+
+**Impact** : les écrans sont conçus en SwiftUI ; UIKit reste éventuellement limité à des points d’intégration système.
 
 ---
 
-### 2025-02-10 — MVVM avec Observation framework
+### 2025-02-10 — SwiftData comme persistance principale
 
-**Contexte** : Choix d'architecture.
-**Décision** : MVVM avec `@Observable` (iOS 17+). Simple, adapté à SwiftUI, pas de boilerplate `ObservableObject` / `@Published`.
+**Contexte** : choix de la solution de stockage local avec possibilité d’évolution vers iCloud.
+
+**Décision** : SwiftData comme couche de persistance principale.
+
+**Alternatives rejetées** :
+- Core Data → plus verbeux, intégration moins directe pour ce scope
+- Realm → dépendance tierce
+- SQLite / GRDB → trop bas niveau pour le MVP
+
+**Impact** : modèles annotés `@Model`, lectures simples via `@Query`, mutations via `ModelContext`.
+
+---
+
+### 2025-02-10 — Architecture MVVM avec Observation framework
+
+**Contexte** : choix d’architecture pour séparer UI, orchestration et logique métier.
+
+**Décision** : MVVM avec `@Observable`.
+
 **Alternatives rejetées** :
 - TCA → trop complexe pour la taille du projet + dépendance tierce
-- MV (sans ViewModel) → insuffisant pour la logique de calcul de balance
-- VIPER → overkill pour une app indie solo
+- MV sans ViewModel → insuffisant pour la logique d’écran
+- VIPER → disproportionné pour une app indie solo
+
+**Impact** : `@Observable` remplace `ObservableObject` ; les vues gardent une responsabilité d’affichage.
 
 ---
 
-### 2025-02-10 — Decimal pour les montants financiers
+### 2025-02-10 — Tous les montants métier en Decimal
 
-**Contexte** : Quel type pour stocker les montants d'argent.
-**Décision** : `Decimal` (Foundation). Précision exacte, pas d'erreur d'arrondi.
-**Alternatives rejetées** :
-- `Double` → 0.1 + 0.2 ≠ 0.3, inacceptable pour de l'argent
-- `Int` (centimes) → fonctionnel mais moins lisible, conversion nécessaire partout
+**Contexte** : quel type utiliser pour représenter l’argent.
 
----
-
-### 2025-02-10 — Zéro dépendance tierce
-
-**Contexte** : Utiliser ou non des librairies externes (Charts, Lottie, etc.).
-**Décision** : Aucune. Apple frameworks uniquement.
-**Raisons** : pas de maintenance deps, pas de breaking changes, app plus légère, apprentissage Swift natif.
-
----
-
-### 2025-02-10 — MVP tout gratuit, paywall en v2
-
-**Contexte** : Implémenter le freemium dès le départ ?
-**Décision** : Non. Tout gratuit dans le MVP. StoreKit 2 + paywall ajoutés en v2 après validation de l'UX.
-**Raison** : Se concentrer sur la valeur produit, pas la monétisation. Pas de friction utilisateur pendant la phase de validation.
-
----
-
-### 2025-02-10 — Euro uniquement au MVP
-
-**Contexte** : Supporter plusieurs devises ?
-**Décision** : Non. Euro (€) uniquement. Multi-devises en v3 éventuel.
-**Raison** : Cible initiale = France. Ajouter le multi-devises complexifie les calculs (taux de change) et l'UX pour un gain marginal au lancement.
-
----
-
-### 2025-02-10 — Maximum 2 partenaires par projet (jamais plus)
-
-**Contexte** : Permettre 3+ personnes ?
-**Décision** : Non, jamais. DuoSpend est pour les **couples**. 2 partenaires max, c'est le concept.
-**Raison** : 3+ personnes = Splitwise/Tricount. La contrainte à 2 simplifie radicalement l'UX, le calcul de balance, et le positionnement marketing.
-
----
-
-### 2025-02-11 — Budget obligatoire par projet (pas optionnel)
-
-**Contexte** : Le budget était optionnel à la création du projet.
-**Décision** : Le budget devient **obligatoire**. `Project.budget` passe de `Decimal?` à `Decimal`.
-**Raison** : Le budget par projet est le cœur du concept DuoSpend ("budget projets pour couples"). Sans budget, l'app n'est qu'un tracker de dépenses classique. La barre de progression budget/dépensé est le visuel clé qui différencie l'app.
-
----
-
-### 2025-02-11 — Monétisation : 1 projet gratuit + achat unique 3,99 €
-
-**Contexte** : Comment monétiser l'app ?
-**Décision** : Freemium avec 1 projet gratuit. Achat unique (non-consommable) à 3,99 € pour débloquer les projets illimités à vie. StoreKit 2, product ID `com.duospend.unlimitedprojects`.
-**Raison** : Pas d'abonnement (trop agressif pour une app utilitaire). Pas de pubs (ruine l'UX). 3,99 € est le sweet spot App Store FR pour ce type d'app. 1 projet gratuit permet de tester vraiment l'app avant de payer. Conversion estimée : 3-5% des users actifs.
-
-
----
-
-### 2026-03-14 — Stratégie de sync couple : CloudKit Sharing en v2
-
-**Contexte** : Comment permettre aux deux partenaires d'utiliser DuoSpend chacun sur leur iPhone, avec leurs propres comptes Apple ?
-
-**Décision** : Approche progressive en 3 étapes.
-
-- **v1.0 (MVP)** : mono-appareil. Une seule personne saisit toutes les dépenses. Suffisant pour valider le concept et lancer sur l'App Store.
-- **v1.1** : iCloud sync automatique via SwiftData. Fonctionne si les deux iPhones partagent le même compte Apple (couple sur le même Apple ID). Quasi gratuit en développement — activer `cloudKitDatabase: .automatic` dans `ModelConfiguration`.
-- **v2.0** : CloudKit Sharing (`CKShare`). Chaque partenaire a son propre compte Apple. Marie crée un projet → génère un lien d'invitation (QR code ou lien partageable via iMessage/WhatsApp) → Thomas ouvre le lien → le projet apparaît dans son app. Les deux ajoutent des dépenses, la sync est bidirectionnelle et automatique.
-
-**Détails techniques v2.0** :
-- SwiftData + `NSPersistentCloudKitContainer` supporte les zones partagées CloudKit
-- `UICloudSharingController` pour l'invitation (ou custom avec `CKShare.URL`)
-- Chaque projet partagé vit dans une `CKRecordZone` dédiée
-- Le propriétaire du projet (créateur) contrôle les permissions (lecture/écriture)
-- Fonctionne hors ligne grâce au store local SwiftData — sync au retour du réseau
-- Zéro backend custom, zéro serveur, zéro coût infra — Apple gère tout
+**Décision** : `Decimal` pour tous les montants métier.
 
 **Alternatives rejetées** :
-- Firebase/Supabase → dépendance tierce, coût serveur, complexité RGPD, contre les principes du projet
-- Serveur custom (API REST) → overkill pour 2 users par projet, coût de maintenance
-- Bluetooth/peer-to-peer → portée limitée, UX fragile, pas de sync asynchrone
-- Partage par export/import JSON → pas de sync temps réel, UX laborieuse
+- `Double` → imprécisions d’arrondi inacceptables
+- `Int` en centimes → viable mais moins lisible pour l’état actuel du produit
+
+**Impact** : `Double` est exclu des montants fonctionnels et des calculs de balance.
 
 ---
 
-### 2026-03-18 — MultipeerConnectivity pour la sync locale entre 2 iPhones
+### 2025-02-10 — Aucune dépendance tierce
 
-**Contexte** : Permettre à un couple (2 Apple ID différents) de synchroniser un projet quand ils sont à proximité, sans attendre CloudKit Sharing (v2.0).
+**Contexte** : utiliser ou non des bibliothèques externes.
 
-**Décision** : Implémenter une sync peer-to-peer via MultipeerConnectivity (framework Apple natif). Le host envoie un `SyncPayload` JSON contenant le projet + toutes ses dépenses. Le receveur fusionne les données dans son SwiftData local avec dédoublonnage (titre + montant + date à la seconde).
-
-**Détails techniques** :
-- Service type : `duospend-sync` (Bonjour/Bluetooth/WiFi local)
-- Chiffrement : `MCEncryptionPreference.required` (DTLS)
-- Transfert : `MCSession.send()` pour les payloads < 90 KB, `sendResource()` au-delà
-- Résolution de conflits : dédoublonnage sur `title + amount + date`, pas de last-write-wins destructif
-- Sync manuelle uniquement (pas de sync en arrière-plan) — économie batterie + clarté UX
-- Architecture : `PeerSyncService` (MC) → `PeerSyncViewModel` (coordination) → `SyncMergeService` (fusion pure, testable)
-- Swift 6 strict concurrency : delegates MC isolés via `nonisolated(unsafe)` + `Task { @MainActor in }`
+**Décision** : frameworks Apple uniquement.
 
 **Alternatives rejetées** :
-- Attendre CloudKit Sharing v2.0 → trop long, les utilisateurs veulent syncer dès le lancement
-- WebSocket/serveur custom → dépendance tierce, coût infra, contre le principe zéro dépendance
-- Partage via AirDrop/fichier → pas intégré dans l'app, UX fragmentée
+- librairies UI / persistance / analytics externes → maintenance accrue, surface de rupture plus large
 
-**Complémentarité** : MultipeerConnectivity = sync ponctuelle à proximité. CloudKit Sharing (v2.0) = sync continue à distance. Les deux coexisteront.
+**Impact** : pas de dépendance tierce pour l’UI, la persistance, la sync ou la monétisation.
+
+---
+
+### 2025-02-10 — Produit limité à deux partenaires
+
+**Contexte** : faut-il supporter 3+ personnes par projet.
+
+**Décision** : non. DuoSpend est strictement conçu pour deux partenaires.
+
+**Alternatives rejetées** :
+- nombre variable de participants → change le produit et rapproche l’app de Splitwise / Tricount
+
+**Impact** : l’UX, les modèles et le calcul de balance restent optimisés pour 2 personnes uniquement.
+
+---
+
+### 2025-02-10 — Euro comme devise de départ
+
+**Contexte** : faut-il supporter plusieurs devises dès la première version.
+
+**Décision** : centrer le MVP sur l’euro.
+
+**Alternatives rejetées** :
+- multi-devises immédiat → complexité produit et UX trop élevée pour le lancement
+
+**Impact** : le MVP peut rester simple ; le multi-devises reste une évolution éventuelle.
+
+---
+
+### 2025-02-11 — Budget obligatoire par projet
+
+**Contexte** : le budget était initialement traité comme optionnel.
+
+**Décision** : le budget devient obligatoire par projet.
+
+**Alternatives rejetées** :
+- budget optionnel → rend le produit plus proche d’un simple tracker de dépenses
+
+**Impact** : la création de projet doit exiger un budget ; si le code stocke encore `Decimal?`, il faut corriger cet écart.
+
+---
+
+### 2025-02-11 — Monétisation : achat unique plutôt qu’abonnement
+
+**Contexte** : choisir un modèle économique compatible avec une app utilitaire simple.
+
+**Décision** : privilégier un achat unique pour débloquer les projets illimités plutôt qu’un abonnement.
+
+**Alternatives rejetées** :
+- abonnement → trop agressif pour ce type d’usage
+- publicité → détériore l’UX
+
+**Impact** : la structure freemium peut être conservée, mais le prix exact et les métadonnées commerciales doivent vivre dans `docs/COMMERCIAL.md`, pas ici.
+
+---
+
+### 2026-03-14 — Stratégie de sync couple progressive
+
+**Contexte** : permettre l’usage par deux partenaires avec des comptes Apple distincts sans casser la simplicité du MVP.
+
+**Décision** : progression en étapes.
+- v1.0 : usage local / mono-appareil pour valider le produit
+- v1.1 : synchronisation iCloud basique si même compte Apple
+- v2.0 : partage CloudKit entre deux comptes Apple distincts
+
+**Alternatives rejetées** :
+- backend custom → coût et complexité inutiles
+- Firebase / Supabase → dépendance tierce et charge RGPD
+- export/import manuel → UX médiocre
+
+**Impact** : la sync existe comme trajectoire produit, mais le MVP ne doit pas en dépendre.
+
+---
+
+### 2026-03-18 — Sync locale ponctuelle via MultipeerConnectivity
+
+**Contexte** : offrir un mode de synchronisation à proximité avant un vrai partage CloudKit complet.
+
+**Décision** : autoriser une sync locale ponctuelle via MultipeerConnectivity comme piste v2.
+
+**Alternatives rejetées** :
+- attendre uniquement CloudKit Sharing → trop tardif si un besoin terrain apparaît plus tôt
+- AirDrop / fichier manuel → UX fragmentée
+- serveur temps réel → surdimensionné
+
+**Impact** : cette piste reste complémentaire de CloudKit Sharing et n’appartient pas au MVP 1.0.

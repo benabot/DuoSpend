@@ -45,6 +45,7 @@
 		F52EB6E0C6F7B6BA38C999AB /* Decimal+Currency.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70944B10F95B9DFF0E6FA873 /* Decimal+Currency.swift */; };
 		F824C477FF3AE8FA11686D86 /* DuoLogoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ACF30E606058799801CFD3B /* DuoLogoView.swift */; };
 		F4F2E3D4C5B6A7981234ABCF /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = F3F2E3D4C5B6A7981234ABCE /* Localizable.xcstrings */; };
+		D5F2E3D4C5B6A7981234ABD0 /* Localizable.xcstrings in Resources (Widget) */ = {isa = PBXBuildFile; fileRef = F3F2E3D4C5B6A7981234ABCE /* Localizable.xcstrings */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -310,6 +311,7 @@
 			buildConfigurationList = C5F2E3D4C5B6A7981234AB25 /* Build configuration list for PBXNativeTarget "DuoSpendWidgetExtension" */;
 			buildPhases = (
 				C2F2E3D4C5B6A7981234AB22 /* Sources */,
+				D6F2E3D4C5B6A7981234ABD1 /* Resources (Widget) */,
 			);
 			buildRules = (
 			);
@@ -359,6 +361,14 @@
 				E4E26A0F71407B1BECD50BD1 /* Assets.xcassets in Resources */,
 				F4F2E3D4C5B6A7981234ABCF /* Localizable.xcstrings in Resources */,
 				D40D37934E763F71832D9AF1 /* PrivacyInfo.xcprivacy in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D6F2E3D4C5B6A7981234ABD1 /* Resources (Widget) */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D5F2E3D4C5B6A7981234ABD0 /* Localizable.xcstrings in Resources (Widget) */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

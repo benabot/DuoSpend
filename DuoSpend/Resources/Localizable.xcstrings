@@ -8,7 +8,15 @@
 
     },
     "%@ dépense" : {
-
+      "comment" : "Expense count — %@ is an Int (SwiftUI LocalizedStringKey uses %@ for all interpolations)",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ expense(s)"
+          }
+        }
+      }
     },
     "%@ dépensés au total" : {
       "comment" : "Total spent amount in balance banner",
@@ -22,99 +30,56 @@
       }
     },
     "%@%%" : {
-
+      "comment" : "Percentage value display (e.g. 42%)",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@%%"
+          }
+        }
+      }
     },
     "%@%% · %@%%" : {
       "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$@%% · %2$@%%"
+          }
+        },
         "fr" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
             "value" : "%1$@%% · %2$@%%"
           }
         }
       }
     },
-    "%lld dépense" : {
-      "comment" : "Expense count — plural with zero variant",
-      "extractionState" : "stale",
-      "localizations" : {
-        "en" : {
-          "variations" : {
-            "plural" : {
-              "one" : {
-                "stringUnit" : {
-                  "state" : "translated",
-                  "value" : "%lld expense"
-                }
-              },
-              "other" : {
-                "stringUnit" : {
-                  "state" : "translated",
-                  "value" : "%lld expenses"
-                }
-              },
-              "zero" : {
-                "stringUnit" : {
-                  "state" : "translated",
-                  "value" : "No expenses"
-                }
-              }
-            }
-          }
-        },
-        "fr" : {
-          "variations" : {
-            "plural" : {
-              "one" : {
-                "stringUnit" : {
-                  "state" : "translated",
-                  "value" : "%lld dépense"
-                }
-              },
-              "other" : {
-                "stringUnit" : {
-                  "state" : "translated",
-                  "value" : "%lld dépenses"
-                }
-              },
-              "zero" : {
-                "stringUnit" : {
-                  "state" : "translated",
-                  "value" : "Aucune dépense"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "%lld% du budget" : {
-      "comment" : "Budget usage percentage in project card",
-      "extractionState" : "stale",
+    "%@%% du budget" : {
+      "comment" : "Budget usage label in project card",
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "%lld% of budget"
+            "value" : "%@%% of budget"
           }
         }
       }
     },
-    "%lld% utilisé" : {
-      "comment" : "Budget percentage used in project detail",
-      "extractionState" : "stale",
+    "%@%% utilisé" : {
+      "comment" : "Budget usage label in project detail",
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "%lld% used"
+            "value" : "%@%% used"
           }
         }
       }
     },
     "⚠ Budget dépassé" : {
       "comment" : "Over-budget warning label",
-      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -134,6 +99,17 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "to"
+          }
+        }
+      }
+    },
+    "à %@" : {
+      "comment" : "Widget balance text — 'to [creditor name]'",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "to %@"
           }
         }
       }
@@ -355,6 +331,17 @@
         }
       }
     },
+    "Dernières dépenses" : {
+      "comment" : "Widget large — recent expenses section header",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Recent expenses"
+          }
+        }
+      }
+    },
     "Dépenses" : {
       "comment" : "Section header — expenses list",
       "localizations" : {
@@ -373,6 +360,17 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "owes"
+          }
+        }
+      }
+    },
+    "%@ doit" : {
+      "comment" : "Widget balance text — '[debtor name] owes'",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ owes"
           }
         }
       }
@@ -440,7 +438,15 @@
       }
     },
     "Gérez vos dépenses à deux 💕" : {
-
+      "comment" : "SplashScreen subtitle",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Manage your shared expenses 💕"
+          }
+        }
+      }
     },
     "Les noms des partenaires doivent être différents." : {
       "comment" : "Validation error in edit project form",
@@ -789,14 +795,14 @@
         }
       }
     },
-    "Voir les %lld autres" : {
-      "comment" : "Show all expenses button — %lld is the remaining count",
+    "Voir les %@ autres" : {
+      "comment" : "Show remaining expenses button — %@ is the count",
       "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "See %lld more"
+            "value" : "See %@ more"
           }
         }
       }
