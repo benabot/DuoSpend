@@ -6,9 +6,12 @@ struct ProjectListView: View {
     @Query(sort: \Project.createdAt, order: .reverse) private var projects: [Project]
     @Environment(\.modelContext) private var modelContext
     @State private var showingCreateProject = false
+    @State private var showingPaywall = false
     @State private var projectForQuickExpense: Project?
     @State private var projectToDelete: Project?
     @State private var animateHeart = false
+
+    private let storeManager = StoreManager.shared
 
     var body: some View {
         NavigationStack {
@@ -24,6 +27,14 @@ struct ProjectListView: View {
                 ProjectDetailView(project: project)
             }
             .toolbar {
+                #if DEBUG
+                ToolbarItem(placement: .navigationBarLeading) {
+                    NavigationLink(destination: PaywallDebugView()) {
+                        Image(systemName: "ladybug")
+                            .foregroundStyle(.secondary)
+                    }
+                }
+                #endif
                 ToolbarItem(placement: .principal) {
                     HStack(spacing: 6) {
                         DuoLogoView(size: 28)
@@ -41,6 +52,9 @@ struct ProjectListView: View {
             }
             .sheet(isPresented: $showingCreateProject) {
                 CreateProjectView()
+            }
+            .sheet(isPresented: $showingPaywall) {
+                PaywallView()
             }
             .sheet(item: $projectForQuickExpense) { project in
                 AddExpenseView(project: project)
@@ -93,7 +107,7 @@ struct ProjectListView: View {
                     Label("Ajouter une dépense", systemImage: "plus.circle")
                 }
                 Button {
-                    showingCreateProject = true
+                    handleNewProject()
                 } label: {
                     Label("Nouveau projet", systemImage: "folder.badge.plus")
                 }
@@ -128,7 +142,7 @@ struct ProjectListView: View {
             }
 
             Button {
-                showingCreateProject = true
+                handleNewProject()
             } label: {
                 Label("C'est parti !", systemImage: "plus")
                     .fontWeight(.semibold)
@@ -170,7 +184,7 @@ struct ProjectListView: View {
             .onDelete(perform: deleteProjects)
 
             Button {
-                showingCreateProject = true
+                handleNewProject()
             } label: {
                 Label("Nouveau projet", systemImage: "folder.badge.plus")
                     .font(.system(.subheadline, design: .rounded))
@@ -184,6 +198,14 @@ struct ProjectListView: View {
         .scrollContentBackground(.hidden)
         .background(Color.warmBackground)
         .animation(.spring(), value: projects.count)
+    }
+
+    private func handleNewProject() {
+        if projects.isEmpty || storeManager.isUnlocked {
+            showingCreateProject = true
+        } else {
+            showingPaywall = true
+        }
     }
 
     private func deleteProjects(at offsets: IndexSet) {
