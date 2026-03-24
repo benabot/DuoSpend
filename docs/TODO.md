@@ -74,30 +74,31 @@
 - [x] **Icône d'app** : AppIconExporter.swift dans Preview Content (2 cœurs bleu/rose + € sur fond violet)
 - [x] Couleurs partenaire cohérentes partout (Color.partner1 / Color.partner2 au lieu de .blue / .pink)
 
-## Phase 7 : Sync locale MultipeerConnectivity ✅
+## Phase 7 : Préparation App Store (en cours)
 
-- [x] `SyncPayload.swift` + `SyncExpense.swift` — structs de transport Codable/Sendable/Equatable
-- [x] `SyncMergeService.swift` — logique de fusion pure (création projet, dédoublonnage dépenses)
-- [x] `SyncMergeServiceTests.swift` — 5 tests unitaires (création, merge existant, dédup, vide, JSON round-trip)
-- [x] `PeerSyncService.swift` — couche MultipeerConnectivity (advertise, browse, send/receive)
-- [x] `PeerSyncViewModel.swift` — coordination service + merge + haptics
-- [x] `PeerSyncView.swift` — UI modale 3 étapes (choix rôle → connexion → transfert)
-- [x] Bouton "Sync avec partenaire" dans `ProjectDetailView` toolbar
-- [x] `Info.plist` — `NSLocalNetworkUsageDescription` + `NSBonjourServices`
-- [x] Swift 6 strict concurrency — `nonisolated(unsafe)` pour delegates MC
-- [x] Build OK + 10/10 tests passent
-- [ ] Tester sur 2 iPhones physiques (MultipeerConnectivity ne fonctionne pas sur simulateur)
+- [ ] Localisation FR + EN (String Catalog .xcstrings)
+- [ ] StoreKit 2 — paywall 1 projet gratuit + achat unique 4,99€
+- [ ] Privacy Policy sur beabot.fr/duospend/privacy
+- [ ] Support URL sur beabot.fr/duospend/support
+- [ ] Screenshots simulateur (6.7" + 5.5") FR et EN
+- [ ] Métadonnées App Store FR + EN
+- [ ] Vérifier PrivacyInfo.xcprivacy complet
+- [ ] Version 1.0.0 / Build 1
+- [ ] Créer compte Apple Developer
+- [ ] Archive Release → Validate → Upload
+- [ ] TestFlight beta
+- [ ] Soumission App Store
 
 ---
 
-## Backlog post-MVP
+## Backlog post-MVP (v2)
 
+- [ ] Sync locale MultipeerConnectivity (code retiré de v1, récupérable via git commit 9a501b7)
+- [ ] iCloud sync même compte Apple (v1.1)
+- [ ] CloudKit Sharing 2 comptes Apple (v2.0)
 - [ ] Templates projets (mariage, voyage, travaux, bébé, déménagement)
-- [ ] Export PDF récapitulatif (UIGraphicsPDFRenderer)
 - [ ] Catégories de dépenses avec icônes SF Symbols
-- [ ] Widgets iOS (WidgetKit) — balance du projet principal
 - [ ] Graphiques répartition (Charts framework)
-- [ ] Paywall StoreKit 2 (1 projet gratuit, illimité = 6,99€)
 - [ ] Onboarding première ouverture
 - [ ] Recherche dans les dépenses
 - [ ] App Clip ou partage projet
