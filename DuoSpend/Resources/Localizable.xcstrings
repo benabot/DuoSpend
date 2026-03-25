@@ -148,6 +148,18 @@
         }
       }
     },
+    "À propos" : {
+      "comment" : "Settings section — about",
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "About"
+          }
+        }
+      }
+    },
     "à rembourser" : {
       "comment" : "Balance banner subtitle — amount to reimburse",
       "localizations" : {
@@ -196,6 +208,18 @@
         }
       }
     },
+    "Apparence" : {
+      "comment" : "Settings section — appearance",
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Appearance"
+          }
+        }
+      }
+    },
     "Aucune dépense" : {
       "comment" : "Empty state label — no expenses yet",
       "localizations" : {
@@ -209,6 +233,7 @@
     },
     "Aucune inscription. Aucun cloud. Vos données restent sur votre iPhone, point final." : {
       "comment" : "Onboarding page 3 description",
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -255,8 +280,43 @@
         }
       }
     },
+    "Cette action est irréversible. Tous vos projets et dépenses seront supprimés." : {
+      "comment" : "Alert message — delete all data",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "This action is irreversible. All your projects and expenses will be deleted."
+          }
+        }
+      }
+    },
     "Chargement…" : {
 
+    },
+    "Choisir un projet" : {
+      "comment" : "PDF export picker navigation title",
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Choose a project"
+          }
+        }
+      }
+    },
+    "Clair" : {
+      "comment" : "Appearance picker option — light mode",
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Light"
+          }
+        }
+      }
     },
     "Continuer" : {
       "comment" : "Onboarding next-page button",
@@ -389,8 +449,44 @@
         }
       }
     },
+    "Données" : {
+      "comment" : "Settings section — data management",
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Data"
+          }
+        }
+      }
+    },
     "DuoSpend" : {
 
+    },
+    "DuoSpend Pro" : {
+      "comment" : "Settings section header — pro features",
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "DuoSpend Pro"
+          }
+        }
+      }
+    },
+    "DuoSpend Pro ✓" : {
+      "comment" : "Settings label — pro unlocked",
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "DuoSpend Pro ✓"
+          }
+        }
+      }
     },
     "DuoSpend suit vos dépenses communes et répond à une seule question : qui doit combien à qui ?" : {
       "comment" : "Onboarding page 1 description",
@@ -427,6 +523,18 @@
         }
       }
     },
+    "Êtes-vous sûr ?" : {
+      "comment" : "Alert title — delete all data confirmation",
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Are you sure?"
+          }
+        }
+      }
+    },
     "Ex : 5 000" : {
       "comment" : "Budget field placeholder",
       "extractionState" : "stale",
@@ -446,6 +554,29 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Export as PDF"
+          }
+        }
+      }
+    },
+    "Exporter un projet en PDF" : {
+      "comment" : "Settings button — export project as PDF",
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Export a project as PDF"
+          }
+        }
+      }
+    },
+    "Fait avec ❤️ à Montpellier" : {
+      "comment" : "Settings footer",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Made with ❤️ in Montpellier"
           }
         }
       }
@@ -613,6 +744,18 @@
         }
       }
     },
+    "Passer à DuoSpend Pro" : {
+      "comment" : "Settings button — upgrade CTA",
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Upgrade to DuoSpend Pro"
+          }
+        }
+      }
+    },
     "Passez à DuoSpend Pro" : {
 
     },
@@ -648,6 +791,18 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Custom"
+          }
+        }
+      }
+    },
+    "Politique de confidentialité" : {
+      "comment" : "Settings link — privacy policy",
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Privacy Policy"
           }
         }
       }
@@ -699,6 +854,18 @@
         }
       }
     },
+    "Réglages" : {
+      "comment" : "Settings screen navigation title",
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Settings"
+          }
+        }
+      }
+    },
     "Répartition" : {
       "comment" : "Split section header in add expense form",
       "extractionState" : "stale",
@@ -737,6 +904,30 @@
     },
     "Restaurer mes achats" : {
 
+    },
+    "Sombre" : {
+      "comment" : "Appearance picker option — dark mode",
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dark"
+          }
+        }
+      }
+    },
+    "Support" : {
+      "comment" : "Settings link — support",
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Support"
+          }
+        }
+      }
     },
     "Supprimer" : {
       "extractionState" : "stale",
@@ -794,6 +985,30 @@
         }
       }
     },
+    "Supprimer toutes les données" : {
+      "comment" : "Settings button — delete all data (destructive)",
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Delete all data"
+          }
+        }
+      }
+    },
+    "Système" : {
+      "comment" : "Appearance picker option — system default",
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "System"
+          }
+        }
+      }
+    },
     "Tapez + pour ajouter\nla première dépense" : {
       "comment" : "Empty state subtitle in project detail",
       "localizations" : {
@@ -813,6 +1028,29 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Sort by"
+          }
+        }
+      }
+    },
+    "Widgets pour l'écran d'accueil" : {
+      "comment" : "Paywall bullet — home screen widgets benefit",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Home screen widgets"
+          }
+        }
+      }
+    },
+    "Version" : {
+      "comment" : "Settings row — app version",
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Version"
           }
         }
       }
@@ -860,215 +1098,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Trip, wedding, flatshare, renovations… Create a project for each shared adventure and keep an eye on the budget."
-          }
-        }
-      }
-    },
-    "Réglages" : {
-      "comment" : "Settings screen navigation title",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Settings"
-          }
-        }
-      }
-    },
-    "Apparence" : {
-      "comment" : "Settings section — appearance",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Appearance"
-          }
-        }
-      }
-    },
-    "Système" : {
-      "comment" : "Appearance picker option — system default",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "System"
-          }
-        }
-      }
-    },
-    "Clair" : {
-      "comment" : "Appearance picker option — light mode",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Light"
-          }
-        }
-      }
-    },
-    "Sombre" : {
-      "comment" : "Appearance picker option — dark mode",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Dark"
-          }
-        }
-      }
-    },
-    "DuoSpend Pro" : {
-      "comment" : "Settings section header — pro features",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "DuoSpend Pro"
-          }
-        }
-      }
-    },
-    "DuoSpend Pro ✓" : {
-      "comment" : "Settings label — pro unlocked",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "DuoSpend Pro ✓"
-          }
-        }
-      }
-    },
-    "Passer à DuoSpend Pro" : {
-      "comment" : "Settings button — upgrade CTA",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Upgrade to DuoSpend Pro"
-          }
-        }
-      }
-    },
-    "Données" : {
-      "comment" : "Settings section — data management",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Data"
-          }
-        }
-      }
-    },
-    "Exporter un projet en PDF" : {
-      "comment" : "Settings button — export project as PDF",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Export a project as PDF"
-          }
-        }
-      }
-    },
-    "Supprimer toutes les données" : {
-      "comment" : "Settings button — delete all data (destructive)",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Delete all data"
-          }
-        }
-      }
-    },
-    "Êtes-vous sûr ?" : {
-      "comment" : "Alert title — delete all data confirmation",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Are you sure?"
-          }
-        }
-      }
-    },
-    "Cette action est irréversible. Tous vos projets et dépenses seront supprimés." : {
-      "comment" : "Alert message — delete all data",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "This action is irreversible. All your projects and expenses will be deleted."
-          }
-        }
-      }
-    },
-    "À propos" : {
-      "comment" : "Settings section — about",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "About"
-          }
-        }
-      }
-    },
-    "Version" : {
-      "comment" : "Settings row — app version",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Version"
-          }
-        }
-      }
-    },
-    "Politique de confidentialité" : {
-      "comment" : "Settings link — privacy policy",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Privacy Policy"
-          }
-        }
-      }
-    },
-    "Support" : {
-      "comment" : "Settings link — support",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Support"
-          }
-        }
-      }
-    },
-    "Fait avec ❤️ à Montpellier" : {
-      "comment" : "Settings footer",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Made with ❤️ in Montpellier"
-          }
-        }
-      }
-    },
-    "Choisir un projet" : {
-      "comment" : "PDF export picker navigation title",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Choose a project"
           }
         }
       }

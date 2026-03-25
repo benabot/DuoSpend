@@ -31,6 +31,7 @@ struct PaywallView: View {
                     // ── Bullets ───────────────────────────────────
                     VStack(alignment: .leading, spacing: 14) {
                         bulletPoint("Projets illimités")
+                        bulletPoint("Widgets pour l'écran d'accueil")
                         bulletPoint("Achat unique, pas d'abonnement")
                         bulletPoint("Soutenez un développeur indépendant")
                     }
