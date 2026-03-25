@@ -81,7 +81,9 @@ final class StoreManager {
         } catch {
             // Ne pas afficher d'erreur si l'utilisateur a simplement annulé
             if let skError = error as? StoreKitError, case .userCancelled = skError {
-                logger.info("User cancelled purchase (caught as error)")
+                logger.info("User cancelled purchase (StoreKitError)")
+            } else if (error as? SKError)?.code == .paymentCancelled {
+                logger.info("User cancelled purchase (SKError.paymentCancelled)")
             } else {
                 purchaseError = error.localizedDescription
                 logger.error("Purchase failed: \(error)")
