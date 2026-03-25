@@ -53,10 +53,10 @@ struct SettingsView: View {
                 LabeledContent("Version") {
                     Text(appVersion).foregroundStyle(.secondary)
                 }
-                if let privacyURL = URL(string: "https://beabot.fr/duospend/privacy") {
+                if let privacyURL = URL(string: "https://beabot.fr/apps/duo-spend#policy") {
                     Link("Politique de confidentialité", destination: privacyURL)
                 }
-                if let supportURL = URL(string: "https://beabot.fr/duospend/support") {
+                if let supportURL = URL(string: "https://beabot.fr/apps/duo-spend/") {
                     Link("Support", destination: supportURL)
                 }
                 #if DEBUG
