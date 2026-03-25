@@ -81,11 +81,10 @@
 - [x] Fix transition splash → onboarding sans flash (ZStack au lieu de fullScreenCover) ✅ 2026-03-25
 - [x] Onboarding : retirer mention iCloud (désactivé en v1) ✅ 2026-03-25
 - [x] SettingsView : apparence (thème clair/sombre/système), Pro, export PDF, suppression données, à propos ✅ 2026-03-25
-- [ ] Fix paywall : ne pas afficher "Demande annulée" quand l'utilisateur cancel l'achat StoreKit
-- [ ] Widgets réservés aux utilisateurs Pro (état isUnlocked persisté dans App Group UserDefaults)
-- [ ] Ajouter "Widgets pour l'écran d'accueil" comme avantage dans le paywall
-- [ ] Privacy Policy sur beabot.fr/duospend/privacy
-- [ ] Support URL sur beabot.fr/duospend/support
+- [x] Fix paywall : ne pas afficher "Demande annulée" quand l'utilisateur cancel l'achat StoreKit ✅ 2026-03-25
+- [x] Widgets réservés aux utilisateurs Pro (état isUnlocked persisté dans App Group UserDefaults) ✅ 2026-03-25
+- [x] Ajouter "Widgets pour l'écran d'accueil" comme avantage dans le paywall ✅ 2026-03-25
+- [x] Privacy Policy et Support URL câblées dans SettingsView ✅ 2026-03-25
 - [ ] Screenshots simulateur (6.7" + 5.5") FR et EN
 - [ ] Métadonnées App Store FR + EN
 - [ ] Vérifier PrivacyInfo.xcprivacy complet
