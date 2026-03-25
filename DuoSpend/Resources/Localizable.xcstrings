@@ -256,6 +256,9 @@
         }
       }
     },
+    "Chargement…" : {
+
+    },
     "Continuer" : {
       "comment" : "Onboarding next-page button",
       "extractionState" : "stale",
@@ -301,6 +304,9 @@
         }
       }
     },
+    "Créez autant de projets que vous voulez" : {
+
+    },
     "Date" : {
       "comment" : "Sort order option",
       "extractionState" : "stale",
@@ -312,6 +318,9 @@
           }
         }
       }
+    },
+    "Débloquer pour %@" : {
+
     },
     "dépassé" : {
       "comment" : "Over-budget figure label (amount exceeded)",
@@ -579,6 +588,9 @@
         }
       }
     },
+    "Paiement unique via votre compte Apple. Aucun abonnement." : {
+
+    },
     "Partenaires" : {
       "comment" : "Partners section header in project forms",
       "localizations" : {
@@ -601,6 +613,9 @@
           }
         }
       }
+    },
+    "Passez à DuoSpend Pro" : {
+
     },
     "Payé par" : {
       "comment" : "Paid-by section header in add expense form",
@@ -720,6 +735,9 @@
           }
         }
       }
+    },
+    "Restaurer mes achats" : {
+
     },
     "Supprimer" : {
       "extractionState" : "stale",
