@@ -66,8 +66,13 @@ final class StoreManager {
                 break
             }
         } catch {
-            purchaseError = error.localizedDescription
-            logger.error("Purchase failed: \(error)")
+            // Ne pas afficher d'erreur si l'utilisateur a simplement annulé
+            if let skError = error as? StoreKitError, case .userCancelled = skError {
+                logger.info("User cancelled purchase (caught as error)")
+            } else {
+                purchaseError = error.localizedDescription
+                logger.error("Purchase failed: \(error)")
+            }
         }
     }
 
@@ -95,8 +100,12 @@ final class StoreManager {
             await checkEntitlement()
             logger.info("Restore completed")
         } catch {
-            purchaseError = error.localizedDescription
-            logger.error("Restore failed: \(error)")
+            if let skError = error as? StoreKitError, case .userCancelled = skError {
+                logger.info("User cancelled restore (caught as error)")
+            } else {
+                purchaseError = error.localizedDescription
+                logger.error("Restore failed: \(error)")
+            }
         }
     }
 
