@@ -223,6 +223,49 @@ Format recommandé :
 
 ---
 
+### 2026-03-25 — BalanceResult enrichi : paid / due / net par partenaire
+
+**Contexte** : `BalanceResult` n'exposait que `partner1Spent` (argent avancé) et `partner1Share` (part due), sans `partner1Net` (solde). La vue `duoStatsCard` affichait uniquement l'argent avancé, ce qui ne permettait pas de comprendre pourquoi un remboursement était demandé. Le badge split dans `ExpenseRow` ne nommait pas les partenaires ("30%/70%" sans indiquer qui est à 30%).
+
+**Décision** :
+- `BalanceResult` expose maintenant `partner1Paid`, `partner2Paid`, `partner1Due`, `partner2Due`, `partner1Net`, `partner2Net` (solde = payé − dû).
+- Les anciens noms (`partner1Spent`, `partner1Share`, `netBalance`) restent comme aliases de rétrocompatibilité.
+- `BalanceBanner` affiche une phrase non ambiguë ("X doit rembourser Y") + mini-tableau avancé/dû par partenaire pour permettre la vérification visuelle.
+- `duoStatsCard` devient une table 3 colonnes : Payé / Dû / Solde avec ligne Total et ✓.
+- Le badge split dans `ExpenseRow` inclut les noms ("Marie 30 % · Thomas 70 %").
+- La barre bicolore des Contributions utilise désormais `partner1Due / totalSpent` (parts dues) et non `partner1Paid / totalSpent` (paiements).
+
+**Stratégie d'arrondi** : `p1Due = round(amount × p1Fraction, 2)` puis `p2Due = amount − p1Due` (soustraction du reste). Garantit `p1Due + p2Due = amount` exactement, même sur des splits comme 1/3. Testé avec 10 cas unitaires dont un invariant `|p1Net + p2Net| < 0,01`.
+
+**Alternatives rejetées** :
+- `p2Due = amount × p2Fraction` → peut produire `p1Due + p2Due ≠ amount` sur des splits non ronds avec Decimal.
+- Tout afficher uniquement dans `BalanceBanner` → le détail avancé/dû appartient à "Contributions", pas à la carte de remboursement.
+
+**Impact** : `BalanceCalculatorTests` passe de 5 à 10 cas. `BalanceResult` reste `Sendable`. Les vues qui lisaient les anciens noms compilent sans changement.
+
+---
+
+### 2026-03-25 — UIActivityViewController depuis une sheet : présentation impérative obligatoire
+
+**Contexte** : l'export PDF depuis les Réglages généraux (`ProjectExportPickerView`) utilisait un `ActivityView: UIViewControllerRepresentable` présenté via `.sheet`. Ce composant était lui-même dans une sheet (le picker est une sheet de `SettingsView`). Le share sheet s'affichait vide.
+
+Cause 1 : `project.expenses` est une relation SwiftData lazy-loaded. Hors du contexte d'une vue possédant un `@Query` actif, la relation retournait un tableau vide → PDF généré sans dépenses.
+
+Cause 2 : `UIActivityViewController` ne fonctionne pas de manière fiable quand il est embarqué dans `.sheet` depuis une sheet existante (sheet-in-sheet). Il s'initialisait mais rendait un contenu vide.
+
+**Décision** :
+- Remplacer `project.expenses` par `@Query private var allExpenses: [Expense]` + filtre `persistentModelID` (même pattern que `ProjectDetailView`).
+- Supprimer `ActivityView: UIViewControllerRepresentable` et le `.sheet` associé.
+- Présenter `UIActivityViewController` impérativement via `UIApplication.shared.connectedScenes` (même pattern que `ProjectDetailView`).
+
+**Alternatives rejetées** :
+- `project.expenses` avec eager fetch explicite → non idiomatique SwiftData, couplage fort.
+- Garder `ActivityView` mais changer son mode de présentation → `UIActivityViewController` reste problématique dans la hiérarchie SwiftUI imbriquée.
+
+**Impact** : `ActivityView` supprimé. `ProjectExportPickerView` n'a plus d'état `pdfURL` / `showingShare`. Même comportement que l'export depuis `ProjectDetailView`.
+
+---
+
 ### 2026-03-24 — LocalizedStringKey obligatoire pour la traduction SwiftUI
 
 **Contexte** : implémentation de la localisation FR + EN sur l'app iOS avec Xcode 15+ String Catalog (xcstrings).

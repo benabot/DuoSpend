@@ -59,15 +59,18 @@ struct ProjectDetailView: View {
         showAllExpenses ? sortedExpenses : Array(sortedExpenses.prefix(previewCount))
     }
 
-    private var p1Fraction: Double {
+    /// Fraction de la dépense totale due par partner1 — sert à la barre bicolore.
+    /// On utilise `partner1Due` (part à supporter) et non `partner1Paid` (argent avancé)
+    /// car c'est la répartition contractuelle qui est pertinente ici.
+    private var p1DueFraction: Double {
         guard balance.totalSpent > 0 else { return 0.5 }
-        return Double(truncating: balance.partner1Spent as NSDecimalNumber)
-            / Double(truncating: balance.totalSpent as NSDecimalNumber)
+        return Double(truncating: balance.partner1Due as NSDecimalNumber)
+             / Double(truncating: balance.totalSpent as NSDecimalNumber)
     }
 
     private var budgetFraction: Double {
         guard project.budget > 0 else { return 0 }
-        let spent = Double(truncating: balance.totalSpent as NSDecimalNumber)
+        let spent  = Double(truncating: balance.totalSpent as NSDecimalNumber)
         let budget = Double(truncating: project.budget as NSDecimalNumber)
         return min(spent / budget, 1.0)
     }
@@ -173,7 +176,7 @@ struct ProjectDetailView: View {
 
                 VStack(alignment: .trailing, spacing: 2) {
                     let count = projectExpenses.count
-                    Text("\(count) dépense")
+                    Text("\(count) dépense\(count == 1 ? "" : "s")")
                         .font(.system(.caption, design: .rounded))
                         .fontWeight(.medium)
                     Text("Créé le \(project.createdAt.formatted(date: .abbreviated, time: .omitted))")
@@ -251,52 +254,85 @@ struct ProjectDetailView: View {
         .frame(maxWidth: .infinity)
     }
 
-    // MARK: - Stats duo
+    // MARK: - Contributions (Payé / Dû / Solde)
 
     private var duoStatsCard: some View {
-        VStack(alignment: .leading, spacing: 12) {
+        VStack(alignment: .leading, spacing: 14) {
             Label("Contributions", systemImage: "chart.bar.fill")
                 .font(.system(.subheadline, design: .rounded))
                 .fontWeight(.semibold)
                 .foregroundStyle(Color.accentPrimary)
 
-            HStack(spacing: 16) {
-                partnerStat(
-                    name: project.partner1Name,
-                    amount: balance.partner1Spent,
-                    count: projectExpenses.filter { $0.paidBy == .partner1 }.count,
-                    color: .partner1
-                )
-                Divider().frame(height: 44)
-                partnerStat(
-                    name: project.partner2Name,
-                    amount: balance.partner2Spent,
-                    count: projectExpenses.filter { $0.paidBy == .partner2 }.count,
-                    color: .partner2
-                )
+            // En-tête colonnes
+            HStack(spacing: 0) {
+                Spacer()
+                columnHeader("Payé")
+                columnHeader("Dû")
+                columnHeader("Solde")
             }
 
-            // Barre de contribution bicolore
+            Divider()
+
+            contributionRow(
+                name: project.partner1Name,
+                color: .partner1,
+                paid: balance.partner1Paid,
+                due: balance.partner1Due,
+                net: balance.partner1Net
+            )
+            contributionRow(
+                name: project.partner2Name,
+                color: .partner2,
+                paid: balance.partner2Paid,
+                due: balance.partner2Due,
+                net: balance.partner2Net
+            )
+
+            Divider()
+
+            // Ligne Total — vérifie visuellement que Payé = Dû = totalSpent
+            HStack(spacing: 0) {
+                Text("Total")
+                    .fontWeight(.medium)
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                Text(balance.totalSpent.formattedCurrency)
+                    .frame(width: columnWidth, alignment: .trailing)
+                    .monospacedDigit()
+                Text(balance.totalSpent.formattedCurrency)
+                    .frame(width: columnWidth, alignment: .trailing)
+                    .monospacedDigit()
+                HStack(spacing: 3) {
+                    Text("0,00 €").monospacedDigit()
+                    Image(systemName: "checkmark")
+                        .font(.caption2)
+                        .foregroundStyle(Color.successGreen)
+                }
+                .frame(width: columnWidth, alignment: .trailing)
+            }
+            .font(.system(.caption, design: .rounded))
+            .foregroundStyle(.secondary)
+
+            // Barre bicolore : proportion des parts dues (pas des paiements)
             GeometryReader { geo in
                 HStack(spacing: 2) {
                     Capsule()
                         .fill(Color.partner1)
-                        .frame(width: max(geo.size.width * p1Fraction - 1, 4))
+                        .frame(width: max(geo.size.width * p1DueFraction - 1, 4))
                     Capsule()
                         .fill(Color.partner2)
                 }
-                .animation(.spring(duration: 0.7), value: p1Fraction)
+                .animation(.spring(duration: 0.7), value: p1DueFraction)
             }
             .frame(height: 8)
             .clipShape(Capsule())
 
             HStack {
-                Text("\(String(Int(p1Fraction * 100)))%")
+                Text("\(String(Int((p1DueFraction * 100).rounded())))%")
                     .font(.system(.caption2, design: .rounded))
                     .fontWeight(.semibold)
                     .foregroundStyle(Color.partner1)
                 Spacer()
-                Text("\(String(Int((1 - p1Fraction) * 100)))%")
+                Text("\(String(Int(((1 - p1DueFraction) * 100).rounded())))%")
                     .font(.system(.caption2, design: .rounded))
                     .fontWeight(.semibold)
                     .foregroundStyle(Color.partner2)
@@ -308,24 +344,41 @@ struct ProjectDetailView: View {
         .shadow(color: shadowColor, radius: 10, y: 4)
     }
 
-    private func partnerStat(name: String, amount: Decimal, count: Int, color: Color) -> some View {
-        VStack(alignment: .leading, spacing: 4) {
+    private let columnWidth: CGFloat = 72
+
+    private func columnHeader(_ text: String) -> some View {
+        Text(text)
+            .frame(width: columnWidth, alignment: .trailing)
+            .font(.system(.caption2, design: .rounded))
+            .foregroundStyle(.secondary)
+    }
+
+    private func contributionRow(name: String, color: Color, paid: Decimal, due: Decimal, net: Decimal) -> some View {
+        HStack(spacing: 0) {
             HStack(spacing: 6) {
                 Circle().fill(color).frame(width: 8, height: 8)
-                Text(name)
-                    .font(.system(.caption, design: .rounded))
-                    .fontWeight(.medium)
-                    .foregroundStyle(.secondary)
+                Text(name).fontWeight(.medium)
             }
-            Text(amount.formattedCurrency)
-                .font(.system(.headline, design: .rounded))
-                .fontWeight(.bold)
-                .foregroundStyle(color)
-            Text("\(count) dépense")
-                .font(.system(.caption2, design: .rounded))
-                .foregroundStyle(.secondary)
+            .frame(maxWidth: .infinity, alignment: .leading)
+
+            Text(paid.formattedCurrency)
+                .frame(width: columnWidth, alignment: .trailing)
+                .monospacedDigit()
+            Text(due.formattedCurrency)
+                .frame(width: columnWidth, alignment: .trailing)
+                .monospacedDigit()
+            Text(signedCurrency(net))
+                .fontWeight(.semibold)
+                .foregroundStyle(net >= 0 ? Color.successGreen : Color.red)
+                .frame(width: columnWidth, alignment: .trailing)
+                .monospacedDigit()
         }
-        .frame(maxWidth: .infinity, alignment: .leading)
+        .font(.system(.caption, design: .rounded))
+    }
+
+    /// Formate un solde net avec signe explicite : "+33,00 €" ou "−33,00 €"
+    private func signedCurrency(_ value: Decimal) -> String {
+        value > 0 ? "+\(value.formattedCurrency)" : value.formattedCurrency
     }
 
     // MARK: - Dépenses

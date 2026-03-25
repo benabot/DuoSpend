@@ -20,15 +20,15 @@ struct ExpenseRow: View {
         String(payerName.prefix(1)).uppercased()
     }
 
+    // Noms nominatifs : l'utilisateur voit immédiatement qui est à quelle part.
     private var splitLabel: String {
         switch expense.splitRatio {
         case .equal:
-            return "50/50"
+            return "\(partner1Name) 50 % · \(partner2Name) 50 %"
         case .custom(let p1, let p2):
             let p1Int = Int(truncating: p1 as NSDecimalNumber)
             let p2Int = Int(truncating: p2 as NSDecimalNumber)
-            // Valeurs stockées en pourcentage (ex: 74, 26) → afficher "74%/26%"
-            return "\(p1Int)%/\(p2Int)%"
+            return "\(partner1Name) \(p1Int) % · \(partner2Name) \(p2Int) %"
         }
     }
 

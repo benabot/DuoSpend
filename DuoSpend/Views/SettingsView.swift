@@ -106,8 +106,9 @@ struct SettingsView: View {
 private struct ProjectExportPickerView: View {
     let projects: [Project]
     @Environment(\.dismiss) private var dismiss
-    @State private var pdfURL: URL?
-    @State private var showingShare = false
+    /// Toutes les dépenses via @Query — garantit des données fraîches.
+    /// project.expenses est lazy-loaded et peut être vide hors contexte propriétaire.
+    @Query private var allExpenses: [Expense]
 
     var body: some View {
         NavigationStack {
@@ -127,35 +128,27 @@ private struct ProjectExportPickerView: View {
                 }
             }
         }
-        .sheet(isPresented: $showingShare) {
-            if let url = pdfURL {
-                ActivityView(activityItems: [url])
-            }
-        }
     }
 
     private func exportPDF(for project: Project) {
-        let balance = BalanceCalculator.calculate(expenses: project.expenses)
+        let expenses = allExpenses.filter {
+            $0.project?.persistentModelID == project.persistentModelID
+        }
+        let balance = BalanceCalculator.calculate(expenses: expenses)
         guard let url = try? PDFExportService.generatePDF(
             project: project,
-            expenses: project.expenses,
+            expenses: expenses,
             balance: balance
         ) else { return }
-        pdfURL = url
-        showingShare = true
+
+        // UIActivityViewController doit être présenté impérativement —
+        // l'embarquer dans un .sheet SwiftUI depuis une sheet existante produit un onglet vide.
+        let avc = UIActivityViewController(activityItems: [url], applicationActivities: nil)
+        guard let scene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
+              let root = scene.keyWindow?.rootViewController else { return }
+        let presenter = root.presentedViewController ?? root
+        presenter.present(avc, animated: true)
     }
-}
-
-// MARK: - Wrapper UIActivityViewController
-
-private struct ActivityView: UIViewControllerRepresentable {
-    let activityItems: [Any]
-
-    func makeUIViewController(context: Context) -> UIActivityViewController {
-        UIActivityViewController(activityItems: activityItems, applicationActivities: nil)
-    }
-
-    func updateUIViewController(_ uiViewController: UIActivityViewController, context: Context) {}
 }
 
 // MARK: - Preview
