@@ -1,6 +1,9 @@
 {
   "sourceLanguage" : "fr",
   "strings" : {
+    " doit rembourser " : {
+
+    },
     "·" : {
 
     },
@@ -9,11 +12,22 @@
     },
     "%@ dépense" : {
       "comment" : "Expense count — %@ is an Int (SwiftUI LocalizedStringKey uses %@ for all interpolations)",
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "%@ expense(s)"
+          }
+        }
+      }
+    },
+    "%@ dépense%@" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%1$@ dépense%2$@"
           }
         }
       }
@@ -104,6 +118,9 @@
     "€" : {
 
     },
+    "0,00 €" : {
+
+    },
     "à" : {
       "comment" : "Preposition in balance text: '[debtor] owes [amount] to [creditor]'",
       "localizations" : {
@@ -164,6 +181,7 @@
     },
     "à rembourser" : {
       "comment" : "Balance banner subtitle — amount to reimburse",
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -1017,6 +1035,9 @@
           }
         }
       }
+    },
+    "Total" : {
+
     },
     "Trier par" : {
       "comment" : "Sort picker label",
