@@ -12,12 +12,35 @@ struct DuoSpendWidgetView: View {
     private let accentColor = Color(red: 0x6C / 255, green: 0x63 / 255, blue: 0xFF / 255)
 
     var body: some View {
-        switch family {
-        case .systemSmall:  smallWidget
-        case .systemMedium: mediumWidget
-        case .systemLarge:  largeWidget
-        default:            smallWidget
+        if entry.isLocked {
+            lockedView
+        } else {
+            switch family {
+            case .systemSmall:  smallWidget
+            case .systemMedium: mediumWidget
+            case .systemLarge:  largeWidget
+            default:            smallWidget
+            }
         }
+    }
+
+    // MARK: - Vue verrouillée (non-Pro)
+
+    private var lockedView: some View {
+        VStack(spacing: 8) {
+            Image(systemName: "lock.fill")
+                .font(.title2)
+                .foregroundStyle(accentColor)
+            Text("DuoSpend Pro")
+                .font(.system(.headline, design: .rounded))
+                .fontWeight(.bold)
+            Text("Déverrouillez pour accéder aux widgets")
+                .font(.system(.caption2, design: .rounded))
+                .foregroundStyle(.secondary)
+                .multilineTextAlignment(.center)
+        }
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .widgetURL(URL(string: "duospend://paywall"))
     }
 
     // MARK: - Small

@@ -24,6 +24,10 @@ struct DuoSpendWidgetProvider: AppIntentTimelineProvider {
     /// Charge le projet le plus récent depuis SwiftData (lecture seule)
     @MainActor
     private func loadEntry() -> DuoSpendEntry? {
+        // Widgets réservés aux utilisateurs Pro
+        let isPro = UserDefaults(suiteName: "group.fr.beabot.DuoSpend")?.bool(forKey: "isProUnlocked") ?? false
+        guard isPro else { return .locked }
+
         guard let groupURL = FileManager.default.containerURL(
             forSecurityApplicationGroupIdentifier: "group.fr.beabot.DuoSpend"
         ) else { return nil }

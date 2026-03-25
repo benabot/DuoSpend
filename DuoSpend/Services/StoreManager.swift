@@ -1,4 +1,5 @@
 import StoreKit
+import WidgetKit
 import os
 
 /// Gestion des achats StoreKit 2 — singleton @Observable thread-safe sur le MainActor
@@ -14,12 +15,24 @@ final class StoreManager {
 
     private let productID = "fr.beabot.DuoSpend.unlimitedprojects"
     private let logger = Logger(subsystem: "fr.beabot.DuoSpend", category: "StoreManager")
+    private let sharedDefaults = UserDefaults(suiteName: "group.fr.beabot.DuoSpend")
     private var transactionListener: Task<Void, Never>?
 
     private init() {
+        // Lecture du cache partagé — sera confirmé par StoreKit ensuite
+        isUnlocked = UserDefaults(suiteName: "group.fr.beabot.DuoSpend")?.bool(forKey: "isProUnlocked") ?? false
         transactionListener = listenForTransactions()
         Task { await loadProduct() }
         Task { await checkEntitlement() }
+    }
+
+    // MARK: - État Pro
+
+    /// Persiste l'état et rafraîchit les widgets
+    private func setUnlocked(_ value: Bool) {
+        isUnlocked = value
+        sharedDefaults?.set(value, forKey: "isProUnlocked")
+        WidgetCenter.shared.reloadAllTimelines()
     }
 
     // MARK: - Chargement produit
@@ -52,7 +65,7 @@ final class StoreManager {
                 switch verification {
                 case .verified(let transaction):
                     await transaction.finish()
-                    isUnlocked = true
+                    setUnlocked(true)
                     logger.info("Purchase verified and completed")
                 case .unverified(_, let error):
                     purchaseError = "Vérification échouée"
@@ -117,7 +130,7 @@ final class StoreManager {
                 if case .verified(let transaction) = result {
                     await transaction.finish()
                     if transaction.productID == productID {
-                        isUnlocked = true
+                        setUnlocked(true)
                         logger.info("Transaction update: unlocked")
                     }
                 }
@@ -128,7 +141,7 @@ final class StoreManager {
     // MARK: - Debug
 
     #if DEBUG
-    func debugUnlock() { isUnlocked = true }
-    func debugLock() { isUnlocked = false }
+    func debugUnlock() { setUnlocked(true) }
+    func debugLock() { setUnlocked(false) }
     #endif
 }

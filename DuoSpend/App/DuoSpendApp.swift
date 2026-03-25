@@ -6,6 +6,7 @@ struct DuoSpendApp: App {
     let modelContainer: ModelContainer
 
     @State private var showingSplash = true
+    @State private var showingPaywallFromWidget = false
     @AppStorage("hasSeenOnboarding") private var hasSeenOnboarding = false
     @AppStorage("appTheme") private var appThemeRaw = 0
 
@@ -80,15 +81,17 @@ struct DuoSpendApp: App {
                     showingSplash = false
                 }
             }
+            .sheet(isPresented: $showingPaywallFromWidget) { PaywallView() }
             .onOpenURL { url in handleDeepLink(url) }
         }
         .modelContainer(modelContainer)
     }
 
-    /// Gère les deep links depuis le widget (`duospend://project`)
+    /// Gère les deep links depuis le widget
     private func handleDeepLink(_ url: URL) {
-        // MVP : le scheme duospend:// ouvre simplement l'app
-        // TODO: navigation vers le projet spécifique si besoin
         guard url.scheme == "duospend" else { return }
+        if url.host == "paywall" {
+            showingPaywallFromWidget = true
+        }
     }
 }

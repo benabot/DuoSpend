@@ -13,6 +13,7 @@ struct DuoSpendEntry: TimelineEntry {
     let partner1Spent: Decimal
     let partner2Spent: Decimal
     let recentExpenses: [WidgetExpense]
+    var isLocked: Bool = false
 }
 
 /// Statut de balance simplifié pour le widget
@@ -32,6 +33,21 @@ struct WidgetExpense: Sendable, Identifiable {
 }
 
 extension DuoSpendEntry {
+    /// Affiché quand l'utilisateur n'a pas DuoSpend Pro
+    static let locked = DuoSpendEntry(
+        date: .now,
+        projectName: "DuoSpend Pro",
+        emoji: "🔒",
+        partner1Name: "",
+        partner2Name: "",
+        balanceStatus: .balanced,
+        totalSpent: "",
+        partner1Spent: 0,
+        partner2Spent: 0,
+        recentExpenses: [],
+        isLocked: true
+    )
+
     /// Données fictives pour placeholder et snapshot
     static let placeholder = DuoSpendEntry(
         date: .now,
