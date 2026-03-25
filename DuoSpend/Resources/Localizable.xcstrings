@@ -207,14 +207,13 @@
         }
       }
     },
-    "Aucune inscription. Aucun cloud imposé. Vos données restent sur votre iPhone. iCloud sync disponible si vous le souhaitez." : {
+    "Aucune inscription. Aucun cloud. Vos données restent sur votre iPhone, point final." : {
       "comment" : "Onboarding page 3 description",
-      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "No sign-up. No forced cloud. Your data stays on your iPhone. iCloud sync available if you want it."
+            "value" : "No sign-up. No cloud. Your data stays on your iPhone, period."
           }
         }
       }

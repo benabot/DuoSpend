@@ -35,7 +35,7 @@ struct OnboardingView: View {
         OnboardingPage(
             emoji: "🔒",
             title: "Privé et\nhors-ligne",
-            description: "Aucune inscription. Aucun cloud imposé. Vos données restent sur votre iPhone. iCloud sync disponible si vous le souhaitez.",
+            description: "Aucune inscription. Aucun cloud. Vos données restent sur votre iPhone, point final.",
             accentColor: .successGreen,
             iconName: "lock.shield.fill"
         )
