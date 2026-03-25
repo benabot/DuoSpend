@@ -1,7 +1,0 @@
-{
-  "tool_name": "Bash",
-  "tool_input_preview": "{\"command\":\"mgrep \\\"expense split settlement contribution budget screen\\\" /Users/benoitabot/Sites/DuoSpend -m 15\"}",
-  "error": "Exit code 1\nFailed to search: 429 You have exceeded the monthly limit of 100 searches(search, file search, question answering). Your quota resets at the start of next month. Upgrade your plan for unlimited access.",
-  "timestamp": "2026-03-25T13:56:57.511Z",
-  "retry_count": 1
-}
