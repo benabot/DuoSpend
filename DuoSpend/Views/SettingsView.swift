@@ -67,7 +67,7 @@ struct SettingsView: View {
             } header: {
                 Label("À propos", systemImage: "info.circle")
             } footer: {
-                Text("Fait avec ❤️ à Montpellier")
+                Text("Fait avec ❤️ à Lille")
                     .font(.footnote)
                     .foregroundStyle(.secondary)
                     .frame(maxWidth: .infinity, alignment: .center)
