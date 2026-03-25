@@ -27,14 +27,12 @@ struct ProjectListView: View {
                 ProjectDetailView(project: project)
             }
             .toolbar {
-                #if DEBUG
                 ToolbarItem(placement: .navigationBarLeading) {
-                    NavigationLink(destination: PaywallDebugView()) {
-                        Image(systemName: "ladybug")
+                    NavigationLink(destination: SettingsView()) {
+                        Image(systemName: "gearshape")
                             .foregroundStyle(.secondary)
                     }
                 }
-                #endif
                 ToolbarItem(placement: .principal) {
                     HStack(spacing: 6) {
                         DuoLogoView(size: 28)

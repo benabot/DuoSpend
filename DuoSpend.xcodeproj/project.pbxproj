@@ -13,6 +13,7 @@
 		1CD5D93BF36D6DFF63DF4FA4 /* PaywallView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86368FE30C28D140AF158EEF /* PaywallView.swift */; };
 		1F676903D0237BC8A745C26E /* PaywallDebugView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F33F2D51444D9C58837829FF /* PaywallDebugView.swift */; };
 		23FA281098229200C16C3EA8 /* CreateProjectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA7B8C3CA2DD879EAE29ED34 /* CreateProjectView.swift */; };
+		26884EBE88063A7CD77CB7BF /* AppTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09D209A98F65A506C95B538C /* AppTheme.swift */; };
 		28559F14E500EF5115F234BD /* BalanceCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5AE72B67E0F053A60E27F83 /* BalanceCalculator.swift */; };
 		46738B86D4D6948D3E050084 /* ProjectDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F341BC05D86E13339E47EFC7 /* ProjectDetailView.swift */; };
 		46A1CC2F4E9546705255CE57 /* BalanceBanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79F2DC92F10F0B2C13837643 /* BalanceBanner.swift */; };
@@ -23,6 +24,7 @@
 		704F2B4B2F73599A004F8F19 /* DuoSpendStore.storekit in Resources */ = {isa = PBXBuildFile; fileRef = 704F2B4A2F73599A004F8F19 /* DuoSpendStore.storekit */; };
 		7BC829A4AB6B86532D8690ED /* PartnerRole.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C6FACA7A3EF6858B4842AB1 /* PartnerRole.swift */; };
 		7D2C3BC30688171350EEB3C5 /* ProjectCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = E555932D18C4E9C0CB39F551 /* ProjectCard.swift */; };
+		7E55BD05D0454B17DA7C1A70 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 259983645219B6EB0187EE8B /* SettingsView.swift */; };
 		88641563DBC6B716A6FEBFFC /* SplashScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A51425789DA23F45C1129889 /* SplashScreenView.swift */; };
 		8C46DF18903B6602AB02BB49 /* ProjectListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F04C844F9A1C3C34ECF318DB /* ProjectListView.swift */; };
 		9175C1FA5FABEAA9AF0961EC /* SampleData.swift in Sources */ = {isa = PBXBuildFile; fileRef = E785001221CBAA003378869A /* SampleData.swift */; };
@@ -86,10 +88,12 @@
 /* Begin PBXFileReference section */
 		048E66DC6F24E1DFE4B15DB8 /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xml; path = PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
 		0593920D95079CD49202E8A8 /* OnboardingView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
+		09D209A98F65A506C95B538C /* AppTheme.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = AppTheme.swift; sourceTree = "<group>"; };
 		101224910B9E1829A4C7B57C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		19C8B4A03434F5EA7E7F8052 /* SplitRatio.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplitRatio.swift; sourceTree = "<group>"; };
 		1BB0CD28CE88854BFC49E5C3 /* DuoSpendApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DuoSpendApp.swift; sourceTree = "<group>"; };
 		1E63BFF18D99CE9E4F399084 /* DuoSpend.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DuoSpend.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		259983645219B6EB0187EE8B /* SettingsView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		2A36328EA3B77D08789B9C02 /* Project.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Project.swift; sourceTree = "<group>"; };
 		2C6FACA7A3EF6858B4842AB1 /* PartnerRole.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PartnerRole.swift; sourceTree = "<group>"; };
 		4DDFA55290FC464C965B2818 /* EditProjectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProjectView.swift; sourceTree = "<group>"; };
@@ -204,6 +208,7 @@
 				07DB97C6CFA28A6B51CE0955 /* Components */,
 				0593920D95079CD49202E8A8 /* OnboardingView.swift */,
 				86368FE30C28D140AF158EEF /* PaywallView.swift */,
+				259983645219B6EB0187EE8B /* SettingsView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -226,6 +231,7 @@
 				2C6FACA7A3EF6858B4842AB1 /* PartnerRole.swift */,
 				2A36328EA3B77D08789B9C02 /* Project.swift */,
 				19C8B4A03434F5EA7E7F8052 /* SplitRatio.swift */,
+				09D209A98F65A506C95B538C /* AppTheme.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -443,6 +449,8 @@
 				AF125D3A0291AB0DA3A82F63 /* StoreManager.swift in Sources */,
 				1CD5D93BF36D6DFF63DF4FA4 /* PaywallView.swift in Sources */,
 				1F676903D0237BC8A745C26E /* PaywallDebugView.swift in Sources */,
+				26884EBE88063A7CD77CB7BF /* AppTheme.swift in Sources */,
+				7E55BD05D0454B17DA7C1A70 /* SettingsView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

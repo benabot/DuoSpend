@@ -863,6 +863,215 @@
           }
         }
       }
+    },
+    "Réglages" : {
+      "comment" : "Settings screen navigation title",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Settings"
+          }
+        }
+      }
+    },
+    "Apparence" : {
+      "comment" : "Settings section — appearance",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Appearance"
+          }
+        }
+      }
+    },
+    "Système" : {
+      "comment" : "Appearance picker option — system default",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "System"
+          }
+        }
+      }
+    },
+    "Clair" : {
+      "comment" : "Appearance picker option — light mode",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Light"
+          }
+        }
+      }
+    },
+    "Sombre" : {
+      "comment" : "Appearance picker option — dark mode",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dark"
+          }
+        }
+      }
+    },
+    "DuoSpend Pro" : {
+      "comment" : "Settings section header — pro features",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "DuoSpend Pro"
+          }
+        }
+      }
+    },
+    "DuoSpend Pro ✓" : {
+      "comment" : "Settings label — pro unlocked",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "DuoSpend Pro ✓"
+          }
+        }
+      }
+    },
+    "Passer à DuoSpend Pro" : {
+      "comment" : "Settings button — upgrade CTA",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Upgrade to DuoSpend Pro"
+          }
+        }
+      }
+    },
+    "Données" : {
+      "comment" : "Settings section — data management",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Data"
+          }
+        }
+      }
+    },
+    "Exporter un projet en PDF" : {
+      "comment" : "Settings button — export project as PDF",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Export a project as PDF"
+          }
+        }
+      }
+    },
+    "Supprimer toutes les données" : {
+      "comment" : "Settings button — delete all data (destructive)",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Delete all data"
+          }
+        }
+      }
+    },
+    "Êtes-vous sûr ?" : {
+      "comment" : "Alert title — delete all data confirmation",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Are you sure?"
+          }
+        }
+      }
+    },
+    "Cette action est irréversible. Tous vos projets et dépenses seront supprimés." : {
+      "comment" : "Alert message — delete all data",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "This action is irreversible. All your projects and expenses will be deleted."
+          }
+        }
+      }
+    },
+    "À propos" : {
+      "comment" : "Settings section — about",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "About"
+          }
+        }
+      }
+    },
+    "Version" : {
+      "comment" : "Settings row — app version",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Version"
+          }
+        }
+      }
+    },
+    "Politique de confidentialité" : {
+      "comment" : "Settings link — privacy policy",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Privacy Policy"
+          }
+        }
+      }
+    },
+    "Support" : {
+      "comment" : "Settings link — support",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Support"
+          }
+        }
+      }
+    },
+    "Fait avec ❤️ à Montpellier" : {
+      "comment" : "Settings footer",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Made with ❤️ in Montpellier"
+          }
+        }
+      }
+    },
+    "Choisir un projet" : {
+      "comment" : "PDF export picker navigation title",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Choose a project"
+          }
+        }
+      }
     }
   },
   "version" : "1.0"
