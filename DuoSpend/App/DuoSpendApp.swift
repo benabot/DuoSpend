@@ -7,7 +7,7 @@ struct DuoSpendApp: App {
 
     @State private var showingSplash = true
     @AppStorage("hasSeenOnboarding") private var hasSeenOnboarding = false
-    @State private var showingOnboarding = false
+    @AppStorage("appTheme") private var appThemeRaw = 0
 
     init() {
         let schema = Schema([Project.self, Expense.self])
@@ -54,31 +54,33 @@ struct DuoSpendApp: App {
 
                 ProjectListView()
 
-                // Splash par-dessus — fond opaque garanti par SplashScreenView
+                // Onboarding directement dans le ZStack — évite tout flash entre splash et onboarding
+                if !hasSeenOnboarding && !showingSplash {
+                    OnboardingView(isPresented: Binding(
+                        get: { !hasSeenOnboarding },
+                        set: { if !$0 { hasSeenOnboarding = true } }
+                    ))
+                    .transition(.opacity)
+                    .zIndex(2)
+                }
+
+                // Splash par-dessus tout pendant le chargement
                 if showingSplash {
                     SplashScreenView()
                         .transition(.opacity)
                         .allowsHitTesting(true)
-                        .zIndex(1)
+                        .zIndex(3)
                 }
             }
             .animation(.easeOut(duration: 0.4), value: showingSplash)
+            .preferredColorScheme(AppTheme(rawValue: appThemeRaw)?.colorScheme)
             .onAppear {
                 guard showingSplash else { return }
                 DispatchQueue.main.asyncAfter(deadline: .now() + 2.5) {
                     showingSplash = false
-                    if !hasSeenOnboarding {
-                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
-                            showingOnboarding = true
-                        }
-                    }
                 }
             }
             .onOpenURL { url in handleDeepLink(url) }
-            .fullScreenCover(isPresented: $showingOnboarding) {
-                OnboardingView(isPresented: $showingOnboarding)
-                    .onDisappear { hasSeenOnboarding = true }
-            }
         }
         .modelContainer(modelContainer)
     }
