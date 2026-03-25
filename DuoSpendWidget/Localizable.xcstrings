@@ -1,16 +1,20 @@
 {
   "sourceLanguage" : "fr",
   "strings" : {
-    "DuoSpend Pro" : {
-      "comment" : "Widget locked state — title",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "DuoSpend Pro"
-          }
-        }
-      }
+    "%@ doit" : {
+
+    },
+    "à %@" : {
+
+    },
+    "Affiche la balance du projet en cours." : {
+
+    },
+    "Balance de votre projet en cours." : {
+
+    },
+    "Dernières dépenses" : {
+
     },
     "Déverrouillez pour accéder aux widgets" : {
       "comment" : "Widget locked state — subtitle",
@@ -22,6 +26,23 @@
           }
         }
       }
+    },
+    "DuoSpend" : {
+
+    },
+    "DuoSpend Pro" : {
+      "comment" : "Widget locked state — title",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "DuoSpend Pro"
+          }
+        }
+      }
+    },
+    "Équilibre" : {
+
     }
   },
   "version" : "1.0"

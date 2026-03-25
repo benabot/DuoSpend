@@ -81,6 +81,9 @@
 - [x] Fix transition splash → onboarding sans flash (ZStack au lieu de fullScreenCover) ✅ 2026-03-25
 - [x] Onboarding : retirer mention iCloud (désactivé en v1) ✅ 2026-03-25
 - [x] SettingsView : apparence (thème clair/sombre/système), Pro, export PDF, suppression données, à propos ✅ 2026-03-25
+- [ ] Fix paywall : ne pas afficher "Demande annulée" quand l'utilisateur cancel l'achat StoreKit
+- [ ] Widgets réservés aux utilisateurs Pro (état isUnlocked persisté dans App Group UserDefaults)
+- [ ] Ajouter "Widgets pour l'écran d'accueil" comme avantage dans le paywall
 - [ ] Privacy Policy sur beabot.fr/duospend/privacy
 - [ ] Support URL sur beabot.fr/duospend/support
 - [ ] Screenshots simulateur (6.7" + 5.5") FR et EN
@@ -106,6 +109,31 @@
 - [ ] Recherche dans les dépenses
 - [ ] App Clip ou partage projet
 
+## Apple Watch (v2.5+) — après iCloud sync stable
+
+Prérequis : v1.1 iCloud sync + base d'utilisateurs avec retours terrain.
+
+### Scope minimal Watch
+- [ ] Target watchOS dans le projet Xcode (WatchKit App + Extension)
+- [ ] Accès SwiftData via App Group partagé (même que widget) ou WatchConnectivity
+- [ ] Écran 1 : affichage du solde du projet actif (read-only)
+- [ ] Écran 2 : ajout rapide de dépense (montant + payeur, formulaire minimal)
+- [ ] Complication : solde net affiché sur le cadran (WidgetKit pour watchOS)
+- [ ] Sync : dépend d'iCloud sync (v1.1) — la Watch lit le même store CloudKit que l'iPhone
+- [ ] Alternative sans iCloud : WatchConnectivity (transfert données iPhone ↔ Watch en local)
+
+### Points d'attention
+- WatchOS impose NavigationStack simplifié et contraintes mémoire strictes
+- Le widget Watch (complication) est distinct du widget iPhone — c'est une 2e target WidgetKit
+- Sans iCloud sync, l'app Watch serait limitée à read-only (données poussées depuis iPhone)
+- Conditionner l'accès Watch à DuoSpend Pro (même mécanisme que les widgets iPhone)
+
+### Valeur produit
+- Use case : en sortie/courses, logger une dépense sans sortir l'iPhone
+- Complication : solde au poignet = "glance" parfait pour la promesse DuoSpend
+- Argument ASO : "Apple Watch" comme keyword sur l'App Store
+
+---
 
 ## Phase 8 : Sync couple — CloudKit Sharing (v2.0)
 

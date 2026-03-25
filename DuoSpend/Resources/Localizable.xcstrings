@@ -31,6 +31,7 @@
     },
     "%@ doit" : {
       "comment" : "Widget balance text — '[debtor name] owes'",
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -116,6 +117,7 @@
     },
     "à %@" : {
       "comment" : "Widget balance text — 'to [creditor name]'",
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -170,9 +172,6 @@
           }
         }
       }
-    },
-    "Affiche la balance du projet en cours." : {
-
     },
     "Ajouter" : {
       "comment" : "Confirm button when creating a new expense",
@@ -242,9 +241,6 @@
           }
         }
       }
-    },
-    "Balance de votre projet en cours." : {
-
     },
     "budget" : {
       "comment" : "Budget figure label in project summary",
@@ -429,6 +425,7 @@
     },
     "Dernières dépenses" : {
       "comment" : "Widget large — recent expenses section header",
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -514,6 +511,7 @@
     },
     "Équilibre" : {
       "comment" : "Balance status label in project card",
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -1032,17 +1030,6 @@
         }
       }
     },
-    "Widgets pour l'écran d'accueil" : {
-      "comment" : "Paywall bullet — home screen widgets benefit",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Home screen widgets"
-          }
-        }
-      }
-    },
     "Version" : {
       "comment" : "Settings row — app version",
       "extractionState" : "stale",
@@ -1098,6 +1085,18 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Trip, wedding, flatshare, renovations… Create a project for each shared adventure and keep an eye on the budget."
+          }
+        }
+      }
+    },
+    "Widgets pour l'écran d'accueil" : {
+      "comment" : "Paywall bullet — home screen widgets benefit",
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Home screen widgets"
           }
         }
       }

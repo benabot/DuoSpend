@@ -148,8 +148,8 @@
     },
     {
       "path": "DuoSpend/Resources/Localizable.xcstrings",
-      "accessCount": 17,
-      "lastAccessed": 1774393018875,
+      "accessCount": 21,
+      "lastAccessed": 1774443371532,
       "type": "file"
     },
     {
@@ -159,21 +159,39 @@
       "type": "file"
     },
     {
+      "path": "DuoSpend/Services/StoreManager.swift",
+      "accessCount": 12,
+      "lastAccessed": 1774443266108,
+      "type": "file"
+    },
+    {
       "path": "DuoSpend/Views/ProjectListView.swift",
-      "accessCount": 9,
-      "lastAccessed": 1774395355216,
+      "accessCount": 11,
+      "lastAccessed": 1774436029571,
       "type": "file"
     },
     {
       "path": "DuoSpendWidget/DuoSpendWidgetView.swift",
+      "accessCount": 10,
+      "lastAccessed": 1774443299233,
+      "type": "file"
+    },
+    {
+      "path": "docs/TODO.md",
       "accessCount": 8,
-      "lastAccessed": 1774393484381,
+      "lastAccessed": 1774436478579,
       "type": "file"
     },
     {
       "path": "DuoSpend/Views/AddExpenseView.swift",
       "accessCount": 7,
       "lastAccessed": 1774393035198,
+      "type": "file"
+    },
+    {
+      "path": "DuoSpend/App/DuoSpendApp.swift",
+      "accessCount": 7,
+      "lastAccessed": 1774443320105,
       "type": "file"
     },
     {
@@ -189,9 +207,15 @@
       "type": "directory"
     },
     {
-      "path": "docs/TODO.md",
+      "path": "DuoSpend/Views/OnboardingView.swift",
       "accessCount": 5,
-      "lastAccessed": 1774395396131,
+      "lastAccessed": 1774435963425,
+      "type": "file"
+    },
+    {
+      "path": "DuoSpendWidget/DuoSpendWidgetEntry.swift",
+      "accessCount": 4,
+      "lastAccessed": 1774443281098,
       "type": "file"
     },
     {
@@ -201,9 +225,15 @@
       "type": "file"
     },
     {
-      "path": "DuoSpend/Views/OnboardingView.swift",
+      "path": "docs/DECISIONS.md",
       "accessCount": 3,
-      "lastAccessed": 1774369462643,
+      "lastAccessed": 1774436497207,
+      "type": "file"
+    },
+    {
+      "path": "DuoSpend/Views/PaywallView.swift",
+      "accessCount": 3,
+      "lastAccessed": 1774443361929,
       "type": "file"
     },
     {
@@ -213,15 +243,15 @@
       "type": "file"
     },
     {
-      "path": "docs/MVP.md",
-      "accessCount": 1,
-      "lastAccessed": 1774362131030,
+      "path": "DuoSpendWidget/DuoSpendWidgetProvider.swift",
+      "accessCount": 2,
+      "lastAccessed": 1774443288491,
       "type": "file"
     },
     {
-      "path": "docs/DECISIONS.md",
+      "path": "docs/MVP.md",
       "accessCount": 1,
-      "lastAccessed": 1774362131360,
+      "lastAccessed": 1774362131030,
       "type": "file"
     },
     {
@@ -267,24 +297,6 @@
       "type": "directory"
     },
     {
-      "path": "DuoSpendWidget/DuoSpendWidgetEntry.swift",
-      "accessCount": 1,
-      "lastAccessed": 1774393484572,
-      "type": "file"
-    },
-    {
-      "path": "DuoSpend/Services/StoreManager.swift",
-      "accessCount": 1,
-      "lastAccessed": 1774395275228,
-      "type": "file"
-    },
-    {
-      "path": "DuoSpend/Views/PaywallView.swift",
-      "accessCount": 1,
-      "lastAccessed": 1774395286802,
-      "type": "file"
-    },
-    {
       "path": "DuoSpend/Views/Components/PaywallDebugView.swift",
       "accessCount": 1,
       "lastAccessed": 1774395291805,
@@ -294,6 +306,48 @@
       "path": "docs/SETUP_STOREKIT.md",
       "accessCount": 1,
       "lastAccessed": 1774395301326,
+      "type": "file"
+    },
+    {
+      "path": "docs/DESIGN.md",
+      "accessCount": 1,
+      "lastAccessed": 1774435576367,
+      "type": "file"
+    },
+    {
+      "path": "DuoSpend/Services/PDFExportService.swift",
+      "accessCount": 1,
+      "lastAccessed": 1774435591341,
+      "type": "file"
+    },
+    {
+      "path": "DuoSpend/Services/BalanceCalculator.swift",
+      "accessCount": 1,
+      "lastAccessed": 1774435665802,
+      "type": "file"
+    },
+    {
+      "path": "DuoSpend/Models/Project.swift",
+      "accessCount": 1,
+      "lastAccessed": 1774435678582,
+      "type": "file"
+    },
+    {
+      "path": "DuoSpend/Models/AppTheme.swift",
+      "accessCount": 1,
+      "lastAccessed": 1774435998552,
+      "type": "file"
+    },
+    {
+      "path": "DuoSpend/Views/SettingsView.swift",
+      "accessCount": 1,
+      "lastAccessed": 1774436021944,
+      "type": "file"
+    },
+    {
+      "path": "DuoSpendWidget/Localizable.xcstrings",
+      "accessCount": 1,
+      "lastAccessed": 1774443393167,
       "type": "file"
     }
   ],
