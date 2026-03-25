@@ -193,6 +193,36 @@ Format recommandé :
 
 ---
 
+### 2026-03-25 — ZStack au lieu de fullScreenCover pour la transition splash → onboarding
+
+**Contexte** : le `fullScreenCover` + `DispatchQueue.main.asyncAfter(0.3)` provoquait un flash visible de `ProjectListView` (empty state) entre la disparition du splash et l'apparition de l'onboarding.
+
+**Décision** : intégrer `OnboardingView` directement dans le ZStack racine de `DuoSpendApp`, au même niveau que `SplashScreenView`, avec `zIndex(2)` (splash à `zIndex(3)`). L'onboarding apparaît dès que `!hasSeenOnboarding && !showingSplash`, dans le même cycle d'animation que la disparition du splash.
+
+**Alternatives rejetées** :
+- `fullScreenCover` + délai → le trou entre la fermeture du splash et l'ouverture de la feuille expose `ProjectListView`
+- `fullScreenCover` sans délai → la présentation de sheet échoue si la vue n'est pas encore dans la hiérarchie
+- `ZStack` avec `opacity(0)` sur `ProjectListView` → couplage fragile, état supplémentaire inutile
+
+**Impact** : la transition est pilotée par un seul `@AppStorage("hasSeenOnboarding")` et un binding dérivé. Le `withAnimation` dans `OnboardingView.dismiss()` anime la disparition via `.transition(.opacity)`.
+
+---
+
+### 2026-03-25 — AppTheme enum + @AppStorage pour le thème d'apparence
+
+**Contexte** : permettre à l'utilisateur de choisir entre mode système, clair et sombre depuis les réglages, avec persistance entre sessions.
+
+**Décision** : enum `AppTheme: Int, CaseIterable` stocké via `@AppStorage("appTheme")` (Int brut), appliqué avec `.preferredColorScheme(AppTheme(rawValue:)?.colorScheme)` sur le ZStack racine dans `DuoSpendApp`. `colorScheme` retourne `nil` pour `.system`, ce que `.preferredColorScheme` interprète comme "déférer au système".
+
+**Alternatives rejetées** :
+- `@AppStorage` avec `String` → conversion manuelle, moins robuste
+- `UserDefaults` + `NotificationCenter` → verbeux, non idiomatique SwiftUI
+- Appliquer `.preferredColorScheme` dans `SettingsView` → scope trop limité, ne couvre pas toute l'app
+
+**Impact** : `AppTheme.swift` dans `Models/`. Le changement de thème est instantané sans redémarrage. `SettingsView` lit et écrit `@AppStorage("appTheme")` directement, sans ViewModel.
+
+---
+
 ### 2026-03-24 — LocalizedStringKey obligatoire pour la traduction SwiftUI
 
 **Contexte** : implémentation de la localisation FR + EN sur l'app iOS avec Xcode 15+ String Catalog (xcstrings).

@@ -78,6 +78,9 @@
 
 - [x] Localisation FR + EN (String Catalog .xcstrings) ✅ 2026-03-24
 - [x] StoreKit 2 — paywall 1 projet gratuit + achat unique 6,99 € ✅ 2026-03-25
+- [x] Fix transition splash → onboarding sans flash (ZStack au lieu de fullScreenCover) ✅ 2026-03-25
+- [x] Onboarding : retirer mention iCloud (désactivé en v1) ✅ 2026-03-25
+- [x] SettingsView : apparence (thème clair/sombre/système), Pro, export PDF, suppression données, à propos ✅ 2026-03-25
 - [ ] Privacy Policy sur beabot.fr/duospend/privacy
 - [ ] Support URL sur beabot.fr/duospend/support
 - [ ] Screenshots simulateur (6.7" + 5.5") FR et EN
@@ -99,7 +102,7 @@
 - [ ] Templates projets (mariage, voyage, travaux, bébé, déménagement)
 - [ ] Catégories de dépenses avec icônes SF Symbols
 - [ ] Graphiques répartition (Charts framework)
-- [ ] Onboarding première ouverture
+- [x] Onboarding première ouverture ✅ (voir Phase 7)
 - [ ] Recherche dans les dépenses
 - [ ] App Clip ou partage projet
 
