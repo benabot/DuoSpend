@@ -586,8 +586,12 @@
         }
       }
     },
+    "Fait avec ❤️ à Lille" : {
+
+    },
     "Fait avec ❤️ à Montpellier" : {
       "comment" : "Settings footer",
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
