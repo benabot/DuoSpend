@@ -1,15 +1,28 @@
 # DuoSpend 💰
 
-> App iOS de gestion de budget par projet pour couples.
+> App iOS native de budget par projet pour couples.
 > Une question, une réponse : **"Qui doit combien à qui ?"**
+
+---
+
+## Statut du projet
+
+DuoSpend est en **Phase 7 — préparation de la soumission App Store** pour la v1.0.0.
+
+Le scope v1.0 est gelé :
+- iPhone uniquement ;
+- 2 partenaires uniquement ;
+- fonctionnement local-first ;
+- iCloud / CloudKit **désactivés** en v1.0 ;
+- aucune dépendance externe.
 
 ---
 
 ## Aperçu
 
-DuoSpend permet à deux personnes de suivre leurs dépenses communes sur des projets partagés (mariage, voyage, colocation…). Chacun enregistre ce qu'il paie, l'app calcule automatiquement le solde net et indique qui rembourse qui.
+DuoSpend permet à un couple de suivre les dépenses d'un projet commun et de savoir en permanence qui doit combien à qui. L'app est organisée **par projet** — mariage, voyage, emménagement, travaux, projet bébé — avec une promesse simple : une balance claire, sans friction ni usine à gaz.
 
-**Principe :** pas d'inscription, pas de cloud obligatoire, pas de pub. Tout fonctionne hors ligne.
+**Principe :** pas de compte, pas de connexion bancaire, pas de sync cloud active en v1.0, pas de pub. Tout fonctionne localement sur l'iPhone.
 
 ---
 
@@ -19,27 +32,32 @@ DuoSpend permet à deux personnes de suivre leurs dépenses communes sur des pro
 |---|---|
 | Langage | Swift 6 (strict concurrency) |
 | UI | SwiftUI — iOS 17+ |
+| Cible | iPhone uniquement |
 | Persistance | SwiftData (`@Model`) |
-| Sync | iCloud automatique via SwiftData |
+| Sync | Aucune sync active en v1.0 — iCloud / CloudKit désactivés |
 | Architecture | MVVM + Observation framework |
 | Tests | Swift Testing + XCTest (UI) |
 | Dépendances | Aucune — Apple frameworks uniquement |
 
 ---
 
-## Fonctionnalités MVP
+## Fonctionnalités déjà livrées
 
-- **Projets** — créer un projet avec emoji, noms des partenaires, budget cible optionnel
-- **Dépenses** — ajouter titre, montant, payeur, répartition (50/50 ou custom)
-- **Balance** — calcul en temps réel du solde net ("Thomas doit 70 € à Marie")
-- **Dark mode** — supporté nativement via couleurs système
-- **iCloud** — sync transparente si le compte Apple est connecté
+- **Projets** — création et édition de projets à deux, avec budget dédié, emoji et partenaires.
+- **Dépenses** — ajout, édition, suppression, répartition 50/50 ou personnalisée.
+- **Balance** — calcul instantané du solde net avec wording clair : "X doit Y à Z".
+- **Onboarding & splash** — parcours de premier lancement stabilisé, sans flash parasite.
+- **SettingsView** — thème clair/sombre/système, DuoSpend Pro, export PDF, suppression des données, à propos.
+- **Monétisation** — StoreKit 2 en place : 1 projet gratuit, puis achat unique de **6,99 €** pour DuoSpend Pro.
+- **DuoSpend Pro** — projets illimités, widgets pour l'écran d'accueil et export PDF.
+- **Localisation** — français et anglais via String Catalog.
+- **Polish UI** — dark mode, empty states, haptics et composants principaux finalisés.
 
 ---
 
 ## Structure du projet
 
-```
+```text
 DuoSpend/
 ├── App/
 │   └── DuoSpendApp.swift          # @main, ModelContainer
@@ -69,7 +87,7 @@ DuoSpend/
 
 ## Architecture
 
-```
+```text
 SwiftUI Views
     │  @Query (lectures)
     │  actions utilisateur
@@ -82,16 +100,16 @@ Services (logique pure)        SwiftData (@Model)
 BalanceCalculator  ◀─────────  Project, Expense
 ```
 
-- **Views** — affichage uniquement, zéro logique métier
-- **ViewModels** — `@Observable`, état de présentation, CRUD via `ModelContext`
-- **Services** — fonctions pures, testables sans SwiftUI ni SwiftData
-- **Models** — `@Model` SwiftData, données pures + relations `@Relationship`
+- **Views** — affichage uniquement, zéro logique métier.
+- **ViewModels** — `@Observable`, état de présentation, CRUD via `ModelContext`.
+- **Services** — fonctions pures, testables sans SwiftUI ni SwiftData.
+- **Models** — `@Model` SwiftData, données pures + relations `@Relationship`.
 
 ---
 
 ## Logique de balance
 
-```
+```text
 Pour chaque dépense :
   part_chacun = amount × ratio (50/50 ou custom)
 
@@ -113,12 +131,12 @@ open DuoSpend.xcodeproj
 
 # Build
 xcodebuild -scheme DuoSpend \
-  -destination 'platform=iOS Simulator,name=iPhone 16' \
+  -destination 'platform=iOS Simulator,name=iPhone 16 Pro' \
   build
 
 # Tests
 xcodebuild -scheme DuoSpend \
-  -destination 'platform=iOS Simulator,name=iPhone 16' \
+  -destination 'platform=iOS Simulator,name=iPhone 16 Pro' \
   test
 
 # Clean
@@ -127,28 +145,41 @@ xcodebuild -scheme DuoSpend clean
 
 ---
 
-## Roadmap
+## État produit
 
-| Feature | Version |
+| Sujet | Statut |
 |---|---|
-| MVP (balance, projets, dépenses) | v1 — en cours |
-| Templates projets | v2 |
-| Export PDF | v2 |
-| Paywall one-time (6,99 € StoreKit 2) | v2 |
-| Widgets iOS | v2 |
-| Graphiques Charts | v2 |
-| Multi-devises | v3 |
-| Plus de 2 partenaires | ❌ hors scope |
+| v1.0 | **Phase 7** — préparation de la soumission App Store |
+| Scope v1.0 | local-first, iPhone only, 2 partenaires, pas de sync iCloud / CloudKit active |
+| Pricing v1.0 | 1 projet gratuit + achat unique **6,99 €** |
+| v1.1 | synchronisation iCloud même compte Apple (prévue, pas active en v1.0) |
+| v2.0 | CloudKit Sharing entre 2 comptes Apple |
+| Hors scope | groupes, backend tiers, Android |
 
 ---
 
 ## Principes
 
-1. **Local-first** — fonctionne hors ligne, iCloud = bonus
-2. **Zéro dépendance** — Apple frameworks uniquement
-3. **Privacy by design** — aucune donnée ne quitte l'appareil (sauf iCloud du user)
-4. **Simple > Complet** — moins de features, mieux exécutées
-5. **Éco-conception** — code efficient, pas de superflu
+1. **Local-first** — fonctionne hors ligne, sans sync iCloud / CloudKit active en v1.0.
+2. **Deux partenaires uniquement** — DuoSpend n'est pas conçu pour les groupes.
+3. **Privacy by design** — aucune collecte, aucun tracker, aucune publicité.
+4. **Simple > complet** — moins de fonctionnalités, mais mieux cadrées.
+5. **Zéro dépendance** — frameworks Apple uniquement.
+
+---
+
+## Sources de vérité
+
+Pour les agents, lire dans cet ordre :
+
+1. `/.codex/`
+2. `AGENTS.md`
+3. `CLAUDE.md`
+4. `docs/TODO.md`
+5. `docs/DECISIONS.md`
+6. `docs/ROADMAP_RELEASE.md`
+
+`README.md` reste un document de présentation humaine du projet.
 
 ---
 

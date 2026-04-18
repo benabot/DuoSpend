@@ -1,250 +1,171 @@
 # Métadonnées App Store — DuoSpend v1.0.0
 
-> Template à remplir pendant le Sprint 4 de `ROADMAP_RELEASE.md`.
-> Toutes les chaînes sont contraintes en longueur par Apple.
+Document de travail directement réutilisable dans App Store Connect.
+Positionnement à respecter : budget **par projet** pour **2 partenaires**, local-first, sans iCloud actif en v1.0, sans abonnement.
 
 ---
 
-## Informations communes (non localisées)
+## Informations communes
 
 | Champ | Valeur |
 |---|---|
 | Bundle ID | `fr.beabot.DuoSpend` |
-| SKU | `duospend-ios-v1` |
-| Team ID | `66S2QLG2HD` |
-| Version | 1.0.0 |
-| Build | 1 |
+| Product ID Pro | `fr.beabot.DuoSpend.unlimitedprojects` |
+| Version | `1.0.0` |
+| Build | `1` |
+| Pricing | Gratuit avec `1 projet` inclus, achat unique Pro `6,99 €` |
 | Catégorie principale | Finance |
 | Catégorie secondaire | Productivité |
 | Classification d'âge | 4+ |
-| Prix | Gratuit (avec IAP one-time 6,99 €) |
-| Disponibilité | Tous les pays |
+| URL de support | `https://beabot.fr/apps/duo-spend/` |
+| URL de confidentialité | `https://beabot.fr/apps/duo-spend#policy` |
 
 ---
 
-## Français (FR — langue principale)
+## FR
 
-### Nom (30 caractères max)
-```
-DuoSpend — Budget en couple
-```
-*Longueur : 28 caractères ✅*
+### Nom
 
-### Sous-titre (30 caractères max)
-```
-Dépenses partagées simples
-```
-*Longueur : 27 caractères ✅*
+`DuoSpend`
 
-### Texte promotionnel (170 caractères max, modifiable sans review)
-```
-Suivez à deux les dépenses d'un voyage, d'un mariage ou d'un emménagement. DuoSpend vous dit en permanence qui doit combien à qui. Simple, local, sans abonnement.
-```
+Longueur : 8 / 30
 
-### Description longue (4000 caractères max)
-```
-DuoSpend répond à une seule question, mais avec précision : qui doit combien à qui ?
+### Sous-titre
 
-Pensée pour les couples, l'app vous aide à suivre ensemble les dépenses d'un projet commun — un voyage, un mariage, des travaux, un emménagement, un projet bébé — et à garder en permanence une vue claire sur l'équilibre financier entre vous deux.
+`Budget projet en couple`
 
-POURQUOI DUOSPEND
+Longueur : 23 / 30
 
-— Clair : une seule question, une seule réponse. Pas de notion de groupe, pas de colocataire, juste vous deux.
-— Rapide : ajoutez une dépense en trois gestes.
-— Local-first : tout fonctionne hors ligne. Vos données restent sur votre iPhone.
-— Privacy by design : aucun tracker, aucune publicité, aucune donnée collectée.
-— Sans abonnement : une version gratuite généreuse, une option Pro en achat unique.
+### Keywords
 
-FONCTIONNALITÉS
+`budget,couple,depenses,projet,partage,remboursement,mariage,voyage,travaux,commun`
 
-— Projets illimités pour tous les usages du quotidien à deux.
-— Ajout de dépenses en quelques secondes, répartition 50/50 ou personnalisée.
-— Balance en temps réel : l'app calcule immédiatement qui doit combien à qui.
-— Budget optionnel par projet, avec barre de progression.
-— Export PDF récapitulatif de chaque projet.
-— Widget écran d'accueil pour garder un œil sur la balance sans ouvrir l'app.
-— Mode sombre complet.
+Longueur : 81 / 100
 
-DUOSPEND PRO
+### Description longue
 
-L'app est utilisable gratuitement avec un projet. Pour débloquer les projets illimités et les widgets, un achat unique à 6,99 € suffit, valable à vie, sans abonnement ni reconduction.
+```text
+DuoSpend répond à une question simple : qui doit combien à qui ?
 
-CONFIDENTIALITÉ
+L'app aide un couple à suivre les dépenses d'un projet commun sans se perdre dans un budget mensuel, une app bancaire ou un outil de split entre amis. Chaque projet reste clair, avec son budget, ses dépenses et sa balance.
 
-DuoSpend ne collecte aucune donnée personnelle. Vos dépenses, vos partenaires, vos montants — tout reste sur votre iPhone. L'app ne communique avec aucun serveur tiers.
+DUOSPEND, C'EST :
+- une app conçue pour 2 partenaires, pas pour des groupes ;
+- une organisation par projet : voyage, mariage, déménagement, travaux, projet bébé ;
+- un calcul instantané du solde entre vous deux ;
+- un fonctionnement local-first, sans compte, sans pub, sans tracking ;
+- une app iPhone simple, disponible en français et en anglais.
 
-POUR QUI
+FONCTIONNALITÉS :
+- création et édition de projets avec budget dédié ;
+- ajout, modification et suppression de dépenses en quelques gestes ;
+- répartition 50/50 ou personnalisée pour chaque dépense ;
+- balance en temps réel pour savoir immédiatement qui rembourse qui ;
+- réglages complets : thème clair, sombre ou système, restauration d'achats, suppression des données, à propos ;
+- widgets écran d'accueil et export PDF avec DuoSpend Pro.
 
-— Couples qui vivent ensemble et partagent certaines dépenses.
-— Couples qui préparent un mariage, un voyage, un déménagement.
-— Parents qui veulent suivre le budget d'un projet familial.
-— Toute personne qui veut sortir des feuilles Excel partagées pour quelque chose de plus simple.
+PRIX :
+- 1 projet gratuit pour tester DuoSpend dans des conditions réelles ;
+- DuoSpend Pro à 6,99 € en achat unique pour débloquer les projets illimités, les widgets et l'export PDF ;
+- aucun abonnement.
 
-Développée en France, pour les couples, par un développeur indépendant.
+CONFIDENTIALITÉ :
+Vos données restent sur votre iPhone. DuoSpend ne collecte aucune donnée personnelle, n'utilise aucun serveur tiers et fonctionne hors ligne.
 ```
 
-### Mots-clés (100 caractères max, séparés par virgules SANS ESPACES)
-```
-budget,couple,dépenses,partage,remboursement,mariage,voyage,emménagement,finance,duo,compte
-```
-*Longueur à vérifier — chaque caractère compte.*
+### Texte promotionnel
 
-### URL de promotion
-```
-https://beabot.fr/apps/duo-send/
-```
-
-### URL de support
-```
-https://beabot.fr/apps/duo-send/
-```
-
-### URL de confidentialité
-```
-https://beabot.fr/apps/duo-send#policy
-```
+`Suivez les dépenses d'un projet à deux et voyez instantanément qui doit combien à qui. Simple, hors ligne, sans abonnement.`
 
 ### Notes de version 1.0.0
-```
-Première version publique de DuoSpend.
-```
+
+`Première version publique de DuoSpend : dépenses par projet à deux, balance instantanée et DuoSpend Pro en achat unique.`
+
+### Catégorie principale / secondaire
+
+- Principale : `Finance`
+- Secondaire : `Productivité`
+
+### Classification d'âge
+
+`4+`
+
+### URLs
+
+- Support : `https://beabot.fr/apps/duo-spend/`
+- Confidentialité : `https://beabot.fr/apps/duo-spend#policy`
 
 ---
 
-## English (EN)
+## EN
 
-### Nom (30 caractères max)
-```
-DuoSpend — Couple Budget
-```
-*Longueur : 23 caractères ✅*
+### App Name
 
-### Sous-titre (30 caractères max)
-```
-Shared expenses made easy
-```
-*Longueur : 25 caractères ✅*
+`DuoSpend`
 
-### Texte promotionnel (170 caractères max)
-```
-Track shared expenses as a couple — travel, wedding, moving, renovations. DuoSpend always tells you who owes what. Simple, local, no subscription.
-```
+Length: 8 / 30
 
-### Description longue (4000 caractères max)
-```
-DuoSpend answers one question, precisely: who owes what to whom?
+### Subtitle
 
-Designed for couples, the app helps you and your partner track the expenses of a shared project — a trip, a wedding, renovations, moving in together, preparing for a baby — and always keeps a clear view of the financial balance between the two of you.
+`Project budget for couples`
 
-WHY DUOSPEND
+Length: 26 / 30
 
-— Focused: one question, one answer. No group concept, no roommates, just the two of you.
-— Fast: add an expense in three taps.
-— Local-first: works fully offline. Your data stays on your iPhone.
-— Privacy by design: no trackers, no ads, no data collection.
-— No subscription: a generous free tier, and a Pro option as a one-time purchase.
+### Keywords
 
-FEATURES
+`budget,couples,expenses,project,shared,split,repayment,wedding,travel,offline`
 
-— Unlimited projects for every shared part of your life.
-— Add expenses in seconds, split 50/50 or custom.
-— Real-time balance: the app instantly shows who owes what.
-— Optional per-project budget with progress bar.
-— PDF export of each project's summary.
-— Home Screen widget to check the balance at a glance.
-— Full dark mode support.
+Length: 77 / 100
 
-DUOSPEND PRO
+### Long Description
 
-The app is free with one project. To unlock unlimited projects and widgets, a one-time 6.99 € purchase is all it takes — yours for life, no subscription, no renewal.
+```text
+DuoSpend answers one simple question: who owes what to whom?
 
-PRIVACY
+The app helps couples track the expenses of a shared project without turning it into a monthly budgeting app, a bank-connected tool, or a group expense tracker. Each project stays focused, with its own budget, expenses, and running balance.
 
-DuoSpend does not collect any personal data. Your expenses, your partners, your amounts — everything stays on your iPhone. The app communicates with no third-party server.
+DUOSPEND IS:
+- built for 2 partners, not for groups ;
+- organized by project: trip, wedding, moving, renovations, baby project ;
+- centered on an instant balance between the two of you ;
+- local-first, with no account, no ads, no tracking ;
+- an iPhone app available in French and English.
 
-WHO IT'S FOR
+FEATURES:
+- create and edit projects with a dedicated budget ;
+- add, edit, and delete expenses in a few taps ;
+- split each expense 50/50 or with a custom ratio ;
+- see the balance instantly to know who should reimburse whom ;
+- complete settings with light, dark, or system theme, purchase restore, data deletion, and about screen ;
+- Home Screen widgets and PDF export with DuoSpend Pro.
 
-— Couples living together with shared expenses.
-— Couples planning a wedding, a trip, a move.
-— Parents tracking the budget of a family project.
-— Anyone tired of shared spreadsheets who wants something simpler.
+PRICING:
+- 1 free project to try DuoSpend in real conditions ;
+- DuoSpend Pro is a one-time €6.99 purchase that unlocks unlimited projects, widgets, and PDF export ;
+- no subscription.
 
-Built in France, for couples, by an independent developer.
+PRIVACY:
+Your data stays on your iPhone. DuoSpend does not collect personal data, does not rely on third-party servers, and works offline.
 ```
 
-### Mots-clés (100 caractères max, séparés par virgules SANS ESPACES)
-```
-budget,couple,expenses,sharing,split,refund,wedding,travel,moving,finance,duo,account
-```
+### Promotional Text
 
-### URL de promotion / Support / Confidentialité
-```
-https://beabot.fr/apps/duo-send/
-https://beabot.fr/apps/duo-send/
-https://beabot.fr/apps/duo-send#policy
-```
+`Track shared expenses by project and instantly see who owes what. Built for two, offline by default, and available with a simple one-time Pro unlock.`
 
-### Notes de version 1.0.0
-```
-First public release of DuoSpend.
-```
+### What's New in 1.0.0
 
----
+`First public release of DuoSpend: track project expenses for two, see the balance instantly, and unlock DuoSpend Pro with a one-time purchase.`
 
-## Questionnaire Confidentialité (App Store Connect)
+### Category
 
-À remplir dans App Store Connect → App → App Privacy :
+- Primary: `Finance`
+- Secondary: `Productivity`
 
-| Question | Réponse |
-|---|---|
-| Collectez-vous des données ? | **Non** |
-| Utilisez-vous des SDK tiers ? | **Non** |
-| Utilisez-vous des identifiants publicitaires ? | **Non** |
-| Faites-vous du tracking utilisateur ? | **Non** |
+### Age Rating
 
-*Ces réponses doivent être strictement cohérentes avec le contenu de `DuoSpend/Resources/PrivacyInfo.xcprivacy`.*
+`4+`
 
----
+### URLs
 
-## Infos pour la review Apple
-
-```
-CONTACT
-Nom : Benoît Abot
-Email : [à remplir]
-Téléphone : [à remplir]
-
-NOTES POUR LA REVIEW
-DuoSpend est une app local-first pour les couples qui partagent des dépenses.
-Aucun compte utilisateur n'est requis.
-Aucune authentification n'est nécessaire pour tester toutes les fonctionnalités.
-
-Pour tester le flow complet :
-1. Compléter l'onboarding avec deux prénoms (ex. "Alice" et "Bob").
-2. Créer un projet (ex. "Voyage Italie").
-3. Ajouter plusieurs dépenses avec différentes répartitions.
-4. Observer la balance calculée automatiquement.
-
-L'achat in-app `fr.beabot.DuoSpend.unlimitedprojects` débloque les projets illimités et les widgets. Il est non-consommable et testable via sandbox.
-
-L'app fonctionne 100 % hors ligne. Aucun serveur tiers n'est contacté.
-```
-
----
-
-## Checklist finale avant soumission
-
-- [ ] Tous les champs FR remplis et validés en longueur
-- [ ] Tous les champs EN remplis et validés en longueur
-- [ ] Mots-clés sans espaces entre les virgules
-- [ ] 6 screenshots 6,7" en FR dans `screenshots/fr/6.9/`
-- [ ] 6 screenshots 6,7" en EN dans `screenshots/en/6.9/`
-- [ ] 6 screenshots 5,5" en FR dans `screenshots/fr/5.5/`
-- [ ] 6 screenshots 5,5" en EN dans `screenshots/en/5.5/`
-- [ ] Privacy Policy accessible sur l'URL fournie (test `curl -I`)
-- [ ] Support URL accessible
-- [ ] Product IAP `fr.beabot.DuoSpend.unlimitedprojects` créé et attaché
-- [ ] Classification d'âge 4+ validée
-- [ ] Catégorie Finance sélectionnée
-- [ ] Questionnaire App Privacy rempli et cohérent avec `PrivacyInfo.xcprivacy`
-- [ ] Contact review rempli
+- Support: `https://beabot.fr/apps/duo-spend/`
+- Privacy: `https://beabot.fr/apps/duo-spend#policy`

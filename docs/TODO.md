@@ -76,22 +76,33 @@
 
 ## Phase 7 : Préparation App Store (en cours)
 
+### Assets & metadata
+
 - [x] Localisation FR + EN (String Catalog .xcstrings) ✅ 2026-03-24
-- [x] StoreKit 2 — paywall 1 projet gratuit + achat unique 6,99 € ✅ 2026-03-25
+- [ ] Screenshots simulateur (6.7" + 5.5") FR et EN
+- [ ] Métadonnées App Store FR + EN
+
+### Release compliance
+
 - [x] Fix transition splash → onboarding sans flash (ZStack au lieu de fullScreenCover) ✅ 2026-03-25
 - [x] Onboarding : retirer mention iCloud (désactivé en v1) ✅ 2026-03-25
 - [x] SettingsView : apparence (thème clair/sombre/système), Pro, export PDF, suppression données, à propos ✅ 2026-03-25
+- [x] Privacy Policy et Support URL câblées dans SettingsView ✅ 2026-03-25
+- [ ] Vérifier PrivacyInfo.xcprivacy complet
+- [ ] Version 1.0.0 / Build 1
+
+### Distribution
+
+- [x] StoreKit 2 — paywall 1 projet gratuit + achat unique 6,99 € ✅ 2026-03-25
 - [x] Fix paywall : ne pas afficher "Demande annulée" quand l'utilisateur cancel l'achat StoreKit ✅ 2026-03-25
 - [x] Widgets réservés aux utilisateurs Pro (état isUnlocked persisté dans App Group UserDefaults) ✅ 2026-03-25
 - [x] Ajouter "Widgets pour l'écran d'accueil" comme avantage dans le paywall ✅ 2026-03-25
-- [x] Privacy Policy et Support URL câblées dans SettingsView ✅ 2026-03-25
-- [ ] Screenshots simulateur (6.7" + 5.5") FR et EN
-- [ ] Métadonnées App Store FR + EN
-- [ ] Vérifier PrivacyInfo.xcprivacy complet
-- [ ] Version 1.0.0 / Build 1
 - [ ] Créer compte Apple Developer
 - [ ] Archive Release → Validate → Upload
 - [ ] TestFlight beta
+
+### Soumission
+
 - [ ] Soumission App Store
 
 ---

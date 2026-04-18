@@ -287,3 +287,20 @@ Cause 2 : `UIActivityViewController` ne fonctionne pas de manière fiable quand 
 - Les conditions binaires sur du texte doivent utiliser `Group { if ... } else { ... }` au lieu de ternaires.
 - La couche d'affichage respecte strictement le contrat : pas de logique métier texte, pas de formatage dynamique qui contournerait la localisation.
 - Bénéfice : intégration automatique avec le String Catalog d'Xcode et support multi-langue transparent.
+
+---
+
+### 2026-04-18 — Hiérarchie documentaire du repo
+
+**Contexte** : la préparation App Store multiplie les documents de présentation, de release et de configuration locale. Il faut éviter qu'un agent ou un humain prenne `README.md` pour la source de vérité opérationnelle.
+
+**Décision** :
+- `README.md` reste le document de présentation humaine du projet.
+- `.codex/` regroupe la configuration locale spécifique à Codex.
+- En cas de conflit, les sources de vérité sont : `AGENTS.md`, `CLAUDE.md`, `docs/TODO.md`, `docs/DECISIONS.md`, `docs/ROADMAP_RELEASE.md`.
+
+**Alternatives rejetées** :
+- faire du `README.md` le document de référence agent → trop exposé au drift
+- disperser les consignes locales hors de `.codex/` → moins lisible pour Codex
+
+**Impact** : la doc de présentation et la doc de release peuvent évoluer sans changer la hiérarchie d'exécution agent.

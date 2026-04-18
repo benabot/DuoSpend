@@ -1,63 +1,53 @@
 # Screenshots App Store
 
-## Dimensions obligatoires Apple (2026)
+Guide simple pour produire les captures FR / EN de la v1.0.
 
-| Dossier | Device | Dimensions portrait | Notes |
-|---|---|---|---|
-| `6.9/` | iPhone 16 Pro Max (ou Plus) | 1320 × 2868 px | **Obligatoire** pour iPhone moderne |
-| `5.5/` | iPhone 8 Plus | 1242 × 2208 px | **Obligatoire** pour iPhone legacy |
+## Arborescence
 
-## Série recommandée (6 captures par langue et par taille)
-
-1. `01-projects-list.png` — Liste de projets peuplée (3–4 projets)
-2. `02-project-detail.png` — Détail d'un projet avec dépenses et balance
-3. `03-add-expense.png` — Formulaire d'ajout de dépense
-4. `04-balance-banner.png` — Vue avec balance « X doit Y à Z »
-5. `05-settings-pro.png` — Écran Settings avec section Pro
-6. `06-onboarding.png` — Onboarding ou Paywall
-
-## Commandes de capture
-
-```bash
-# Booter un device précis
-xcrun simctl list devices | grep "iPhone 16 Pro Max"
-xcrun simctl boot <UUID>
-
-# Ouvrir l'app sur ce simulateur
-open -a Simulator
-xcrun simctl install booted /path/to/DuoSpend.app
-xcrun simctl launch booted fr.beabot.DuoSpend
-
-# Capturer l'écran courant
-xcrun simctl io booted screenshot ~/Desktop/screen.png
+```text
+screenshots/
+├── fr/
+│   ├── 6.9/
+│   └── 5.5/
+└── en/
+    ├── 6.9/
+    └── 5.5/
 ```
 
-## Bascule langue du simulateur
+## Devices à utiliser
+
+| Dossier | Device | Résolution portrait |
+|---|---|---|
+| `6.9/` | iPhone 16 Pro Max | `1320 × 2868` |
+| `5.5/` | iPhone 8 Plus | `1242 × 2208` |
+
+## Série à produire
+
+1. `01-projects-list.png` — liste des projets avec 3 à 4 projets crédibles
+2. `02-project-detail.png` — détail d'un projet avec plusieurs dépenses et une balance lisible
+3. `03-add-expense.png` — formulaire d'ajout de dépense
+4. `04-balance-banner.png` — focus sur la balance "qui doit combien à qui"
+5. `05-settings-pro.png` — `SettingsView` avec la section Pro visible
+6. `06-onboarding-or-paywall.png` — onboarding ou paywall selon le rendu le plus fort
+
+## Règles de cohérence
+
+- Pas d'écran vide dans la série finale.
+- Garder les mêmes données de démonstration sur toute une langue.
+- FR : prénoms `Léa` et `Tom`.
+- EN : prénoms `Emma` et `Jack`.
+- Exemples de projets : `Voyage Italie`, `Mariage`, `Travaux salon`.
+- Exemples de montants : `847,50 €`, `129,90 €`, `42,00 €`.
+- Pricing visible et cohérent partout : `1 projet gratuit`, puis `6,99 €` en achat unique.
+- Ne jamais laisser penser que la sync iCloud est active en v1.0.
+
+## Status bar
+
+- Heure uniforme : `9:41`
+- Batterie : `100 %`
+- Réseau : Wi-Fi plein
 
 ```bash
-# Passer en anglais
-xcrun simctl spawn booted defaults write -g AppleLanguages -array en
-xcrun simctl spawn booted defaults write -g AppleLocale en_US
-
-# Retour en français
-xcrun simctl spawn booted defaults write -g AppleLanguages -array fr
-xcrun simctl spawn booted defaults write -g AppleLocale fr_FR
-
-# Puis relancer le simulateur
-```
-
-## Règles qualité
-
-- Pas d'écrans vides (tous les projets et dépenses peuplés).
-- Prénoms crédibles : Léa & Tom (FR), Emma & Jack (EN).
-- Montants réalistes (ex. Voyage Italie 847,50 €).
-- Pas de barre de statut du simulateur visible — activer `xcrun simctl status_bar booted override --time "9:41"` pour un rendu propre.
-- Heure affichée uniforme sur tous les screenshots : 9h41 (convention Apple).
-
-## Status bar propre
-
-```bash
-# Forcer 9h41, batterie à 100 %, Wi-Fi plein
 xcrun simctl status_bar booted override \
   --time "9:41" \
   --dataNetwork wifi \
@@ -67,7 +57,22 @@ xcrun simctl status_bar booted override \
   --cellularBars 4 \
   --batteryState charged \
   --batteryLevel 100
+```
 
-# Réinitialiser
-xcrun simctl status_bar booted clear
+## Capture rapide
+
+```bash
+xcrun simctl io booted screenshot /tmp/duospend-screen.png
+```
+
+## Bascule de langue
+
+```bash
+# English
+xcrun simctl spawn booted defaults write -g AppleLanguages -array en
+xcrun simctl spawn booted defaults write -g AppleLocale en_US
+
+# Français
+xcrun simctl spawn booted defaults write -g AppleLanguages -array fr
+xcrun simctl spawn booted defaults write -g AppleLocale fr_FR
 ```
