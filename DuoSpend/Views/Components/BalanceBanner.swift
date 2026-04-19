@@ -54,7 +54,7 @@ struct BalanceBanner: View {
     ) -> some View {
         // Phrase principale — sens explicite, non ambigu
         (Text(debtor).fontWeight(.bold)
-            + Text(" doit rembourser ")
+            + Text(LocalizedStringKey(" doit rembourser "))
             + Text(creditor).fontWeight(.bold))
             .font(.system(.subheadline, design: .rounded))
             .multilineTextAlignment(.center)
@@ -89,7 +89,7 @@ struct BalanceBanner: View {
         .foregroundStyle(.white.opacity(0.85))
     }
 
-    private func statCell(value: Decimal, label: String) -> some View {
+    private func statCell(value: Decimal, label: LocalizedStringKey) -> some View {
         VStack(alignment: .trailing, spacing: 1) {
             Text(value.formattedCurrency)
                 .fontWeight(.medium)

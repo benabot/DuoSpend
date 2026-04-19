@@ -25,6 +25,10 @@ struct ProjectCard: View {
             / Double(truncating: balance.totalSpent as NSDecimalNumber)
     }
 
+    private var expenseCountLabel: String {
+        localizedExpenseCount(project.expenses.count)
+    }
+
     var body: some View {
         VStack(alignment: .leading, spacing: 14) {
             // ── Header ──────────────────────────────────────────────
@@ -105,7 +109,7 @@ struct ProjectCard: View {
 
             // ── Footer : nb dépenses ─────────────────────────────────
             HStack {
-                Label("\(project.expenses.count) dépense", systemImage: "list.bullet")
+                Label(expenseCountLabel, systemImage: "list.bullet")
                 .font(.system(.caption, design: .rounded))
                 .foregroundStyle(.secondary)
 
@@ -247,6 +251,14 @@ struct ProjectCard: View {
             .background(color)
             .clipShape(Circle())
             .overlay(Circle().strokeBorder(Color.cardBackground, lineWidth: 1.5))
+    }
+
+    private func localizedExpenseCount(_ count: Int) -> String {
+        let usesEnglish = Locale.autoupdatingCurrent.language.languageCode?.identifier == "en"
+        if usesEnglish {
+            return count == 1 ? "1 expense" : "\(count) expenses"
+        }
+        return count == 1 ? "1 dépense" : "\(count) dépenses"
     }
 }
 

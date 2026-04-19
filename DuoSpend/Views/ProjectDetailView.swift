@@ -59,6 +59,10 @@ struct ProjectDetailView: View {
         showAllExpenses ? sortedExpenses : Array(sortedExpenses.prefix(previewCount))
     }
 
+    private var expenseCountLabel: String {
+        localizedExpenseCount(projectExpenses.count)
+    }
+
     /// Fraction de la dépense totale due par partner1 — sert à la barre bicolore.
     /// On utilise `partner1Due` (part à supporter) et non `partner1Paid` (argent avancé)
     /// car c'est la répartition contractuelle qui est pertinente ici.
@@ -175,8 +179,7 @@ struct ProjectDetailView: View {
                 Spacer()
 
                 VStack(alignment: .trailing, spacing: 2) {
-                    let count = projectExpenses.count
-                    Text("\(count) dépense\(count == 1 ? "" : "s")")
+                    Text(expenseCountLabel)
                         .font(.system(.caption, design: .rounded))
                         .fontWeight(.medium)
                     Text("Créé le \(project.createdAt.formatted(date: .abbreviated, time: .omitted))")
@@ -302,7 +305,7 @@ struct ProjectDetailView: View {
                     .frame(width: columnWidth, alignment: .trailing)
                     .monospacedDigit()
                 HStack(spacing: 3) {
-                    Text("0,00 €").monospacedDigit()
+                    Text(Decimal.zero.formattedCurrency).monospacedDigit()
                     Image(systemName: "checkmark")
                         .font(.caption2)
                         .foregroundStyle(Color.successGreen)
@@ -346,7 +349,7 @@ struct ProjectDetailView: View {
 
     private let columnWidth: CGFloat = 72
 
-    private func columnHeader(_ text: String) -> some View {
+    private func columnHeader(_ text: LocalizedStringKey) -> some View {
         Text(text)
             .frame(width: columnWidth, alignment: .trailing)
             .font(.system(.caption2, design: .rounded))
@@ -379,6 +382,14 @@ struct ProjectDetailView: View {
     /// Formate un solde net avec signe explicite : "+33,00 €" ou "−33,00 €"
     private func signedCurrency(_ value: Decimal) -> String {
         value > 0 ? "+\(value.formattedCurrency)" : value.formattedCurrency
+    }
+
+    private func localizedExpenseCount(_ count: Int) -> String {
+        let usesEnglish = Locale.autoupdatingCurrent.language.languageCode?.identifier == "en"
+        if usesEnglish {
+            return count == 1 ? "1 expense" : "\(count) expenses"
+        }
+        return count == 1 ? "1 dépense" : "\(count) dépenses"
     }
 
     // MARK: - Dépenses

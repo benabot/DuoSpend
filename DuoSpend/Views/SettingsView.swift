@@ -12,6 +12,11 @@ struct SettingsView: View {
     @State private var showingDeleteAlert = false
 
     private let storeManager = StoreManager.shared
+    private let isScreenshotMode = {
+        let processInfo = ProcessInfo.processInfo
+        return processInfo.environment["SCREENSHOT_ROUTE"] != nil
+            || processInfo.arguments.contains("--screenshot-route")
+    }()
 
     var body: some View {
         Form {
@@ -60,8 +65,10 @@ struct SettingsView: View {
                     Link("Support", destination: supportURL)
                 }
                 #if DEBUG
-                NavigationLink(destination: PaywallDebugView()) {
-                    Label("Debug Paywall 🐞", systemImage: "ladybug")
+                if !isScreenshotMode {
+                    NavigationLink(destination: PaywallDebugView()) {
+                        Label("Debug Paywall 🐞", systemImage: "ladybug")
+                    }
                 }
                 #endif
             } header: {

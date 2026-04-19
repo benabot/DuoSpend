@@ -12,9 +12,17 @@ project_doc_max_bytes = 98304
 # Répertoires à exclure des scans
 [[ignore]]
 path = "Preview Content"
+
+[[ignore]]
 path = ".build"
+
+[[ignore]]
 path = "DerivedData"
+
+[[ignore]]
 path = "*.xcuserdatad"
+
+[[ignore]]
 path = "*.xcworkspace/xcuserdata"
 
 # Commandes racine utiles pour Codex
