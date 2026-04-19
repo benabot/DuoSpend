@@ -63,15 +63,6 @@ struct ProjectDetailView: View {
         localizedExpenseCount(projectExpenses.count)
     }
 
-    /// Fraction de la dépense totale due par partner1 — sert à la barre bicolore.
-    /// On utilise `partner1Due` (part à supporter) et non `partner1Paid` (argent avancé)
-    /// car c'est la répartition contractuelle qui est pertinente ici.
-    private var p1DueFraction: Double {
-        guard balance.totalSpent > 0 else { return 0.5 }
-        return Double(truncating: balance.partner1Due as NSDecimalNumber)
-             / Double(truncating: balance.totalSpent as NSDecimalNumber)
-    }
-
     private var budgetFraction: Double {
         guard project.budget > 0 else { return 0 }
         let spent  = Double(truncating: balance.totalSpent as NSDecimalNumber)
@@ -83,7 +74,7 @@ struct ProjectDetailView: View {
 
     var body: some View {
         ScrollView {
-            LazyVStack(spacing: 16) {
+            LazyVStack(spacing: 20) {
 
                 // ── Résumé projet ─────────────────────────────────────
                 projectSummaryCard
@@ -257,21 +248,27 @@ struct ProjectDetailView: View {
         .frame(maxWidth: .infinity)
     }
 
-    // MARK: - Contributions (Payé / Dû / Solde)
+    // MARK: - Contributions (Paye / Part finale / Difference)
 
     private var duoStatsCard: some View {
         VStack(alignment: .leading, spacing: 14) {
-            Label("Contributions", systemImage: "chart.bar.fill")
-                .font(.system(.subheadline, design: .rounded))
-                .fontWeight(.semibold)
-                .foregroundStyle(Color.accentPrimary)
+            VStack(alignment: .leading, spacing: 4) {
+                Label("Contributions", systemImage: "chart.bar.fill")
+                    .font(.system(.subheadline, design: .rounded))
+                    .fontWeight(.semibold)
+                    .foregroundStyle(Color.accentPrimary)
+
+                Text("Compare ce que chacun a payé avec sa part finale.")
+                    .font(.system(.caption, design: .rounded))
+                    .foregroundStyle(.secondary)
+            }
 
             // En-tête colonnes
             HStack(spacing: 0) {
                 Spacer()
                 columnHeader("Payé")
-                columnHeader("Dû")
-                columnHeader("Solde")
+                columnHeader("Part finale")
+                columnHeader("Différence")
             }
 
             Divider()
@@ -280,20 +277,20 @@ struct ProjectDetailView: View {
                 name: project.partner1Name,
                 color: .partner1,
                 paid: balance.partner1Paid,
-                due: balance.partner1Due,
+                part: balance.partner1Due,
                 net: balance.partner1Net
             )
             contributionRow(
                 name: project.partner2Name,
                 color: .partner2,
                 paid: balance.partner2Paid,
-                due: balance.partner2Due,
+                part: balance.partner2Due,
                 net: balance.partner2Net
             )
 
             Divider()
 
-            // Ligne Total — vérifie visuellement que Payé = Dû = totalSpent
+            // Ligne Total — verifie visuellement que Paye = Part finale = totalSpent
             HStack(spacing: 0) {
                 Text("Total")
                     .fontWeight(.medium)
@@ -314,32 +311,6 @@ struct ProjectDetailView: View {
             }
             .font(.system(.caption, design: .rounded))
             .foregroundStyle(.secondary)
-
-            // Barre bicolore : proportion des parts dues (pas des paiements)
-            GeometryReader { geo in
-                HStack(spacing: 2) {
-                    Capsule()
-                        .fill(Color.partner1)
-                        .frame(width: max(geo.size.width * p1DueFraction - 1, 4))
-                    Capsule()
-                        .fill(Color.partner2)
-                }
-                .animation(.spring(duration: 0.7), value: p1DueFraction)
-            }
-            .frame(height: 8)
-            .clipShape(Capsule())
-
-            HStack {
-                Text("\(String(Int((p1DueFraction * 100).rounded())))%")
-                    .font(.system(.caption2, design: .rounded))
-                    .fontWeight(.semibold)
-                    .foregroundStyle(Color.partner1)
-                Spacer()
-                Text("\(String(Int(((1 - p1DueFraction) * 100).rounded())))%")
-                    .font(.system(.caption2, design: .rounded))
-                    .fontWeight(.semibold)
-                    .foregroundStyle(Color.partner2)
-            }
         }
         .padding(18)
         .background(cardBg)
@@ -356,7 +327,7 @@ struct ProjectDetailView: View {
             .foregroundStyle(.secondary)
     }
 
-    private func contributionRow(name: String, color: Color, paid: Decimal, due: Decimal, net: Decimal) -> some View {
+    private func contributionRow(name: String, color: Color, paid: Decimal, part: Decimal, net: Decimal) -> some View {
         HStack(spacing: 0) {
             HStack(spacing: 6) {
                 Circle().fill(color).frame(width: 8, height: 8)
@@ -367,7 +338,7 @@ struct ProjectDetailView: View {
             Text(paid.formattedCurrency)
                 .frame(width: columnWidth, alignment: .trailing)
                 .monospacedDigit()
-            Text(due.formattedCurrency)
+            Text(part.formattedCurrency)
                 .frame(width: columnWidth, alignment: .trailing)
                 .monospacedDigit()
             Text(signedCurrency(net))

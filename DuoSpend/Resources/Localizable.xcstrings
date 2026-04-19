@@ -1,7 +1,18 @@
 {
   "sourceLanguage" : "fr",
   "strings" : {
-    " doit rembourser " : {
+    " à " : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : " to "
+          }
+        }
+      }
+    },
+    " doit " : {
       "extractionState" : "stale",
       "localizations" : {
         "en" : {
@@ -72,6 +83,7 @@
     },
     "%@%%" : {
       "comment" : "Percentage value display (e.g. 42%)",
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -152,6 +164,17 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "to %@"
+          }
+        }
+      }
+    },
+    "À charge" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Share"
           }
         }
       }
@@ -355,6 +378,38 @@
         }
       }
     },
+    "Compare ce que chacun a payé avec ce qu'il devait payer." : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Compare what each person paid with what they should have paid."
+          }
+        }
+      }
+    },
+    "Compare ce que chacun a payé avec sa part finale." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Compare what each person paid with their final share."
+          }
+        }
+      }
+    },
+    "Compare ce qui a été payé avec la part finale de chacun." : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Compare what was paid with each person's final share."
+          }
+        }
+      }
+    },
     "Continuer" : {
       "comment" : "Onboarding next-page button",
       "extractionState" : "stale",
@@ -476,6 +531,28 @@
         }
       }
     },
+    "Devait payer" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Should pay"
+          }
+        }
+      }
+    },
+    "Différence" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Difference"
+          }
+        }
+      }
+    },
     "doit" : {
       "comment" : "Verb in balance text: '[debtor] owes [amount] to [creditor]'",
       "localizations" : {
@@ -556,6 +633,28 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "DuoSpend tracks your shared expenses and answers one question: who owes what to whom?"
+          }
+        }
+      }
+    },
+    "Écart" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Net"
+          }
+        }
+      }
+    },
+    "Écart net" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Net amount"
           }
         }
       }
@@ -792,6 +891,28 @@
     },
     "Paiement unique via votre compte Apple. Aucun abonnement." : {
 
+    },
+    "Part" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Share"
+          }
+        }
+      }
+    },
+    "Part finale" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Final share"
+          }
+        }
+      }
     },
     "Partenaires" : {
       "comment" : "Partners section header in project forms",

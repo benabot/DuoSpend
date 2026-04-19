@@ -12,7 +12,7 @@ Ce fichier doit répondre rapidement à deux questions :
 - [x] Phase 4 — Polish UX
 - [x] Phase 6 — Design & identité visuelle
 
-Travaux déjà livrés dans la préparation v1.0 : localisation FR/EN, StoreKit 2, widgets Pro, `SettingsView`, onboarding et splash stabilisés, tests automatiques du Debug Paywall.
+Travaux déjà livrés dans la préparation v1.0 : localisation FR/EN, StoreKit 2, widgets Pro, `SettingsView`, onboarding et splash stabilisés, tests automatiques du Debug Paywall, clarification de la balance dans le détail projet, convention visuelle rose/bleu corrigée dans la création de projet.
 
 Notes d'organisation :
 - La Phase 7 n'est pas terminée : elle est détaillée ci-dessous comme priorité actuelle.
@@ -101,6 +101,19 @@ Ne garder ici que les tâches encore ouvertes et réellement bloquantes avant mi
 - [ ] Révocation du partage
 - [ ] Tester avec 2 comptes Apple sur 2 devices
 - [ ] Gérer les permissions et les cas offline du partage
+
+## Vision produit — plus tard (v2+)
+
+- [ ] Ajouter une **vue récapitulative par membre du couple**, agrégée sur l’ensemble des projets
+  - afficher pour chaque membre :
+    - total payé
+    - total à charge / devait payer
+    - solde global
+    - projets actifs associés
+  - permettre à terme une **identité visuelle configurable par membre** :
+    - couleur choisie
+    - cohérence d’affichage dans toute l’app
+  - ne pas traiter maintenant : évolution structurante à garder pour **v2+**
 
 ### Plus tard / optionnel
 

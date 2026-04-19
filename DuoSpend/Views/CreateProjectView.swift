@@ -62,13 +62,13 @@ struct CreateProjectView: View {
                         // Section Partenaires
                         FormSection(
                             icon: "heart.fill",
-                            iconColor: Color.partner1,
+                            iconColor: Color.partner2,
                             title: "Partenaires"
                         ) {
                             VStack(spacing: 0) {
                                 HStack(spacing: 12) {
                                     Circle()
-                                        .fill(Color.partner1)
+                                        .fill(Color.partner2)
                                         .frame(width: 8, height: 8)
                                     TextField("Prénom (ex : Marie)", text: $partner1Name)
                                         .font(.body)
@@ -76,7 +76,7 @@ struct CreateProjectView: View {
                                 Divider().padding(.vertical, 10)
                                 HStack(spacing: 12) {
                                     Circle()
-                                        .fill(Color.partner2)
+                                        .fill(Color.partner1)
                                         .frame(width: 8, height: 8)
                                     TextField("Prénom (ex : Thomas)", text: $partner2Name)
                                         .font(.body)

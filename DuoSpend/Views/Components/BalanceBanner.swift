@@ -1,10 +1,8 @@
 import SwiftUI
 
-/// Encart principal affichant qui doit combien à qui.
+/// Encart principal affichant qui doit combien a qui.
 ///
-/// Affiche une phrase non ambiguë ("X doit rembourser Y"), le montant,
-/// puis un mini-tableau avancé/dû qui permet à l'utilisateur de vérifier
-/// le calcul sans avoir à le faire mentalement.
+/// Le bandeau reste volontairement compact: une phrase directe et le montant net.
 struct BalanceBanner: View {
     let balance: BalanceResult
     let partner1Name: String
@@ -17,15 +15,15 @@ struct BalanceBanner: View {
             switch balance.status {
             case .partner2OwesPartner1(let amount):
                 settlementContent(
-                    debtor: partner2Name,   creditor: partner1Name,   amount: amount,
-                    debtorPaid: balance.partner2Paid, debtorDue: balance.partner2Due,
-                    creditorPaid: balance.partner1Paid, creditorDue: balance.partner1Due
+                    debtor: partner2Name,
+                    creditor: partner1Name,
+                    amount: amount
                 )
             case .partner1OwesPartner2(let amount):
                 settlementContent(
-                    debtor: partner1Name,   creditor: partner2Name,   amount: amount,
-                    debtorPaid: balance.partner1Paid, debtorDue: balance.partner1Due,
-                    creditorPaid: balance.partner2Paid, creditorDue: balance.partner2Due
+                    debtor: partner1Name,
+                    creditor: partner2Name,
+                    amount: amount
                 )
             case .balanced:
                 balancedContent
@@ -48,56 +46,24 @@ struct BalanceBanner: View {
     private func settlementContent(
         debtor: String,
         creditor: String,
-        amount: Decimal,
-        debtorPaid: Decimal,   debtorDue: Decimal,
-        creditorPaid: Decimal, creditorDue: Decimal
+        amount: Decimal
     ) -> some View {
-        // Phrase principale — sens explicite, non ambigu
+        // Phrase principale — sens direct et naturel
         (Text(debtor).fontWeight(.bold)
-            + Text(LocalizedStringKey(" doit rembourser "))
+            + Text(LocalizedStringKey(" doit "))
+            + Text(amount.formattedCurrency).fontWeight(.bold)
+            + Text(LocalizedStringKey(" à "))
             + Text(creditor).fontWeight(.bold))
-            .font(.system(.subheadline, design: .rounded))
+            .font(.system(.headline, design: .rounded))
             .multilineTextAlignment(.center)
             .foregroundStyle(.white.opacity(0.9))
+            .minimumScaleFactor(0.85)
 
-        // Montant central
+        // Montant net en evidence
         Text(amount.formattedCurrency)
             .font(.system(size: 52, weight: .bold, design: .rounded))
             .contentTransition(.numericText())
             .shadow(color: .black.opacity(0.12), radius: 2, y: 2)
-
-        // Mini-tableau avancé / dû — montre pourquoi ce montant est correct
-        VStack(spacing: 6) {
-            Rectangle()
-                .fill(.white.opacity(0.25))
-                .frame(height: 0.5)
-            detailRow(name: debtor,   paid: debtorPaid,   due: debtorDue)
-            detailRow(name: creditor, paid: creditorPaid, due: creditorDue)
-        }
-        .padding(.top, 2)
-    }
-
-    private func detailRow(name: String, paid: Decimal, due: Decimal) -> some View {
-        HStack(spacing: 0) {
-            Text(name)
-                .fontWeight(.semibold)
-                .frame(maxWidth: .infinity, alignment: .leading)
-            statCell(value: paid, label: "avancé")
-            statCell(value: due,  label: "dû")
-        }
-        .font(.system(.caption, design: .rounded))
-        .foregroundStyle(.white.opacity(0.85))
-    }
-
-    private func statCell(value: Decimal, label: LocalizedStringKey) -> some View {
-        VStack(alignment: .trailing, spacing: 1) {
-            Text(value.formattedCurrency)
-                .fontWeight(.medium)
-                .monospacedDigit()
-            Text(label)
-                .foregroundStyle(.white.opacity(0.55))
-        }
-        .frame(width: 82, alignment: .trailing)
     }
 
     // MARK: - Cas équilibre
