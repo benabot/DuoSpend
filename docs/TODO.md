@@ -25,7 +25,7 @@ Ne garder ici que les tâches encore ouvertes et réellement bloquantes avant mi
 ### Assets & metadata
 
 - [x] Finaliser les screenshots App Store FR et EN pour grand iPhone + format 5.5"
-- [ ] Finaliser les métadonnées App Store FR + EN
+- [x] Finaliser les métadonnées App Store FR + EN
 
 ### Release compliance
 
