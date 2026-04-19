@@ -1,169 +1,111 @@
 # DuoSpend — TODO
 
-## Phase 1 : Setup projet Xcode (Sprint 1) ✅
+Ce fichier doit répondre rapidement à deux questions :
+- qu'est-ce qui bloque encore la sortie de la v1.0 ;
+- qu'est-ce qui vient juste après si la v1 est validée terrain.
 
-- [x] Créer le projet Xcode dans `/Users/benoitabot/Sites/DuoSpend/`
-- [x] Organiser les dossiers : App/, Models/, Views/, ViewModels/, Services/, Extensions/, Components/
-- [x] Créer `Project.swift` (@Model SwiftData)
-- [x] Créer `Expense.swift` (@Model SwiftData)
-- [x] Créer `PartnerRole.swift` (enum)
-- [x] Créer `SplitRatio.swift` (enum Codable)
-- [x] Configurer le `ModelContainer` dans `DuoSpendApp.swift`
-- [x] Créer `SampleData.swift` dans Preview Content (données de test)
-- [x] Vérifier : le projet compile, les previews fonctionnent
+## 1. Historique des phases terminées
 
-## Phase 2 : Écrans principaux (Sprint 2) ✅
+- [x] Phase 1 — Setup projet Xcode
+- [x] Phase 2 — Écrans principaux
+- [x] Phase 3 — Logique métier
+- [x] Phase 4 — Polish UX
+- [x] Phase 6 — Design & identité visuelle
 
-- [x] `ProjectListView` : état vide + liste de cards
-- [x] `ProjectCard` : composant card dans la liste
-- [x] `CreateProjectView` : sheet formulaire nouveau projet
-- [x] `ProjectDetailView` : header + balance + liste dépenses
-- [x] `ExpenseRow` : composant ligne dépense
-- [x] `BalanceBanner` : composant encart balance
-- [x] `AddExpenseView` : sheet formulaire ajout dépense
-- [x] NavigationStack : navigation entre les écrans
-- [x] Vérifier : parcours complet fonctionne (créer projet → ajouter dépense → voir balance)
+Travaux déjà livrés dans la préparation v1.0 : localisation FR/EN, StoreKit 2, widgets Pro, `SettingsView`, onboarding et splash stabilisés.
 
-## Phase 3 : Logique métier (Sprint 3) ✅
+Notes d'organisation :
+- La Phase 7 n'est pas terminée : elle est détaillée ci-dessous comme priorité actuelle.
+- L'ancienne Phase 5 n'est plus suivie comme phase autonome : ses reliquats de validation sont absorbés dans la release v1.0 ou dans la stabilisation post-launch.
 
-- [x] `BalanceCalculator.swift` : service de calcul pur
-- [x] `BalanceResult` + `BalanceStatus` : types de retour
-- [x] Tests unitaires : scénario 50/50
-- [x] Tests unitaires : scénario custom split
-- [x] Tests unitaires : scénario équilibre
-- [x] Tests unitaires : scénario une seule dépense
-- [x] Intégrer le calcul dans `ProjectDetailView` / ViewModel
-- [x] `Decimal+Currency.swift` : extension formatage montants
-- [x] `xcodebuild build` — BUILD SUCCEEDED
-- [x] `xcodebuild test` — 5/5 tests passent
-- [x] Parcours complet simulateur validé
+## 2. Priorité actuelle — Finaliser la v1.0
 
-## Phase 4 : Polish UX (Sprint 4) ✅
-
-- [x] Swipe to delete dépenses
-- [x] Alert confirmation suppression projet
-- [x] Édition d'une dépense existante (tap → sheet pré-remplie)
-- [x] Édition d'un projet existant (nom, partenaires, budget) — EditProjectView
-- [x] Couleurs par partenaire (bleu / rose) cohérentes partout
-- [x] Dark mode vérifié sur tous les écrans (couleurs sémantiques partout)
-- [x] Haptic feedback sur ajout dépense et création projet
-- [x] Animations de transition sheets — `.presentationDetents` + `.presentationCornerRadius(20)`
-- [x] Validation formulaires renforcée (montant ≤ 0, noms identiques)
-- [x] Tri dépenses par date (plus récentes en haut) + option tri par montant/payeur
-- [x] Formatage montants : symbole € correctement placé (locale fr_FR forcée)
-
-## Phase 5 : Persistance & Test device (Sprint 5)
-
-- [ ] Vérifier persistance SwiftData (kill app → données toujours là)
-- [ ] Tester sur device physique (pas juste simulateur)
-- [ ] Vérifier iCloud sync basique (même compte Apple, 2 devices)
-- [ ] Tester les edge cases : montant 0, nom vide, très long texte
-- [ ] Tester performance avec 50+ dépenses dans un projet
-
-## Phase 6 : Design & Identité visuelle (Sprint 6) ✅
-
-- [x] **Splash screen animé** : SplashScreenView avec scale+bounce+fade, transition auto vers ProjectListView après 2s
-- [x] **Palette de couleurs fun** : 5 color sets dans xcassets (AccentPrimary, Partner1, Partner2, CardBackground, SuccessGreen) + Color+DuoSpend extension
-- [x] **ProjectCard redesign** : emoji dans cercle teinté, mini ProgressView budget, label avec icône pour la balance
-- [x] **BalanceBanner redesign** : LinearGradient coloré, texte blanc, flèche arrow.right entre noms, typo .rounded
-- [x] **ExpenseRow amélioré** : avatar cercle 36pt avec initiale du payeur en blanc, montant en .rounded .semibold
-- [x] **Typographie vivante** : .rounded sur montants, compteurs, titres de section
-- [x] **Empty states illustrés** : heart.circle.fill 60pt avec .symbolEffect(.pulse), texte engageant, bouton .large
-- [x] **Micro-animations** : .spring() sur liste, .contentTransition(.numericText()) sur BalanceBanner, .presentationCornerRadius(20) sur sheets
-- [x] **Section résumé dans ProjectDetail** : DisclosureGroup repliable avec totaux, compteurs, barre contribution colorée
-- [x] **Icône d'app** : AppIconExporter.swift dans Preview Content (2 cœurs bleu/rose + € sur fond violet)
-- [x] Couleurs partenaire cohérentes partout (Color.partner1 / Color.partner2 au lieu de .blue / .pink)
-
-## Phase 7 : Préparation App Store (en cours)
+Ne garder ici que les tâches encore ouvertes et réellement bloquantes avant mise en ligne.
 
 ### Assets & metadata
 
-- [x] Localisation FR + EN (String Catalog .xcstrings) ✅ 2026-03-24
-- [ ] Screenshots simulateur (6.7" + 5.5") FR et EN
-- [ ] Métadonnées App Store FR + EN
+- [ ] Finaliser les screenshots App Store FR et EN pour grand iPhone + format 5.5"
+- [ ] Finaliser les métadonnées App Store FR + EN
 
 ### Release compliance
 
-- [x] Fix transition splash → onboarding sans flash (ZStack au lieu de fullScreenCover) ✅ 2026-03-25
-- [x] Onboarding : retirer mention iCloud (désactivé en v1) ✅ 2026-03-25
-- [x] SettingsView : apparence (thème clair/sombre/système), Pro, export PDF, suppression données, à propos ✅ 2026-03-25
-- [x] Privacy Policy et Support URL câblées dans SettingsView ✅ 2026-03-25
-- [ ] Vérifier PrivacyInfo.xcprivacy complet
-- [ ] Version 1.0.0 / Build 1
+- [ ] Vérifier que `PrivacyInfo.xcprivacy` est complet
+- [ ] Passer l'app en version `1.0.0` / build `1`
 
 ### Distribution
 
-- [x] StoreKit 2 — paywall 1 projet gratuit + achat unique 6,99 € ✅ 2026-03-25
-- [x] Fix paywall : ne pas afficher "Demande annulée" quand l'utilisateur cancel l'achat StoreKit ✅ 2026-03-25
-- [x] Widgets réservés aux utilisateurs Pro (état isUnlocked persisté dans App Group UserDefaults) ✅ 2026-03-25
-- [x] Ajouter "Widgets pour l'écran d'accueil" comme avantage dans le paywall ✅ 2026-03-25
-- [ ] Créer compte Apple Developer
-- [ ] Archive Release → Validate → Upload
-- [ ] TestFlight beta
+- [ ] Créer le compte Apple Developer
+- [ ] Générer l'archive Release puis exécuter `Validate` / `Upload`
+- [ ] Ouvrir la bêta TestFlight
 
 ### Soumission
 
-- [ ] Soumission App Store
+- [ ] Soumettre l'app sur l'App Store
 
----
+## 3. Post-launch immédiat — Mesure, stabilité, rétention
 
-## Backlog post-MVP (v2)
+À démarrer après la mise en ligne ou pendant la fenêtre de retours initiaux, sans réouvrir le scope de la v1.0.
 
-- [ ] Sync locale MultipeerConnectivity (code retiré de v1, récupérable via git commit 9a501b7)
-- [ ] iCloud sync même compte Apple (v1.1)
-- [ ] CloudKit Sharing 2 comptes Apple (v2.0)
-- [ ] Templates projets (mariage, voyage, travaux, bébé, déménagement)
-- [ ] Catégories de dépenses avec icônes SF Symbols
-- [ ] Graphiques répartition (Charts framework)
-- [x] Onboarding première ouverture ✅ (voir Phase 7)
+### Mesure minimale
+
+- [ ] Ajouter une analytics privacy-first minimale
+- [ ] Créer `docs/METRICS.md`
+- [ ] Suivre les événements minimum : `app_launched`, `project_created`, `expense_added`, `paywall_shown`, `purchase_completed`, `second_project_created`
+- [ ] Préparer un questionnaire feedback utilisateur
+- [ ] Centraliser les retours dans un document scratch post-launch
+
+### Stabilisation post-launch
+
+- [ ] Corriger les bugs critiques remontés par TestFlight / premiers utilisateurs
+- [ ] Publier une `v1.0.1` si des bugs bloquants sont confirmés
+- [ ] Revalider la persistance, les edge cases, les tests device physique et les performances sur des cas réels
+
+### Rétention primaire
+
+- [ ] Ajouter une demande d'avis in-app contextuelle
+- [ ] Ajouter une notification `budget à 80 %`
+- [ ] Ajouter l'archivage de projet terminé
+- [ ] Ajouter un CTA / une suggestion `Créer un nouveau projet` après clôture ou archivage
+
+### ASO itératif
+
+- [ ] Lancer la première itération ASO post-launch
+- [ ] Tester une première variation de screenshots App Store
+- [ ] Itérer les keywords et la copy à partir des premiers signaux
+
+## 4. Roadmap produit après validation
+
+À prioriser seulement si la v1.0 montre des signaux réels d'adoption et de rétention.
+
+### v1.1
+
+- [ ] iCloud sync même compte Apple
+- [ ] Templates de projets
 - [ ] Recherche dans les dépenses
-- [ ] App Clip ou partage projet
+- [ ] Améliorer l'export / partage utile si les retours terrain le justifient
+- [ ] Tester la sync offline → online et les conflits simples sur un même compte Apple
 
-## Apple Watch (v2.5+) — après iCloud sync stable
+### v1.2
 
-Prérequis : v1.1 iCloud sync + base d'utilisateurs avec retours terrain.
+- [ ] Catégories de dépenses avec icônes SF Symbols
+- [ ] Graphiques de répartition
+- [ ] Amélioration des widgets
 
-### Scope minimal Watch
-- [ ] Target watchOS dans le projet Xcode (WatchKit App + Extension)
-- [ ] Accès SwiftData via App Group partagé (même que widget) ou WatchConnectivity
-- [ ] Écran 1 : affichage du solde du projet actif (read-only)
-- [ ] Écran 2 : ajout rapide de dépense (montant + payeur, formulaire minimal)
-- [ ] Complication : solde net affiché sur le cadran (WidgetKit pour watchOS)
-- [ ] Sync : dépend d'iCloud sync (v1.1) — la Watch lit le même store CloudKit que l'iPhone
-- [ ] Alternative sans iCloud : WatchConnectivity (transfert données iPhone ↔ Watch en local)
+### v2.0
 
-### Points d'attention
-- WatchOS impose NavigationStack simplifié et contraintes mémoire strictes
-- Le widget Watch (complication) est distinct du widget iPhone — c'est une 2e target WidgetKit
-- Sans iCloud sync, l'app Watch serait limitée à read-only (données poussées depuis iPhone)
-- Conditionner l'accès Watch à DuoSpend Pro (même mécanisme que les widgets iPhone)
+- [ ] CloudKit Sharing entre 2 comptes Apple
+- [ ] UI d'invitation partenaire
+- [ ] Gestion de l'acceptation du partage
+- [ ] Projets perso / projets partagés
+- [ ] Indicateur de sync
+- [ ] Révocation du partage
+- [ ] Tester avec 2 comptes Apple sur 2 devices
+- [ ] Gérer les permissions et les cas offline du partage
 
-### Valeur produit
-- Use case : en sortie/courses, logger une dépense sans sortir l'iPhone
-- Complication : solde au poignet = "glance" parfait pour la promesse DuoSpend
-- Argument ASO : "Apple Watch" comme keyword sur l'App Store
+### Plus tard / optionnel
 
----
-
-## Phase 8 : Sync couple — CloudKit Sharing (v2.0)
-
-### v1.1 — iCloud sync même compte Apple
-- [ ] Activer `cloudKitDatabase: .automatic` dans `ModelConfiguration` (remplacer `.none`)
-- [ ] Configurer les entitlements CloudKit dans Xcode (iCloud capability + CloudKit container)
-- [ ] Créer le container CloudKit `iCloud.fr.beabot.DuoSpend` dans le portail Apple Developer
-- [ ] Tester avec 2 devices sur le même Apple ID → les projets se synchronisent
-- [ ] Gérer les conflits de merge (last-write-wins par défaut SwiftData)
-- [ ] Tester la sync offline → online (mode avion, ajout dépense, reconnexion)
-
-### v2.0 — CloudKit Sharing (2 comptes Apple séparés)
-- [ ] Configurer `NSPersistentCloudKitContainer` pour les zones partagées
-- [ ] Créer un `SharingService` : génération de `CKShare` par projet
-- [ ] UI d'invitation : bouton "Inviter mon partenaire" dans `ProjectDetailView`
-- [ ] Intégrer `UICloudSharingController` ou générer un lien custom (`CKShare.URL`)
-- [ ] Gérer l'acceptation du partage côté destinataire (Universal Link / `userDidAcceptCloudKitShareWith`)
-- [ ] Distinguer projets perso / projets partagés dans `ProjectListView`
-- [ ] Afficher un indicateur de sync (icône cloud) sur les projets partagés
-- [ ] Gérer la révocation du partage (supprimer l'accès d'un partenaire)
-- [ ] Tester avec 2 comptes Apple différents sur 2 devices
-- [ ] Tester les edge cases : suppression d'une dépense par l'un pendant que l'autre est offline
-- [ ] Tester les permissions : seul le créateur peut supprimer le projet
+- [ ] Sync locale MultipeerConnectivity
+- [ ] App Clip ou partage de projet
+- [ ] Apple Watch
+- [ ] Multi-devises
+- [ ] Nice-to-have non validés terrain
