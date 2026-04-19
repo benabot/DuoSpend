@@ -2,6 +2,7 @@
   "sourceLanguage" : "fr",
   "strings" : {
     " doit rembourser " : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -30,6 +31,7 @@
       }
     },
     "%@ dépense%@" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -131,9 +133,6 @@
     "€" : {
 
     },
-    "0,00 €" : {
-
-    },
     "à" : {
       "comment" : "Preposition in balance text: '[debtor] owes [amount] to [creditor]'",
       "localizations" : {
@@ -153,16 +152,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "to %@"
-          }
-        }
-      }
-    },
-    "avancé" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "paid"
           }
         }
       }
@@ -279,6 +268,17 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "No sign-up. No cloud. Your data stays on your iPhone, period."
+          }
+        }
+      }
+    },
+    "avancé" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "paid"
           }
         }
       }
@@ -499,6 +499,28 @@
         }
       }
     },
+    "dû" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "due"
+          }
+        }
+      }
+    },
+    "Dû" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Due"
+          }
+        }
+      }
+    },
     "DuoSpend" : {
 
     },
@@ -522,16 +544,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "DuoSpend Pro ✓"
-          }
-        }
-      }
-    },
-    "Dû" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Due"
           }
         }
       }
@@ -819,6 +831,17 @@
     "Passez à DuoSpend Pro" : {
 
     },
+    "Payé" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Paid"
+          }
+        }
+      }
+    },
     "Payé par" : {
       "comment" : "Paid-by section header in add expense form",
       "extractionState" : "stale",
@@ -827,16 +850,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Paid by"
-          }
-        }
-      }
-    },
-    "Payé" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Paid"
           }
         }
       }
@@ -972,22 +985,23 @@
         }
       }
     },
-    "Solde" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Balance"
-          }
-        }
-      }
-    },
     "Restaurer mes achats" : {
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Restore Purchases"
+          }
+        }
+      }
+    },
+    "Solde" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Balance"
           }
         }
       }
@@ -1023,16 +1037,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Delete"
-          }
-        }
-      }
-    },
-    "dû" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "due"
           }
         }
       }
