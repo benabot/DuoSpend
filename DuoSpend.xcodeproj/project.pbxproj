@@ -29,6 +29,7 @@
 		8C46DF18903B6602AB02BB49 /* ProjectListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F04C844F9A1C3C34ECF318DB /* ProjectListView.swift */; };
 		9175C1FA5FABEAA9AF0961EC /* SampleData.swift in Sources */ = {isa = PBXBuildFile; fileRef = E785001221CBAA003378869A /* SampleData.swift */; };
 		95FA17FF643DF7A4100D334D /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = A5C0C7EBE21F3157955719BF /* Localizable.xcstrings */; };
+		A6C3D9124F4A4B5C8D9E0F11 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 048E66DC6F24E1DFE4B15DB8 /* PrivacyInfo.xcprivacy */; };
 		992ACDAD0A9242457330E797 /* AppIconExporter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78A19E541167CDD82A20D1F0 /* AppIconExporter.swift */; };
 		AF125D3A0291AB0DA3A82F63 /* StoreManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7657B296ABD05DF7953A78B /* StoreManager.swift */; };
 		B0F2E3D4C5B6A7981234AB10 /* DuoSpendWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1F2E3D4C5B6A7981234AB01 /* DuoSpendWidget.swift */; };
@@ -390,6 +391,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				95FA17FF643DF7A4100D334D /* Localizable.xcstrings in Resources */,
+				A6C3D9124F4A4B5C8D9E0F11 /* PrivacyInfo.xcprivacy in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
