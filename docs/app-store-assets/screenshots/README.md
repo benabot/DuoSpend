@@ -21,12 +21,14 @@ screenshots/
 | `6.9/` | iPhone 16 Pro Max | `1320 × 2868` |
 | `5.5/` | iPhone 8 Plus | `1242 × 2208` |
 
+Si le simulateur `iPhone 8 Plus` n'est pas disponible dans les runtimes installés, capturer sur un iPhone SE récent puis exporter en `1242 × 2208` avant dépôt final dans `5.5/`.
+
 ## Série à produire
 
-1. `01-projects-list.png` — liste des projets avec 3 à 4 projets crédibles
+1. `01-project-list.png` — liste des projets avec 3 à 4 projets crédibles
 2. `02-project-detail.png` — détail d'un projet avec plusieurs dépenses et une balance lisible
 3. `03-add-expense.png` — formulaire d'ajout de dépense
-4. `04-balance-banner.png` — focus sur la balance "qui doit combien à qui"
+4. `04-balance.png` — focus sur la balance "qui doit combien à qui"
 5. `05-settings-pro.png` — `SettingsView` avec la section Pro visible
 6. `06-onboarding-or-paywall.png` — onboarding ou paywall selon le rendu le plus fort
 
