@@ -258,6 +258,21 @@ Cause 2 : `UIActivityViewController` ne fonctionne pas de manière fiable quand 
 - Supprimer `ActivityView: UIViewControllerRepresentable` et le `.sheet` associé.
 - Présenter `UIActivityViewController` impérativement via `UIApplication.shared.connectedScenes` (même pattern que `ProjectDetailView`).
 
+---
+
+### 2026-04-19 — Tests locaux du Debug Paywall via une couche testable minimale
+
+**Contexte** : le Debug Paywall devait couvrir automatiquement les états gratuit / Pro, produit chargé ou non, prix affiché et actions debug, sans dépendre d'un environnement StoreKit externe ni de tests UI fragiles.
+
+**Décision** : extraire une couche testable minimale directement dans `PaywallDebugView` avec `PaywallDebugStore`, `PaywallDebugSnapshot` et `PaywallDebugActions`, puis écrire des tests locaux ciblés sur cette couche.
+
+**Alternatives rejetées** :
+- tests UI pilotant le simulateur → trop fragiles et plus coûteux à stabiliser pour ce scope
+- mocks lourds injectés dans `StoreManager` → complexité disproportionnée
+- tester `StoreKit` réel en local → trop dépendant de l'environnement de lancement
+
+**Impact** : le comportement utilisateur du Debug Paywall reste inchangé, mais ses états et actions critiques sont maintenant couverts par des tests automatiques rapides dans `DuoSpendTests`.
+
 **Alternatives rejetées** :
 - `project.expenses` avec eager fetch explicite → non idiomatique SwiftData, couplage fort.
 - Garder `ActivityView` mais changer son mode de présentation → `UIActivityViewController` reste problématique dans la hiérarchie SwiftUI imbriquée.
