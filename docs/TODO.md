@@ -29,8 +29,8 @@ Ne garder ici que les tâches encore ouvertes et réellement bloquantes avant mi
 
 ### Release compliance
 
-- [ ] Vérifier que `PrivacyInfo.xcprivacy` est complet
-- [ ] Passer l'app en version `1.0.0` / build `1`
+- [x] Vérifier que `PrivacyInfo.xcprivacy` est complet
+- [x] Passer l'app en version `1.0.0` / build `1`
 
 ### Distribution
 
