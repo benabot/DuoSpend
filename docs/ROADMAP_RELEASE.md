@@ -273,8 +273,8 @@ Commit : `style: ajustement AppIcon v1.0`.
 
 **Definition of Done** :
 
-- Privacy Policy publiée sur `https://beabot.fr/apps/duo-send#policy`
-- Support URL active : `https://beabot.fr/apps/duo-send/`
+- Privacy Policy publiée sur `https://beabot.fr/apps/duo-spend#policy`
+- Support URL active : `https://beabot.fr/apps/duo-spend/`
 - Screenshots FR et EN en 6,7" et 5,5" prêts dans `docs/app-store-assets/`
 - Métadonnées App Store FR et EN écrites dans `docs/app-store-assets/metadata.md`
 - Compte Apple Developer actif (payé 99 $/an)
@@ -295,16 +295,16 @@ Action hors code :
 ### 4.2 — Privacy Policy (bilingue)
 - Utiliser `docs/PRIVACY_FR.md` et `docs/PRIVACY_EN.md` comme source.
 - Les fusionner en une page web unique bilingue sur `beabot.fr`.
-- URL finale : `https://beabot.fr/apps/duo-send#policy`.
+- URL finale : `https://beabot.fr/apps/duo-spend#policy`.
 - Tester que l'URL retourne bien un `200 OK` et que l'ancre `#policy` marche.
 
 **Commande de test**
 ```bash
-curl -I https://beabot.fr/apps/duo-send
+curl -I https://beabot.fr/apps/duo-spend
 ```
 
 ### 4.3 — Support URL
-- Page support publique : `https://beabot.fr/apps/duo-send/`.
+- Page support publique : `https://beabot.fr/apps/duo-spend/`.
 - Doit contenir au minimum :
   - une description courte de l'app,
   - une adresse e-mail de contact,
@@ -539,9 +539,9 @@ Dans App Store Connect → App → Version 1.0.0 :
 - Nom et sous-titre (FR et EN) — voir Sprint 4.5
 - Description (FR et EN)
 - Mots-clés (FR et EN)
-- URL de promotion : `https://beabot.fr/apps/duo-send/`
-- URL de support : `https://beabot.fr/apps/duo-send/`
-- URL de confidentialité : `https://beabot.fr/apps/duo-send#policy`
+- URL de promotion : `https://beabot.fr/apps/duo-spend/`
+- URL de support : `https://beabot.fr/apps/duo-spend/`
+- URL de confidentialité : `https://beabot.fr/apps/duo-spend#policy`
 - Catégorie : Finance / Productivité
 - Screenshots uploadés : 6,7" et 5,5" en FR et EN
 - Notes de version : « Première version publique. »
@@ -588,7 +588,7 @@ Dans la section « Infos pour la review » :
 
 - Status « Ready for Sale » / « Disponible »
 - Au moins 1 utilisateur organique (hors beta) a installé l'app
-- Page `beabot.fr/apps/duo-send/` à jour avec lien App Store
+- Page `beabot.fr/apps/duo-spend/` à jour avec lien App Store
 - Communication externe faite (Twitter/X, LinkedIn, IndieHackers, r/iOSApps, Product Hunt si pertinent)
 
 ## Tâches
@@ -603,7 +603,7 @@ Quand Apple approuve :
 - Tweet d'annonce avec screenshot principal et lien App Store.
 - Post LinkedIn avec contexte : « Indie dev, app pensée local-first, 6,99 € one-time, pas d'abo, pas de pub. »
 - Message personnel à 5–10 personnes proches qui pourraient aimer.
-- Page `beabot.fr/apps/duo-send/` mise à jour avec badge « Download on the App Store ».
+- Page `beabot.fr/apps/duo-spend/` mise à jour avec badge « Download on the App Store ».
 
 ### 8.3 — Product Hunt (optionnel, à chaud)
 Si tu veux tenter un lancement PH :
