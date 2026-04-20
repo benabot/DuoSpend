@@ -21,7 +21,6 @@
 		4D4DC918CA6E1EFA8D0065B6 /* ExpenseRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58DC5CE2EFF6B9164FEB3BAC /* ExpenseRow.swift */; };
 		6BB986FBA08F36D1051E4BF3 /* DuoSpendApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BB0CD28CE88854BFC49E5C3 /* DuoSpendApp.swift */; };
 		6F3935F6DDE436240C4E388B /* SplitRatio.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19C8B4A03434F5EA7E7F8052 /* SplitRatio.swift */; };
-		704F2B4B2F73599A004F8F19 /* DuoSpendStore.storekit in Resources */ = {isa = PBXBuildFile; fileRef = 704F2B4A2F73599A004F8F19 /* DuoSpendStore.storekit */; };
 		7BC829A4AB6B86532D8690ED /* PartnerRole.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C6FACA7A3EF6858B4842AB1 /* PartnerRole.swift */; };
 		7D2C3BC30688171350EEB3C5 /* ProjectCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = E555932D18C4E9C0CB39F551 /* ProjectCard.swift */; };
 		7E55BD05D0454B17DA7C1A70 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 259983645219B6EB0187EE8B /* SettingsView.swift */; };
@@ -382,7 +381,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				704F2B4B2F73599A004F8F19 /* DuoSpendStore.storekit in Resources */,
 				E4E26A0F71407B1BECD50BD1 /* Assets.xcassets in Resources */,
 				F4F2E3D4C5B6A7981234ABCF /* Localizable.xcstrings in Resources */,
 				D40D37934E763F71832D9AF1 /* PrivacyInfo.xcprivacy in Resources */,

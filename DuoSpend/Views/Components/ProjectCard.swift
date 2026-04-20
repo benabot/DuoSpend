@@ -262,6 +262,7 @@ struct ProjectCard: View {
     }
 }
 
+#if DEBUG
 #Preview {
     ScrollView {
         VStack(spacing: 16) {
@@ -272,3 +273,4 @@ struct ProjectCard: View {
     .background(Color.warmBackground)
     .modelContainer(SampleData.container)
 }
+#endif

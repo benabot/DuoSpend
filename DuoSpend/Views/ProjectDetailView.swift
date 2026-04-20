@@ -546,9 +546,11 @@ struct ProjectDetailView: View {
     }
 }
 
+#if DEBUG
 #Preview {
     NavigationStack {
         ProjectDetailView(project: SampleData.sampleProject)
     }
     .modelContainer(SampleData.container)
 }
+#endif

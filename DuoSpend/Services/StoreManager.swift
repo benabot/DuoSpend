@@ -19,8 +19,8 @@ final class StoreManager {
     private var transactionListener: Task<Void, Never>?
 
     private init() {
-        // Lecture du cache partagé — sera confirmé par StoreKit ensuite
-        isUnlocked = UserDefaults(suiteName: "group.fr.beabot.DuoSpend")?.bool(forKey: "isProUnlocked") ?? false
+        // Lecture du cache partagé — toujours réconcilié par StoreKit ensuite.
+        isUnlocked = sharedDefaults?.bool(forKey: "isProUnlocked") ?? false
         transactionListener = listenForTransactions()
         Task { await loadProduct() }
         Task { await checkEntitlement() }
@@ -94,13 +94,27 @@ final class StoreManager {
     // MARK: - Vérification des droits
 
     func checkEntitlement() async {
+        var hasActiveEntitlement = false
         for await result in Transaction.currentEntitlements {
             if case .verified(let transaction) = result,
                transaction.productID == productID {
-                isUnlocked = true
-                logger.info("Entitlement found: \(self.productID)")
-                return
+                hasActiveEntitlement = true
+                break
             }
+        }
+
+        #if DEBUG
+        if !hasActiveEntitlement, Self.isScreenshotRouteActive {
+            logger.info("Skipping entitlement reset while screenshot route is active")
+            return
+        }
+        #endif
+
+        setUnlocked(hasActiveEntitlement)
+        if hasActiveEntitlement {
+            logger.info("Entitlement found: \(self.productID)")
+        } else {
+            logger.info("No entitlement found: \(self.productID)")
         }
     }
 
@@ -143,6 +157,14 @@ final class StoreManager {
     // MARK: - Debug
 
     #if DEBUG
+    private static var isScreenshotRouteActive: Bool {
+        let processInfo = ProcessInfo.processInfo
+        if processInfo.environment["SCREENSHOT_ROUTE"] != nil {
+            return true
+        }
+        return processInfo.arguments.contains("--screenshot-route")
+    }
+
     func debugUnlock() { setUnlocked(true) }
     func debugLock() { setUnlocked(false) }
     #endif

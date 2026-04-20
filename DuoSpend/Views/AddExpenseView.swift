@@ -333,7 +333,9 @@ struct AddExpenseView: View {
     }
 }
 
+#if DEBUG
 #Preview {
     AddExpenseView(project: SampleData.sampleProject)
         .modelContainer(SampleData.container)
 }
+#endif

@@ -94,7 +94,9 @@ struct EditProjectView: View {
     }
 }
 
+#if DEBUG
 #Preview {
     EditProjectView(project: SampleData.sampleProject)
         .modelContainer(SampleData.container)
 }
+#endif
