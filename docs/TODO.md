@@ -12,7 +12,7 @@ Ce fichier doit répondre rapidement à deux questions :
 - [x] Phase 4 — Polish UX
 - [x] Phase 6 — Design & identité visuelle
 
-Travaux déjà livrés dans la préparation v1.0 : localisation FR/EN, StoreKit 2, widgets Pro, `SettingsView`, onboarding et splash stabilisés, tests automatiques du Debug Paywall, clarification de la balance dans le détail projet, convention visuelle rose/bleu corrigée dans la création de projet.
+Travaux déjà livrés dans la préparation v1.0 : localisation FR/EN, StoreKit 2, widgets Pro, `SettingsView`, onboarding et splash stabilisés, tests automatiques du Debug Paywall, clarification de la balance dans le détail projet, convention visuelle rose/bleu corrigée dans la création de projet, correction de la localisation EN du paywall et des widgets avec couverture de tests sur les catalogues de chaînes.
 
 Notes d'organisation :
 - La Phase 7 n'est pas terminée : elle est détaillée ci-dessous comme priorité actuelle.

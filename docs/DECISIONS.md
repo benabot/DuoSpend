@@ -12,6 +12,22 @@ Format recommandé :
 
 ---
 
+### 2026-04-20 — Catalogues de localisation séparés pour l'app et le widget
+
+**Contexte** : la localisation anglaise du paywall avait été corrigée dans le catalogue principal de l'app, mais la galerie WidgetKit affichait encore des textes français. La cause était que le widget compile depuis son propre target et n'utilise pas `DuoSpend/Resources/Localizable.xcstrings`.
+
+**Décision** : maintenir deux catalogues distincts et explicites.
+- `DuoSpend/Resources/Localizable.xcstrings` pour l'app iOS
+- `DuoSpendWidget/Localizable.xcstrings` pour le target WidgetKit
+- toute chaîne visible dans le widget (`Text`, `IntentDescription`, `description`, état verrouillé, libellés de balance) doit être ajoutée au catalogue widget
+- toute correction de localisation paywall/widget doit être couverte par un test qui lit le catalogue concerné
+
+**Alternatives rejetées** :
+- centraliser toutes les chaînes widget dans le catalogue principal de l'app → ne résout pas la compilation séparée du bundle widget
+- se reposer sur la revue manuelle simulateur uniquement → trop fragile, les trous de traduction restent silencieux jusqu'à la galerie
+
+**Impact** : les tests `PaywallDebugTests` vérifient désormais aussi les traductions EN du widget, et `CLAUDE.md` documente ce pattern pour éviter les régressions.
+
 ### 2025-02-10 — SwiftUI comme couche UI principale
 
 **Contexte** : choix de la technologie d'interface pour le MVP.
