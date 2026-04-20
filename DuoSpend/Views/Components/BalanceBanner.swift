@@ -117,6 +117,7 @@ struct BalanceBanner: View {
     }
 }
 
+#if DEBUG
 #Preview {
     BalanceBanner(
         balance: BalanceCalculator.calculate(expenses: SampleData.sampleExpenses),
@@ -125,3 +126,4 @@ struct BalanceBanner: View {
     )
     .modelContainer(SampleData.container)
 }
+#endif

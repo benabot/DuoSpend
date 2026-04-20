@@ -205,7 +205,9 @@ private struct FormSection<Content: View>: View {
     }
 }
 
+#if DEBUG
 #Preview {
     CreateProjectView()
         .modelContainer(SampleData.container)
 }
+#endif

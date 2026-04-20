@@ -103,6 +103,7 @@ struct ExpenseRow: View {
     }
 }
 
+#if DEBUG
 #Preview {
     List {
         ExpenseRow(
@@ -118,3 +119,4 @@ struct ExpenseRow: View {
     }
     .modelContainer(SampleData.container)
 }
+#endif

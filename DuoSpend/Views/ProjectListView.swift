@@ -212,7 +212,9 @@ struct ProjectListView: View {
     }
 }
 
+#if DEBUG
 #Preview {
     ProjectListView()
         .modelContainer(SampleData.container)
 }
+#endif

@@ -148,9 +148,11 @@ private struct ProjectExportPickerView: View {
 
 // MARK: - Preview
 
+#if DEBUG
 #Preview {
     NavigationStack {
         SettingsView()
     }
     .modelContainer(SampleData.container)
 }
+#endif
