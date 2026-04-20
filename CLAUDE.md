@@ -43,6 +43,11 @@ Question centrale : « Qui doit combien à qui ? »
 - Toute chaîne visible dans WidgetKit (`Text`, `description`, `IntentDescription`, état verrouillé, libellés de balance) doit être ajoutée au catalogue du widget, pas à celui de l’app.
 - Toute correction de localisation paywall/widget doit ajouter ou mettre à jour un test de catalogue dans `DuoSpendTests` pour éviter une régression silencieuse.
 
+## Outils de debug
+- `PaywallDebugView` reste disponible dans le code et dans les tests, mais n'est plus exposé dans `SettingsView`.
+- Pour le récupérer localement en `DEBUG`, remettre temporairement un `NavigationLink(destination: PaywallDebugView())` dans `DuoSpend/Views/SettingsView.swift` sous `#if DEBUG`, puis le retirer avant livraison.
+- Pour une vérification rapide sans modifier l'interface, utiliser aussi le `#Preview` déjà présent dans `DuoSpend/Views/Components/PaywallDebugView.swift`.
+
 ## Flux de travail
 Avant de coder :
 1. Lire `docs/TODO.md` pour la tâche en cours

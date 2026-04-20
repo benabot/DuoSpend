@@ -12,11 +12,6 @@ struct SettingsView: View {
     @State private var showingDeleteAlert = false
 
     private let storeManager = StoreManager.shared
-    private let isScreenshotMode = {
-        let processInfo = ProcessInfo.processInfo
-        return processInfo.environment["SCREENSHOT_ROUTE"] != nil
-            || processInfo.arguments.contains("--screenshot-route")
-    }()
 
     var body: some View {
         Form {
@@ -64,13 +59,6 @@ struct SettingsView: View {
                 if let supportURL = URL(string: "https://beabot.fr/apps/duo-spend/") {
                     Link("Support", destination: supportURL)
                 }
-                #if DEBUG
-                if !isScreenshotMode {
-                    NavigationLink(destination: PaywallDebugView()) {
-                        Label("Debug Paywall 🐞", systemImage: "ladybug")
-                    }
-                }
-                #endif
             } header: {
                 Label("À propos", systemImage: "info.circle")
             } footer: {
