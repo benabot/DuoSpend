@@ -1,33 +1,20 @@
-# .codex/
+# .codex — configuration locale DuoSpend
 
-Ce dossier contient la configuration locale pour [OpenAI Codex CLI](https://developers.openai.com/codex/).
+Ce dossier contient les agents et skills **spécifiques au projet**.
 
-## Fichiers
+## Règle simple
 
-- `config.toml` — configuration locale du repo : fichiers d'instructions additionnels, commandes utiles, chemins à ignorer.
+- `agents/` = spécialisations orientées tâche
+- `skills/` = connaissances et garde-fous réutilisables dans ce repo
 
-## Hiérarchie des instructions Codex
+## Ordre d'autorité
 
-Quand Codex démarre dans ce repo, il lit :
+1. `CLAUDE.md`
+2. `AGENTS.md`
+3. fichiers de `agents/`
+4. fichiers de `skills/`
 
-1. `~/.codex/AGENTS.md` — instructions globales utilisateur (si présent)
-2. `AGENTS.md` à la racine du repo — instructions projet (**obligatoire**)
-3. `CLAUDE.md` à la racine — déclaré en fallback dans `config.toml`
-4. `AGENTS.override.md` dans un sous-dossier — priorise sur les précédents (non utilisé ici)
+## Usage recommandé
 
-## Pour activer cette config
-
-```bash
-# Vérifier que Codex CLI est installé
-codex --version
-
-# Depuis la racine du repo
-cd /Users/benoitabot/Sites/DuoSpend
-codex
-```
-
-Codex reprend automatiquement la config du dossier courant.
-
-## Pour réinitialiser
-
-Il suffit de supprimer ce dossier. Codex reprendra ses réglages par défaut.
+- Toute tâche SwiftUI/SwiftData DuoSpend doit préférer ces fichiers locaux.
+- Les skills globales restent utiles pour Git, shell, rédaction ou automatisation générique.

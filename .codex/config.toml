@@ -1,15 +1,9 @@
 # Codex config locale pour DuoSpend
-# Placer à la racine du repo : .codex/config.toml
-#
-# Documentation : https://developers.openai.com/codex/guides/agents-md
+# À placer dans .codex/config.toml
 
-# Fichiers d'instructions à charger en plus de AGENTS.md
 project_doc_fallback_filenames = ["CLAUDE.md"]
-
-# Autoriser des fichiers d'instructions jusqu'à 96 KB (plus large que default 32 KB)
 project_doc_max_bytes = 98304
 
-# Répertoires à exclure des scans
 [[ignore]]
 path = "Preview Content"
 
@@ -25,8 +19,9 @@ path = "*.xcuserdatad"
 [[ignore]]
 path = "*.xcworkspace/xcuserdata"
 
-# Commandes racine utiles pour Codex
-# (ces commandes sont informatives — Codex peut les suggérer à l'utilisateur)
+[[ignore]]
+path = "DuoSpend.xcodeproj/project.xcworkspace/xcuserdata"
+
 [commands]
 build = "xcodebuild -scheme DuoSpend -destination 'platform=iOS Simulator,name=iPhone 16 Pro' build 2>&1 | grep -E '^.*(error:|BUILD)' | grep -v appintents"
 test = "xcodebuild -scheme DuoSpend -destination 'platform=iOS Simulator,name=iPhone 16 Pro' test 2>&1 | grep -E 'passed|failed|error'"

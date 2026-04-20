@@ -230,4 +230,75 @@ Dans ces cas : **ne pas forcer**. Documenter la situation dans le prompt suivant
 
 ---
 
+## 13. Agents locaux Codex
+
+Le projet peut embarquer des agents et des skills **locaux** dans `./.codex/`.
+Ils complètent `AGENTS.md` et `CLAUDE.md`, mais ne les remplacent pas.
+
+### Règle de priorité
+
+En cas de conflit :
+1. `CLAUDE.md`
+2. `AGENTS.md`
+3. `.codex/agents/*`
+4. `.codex/skills/*`
+
+### Quand utiliser les agents locaux
+
+Utiliser d'abord les agents locaux pour toute tâche qui touche :
+- SwiftUI, SwiftData, StoreKit 2, WidgetKit ;
+- l'architecture DuoSpend ;
+- la logique métier du couple à 2 ;
+- les conventions de repo et le workflow de validation.
+
+Utiliser des skills globales seulement pour les sujets **génériques** : Git, shell, rédaction de commit, conventions Markdown, CI/CD transversale, refactoring non spécifique à DuoSpend.
+
+### Répertoire attendu
+
+```text
+.codex/
+├── config.toml
+├── agents/
+│   ├── ios-feature-implementer.md
+│   ├── swiftdata-reviewer.md
+│   ├── storekit-paywall-agent.md
+│   └── appstore-release-agent.md
+└── skills/
+    ├── duospend-architecture.md
+    ├── duospend-ui.md
+    ├── duospend-monetization.md
+    └── duospend-testing.md
+```
+
+### Contrat des agents locaux
+
+Chaque agent local doit :
+- lire `AGENTS.md` puis `CLAUDE.md` avant d'agir ;
+- respecter les invariants produit et techniques ;
+- annoncer les fichiers modifiés si la tâche touche plus de 3 fichiers ;
+- proposer des changements atomiques ;
+- rappeler les commandes de build/test avant clôture.
+
+Chaque agent local ne doit jamais :
+- contourner une décision de `docs/DECISIONS.md` ;
+- introduire une dépendance externe ;
+- déplacer la logique métier hors des `Services/` ;
+- créer une divergence entre code, docs et roadmap sans le signaler.
+
+### Inventaire des agents
+
+#### `ios-feature-implementer`
+Pour implémenter un écran, un flow ou un composant SwiftUI/SwiftData conforme à DuoSpend.
+
+#### `swiftdata-reviewer`
+Pour relire ou corriger la modélisation SwiftData, les relations, les mutations `ModelContext` et les erreurs d'architecture MVVM.
+
+#### `storekit-paywall-agent`
+Pour tout ce qui concerne la limite free/pro, StoreKit 2, restore purchase et paywall.
+
+#### `appstore-release-agent`
+Pour préparer metadata, screenshots, privacy text, checklist TestFlight et cohérence App Store.
+
+---
+
 *Document vivant. Si une règle ici entre en conflit avec `CLAUDE.md`, `CLAUDE.md` fait foi pour le produit et `AGENTS.md` fait foi pour l'exécution agent.*
