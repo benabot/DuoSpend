@@ -28,6 +28,20 @@ Format recommandé :
 
 **Impact** : les tests `PaywallDebugTests` vérifient désormais aussi les traductions EN du widget, et `CLAUDE.md` documente ce pattern pour éviter les régressions.
 
+---
+
+### 2026-04-20 — Debug Paywall retiré des Réglages utilisateur
+
+**Contexte** : `PaywallDebugView` était accessible depuis `SettingsView` en build `DEBUG`. Même si l'entrée n'était pas livrée en `Release`, elle ajoutait un chemin de navigation non essentiel dans l'interface de configuration et polluait les recettes manuelles des réglages.
+
+**Décision** : retirer l'entrée `Debug Paywall` de `SettingsView` tout en conservant `PaywallDebugView` dans le code, ses previews et ses tests automatiques.
+
+**Alternatives rejetées** :
+- supprimer entièrement `PaywallDebugView` → ferait perdre un outil de diagnostic local utile
+- garder le lien dans les réglages derrière un autre flag runtime → ajoute une complexité UI inutile pour un besoin purement développeur
+
+**Impact** : le simulateur de paywall n'est plus accessible depuis l'interface. La procédure officielle de récupération est documentée dans `CLAUDE.md` : réintroduire temporairement un `NavigationLink(destination: PaywallDebugView())` sous `#if DEBUG` dans `SettingsView`, ou passer par le `#Preview` du composant.
+
 ### 2025-02-10 — SwiftUI comme couche UI principale
 
 **Contexte** : choix de la technologie d'interface pour le MVP.
