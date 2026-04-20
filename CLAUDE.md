@@ -37,6 +37,12 @@ Question centrale : « Qui doit combien à qui ? »
 - Une sous-vue > 40 lignes doit être extraite
 - Une vue > 150 lignes doit être refactorisée
 
+## Localisation
+- Le target app utilise `DuoSpend/Resources/Localizable.xcstrings`.
+- Le target widget utilise son propre catalogue `DuoSpendWidget/Localizable.xcstrings`.
+- Toute chaîne visible dans WidgetKit (`Text`, `description`, `IntentDescription`, état verrouillé, libellés de balance) doit être ajoutée au catalogue du widget, pas à celui de l’app.
+- Toute correction de localisation paywall/widget doit ajouter ou mettre à jour un test de catalogue dans `DuoSpendTests` pour éviter une régression silencieuse.
+
 ## Flux de travail
 Avant de coder :
 1. Lire `docs/TODO.md` pour la tâche en cours

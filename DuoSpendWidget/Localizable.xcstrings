@@ -2,19 +2,54 @@
   "sourceLanguage" : "fr",
   "strings" : {
     "%@ doit" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ owes"
+          }
+        }
+      }
     },
     "à %@" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "to %@"
+          }
+        }
+      }
     },
     "Affiche la balance du projet en cours." : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Shows the balance of the current project."
+          }
+        }
+      }
     },
     "Balance de votre projet en cours." : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Balance of your current project."
+          }
+        }
+      }
     },
     "Dernières dépenses" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Recent expenses"
+          }
+        }
+      }
     },
     "Déverrouillez pour accéder aux widgets" : {
       "comment" : "Widget locked state — subtitle",
@@ -42,7 +77,14 @@
       }
     },
     "Équilibre" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Balanced"
+          }
+        }
+      }
     }
   },
   "version" : "1.0"

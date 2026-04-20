@@ -352,7 +352,14 @@
       }
     },
     "Chargement…" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Loading…"
+          }
+        }
+      }
     },
     "Choisir un projet" : {
       "comment" : "PDF export picker navigation title",
@@ -456,7 +463,14 @@
       }
     },
     "Créez autant de projets que vous voulez" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Create as many projects as you want"
+          }
+        }
+      }
     },
     "Date" : {
       "comment" : "Sort order option",
@@ -471,7 +485,14 @@
       }
     },
     "Débloquer pour %@" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Unlock for %@"
+          }
+        }
+      }
     },
     "dépassé" : {
       "comment" : "Over-budget figure label (amount exceeded)",
@@ -890,7 +911,14 @@
       }
     },
     "Paiement unique via votre compte Apple. Aucun abonnement." : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "One-time payment via your Apple account. No subscription."
+          }
+        }
+      }
     },
     "Part" : {
       "extractionState" : "stale",
@@ -950,7 +978,14 @@
       }
     },
     "Passez à DuoSpend Pro" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Upgrade to DuoSpend Pro"
+          }
+        }
+      }
     },
     "Payé" : {
       "extractionState" : "stale",
@@ -1312,6 +1347,146 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Trip, wedding, flatshare, renovations… Create a project for each shared adventure and keep an eye on the budget."
+          }
+        }
+      }
+    },
+    "Actions de test" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Test Actions"
+          }
+        }
+      }
+    },
+    "Achat unique, pas d'abonnement" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "One-time purchase, no subscription"
+          }
+        }
+      }
+    },
+    "Debug Paywall" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Debug Paywall"
+          }
+        }
+      }
+    },
+    "Erreur" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Error"
+          }
+        }
+      }
+    },
+    "Fermer" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Close"
+          }
+        }
+      }
+    },
+    "Ouvrir PaywallView" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Open PaywallView"
+          }
+        }
+      }
+    },
+    "Prix" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Price"
+          }
+        }
+      }
+    },
+    "Product chargé" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Product loaded"
+          }
+        }
+      }
+    },
+    "Projets illimités" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Unlimited projects"
+          }
+        }
+      }
+    },
+    "Restaurer achats" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Restore purchases"
+          }
+        }
+      }
+    },
+    "Simuler achat réussi" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Simulate successful purchase"
+          }
+        }
+      }
+    },
+    "Simuler état gratuit" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Simulate free state"
+          }
+        }
+      }
+    },
+    "Soutenez un développeur indépendant" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Support an independent developer"
+          }
+        }
+      }
+    },
+    "État StoreManager" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "StoreManager State"
           }
         }
       }
