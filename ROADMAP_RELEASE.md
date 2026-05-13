@@ -16,6 +16,42 @@
 - **Cible** : v1.0.0 sur l'App Store — iPhone only, iOS 17+
 - **État actuel** : Phases 1 à 6 terminées. Paywall et Pro en place. Il reste Phase 7 (polish + soumission).
 
+## État pré-TestFlight audité — 2026-05-13
+
+### Validé
+
+- Signing Release/TestFlight validé dans `DuoSpend.xcodeproj`.
+- Ne pas régénérer le projet avec `xcodegen generate` tant que le signing Xcode manuel reste la source de vérité.
+- Archive Release signée avec `Apple Distribution: Benoît Abot (3Q33594A3N)`.
+- `TeamIdentifier=3Q33594A3N`.
+- Entitlements Release confirmés :
+  - `application-identifier = 3Q33594A3N.fr.beabot.DuoSpend`
+  - `get-task-allow=false`
+  - `beta-reports-active=true`
+  - `com.apple.security.application-groups = group.fr.beabot.DuoSpend`
+- Le blocage CLI trousseau/codesign a été résolu côté humain en choisissant **Toujours autoriser** pour la clé privée `Apple Distribution: Benoît Abot (3Q33594A3N)`.
+- Tests simulateur validés sur `id=874C77C4-CF94-4FC1-8279-EF7D97D2A90D`.
+- Export IPA possible avec `uploadSymbols=false` si le bug `rsync` persiste.
+
+### À faire avant TestFlight
+
+- Uploader le build via Xcode Organizer / App Store Connect (`#8`).
+- Tester achat/restauration StoreKit local avec `DuoSpendStore.storekit` (`#26`).
+- Valider le paywall sans configuration StoreKit active (`#27`).
+- Configurer l'IAP `fr.beabot.DuoSpend.unlimitedprojects` dans App Store Connect (`#28`).
+- Renseigner Privacy URL, Support URL et App Privacy / nutrition labels (`#29`).
+- Finaliser la fiche App Store Connect pour TestFlight interne (`#30`).
+
+### À faire avant soumission App Store
+
+- Attacher l'IAP à la version App Store.
+- Finaliser prix, disponibilité et localisations de l'achat unique.
+- Finaliser catégorie, classification d'âge, compliance chiffrement, captures et notes de review.
+
+### Post-launch
+
+- Les issues `post-launch`, `v1.1`, `v1.2` et `v2` restent hors scope TestFlight v1.0.
+
 ---
 
 ## Lecture obligatoire avant de démarrer une tâche
@@ -273,8 +309,8 @@ Commit : `style: ajustement AppIcon v1.0`.
 
 **Definition of Done** :
 
-- Privacy Policy publiée sur `https://beabot.fr/apps/duo-send#policy`
-- Support URL active : `https://beabot.fr/apps/duo-send/`
+- Privacy Policy publiée sur `https://beabot.fr/apps/duo-spend#policy`
+- Support URL active : `https://beabot.fr/apps/duo-spend/`
 - Screenshots FR et EN en 6,7" et 5,5" prêts dans `docs/app-store-assets/`
 - Métadonnées App Store FR et EN écrites dans `docs/app-store-assets/metadata.md`
 - Compte Apple Developer actif (payé 99 $/an)
@@ -295,16 +331,16 @@ Action hors code :
 ### 4.2 — Privacy Policy (bilingue)
 - Utiliser `docs/PRIVACY_FR.md` et `docs/PRIVACY_EN.md` comme source.
 - Les fusionner en une page web unique bilingue sur `beabot.fr`.
-- URL finale : `https://beabot.fr/apps/duo-send#policy`.
+- URL finale : `https://beabot.fr/apps/duo-spend#policy`.
 - Tester que l'URL retourne bien un `200 OK` et que l'ancre `#policy` marche.
 
 **Commande de test**
 ```bash
-curl -I https://beabot.fr/apps/duo-send
+curl -I https://beabot.fr/apps/duo-spend
 ```
 
 ### 4.3 — Support URL
-- Page support publique : `https://beabot.fr/apps/duo-send/`.
+- Page support publique : `https://beabot.fr/apps/duo-spend/`.
 - Doit contenir au minimum :
   - une description courte de l'app,
   - une adresse e-mail de contact,
@@ -405,6 +441,8 @@ Format : `.mov` ou `.mp4`, codec H.264, même résolution que les screenshots du
 - `PrivacyInfo.xcprivacy` complet
 - CloudKit entitlement **désactivé** en v1 (décision actée : `cloudKitDatabase: .none`)
 - StoreKit 2 configuré avec le product ID `fr.beabot.DuoSpend.unlimitedprojects`
+- Archive Release signée avec `Apple Distribution: Benoît Abot (3Q33594A3N)`
+- Entitlements Release : `get-task-allow=false`, `beta-reports-active=true`, App Group `group.fr.beabot.DuoSpend`
 
 ## Tâches
 
@@ -421,6 +459,9 @@ Commit `project.pbxproj` si modification : `chore: version 1.0.0 build 1`.
 - Signing : `Automatic`
 - Capabilities à activer : `In-App Purchase`, `App Groups` (`group.fr.beabot.DuoSpend`).
 - Capabilities à **laisser désactivées** en v1 : `iCloud` / `CloudKit`.
+- Source de vérité opérationnelle actuelle : `DuoSpend.xcodeproj`.
+- Ne pas lancer `xcodegen generate` et ne pas modifier `project.yml` tant que le signing Release manuel validé n'a pas été réintégré proprement dans la spec XcodeGen.
+- Si macOS redemande l'accès à la clé privée Distribution, choisir **Toujours autoriser** pour `Apple Distribution: Benoît Abot (3Q33594A3N)`.
 
 ### 5.3 — PrivacyInfo.xcprivacy
 Vérifier le contenu du fichier `DuoSpend/Resources/PrivacyInfo.xcprivacy`.
@@ -434,14 +475,18 @@ Clés attendues pour une app local-first sans tracking :
 Commit : `chore: PrivacyInfo.xcprivacy complet v1`.
 
 ### 5.4 — StoreKit configuration file
-- Vérifier `DuoSpend.storekit` (fichier de test local).
+- Vérifier `DuoSpend/Resources/DuoSpendStore.storekit` (fichier de test local).
 - Product ID : `fr.beabot.DuoSpend.unlimitedprojects`.
 - Type : Non-Consumable.
-- Price : 6,99 € (ou 4,99 € en promo launch — décision à acter).
+- Price : 6,99 € (prix cible documenté ; promo launch optionnelle à décider explicitement).
+- Scheme `DuoSpend` : configuration StoreKit locale référencée.
+- Test local achat/restauration restant : `#26`.
+- Paywall sans StoreKit restant : `#27`.
 
 Sur App Store Connect :
 - Créer le produit in-app avec le **même** product ID.
 - Soumettre le produit in-app **en même temps** que le premier build (sinon il ne sera pas disponible à la review).
+- Suivi : `#28`.
 
 ### 5.5 — Launch screen
 Vérifier que le launch screen s'affiche correctement (souvent `SplashScreenView` fait office de pont, mais iOS affiche d'abord un storyboard ou un vrai Launch Screen natif).
@@ -469,7 +514,13 @@ xcodebuild -scheme DuoSpend -configuration Release \
   archive
 ```
 
-Si ça passe sans erreur → OK. Sinon → débugger avant Sprint 6.
+État actuel : archive Distribution validée localement avec `Apple Distribution: Benoît Abot (3Q33594A3N)`.
+
+À vérifier après chaque modification release :
+- `codesign -dvvv` affiche `Authority=Apple Distribution: Benoît Abot (3Q33594A3N)` et `TeamIdentifier=3Q33594A3N`.
+- Les entitlements contiennent `get-task-allow=false`, `beta-reports-active=true` et `group.fr.beabot.DuoSpend`.
+
+Si l'export IPA échoue sur le bug `rsync`, relancer l'export avec `uploadSymbols=false`.
 
 ---
 
@@ -489,6 +540,13 @@ Si ça passe sans erreur → OK. Sinon → débugger avant Sprint 6.
 ## Tâches
 
 ### 6.1 — Premier build TestFlight
+Préconditions :
+- `#26` StoreKit local achat/restauration validé ou risque explicitement accepté.
+- `#27` Paywall sans StoreKit validé.
+- `#28` IAP App Store Connect configuré.
+- `#29` Privacy/support URLs et App Privacy renseignés.
+- `#30` Fiche App Store Connect prête pour TestFlight.
+
 1. Xcode → Product → Archive.
 2. Organizer → Distribute App → App Store Connect → Upload.
 3. Attendre l'email Apple « Build uploaded » (5–30 min).
@@ -536,12 +594,14 @@ Commits : `fix: <retour beta …>` — tous doivent passer avant l'upload suivan
 ### 7.1 — App Store Connect : fiche produit
 Dans App Store Connect → App → Version 1.0.0 :
 
+- Primary language recommandé : `French`.
+- Localisations : `French` + `English`.
 - Nom et sous-titre (FR et EN) — voir Sprint 4.5
 - Description (FR et EN)
 - Mots-clés (FR et EN)
-- URL de promotion : `https://beabot.fr/apps/duo-send/`
-- URL de support : `https://beabot.fr/apps/duo-send/`
-- URL de confidentialité : `https://beabot.fr/apps/duo-send#policy`
+- URL de promotion : `https://beabot.fr/apps/duo-spend/`
+- URL de support : `https://beabot.fr/apps/duo-spend/`
+- URL de confidentialité : `https://beabot.fr/apps/duo-spend#policy`
 - Catégorie : Finance / Productivité
 - Screenshots uploadés : 6,7" et 5,5" en FR et EN
 - Notes de version : « Première version publique. »
@@ -588,7 +648,7 @@ Dans la section « Infos pour la review » :
 
 - Status « Ready for Sale » / « Disponible »
 - Au moins 1 utilisateur organique (hors beta) a installé l'app
-- Page `beabot.fr/apps/duo-send/` à jour avec lien App Store
+- Page `beabot.fr/apps/duo-spend/` à jour avec lien App Store
 - Communication externe faite (Twitter/X, LinkedIn, IndieHackers, r/iOSApps, Product Hunt si pertinent)
 
 ## Tâches
@@ -603,7 +663,7 @@ Quand Apple approuve :
 - Tweet d'annonce avec screenshot principal et lien App Store.
 - Post LinkedIn avec contexte : « Indie dev, app pensée local-first, 6,99 € one-time, pas d'abo, pas de pub. »
 - Message personnel à 5–10 personnes proches qui pourraient aimer.
-- Page `beabot.fr/apps/duo-send/` mise à jour avec badge « Download on the App Store ».
+- Page `beabot.fr/apps/duo-spend/` mise à jour avec badge « Download on the App Store ».
 
 ### 8.3 — Product Hunt (optionnel, à chaud)
 Si tu veux tenter un lancement PH :
@@ -664,9 +724,9 @@ Pas de v1.1 avant 2 à 4 semaines de stabilité de la v1.0.
 - Pour une tâche donnée, coller la section du sprint concerné dans le prompt de Codex, plus la commande de validation.
 - Toujours demander à Codex de **builder et tester avant de committer** (c'est dans `AGENTS.md`).
 - Si Codex propose un refactor large → refuser et recentrer sur la tâche atomique.
-- Si Codex ne trouve pas un fichier → l'orienter vers `project.yml` (XcodeGen) pour comprendre la structure.
+- Si Codex ne trouve pas un fichier → vérifier d'abord le projet Xcode versionné. `project.yml` peut être lu en contexte, mais ne doit pas être régénéré par `xcodegen generate` tant que le signing Release manuel est la source de vérité.
 
 ---
 
 *Document vivant. Mettre à jour au fur et à mesure de l'avancée.*
-*Dernière mise à jour : avril 2026.*
+*Dernière mise à jour : mai 2026.*

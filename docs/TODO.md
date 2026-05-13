@@ -34,15 +34,47 @@ Ne garder ici que les tâches encore ouvertes et réellement bloquantes avant mi
 
 ### Distribution
 
-- [ ] Créer le compte Apple Developer
-- [ ] Générer l'archive Release puis exécuter `Validate` / `Upload`
-- [ ] Ouvrir la bêta TestFlight
+- [x] Signing Release/TestFlight validé avec `Apple Distribution: Benoît Abot (3Q33594A3N)`
+- [x] Tests simulateur validés sur `id=874C77C4-CF94-4FC1-8279-EF7D97D2A90D`
+- [x] Archive Distribution validée localement
+- [x] Entitlements Release vérifiés : `get-task-allow=false`, `beta-reports-active=true`, App Group `group.fr.beabot.DuoSpend`
+- [ ] Exporter l'IPA / uploader le build TestFlight (`#8`) — utiliser `uploadSymbols=false` si le bug `rsync` persiste
+- [ ] Tester achat/restauration StoreKit local avec `DuoSpendStore.storekit` (`#26`)
+- [ ] Valider le paywall sans configuration StoreKit active (`#27`)
+- [ ] Configurer l'IAP `fr.beabot.DuoSpend.unlimitedprojects` dans App Store Connect (`#28`)
+- [ ] Compléter Privacy URL, Support URL et App Privacy / nutrition labels dans App Store Connect (`#29`)
+- [ ] Finaliser la fiche App Store Connect pour TestFlight interne (`#30`)
+- [ ] Ouvrir la bêta TestFlight (`#9`)
 
 ### Soumission
 
-- [ ] Soumettre l'app sur l'App Store
+- [ ] Soumettre l'app sur l'App Store (`#10`)
 
-## 3. Post-launch immédiat — Mesure, stabilité, rétention
+## 3. Frontière TestFlight / App Store / post-launch
+
+### Validé avant TestFlight
+
+- Signing Release manuel dans `DuoSpend.xcodeproj`, Team `3Q33594A3N`.
+- Archive Distribution signée avec `Apple Distribution: Benoît Abot (3Q33594A3N)`.
+- `application-identifier = 3Q33594A3N.fr.beabot.DuoSpend`.
+- `get-task-allow=false`, `beta-reports-active=true`.
+- App Group `group.fr.beabot.DuoSpend`.
+- `PrivacyInfo.xcprivacy` présent, sans tracking ni collecte déclarée, avec `UserDefaults` déclaré.
+
+### À faire avant TestFlight
+
+- Uploader le build via Xcode Organizer / App Store Connect.
+- Tester StoreKit local achat/restauration (`#26`).
+- Valider le comportement du paywall sans StoreKit (`#27`).
+- Préparer l'IAP, la fiche App Store Connect, les URLs privacy/support et les infos TestFlight (`#28`, `#29`, `#30`).
+
+### À faire avant soumission App Store
+
+- Attacher l'IAP `fr.beabot.DuoSpend.unlimitedprojects` à la version App Store.
+- Finaliser prix, disponibilité et localisations de l'achat unique.
+- Finaliser catégorie, classification d'âge, compliance chiffrement, captures et notes de review.
+
+## 4. Post-launch immédiat — Mesure, stabilité, rétention
 
 À démarrer après la mise en ligne ou pendant la fenêtre de retours initiaux, sans réouvrir le scope de la v1.0.
 
@@ -73,7 +105,7 @@ Ne garder ici que les tâches encore ouvertes et réellement bloquantes avant mi
 - [ ] Tester une première variation de screenshots App Store
 - [ ] Itérer les keywords et la copy à partir des premiers signaux
 
-## 4. Roadmap produit après validation
+## 5. Roadmap produit après validation
 
 À prioriser seulement si la v1.0 montre des signaux réels d'adoption et de rétention.
 

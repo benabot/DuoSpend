@@ -12,6 +12,31 @@ Format recommandé :
 
 ---
 
+### 2026-05-13 — Signing Release validé dans le projet Xcode manuel
+
+**Contexte** : la préparation TestFlight a validé localement l'archive Distribution avec la Team Apple Developer `3Q33594A3N`, les Bundle IDs `fr.beabot.DuoSpend` et `fr.beabot.DuoSpend.Widget`, et l'App Group `group.fr.beabot.DuoSpend`. Le fichier `project.yml` n'est pas la source de vérité opérationnelle complète pour ce signing, car le projet Xcode versionné contient aussi le target widget et la configuration Release validée.
+
+**Décision** : jusqu'à migration explicite et testée de la spec XcodeGen, la source de vérité opérationnelle du signing Release est `DuoSpend.xcodeproj`. Ne pas lancer `xcodegen generate`, ne pas modifier `project.yml`, et ne pas régénérer le projet pendant la préparation TestFlight.
+
+**Validation** :
+- Archive Release signée avec `Apple Distribution: Benoît Abot (3Q33594A3N)`.
+- `TeamIdentifier=3Q33594A3N`.
+- `application-identifier=3Q33594A3N.fr.beabot.DuoSpend`.
+- `get-task-allow=false`.
+- `beta-reports-active=true`.
+- App Group `group.fr.beabot.DuoSpend`.
+
+**Action humaine associée** : macOS peut demander l'accès à la clé privée `Apple Distribution: Benoît Abot (3Q33594A3N)` lors de `codesign`. La réponse validée est **Toujours autoriser**.
+
+**Alternatives rejetées** :
+- régénérer immédiatement via XcodeGen → risque de perdre ou d'altérer la configuration widget/signing validée ;
+- forcer `CODE_SIGN_IDENTITY` sans vérifier les profils → peut créer un conflit entre Automatic Signing et les profils disponibles ;
+- documenter seulement oralement l'état signing → trop fragile avant TestFlight.
+
+**Impact** : toute modification de signing ou de projet Xcode doit être atomique, justifiée, puis validée par tests, archive Release et contrôle `codesign`. L'export IPA reste possible avec `uploadSymbols=false` si le bug `rsync` persiste.
+
+---
+
 ### 2026-04-20 — Catalogues de localisation séparés pour l'app et le widget
 
 **Contexte** : la localisation anglaise du paywall avait été corrigée dans le catalogue principal de l'app, mais la galerie WidgetKit affichait encore des textes français. La cause était que le widget compile depuis son propre target et n'utilise pas `DuoSpend/Resources/Localizable.xcstrings`.
