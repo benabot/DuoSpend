@@ -12,6 +12,8 @@ final class StoreManager {
     private(set) var product: Product?
     private(set) var purchaseError: String?
     private(set) var isLoading = false
+    private(set) var isProductLoading = false
+    private(set) var productLoadError: String?
 
     private let productID = "fr.beabot.DuoSpend.unlimitedprojects"
     private let logger = Logger(subsystem: "fr.beabot.DuoSpend", category: "StoreManager")
@@ -38,11 +40,23 @@ final class StoreManager {
     // MARK: - Chargement produit
 
     func loadProduct() async {
+        isProductLoading = true
+        productLoadError = nil
+        defer { isProductLoading = false }
+
         do {
             let products = try await Product.products(for: [productID])
-            product = products.first
-            logger.info("Product loaded: \(self.product?.displayName ?? "none")")
+            if let loadedProduct = products.first {
+                product = loadedProduct
+                logger.info("Product loaded: \(loadedProduct.displayName)")
+            } else {
+                product = nil
+                productLoadError = "Achat indisponible. Réessayez plus tard."
+                logger.error("Product not found: \(self.productID)")
+            }
         } catch {
+            product = nil
+            productLoadError = "Impossible de charger l'achat. Réessayez plus tard."
             logger.error("Failed to load product: \(error)")
         }
     }
@@ -51,7 +65,7 @@ final class StoreManager {
 
     func purchase() async {
         guard let product else {
-            purchaseError = "Produit non disponible"
+            purchaseError = "Achat indisponible. Réessayez plus tard."
             return
         }
         isLoading = true
