@@ -78,7 +78,7 @@ Positionnement du MVP :
 ### Préparation
 - Créer une archive Release.
 - Uploader le build.
-- Remplir les informations minimales de test.
+- Remplir les informations minimales de test avec les textes prêts à coller dans `docs/APP_STORE_CONNECT.md`.
 - Rédiger des notes de version courtes et factuelles.
 
 ### Validation recommandée
@@ -144,6 +144,8 @@ Ces éléments doivent être revalidés juste avant la soumission.
 - catégorie App Store ;
 - classification d’âge ;
 - réponses de conformité si demandées.
+
+Les brouillons App Privacy / nutrition labels et les checklists humaines App Store Connect vivent dans `docs/APP_STORE_CONNECT.md`.
 
 ## 8. Notes de version
 
