@@ -142,7 +142,7 @@ DuoSpend/
 ├── project.yml                ← XcodeGen (génère .xcodeproj)
 ├── .codex/                    ← config locale Codex (optionnelle)
 ├── docs/
-│   ├── ROADMAP_RELEASE.md     ← plan d'exécution jusqu'à l'App Store
+│   ├── ROADMAP_RELEASE.md     ← docs/ROADMAP_RELEASE.md, plan d'exécution jusqu'à l'App Store
 │   ├── TODO.md                ← tâche en cours
 │   ├── DECISIONS.md           ← décisions d'archi
 │   ├── MVP.md                 ← spec produit complète
@@ -197,7 +197,7 @@ DuoSpend/
 - Supprimer ou renommer des fichiers sans mention explicite.
 - Toucher à `Preview Content/` hors d'une tâche de preview.
 - Remettre en cause une décision listée dans `DECISIONS.md`.
-- Réécrire `CLAUDE.md`, `AGENTS.md` ou `ROADMAP_RELEASE.md` en même temps qu'une tâche de code.
+- Réécrire `CLAUDE.md`, `AGENTS.md` ou `docs/ROADMAP_RELEASE.md` en même temps qu'une tâche de code.
 
 **Un agent doit toujours** :
 
