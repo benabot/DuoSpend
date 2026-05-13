@@ -28,9 +28,9 @@
 		8C46DF18903B6602AB02BB49 /* ProjectListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F04C844F9A1C3C34ECF318DB /* ProjectListView.swift */; };
 		9175C1FA5FABEAA9AF0961EC /* SampleData.swift in Sources */ = {isa = PBXBuildFile; fileRef = E785001221CBAA003378869A /* SampleData.swift */; };
 		95FA17FF643DF7A4100D334D /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = A5C0C7EBE21F3157955719BF /* Localizable.xcstrings */; };
+		992ACDAD0A9242457330E797 /* AppIconExporter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78A19E541167CDD82A20D1F0 /* AppIconExporter.swift */; };
 		A1B2C3D4E5F60718293A4B5D /* PaywallDebugTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B2C3D4E5F60718293A4B5C /* PaywallDebugTests.swift */; };
 		A6C3D9124F4A4B5C8D9E0F11 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 048E66DC6F24E1DFE4B15DB8 /* PrivacyInfo.xcprivacy */; };
-		992ACDAD0A9242457330E797 /* AppIconExporter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78A19E541167CDD82A20D1F0 /* AppIconExporter.swift */; };
 		AF125D3A0291AB0DA3A82F63 /* StoreManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7657B296ABD05DF7953A78B /* StoreManager.swift */; };
 		B0F2E3D4C5B6A7981234AB10 /* DuoSpendWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1F2E3D4C5B6A7981234AB01 /* DuoSpendWidget.swift */; };
 		B1F2E3D4C5B6A7981234AB11 /* DuoSpendWidgetEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2F2E3D4C5B6A7981234AB02 /* DuoSpendWidgetEntry.swift */; };
@@ -115,7 +115,7 @@
 		A3F2E3D4C5B6A7981234AB03 /* DuoSpendWidgetProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DuoSpendWidgetProvider.swift; sourceTree = "<group>"; };
 		A4F2E3D4C5B6A7981234AB04 /* DuoSpendWidgetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DuoSpendWidgetView.swift; sourceTree = "<group>"; };
 		A51425789DA23F45C1129889 /* SplashScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreenView.swift; sourceTree = "<group>"; };
-		A5C0C7EBE21F3157955719BF /* Localizable.xcstrings */ = {isa = PBXFileReference; includeInIndex = 1; path = Localizable.xcstrings; sourceTree = "<group>"; };
+		A5C0C7EBE21F3157955719BF /* Localizable.xcstrings */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 		A5F2E3D4C5B6A7981234AB05 /* DuoSpendWidget.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = DuoSpendWidget.entitlements; sourceTree = "<group>"; };
 		AC36160173A958AF2F7CE4D1 /* ProjectDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectDetailViewModel.swift; sourceTree = "<group>"; };
 		C3F2E3D4C5B6A7981234AB23 /* DuoSpendWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = DuoSpendWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -603,11 +603,13 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = DuoSpend/DuoSpend.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
-				CODE_SIGN_STYLE = Automatic;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_ASSET_PATHS = "\"DuoSpend/Preview Content\"";
-				DEVELOPMENT_TEAM = 3Q33594A3N;
+				DEVELOPMENT_TEAM = "";
+				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = 3Q33594A3N;
 				ENABLE_BITCODE = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = DuoSpend/Info.plist;
@@ -626,6 +628,8 @@
 				);
 				MARKETING_VERSION = 1.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = fr.beabot.DuoSpend;
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = "DuoSpend App Store Profile";
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
@@ -723,10 +727,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = DuoSpendWidget/DuoSpendWidget.entitlements;
-				CODE_SIGN_STYLE = Automatic;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEVELOPMENT_TEAM = 3Q33594A3N;
+				DEVELOPMENT_TEAM = "";
+				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = 3Q33594A3N;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = DuoSpendWidget/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "DuoSpend Widget";
@@ -739,6 +745,8 @@
 				);
 				MARKETING_VERSION = 1.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = fr.beabot.DuoSpend.Widget;
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = "DuoSpend Widget App Store Profile";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				SWIFT_COMPILATION_MODE = wholemodule;
