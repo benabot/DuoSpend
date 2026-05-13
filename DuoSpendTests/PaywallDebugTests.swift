@@ -94,6 +94,7 @@ struct PaywallDebugTests {
             "Soutenez un développeur indépendant": "Support an independent developer",
             "Débloquer pour %@": "Unlock for %@",
             "Chargement…": "Loading…",
+            "Achat indisponible": "Purchase unavailable",
             "Restaurer mes achats": "Restore Purchases",
             "Paiement unique via votre compte Apple. Aucun abonnement.": "One-time payment via your Apple account. No subscription.",
             "Fermer": "Close",
@@ -185,6 +186,60 @@ struct PaywallDebugTests {
 
         #expect(snapshot.productLoadedText == "❌")
         #expect(snapshot.displayedPrice == nil)
+    }
+
+    @Test("Paywall sans produit StoreKit")
+    func paywallWithoutStoreKitProduct() {
+        let snapshot = PaywallPurchaseSnapshot(
+            productDisplayPrice: nil,
+            isProductLoading: false,
+            purchaseError: nil,
+            productLoadError: "Achat indisponible. Réessayez plus tard."
+        )
+
+        #expect(snapshot.availability == .unavailable)
+        #expect(snapshot.isPurchaseDisabled)
+        #expect(snapshot.errorMessage == "Achat indisponible. Réessayez plus tard.")
+    }
+
+    @Test("Paywall pendant chargement StoreKit")
+    func paywallWhileStoreKitProductIsLoading() {
+        let snapshot = PaywallPurchaseSnapshot(
+            productDisplayPrice: nil,
+            isProductLoading: true,
+            purchaseError: nil,
+            productLoadError: nil
+        )
+
+        #expect(snapshot.availability == .loading)
+        #expect(snapshot.isPurchaseDisabled)
+        #expect(snapshot.errorMessage == nil)
+    }
+
+    @Test("Paywall avec produit StoreKit chargé")
+    func paywallWithLoadedStoreKitProduct() {
+        let snapshot = PaywallPurchaseSnapshot(
+            productDisplayPrice: "6,99 €",
+            isProductLoading: false,
+            purchaseError: nil,
+            productLoadError: nil
+        )
+
+        #expect(snapshot.availability == .available(displayPrice: "6,99 €"))
+        #expect(!snapshot.isPurchaseDisabled)
+        #expect(snapshot.errorMessage == nil)
+    }
+
+    @Test("Erreur d'achat prioritaire sur erreur de chargement")
+    func purchaseErrorTakesPriorityOverProductLoadError() {
+        let snapshot = PaywallPurchaseSnapshot(
+            productDisplayPrice: nil,
+            isProductLoading: false,
+            purchaseError: "Achat indisponible. Réessayez plus tard.",
+            productLoadError: "Impossible de charger l'achat. Réessayez plus tard."
+        )
+
+        #expect(snapshot.errorMessage == "Achat indisponible. Réessayez plus tard.")
     }
 
     @Test("Prix affiché")

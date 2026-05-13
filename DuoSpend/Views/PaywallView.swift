@@ -1,10 +1,55 @@
 import SwiftUI
 import StoreKit
 
+enum PaywallPurchaseAvailability: Equatable {
+    case available(displayPrice: String)
+    case loading
+    case unavailable
+}
+
+struct PaywallPurchaseSnapshot: Equatable {
+    let availability: PaywallPurchaseAvailability
+    let errorMessage: String?
+
+    var isPurchaseDisabled: Bool {
+        switch availability {
+        case .available:
+            return false
+        case .loading, .unavailable:
+            return true
+        }
+    }
+
+    init(
+        productDisplayPrice: String?,
+        isProductLoading: Bool,
+        purchaseError: String?,
+        productLoadError: String?
+    ) {
+        if let productDisplayPrice {
+            availability = .available(displayPrice: productDisplayPrice)
+        } else if isProductLoading {
+            availability = .loading
+        } else {
+            availability = .unavailable
+        }
+        errorMessage = purchaseError ?? productLoadError
+    }
+}
+
 /// Paywall — achat unique pour débloquer les projets illimités
 struct PaywallView: View {
     @Environment(\.dismiss) private var dismiss
     @State private var storeManager = StoreManager.shared
+
+    private var purchaseSnapshot: PaywallPurchaseSnapshot {
+        PaywallPurchaseSnapshot(
+            productDisplayPrice: storeManager.product?.displayPrice,
+            isProductLoading: storeManager.isProductLoading,
+            purchaseError: storeManager.purchaseError,
+            productLoadError: storeManager.productLoadError
+        )
+    }
 
     var body: some View {
         NavigationStack {
@@ -47,13 +92,18 @@ struct PaywallView: View {
                             Button {
                                 Task { await storeManager.purchase() }
                             } label: {
-                                if let product = storeManager.product {
-                                    Text("Débloquer pour \(product.displayPrice)")
+                                switch purchaseSnapshot.availability {
+                                case .available(let displayPrice):
+                                    Text("Débloquer pour \(displayPrice)")
                                         .font(.system(.body, design: .rounded))
                                         .fontWeight(.semibold)
                                         .frame(maxWidth: .infinity)
-                                } else {
+                                case .loading:
                                     Text("Chargement…")
+                                        .font(.system(.body, design: .rounded))
+                                        .frame(maxWidth: .infinity)
+                                case .unavailable:
+                                    Text("Achat indisponible")
                                         .font(.system(.body, design: .rounded))
                                         .frame(maxWidth: .infinity)
                                 }
@@ -61,10 +111,10 @@ struct PaywallView: View {
                             .buttonStyle(.borderedProminent)
                             .controlSize(.large)
                             .tint(Color.accentPrimary)
-                            .disabled(storeManager.product == nil || storeManager.isLoading)
+                            .disabled(purchaseSnapshot.isPurchaseDisabled || storeManager.isLoading)
                         }
 
-                        if let error = storeManager.purchaseError {
+                        if let error = purchaseSnapshot.errorMessage {
                             Text(error)
                                 .font(.system(.caption, design: .rounded))
                                 .foregroundStyle(.red)
