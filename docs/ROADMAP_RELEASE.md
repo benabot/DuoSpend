@@ -12,7 +12,7 @@
 - **Racine** : `/Users/benoitabot/Sites/DuoSpend`
 - **Repo** : `https://github.com/benabot/DuoSpend`
 - **Bundle ID** : `fr.beabot.DuoSpend`
-- **Team ID** : `66S2QLG2HD`
+- **Team ID** : `3Q33594A3N`
 - **Cible** : v1.0.0 sur l'App Store — iPhone only, iOS 17+
 - **État actuel** : Phases 1 à 6 terminées. Paywall et Pro en place. Il reste Phase 7 (polish + soumission).
 
@@ -288,7 +288,7 @@ Action hors code :
 1. Se connecter à [developer.apple.com](https://developer.apple.com).
 2. S'enrôler dans le programme (99 $/an).
 3. Attendre la validation (peut prendre 24 à 48h).
-4. Noter les info dans `docs/DECISIONS.md` : date d'adhésion, ID de compte, Team ID (`66S2QLG2HD` déjà connu).
+4. Noter les info dans `docs/DECISIONS.md` : date d'adhésion, ID de compte, Team ID (`3Q33594A3N`).
 
 **Tâche non-code, ne pas committer.**
 
@@ -417,7 +417,7 @@ Ouvrir `DuoSpend.xcodeproj` → cible `DuoSpend` → General :
 Commit `project.pbxproj` si modification : `chore: version 1.0.0 build 1`.
 
 ### 5.2 — Signing & Capabilities
-- Team : `66S2QLG2HD`
+- Team : `3Q33594A3N`
 - Signing : `Automatic`
 - Capabilities à activer : `In-App Purchase`, `App Groups` (`group.fr.beabot.DuoSpend`).
 - Capabilities à **laisser désactivées** en v1 : `iCloud` / `CloudKit`.
