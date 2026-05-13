@@ -1,8 +1,9 @@
 # Configuration StoreKit pour les tests Xcode
 
-Le fichier `.storekit` doit être créé manuellement dans Xcode (il n'est pas versionnable automatiquement).
+Le fichier de test local est versionné dans `DuoSpend/Resources/DuoSpendStore.storekit`.
+Si ce fichier doit être recréé, le faire manuellement dans Xcode puis vérifier qu'il reste référencé par le scheme `DuoSpend`.
 
-## Créer la configuration StoreKit de test
+## Vérifier ou recréer la configuration StoreKit de test
 
 1. Dans Xcode : **File > New > File > StoreKit Configuration File**
 2. Nom : `DuoSpendStore.storekit`

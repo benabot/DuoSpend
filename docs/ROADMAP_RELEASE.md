@@ -1,4 +1,4 @@
-# ROADMAP_RELEASE.md — DuoSpend vers l'App Store
+# docs/ROADMAP_RELEASE.md — DuoSpend vers l'App Store
 
 > Plan d'exécution détaillé, orienté agent (Codex, ChatGPT, Claude Code).
 > Chaque tâche est atomique, testable, et commitable indépendamment.
@@ -35,21 +35,29 @@
 
 ### À faire avant TestFlight
 
-- Uploader le build via Xcode Organizer / App Store Connect (`#8`).
 - Tester achat/restauration StoreKit local avec `DuoSpendStore.storekit` (`#26`).
 - Valider le paywall sans configuration StoreKit active (`#27`).
-- Configurer l'IAP `fr.beabot.DuoSpend.unlimitedprojects` dans App Store Connect (`#28`).
+- Configurer l'IAP App Store Connect `fr.beabot.DuoSpend.unlimitedprojects` (`#28`).
 - Renseigner Privacy URL, Support URL et App Privacy / nutrition labels (`#29`).
 - Finaliser la fiche App Store Connect pour TestFlight interne (`#30`).
+- Uploader le build via Xcode Organizer / App Store Connect (`#8`) seulement après ces validations.
 
 ### À faire avant soumission App Store
 
 - Attacher l'IAP à la version App Store.
-- Finaliser prix, disponibilité et localisations de l'achat unique.
-- Finaliser catégorie, classification d'âge, compliance chiffrement, captures et notes de review.
+- Finaliser prix, disponibilité et localisations FR/EN de l'achat unique.
+- Finaliser captures App Store, métadonnées FR/EN, catégorie, classification d'âge, compliance chiffrement et notes de review.
+- Vérifier une dernière fois App Privacy / nutrition labels.
 
 ### Post-launch
 
+- iCloud sync même compte Apple.
+- CloudKit Sharing entre deux comptes Apple.
+- Templates de projets.
+- Recherche dans les dépenses.
+- Graphiques de répartition.
+- Améliorations ASO.
+- Retours utilisateurs et stabilisation v1.0.x.
 - Les issues `post-launch`, `v1.1`, `v1.2` et `v2` restent hors scope TestFlight v1.0.
 
 ---
@@ -472,13 +480,26 @@ Clés attendues pour une app local-first sans tracking :
 - `NSPrivacyCollectedDataTypes` : `[]` (vide) — **à confirmer** : si on enregistre un purchaseID StoreKit, il n'est pas considéré comme « collecté » car il reste local.
 - `NSPrivacyAccessedAPITypes` : liste des API sensibles utilisées (ex : `NSPrivacyAccessedAPICategoryUserDefaults` avec raison `CA92.1`).
 
+À refléter dans App Store Connect (`#29`) :
+- App local-first, sans compte utilisateur.
+- Pas de tracking.
+- Pas de publicité.
+- Pas de serveur tiers ni backend applicatif.
+- Données stockées localement via SwiftData.
+- App Group `group.fr.beabot.DuoSpend` utilisé localement pour le widget.
+- StoreKit / In-App Purchase géré par Apple.
+- URL de confidentialité et URL support à renseigner dans App Store Connect.
+- App Privacy / nutrition labels à compléter en cohérence avec `PrivacyInfo.xcprivacy` et les politiques FR/EN.
+
 Commit : `chore: PrivacyInfo.xcprivacy complet v1`.
 
 ### 5.4 — StoreKit configuration file
 - Vérifier `DuoSpend/Resources/DuoSpendStore.storekit` (fichier de test local).
 - Product ID : `fr.beabot.DuoSpend.unlimitedprojects`.
 - Type : Non-Consumable.
-- Price : 6,99 € (prix cible documenté ; promo launch optionnelle à décider explicitement).
+- Modèle : 1 projet gratuit + achat unique projets illimités.
+- Prix standard : 6,99 €.
+- Prix de lancement optionnel : 4,99 € si décision explicite avant configuration App Store Connect.
 - Scheme `DuoSpend` : configuration StoreKit locale référencée.
 - Test local achat/restauration restant : `#26`.
 - Paywall sans StoreKit restant : `#27`.
@@ -546,6 +567,7 @@ Préconditions :
 - `#28` IAP App Store Connect configuré.
 - `#29` Privacy/support URLs et App Privacy renseignés.
 - `#30` Fiche App Store Connect prête pour TestFlight.
+- Export IPA possible avec `uploadSymbols=false` si le bug `rsync` persiste.
 
 1. Xcode → Product → Archive.
 2. Organizer → Distribute App → App Store Connect → Upload.

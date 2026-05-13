@@ -2,7 +2,7 @@
 
 > **Roadmap V2** : intègre la stratégie produit issue de 8 documents de discovery (concept, recherche concurrentielle, PRD, personas, verdict go/no-go, backlog, devplan, roadmap v1→v2).
 >
-> Remplace et complète `ROADMAP_RELEASE.md` (V1). La V1 couvrait uniquement « jusqu'à la mise en ligne ». La V2 couvre aussi **le post-launch**, l'**acquisition**, la **rétention** et les **signaux de kill/pivot**.
+> Remplace et complète `docs/ROADMAP_RELEASE.md` (V1). La V1 couvrait uniquement « jusqu'à la mise en ligne ». La V2 couvre aussi **le post-launch**, l'**acquisition**, la **rétention** et les **signaux de kill/pivot**.
 
 ---
 
@@ -98,7 +98,7 @@ Le verdict discovery recommandait plutôt un freemium 2,99 €/mois + 19,99 €/
 
 ## 5. Nouveau plan d'exécution (sprints fusionnés V1 + post-launch)
 
-Sprints 1 à 7 inchangés par rapport à `ROADMAP_RELEASE.md` V1 (stabilisation → soumission). Ajouts V2 ci-dessous.
+Sprints 1 à 7 inchangés par rapport à `docs/ROADMAP_RELEASE.md` V1 (stabilisation → soumission). Ajouts V2 ci-dessous.
 
 ### Sprint 7-bis — Amorce stratégique AVANT soumission (nouveau)
 

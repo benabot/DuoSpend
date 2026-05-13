@@ -13,11 +13,11 @@ Préparer une release propre et cohérente sans dériver vers du code hors sujet
 
 1. `AGENTS.md`
 2. `CLAUDE.md`
-3. `COMMERCIAL.md`
-4. `WEBSITE_FAQ.md`
-5. `PRIVACY_FR.md`
-6. `PRIVACY_EN.md`
-7. `ROADMAP_RELEASE.md`
+3. `docs/COMMERCIAL.md`
+4. `docs/WEBSITE_FAQ.md`
+5. `docs/PRIVACY_FR.md`
+6. `docs/PRIVACY_EN.md`
+7. `docs/ROADMAP_RELEASE.md`
 
 ## Responsabilités
 
