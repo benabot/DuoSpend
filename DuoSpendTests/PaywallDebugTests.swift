@@ -3,14 +3,18 @@ import Testing
 @testable import DuoSpend
 
 @MainActor
+private func repositoryRootURL(filePath: StaticString = #filePath) -> URL {
+    URL(fileURLWithPath: "\(filePath)")
+        .deletingLastPathComponent()
+        .deletingLastPathComponent()
+}
+
+@MainActor
 private struct StringCatalog: Decodable {
     let strings: [String: StringCatalogEntry]
 
     static func load(relativePath: String, filePath: StaticString = #filePath) throws -> StringCatalog {
-        let testsDirectoryURL = URL(fileURLWithPath: "\(filePath)")
-            .deletingLastPathComponent()
-        let repositoryRootURL = testsDirectoryURL.deletingLastPathComponent()
-        let catalogURL = repositoryRootURL
+        let catalogURL = repositoryRootURL(filePath: filePath)
             .appendingPathComponent(relativePath)
         let data = try Data(contentsOf: catalogURL)
         return try JSONDecoder().decode(StringCatalog.self, from: data)
@@ -39,6 +43,17 @@ private struct StringCatalogLocalization: Decodable {
 
 private struct StringCatalogStringUnit: Decodable {
     let value: String?
+}
+
+private struct StoreKitConfiguration: Decodable {
+    let products: [StoreKitConfigurationProduct]
+}
+
+private struct StoreKitConfigurationProduct: Decodable {
+    let displayPrice: String
+    let productID: String
+    let referenceName: String
+    let type: String
 }
 
 @MainActor
@@ -284,5 +299,46 @@ struct PaywallDebugTests {
         await actions.restorePurchases()
 
         #expect(store.restorePurchasesCallCount == 1)
+    }
+}
+
+@Suite("StoreKit local")
+@MainActor
+struct StoreKitLocalTests {
+    private let productID = "fr.beabot.DuoSpend.unlimitedprojects"
+
+    @Test("Fichier StoreKit local cohérent")
+    func localStoreKitFileDefinesExpectedProduct() throws {
+        let storeKitURL = repositoryRootURL()
+            .appendingPathComponent("DuoSpend/Resources/DuoSpendStore.storekit")
+        let data = try Data(contentsOf: storeKitURL)
+        let configuration = try JSONDecoder().decode(StoreKitConfiguration.self, from: data)
+
+        let product = try #require(configuration.products.first)
+
+        #expect(configuration.products.count == 1)
+        #expect(product.productID == productID)
+        #expect(product.referenceName == "DuoSpend Pro")
+        #expect(product.type == "NonConsumable")
+        #expect(product.displayPrice == "6.99")
+    }
+
+    @Test("Scheme DuoSpend référence la configuration StoreKit locale")
+    func duoSpendSchemeReferencesLocalStoreKitConfiguration() throws {
+        let schemeURL = repositoryRootURL()
+            .appendingPathComponent("DuoSpend.xcodeproj/xcshareddata/xcschemes/DuoSpend.xcscheme")
+        let scheme = try String(contentsOf: schemeURL, encoding: .utf8)
+
+        #expect(scheme.contains("<StoreKitConfigurationFileReference"))
+        #expect(scheme.contains("../../DuoSpend/Resources/DuoSpendStore.storekit"))
+    }
+
+    @Test("StoreManager utilise le Product ID attendu")
+    func storeManagerUsesExpectedProductID() throws {
+        let storeManagerURL = repositoryRootURL()
+            .appendingPathComponent("DuoSpend/Services/StoreManager.swift")
+        let source = try String(contentsOf: storeManagerURL, encoding: .utf8)
+
+        #expect(source.contains("private let productID = \"\(productID)\""))
     }
 }

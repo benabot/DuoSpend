@@ -39,7 +39,7 @@ Ne garder ici que les tâches encore ouvertes et réellement bloquantes avant mi
 - [x] Archive Distribution validée localement
 - [x] Entitlements Release vérifiés : `get-task-allow=false`, `beta-reports-active=true`, App Group `group.fr.beabot.DuoSpend`
 - [ ] Exporter l'IPA / uploader le build TestFlight (`#8`) — utiliser `uploadSymbols=false` si le bug `rsync` persiste
-- [ ] Tester achat/restauration StoreKit local avec `DuoSpendStore.storekit` (`#26`)
+- [ ] Tester achat/restauration StoreKit local avec `DuoSpendStore.storekit` (`#26`) — fichier, Product ID, type, prix et scheme couverts par tests ; smoke test manuel Xcode achat/restauration/reset documenté dans `docs/SETUP_STOREKIT.md`
 - [ ] Valider le paywall sans configuration StoreKit active (`#27`) — code durci : produit absent = achat indisponible, bouton désactivé, aucun déverrouillage sans entitlement ; smoke test manuel restant
 - [ ] Configurer l'IAP `fr.beabot.DuoSpend.unlimitedprojects` dans App Store Connect (`#28`)
 - [ ] Compléter Privacy URL, Support URL et App Privacy / nutrition labels dans App Store Connect (`#29`)
@@ -64,7 +64,7 @@ Ne garder ici que les tâches encore ouvertes et réellement bloquantes avant mi
 ### À faire avant TestFlight
 
 - Uploader le build via Xcode Organizer / App Store Connect.
-- Tester StoreKit local achat/restauration (`#26`).
+- Tester StoreKit local achat/restauration (`#26`) ; la configuration versionnée est couverte par tests, le parcours achat/restauration/reset reste à valider manuellement dans Xcode.
 - Valider le comportement du paywall sans StoreKit (`#27`) ; le fallback produit absent est sécurisé, il reste à faire le smoke test manuel.
 - Préparer l'IAP, la fiche App Store Connect, les URLs privacy/support et les infos TestFlight (`#28`, `#29`, `#30`).
 
